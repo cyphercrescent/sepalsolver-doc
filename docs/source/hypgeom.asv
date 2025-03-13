@@ -1,0 +1,19 @@
+function result = hypgeom(ab, c, z)
+a = ab(1); b = ab(2); s = 1; t = 1; n = 0;
+result = 1;
+ap = gammaln(a);
+bp = gammaln(b);
+cp = gammaln(c);
+den = ap+bp-cp;
+while (abs(t) > 1e-10)
+ n = n + 1;
+ s = s * z/n;
+ ap = gammaln(a + n);
+ bp = gammaln(b + n);
+ cp = gammaln(c + n);
+ gn = gammaln(n + 1);
+ e = exp(ap+bp-cp-den);
+ t  = e*s;
+ result = result + t;
+ disp(e)
+end
