@@ -1,9 +1,9 @@
-Welcome to CypherCrescent Mathematics Library documentation!
+Welcome to Sepal Solver documentation!
 ============================================================
 
-CCL-Math - A Comprehensive C# Mathematics Library
+SEPALSOLVER - A Comprehensive C# Mathematics Library
 
-CCL-Math is a powerful and versatile C# library designed to provide a wide range of mathematical functionalities for researchers, engineers, and developers. It encompasses a comprehensive collection of algorithms and tools spanning various domains of mathematics, including:
+SepalSolver is a powerful and versatile C# library designed to provide a wide range of mathematical functionalities for researchers, engineers, and developers. It encompasses a comprehensive collection of algorithms and tools spanning various domains of mathematics, including:
 
 - Linear Algebra: Efficient handling of dense and sparse matrices, enabling operations such as matrix multiplication, inversion, LU/Cholesky decomposition, Matrix reordering for reduced fill in, and more.
 - Special Functions: Access to a rich set of special functions, including Bessel functions, Gamma function, error function, and many others, for advanced mathematical modeling.
@@ -13,9 +13,9 @@ CCL-Math is a powerful and versatile C# library designed to provide a wide range
 - Polynomial Arithmetic: Comprehensive support for polynomial operations, including convolution, deconvolution, root finding, and more, for signal processing and other applications.
 - Optimization: A suite of optimization algorithms, including linear and non-linear optimization methods such as sequential quadratic programming and Levenberg Marquadt algorithm, genetic algorithms, and particle swarm optimization, to find optimal solutions for various problems.
 
-CCL-Math is built with a focus on performance, accuracy, and ease of use. It provides a well-documented API and is designed to be easily integrated into your C# projects. Whether you're working on scientific research, engineering simulations, or data analysis, CCL-Math can significantly enhance your productivity and accelerate your mathematical computations.
+SepalSolver is built with a focus on performance, accuracy, and ease of use. It provides a well-documented API and is designed to be easily integrated into your C# projects. Whether you're working on scientific research, engineering simulations, or data analysis, SepalSolver can significantly enhance your productivity and accelerate your mathematical computations.
 
-This document is designed t demonstract how to use the CCL-Math to solve commnom science and engineering problems
+This document is designed t demonstract how to use the SepalSolver to solve commnom science and engineering problems
 
 .. note::
 

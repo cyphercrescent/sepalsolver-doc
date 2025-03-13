@@ -644,6 +644,7 @@ Roots
             -1.0310 + 1.1635i
 
    ..note::
+
        The coefficients can be real or complex.
 
 
@@ -734,6 +735,7 @@ Deconv
           Remainder: 0, 0, 0, 0, -3, -6
 
    ..note::
+
        Both polynomial and the divisor can be real or complex as demonstrated below
 
 
@@ -961,6 +963,7 @@ Integral2
           The integral is approximately: 0.0833333333277262
 
    ..note::
+
        If the any of the boundary of y is a constant, it can be defined as a lambda function that returns the constant value as shown below:
 
 
@@ -1337,6 +1340,7 @@ Integral3
           The triple integral of x*y*z is approximately: 0.0641203694008985
 
    ..note::
+
        If any of boundaries of y or z is a constant, it can be defined as a lambda function that returns the constant value as shown below:
 
 
