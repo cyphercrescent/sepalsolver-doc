@@ -64,8 +64,8 @@ Types of Bessel Functions
 
    // import libraries
    using System;
-   using CypherCrescent.MathematicsLibrary;
-   using static CypherCrescent.MathematicsLibrary.Math;
+   using SepalSolver;
+   using static SepalSolver.Math;
 
    ColVec x = Linspace(0, 10);
    Indexer Z = new(0, 8);
@@ -135,8 +135,8 @@ Types of Legendre polynomials
 
    // import libraries
    using System;
-   using CypherCrescent.MathematicsLibrary;
-   using static CypherCrescent.MathematicsLibrary.Math;
+   using SepalSolver;
+   using static SepalSolver.Math;
 
    ColVec x = Linspace(-1, 1);
    Indexer Z = new(0, 5);
@@ -164,8 +164,8 @@ Output:
 
    // import libraries
    using System;
-   using CypherCrescent.MathematicsLibrary;
-   using static CypherCrescent.MathematicsLibrary.Math;
+   using SepalSolver;
+   using static SepalSolver.Math;
 
    ColVec x = Linspace(-0.95, 0.95);
    Indexer Z = new(0, 5);
@@ -186,8 +186,8 @@ Output:
 
    // import libraries
    using System;
-   using CypherCrescent.MathematicsLibrary;
-   using static CypherCrescent.MathematicsLibrary.Math;
+   using SepalSolver;
+   using static SepalSolver.Math;
 
    ColVec x = Linspace(-1, 1);
    Indexer Z = new(0, 5);
@@ -208,8 +208,8 @@ Output:
 
    // import libraries
    using System;
-   using CypherCrescent.MathematicsLibrary;
-   using static CypherCrescent.MathematicsLibrary.Math;
+   using SepalSolver;
+   using static SepalSolver.Math;
 
    ColVec x = Linspace(-1, 1);
    Indexer Z = new(0, 5);
@@ -230,8 +230,8 @@ Output:
 
    // import libraries
    using System;
-   using CypherCrescent.MathematicsLibrary;
-   using static CypherCrescent.MathematicsLibrary.Math;
+   using SepalSolver;
+   using static SepalSolver.Math;
 
    ColVec x = Linspace(-2, 10);
    Indexer Z = new(1, 5);
@@ -256,8 +256,8 @@ Output:
 
    // import libraries
    using System;
-   using CypherCrescent.MathematicsLibrary;
-   using static CypherCrescent.MathematicsLibrary.Math;
+   using SepalSolver;
+   using static SepalSolver.Math;
 
    ColVec x = Linspace(-2, 2);
    Indexer Z = new(0, 5);

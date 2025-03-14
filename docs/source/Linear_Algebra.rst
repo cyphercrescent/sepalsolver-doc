@@ -37,8 +37,8 @@ In the standard matrix multiplication, multiplying two (2 \times 2) matrices req
    // import libraries
    using System;
    using System.Collections.Generic;
-   using CypherCrescent.MathematicsLibrary;
-   using static CypherCrescent.MathematicsLibrary.Math;
+   using SepalSolver;
+   using static SepalSolver.Math;
 
    static Matrix Strass(Matrix A, Matrix B)
    {

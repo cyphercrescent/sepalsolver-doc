@@ -31,7 +31,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using System;
          
              // Define the function to integrate
@@ -82,7 +82,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using System;
          
              // Define the function to integrate
@@ -137,7 +137,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using System;
          
              // Define the function to integrate
@@ -193,7 +193,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using System;
          
              // Define the function to integrate
@@ -249,7 +249,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using static System.Math
              using System;
          
@@ -309,7 +309,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using System;
          
              // Define the function to integrate
@@ -370,7 +370,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using System;
          
              // Define the function to integrate
@@ -432,7 +432,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using System;
          
              // Define the function to integrate
@@ -494,7 +494,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using static System.Math
              using System;
          
@@ -559,7 +559,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using System;
          
              // Define the function to integrate
@@ -621,7 +621,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using System;
          
              // Define the function to integrate
@@ -684,7 +684,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using System;
          
              // Define the function to integrate
@@ -747,7 +747,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using static System.Math
              using System;
          
@@ -812,7 +812,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using System;
          
              // Define the function to integrate
@@ -874,7 +874,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using System;
          
              // Define the function to integrate
@@ -937,7 +937,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using System;
          
              // Define the function to integrate
@@ -1001,7 +1001,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using stati System.Math;
              using System;
          
@@ -1067,7 +1067,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using System;
          
              // Define the function to integrate
@@ -1131,7 +1131,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using System;
          
              // Define the function to integrate
@@ -1196,7 +1196,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using System;
          
              // Define the function to integrate
@@ -1261,7 +1261,7 @@ Integrators::
           .. code-block:: CSharp 
 
              // import libraries
-             using CypherCrescent.MathematicsLibrary;
+             using SepalSolver;
              using static System.Math;
              using System;
          

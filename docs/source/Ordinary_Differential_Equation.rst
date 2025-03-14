@@ -58,8 +58,8 @@ Consider: :math:`y' = 2(a - t)y^2`
       .. code-block:: C#
          
          // import libraries
-         using CypherCrescent.MathematicsLibrary;
-         using static CypherCrescent.MathematicsLibrary.Math;
+         using SepalSolver;
+         using static SepalSolver.Math;
 
          // define the ODE
          double a = 0.25;
@@ -184,8 +184,8 @@ Now we have 2 equations
       .. code-block:: C#
          
          // import libraries
-         using CypherCrescent.MathematicsLibrary;
-         using static CypherCrescent.MathematicsLibrary.Math;
+         using SepalSolver;
+         using static SepalSolver.Math;
 
          // define the ODE
          ColVec dzdt(double t, ColVec z) 

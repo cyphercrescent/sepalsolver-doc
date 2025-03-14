@@ -69,8 +69,8 @@ Lets see how to compute water influx, and generate the started water influx plot
          // import libraries
          using System;
          using System.Collections.Generic;
-         using CypherCrescent.MathematicsLibrary;
-         using static CypherCrescent.MathematicsLibrary.Math;
+         using SepalSolver;
+         using static SepalSolver.Math;
 
          // define Wd function in time space.
          double EdgeClosedBoundaryRadial_Wd(double tD, double rD)
@@ -297,8 +297,8 @@ And then compute:
          // import libraries
          using System;
          using System.Collections.Generic;
-         using CypherCrescent.MathematicsLibrary;
-         using static CypherCrescent.MathematicsLibrary.Math;
+         using SepalSolver;
+         using static SepalSolver.Math;
 
          // define zfunction
          static double ZfactorHY(double Pr, double Tr)
@@ -456,8 +456,8 @@ Using Hall and Yarborough Correlation, we can evaluate the reduced compressibili
          // import libraries
          using System;
          using System.Collections.Generic;
-         using CypherCrescent.MathematicsLibrary;
-         using static CypherCrescent.MathematicsLibrary.Math;
+         using SepalSolver;
+         using static SepalSolver.Math;
 
          // define CrTr function
          static double CrTrHY(double Pr, double Tr)
@@ -637,8 +637,8 @@ To solve system of ordinary differential equation, you need the initial conditio
          // import libraries
          using System;
          using System.Collections.Generic;
-         using CypherCrescent.MathematicsLibrary;
-         using static CypherCrescent.MathematicsLibrary.Math;
+         using SepalSolver;
+         using static SepalSolver.Math;
 
          // define variables
          ColVec T = null; Matrix Y = null;
@@ -769,8 +769,8 @@ Here we present the solution for the model when :math:`M = 0` and :math:`5`.
          // import libraries
          using System;
          using System.Collections.Generic;
-         using CypherCrescent.MathematicsLibrary;
-         using static CypherCrescent.MathematicsLibrary.Math;
+         using SepalSolver;
+         using static SepalSolver.Math;
 
          // define parameters
          double rhomu_h, drhomu_h_eta, gamma, Pr, C;
@@ -957,8 +957,8 @@ The dynamics of the system can then be modelled as:
          // import libraries
          using System;
          using System.Collections.Generic;
-         using CypherCrescent.MathematicsLibrary;
-         using static CypherCrescent.MathematicsLibrary.Math;
+         using SepalSolver;
+         using static SepalSolver.Math;
 
          // define masses
          double[] m = [1, 2, 3, 4, 5, 6, 7];
@@ -1080,8 +1080,8 @@ we can add animation of the solution
          // import libraries
          using System;
          using System.Collections.Generic;
-         using CypherCrescent.MathematicsLibrary;
-         using static CypherCrescent.MathematicsLibrary.Math;
+         using SepalSolver;
+         using static SepalSolver.Math;
 
          
          byte[] ImageGen(int i)
@@ -1207,8 +1207,8 @@ By extracting the coeeficients of the derivatives into a matrix, we have:
          // import libraries
          using System;
          using System.Collections.Generic;
-         using CypherCrescent.MathematicsLibrary;
-         using static CypherCrescent.MathematicsLibrary.Math;
+         using SepalSolver;
+         using static SepalSolver.Math;
 
          double pi = PI, Ub = 6, R0 = 1000, R15 = 9000, alpha = 0.99,
          beta = 1e-6, Uf = 0.026, c1 = 1e-6, c2 = 2e-6, c3 = 3e-6;
