@@ -37,6 +37,12 @@ Hypot
 
        .. code-block:: CSharp 
 
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute the hypotenus
           var hypotenuse = Hypot(3, 4);
           Console.WriteLine(hypotenuse);
 
@@ -51,6 +57,12 @@ Hypot
 
        .. code-block:: CSharp 
 
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute the hypotenus
           RowVec X = new double[]{2,3,4,5};
           ColVec Y = new double[]{7,6};
           var hypotenuse = Hypot(X, Y);
@@ -63,6 +75,49 @@ Hypot
 
           7.2801    7.6158    8.0623    8.6023
           6.3246    6.7082    7.2111    7.8102
+
+
+Abs
+===
+   Description: 
+       Calculates the absolute value of an input.
+       This method returns the absolute value of the given input, which is the non-negative value of the input without regard to its sign.
+
+       .. code-block:: CSharp 
+
+          int Abs(int x)
+          double Abs(double x)
+          double Abs(Complex x)
+          ColVec Abs(ColVec x)
+          RowVec Abs(RowVec x)
+          Matrix Abs(Matrix x)
+          SparseColVec Abs(SparseColVec x)
+          SparseRowVec Abs(SparseRowVec x)
+          SparseMatrix Abs(SparseMatrix x)
+   Param: 
+      | x:  The input value for which the absolute value is to be calculated.
+   Returns: 
+       The absolute value of the input.
+   Example: 
+       Compute the absolute value of -5
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+       
+          // Compute Absolute
+          var result = Abs(-5);
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          5
 
 
 decic
@@ -1161,8 +1216,9 @@ Integral3
        .. code-block:: CSharp 
 
           // import libraries
-          using SepalSolver;
           using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
       
           // Define the function to integrate
           Func<double, double, double, double> f = (x, y, z) => x * y * z;
