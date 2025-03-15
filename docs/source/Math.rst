@@ -1138,10 +1138,10 @@ Integral3
       | fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
       | x_1:  The lower bound of the x integration.
       | x_2:  The upper bound of the x integration.
-      | y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-      | y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-      | z_1:  A function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
-      | z_2:  A function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
+      | y_1:  A double or function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+      | y_2:  A double or  function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+      | z_1:  A double or  function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
+      | z_2:  A double or function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
       | eps:  The desired relative accuracy. The default value is 1e-6.
    Returns: 
        The approximate value of the definite triple integral.
