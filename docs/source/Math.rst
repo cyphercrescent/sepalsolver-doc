@@ -120,6 +120,88 @@ Abs
           5
 
 
+BesselJ
+=======
+   Description: 
+       Computes the Bessel function of the first kind.
+       This method calculates the Bessel function of the first kind for a given order and value.
+
+       .. math::
+          J_i(x)
+   Param: 
+      | i:  The order of the Bessel function.
+      | x:  The value at which to evaluate the Bessel function.
+   Returns: 
+       The value of the Bessel function of the first kind at the given order and value.
+   Example: 
+       Compute the Bessel function of the first kind for order 0 and value 2.5
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute besselj function
+          var result = BesselJ(0, 2.5);
+          
+          // Print result
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          -0.0483837764681979
+   Example: 
+       Compute the Bessel function of the first kind for order 1 and value 3.0
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute besselj function
+          var result = BesselJ(1, 3.0);
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          0.339058958525936
+   Example: 
+       Compute the Bessel function of the first kind for order 1 and value 3.0
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute besselj function
+          ColVec x = Linspace(0, 10);
+          Matrix y = Enumerable.Range(0, 10).Select(i=>BesselJ(i, x)).ToList();
+          
+         // Plot result
+         Plot(x, y); Xlabel("x-axis"); Ylabel("y-axis"); Title("Bessel function J");
+         
+
+      Output: 
+
+       .. figure:: images/BesselfunctionPlot.png
+          :align: center
+          :alt: BesselfunctionPlot.png
+
+
+
+
 decic
 =====
    Description: 
