@@ -1,5 +1,45 @@
 
 
+Reshape
+=======
+   Description: 
+       Reshapes a one-dimensional array of input into a matrix with specified dimensions.
+       This method returns a output with the given dimensions, populated with the data from the input array.
+
+       .. code-block:: CSharp 
+
+          Matrix Reshape(double[] data, int[] Size)
+          Matrix Reshape(List<double> data, int[] Size)
+          Matrix Reshape(Matrix data, int[] Size)
+   Param: 
+      | data:  The one-dimensional or multi-dimensional array to be reshaped.
+      | Size:  An array containing the dimensions [rows, columns] for the new matrix.
+   Returns: 
+       A output with the specified dimensions.
+   Example: 
+          // Reshape a one-dimensional array into a 2x3 matrix
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+      
+          // Reshape array
+          double[] data = { 1, 2, 3, 4, 5, 6 };
+          int[] size = { 2, 3 };
+          var result = Reshape(data, size);
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          [ [1, 2, 3], [4, 5, 6] ]
+
+
 Hypot
 =====
    Description: 
