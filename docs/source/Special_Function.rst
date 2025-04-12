@@ -220,6 +220,9 @@ Output:
 
 
 **ChebyshevU polynomials of the Second Kind** :math:`(U_n(x))`
+::math:: U_0(x) = 1
+::math:: U_1(x) = 2x
+::math:: U_{n+1}(x) = 2xU_n(x) - U_{n-1}(x) \text{for} n \geq 1
 
 .. code-block:: C#
 
