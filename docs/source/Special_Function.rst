@@ -183,13 +183,13 @@ Output:
 
 
 Chebyshev polynomials
-=====================
+*********************
 Chebyshev polynomials are a sequence of orthogonal polynomials that are widely used in numerical analysis, approximation theory, and other areas of mathematics. 
 There are two main types of Chebyshev polynomials: those of the first kind, denoted as :math:`T_n(x)` and those of the second kind, denoted as :math:`U_n(x)`.
 ​
  .
 Types of Chebyshev polynomials
-=============================
+=============================+
 **ChebyshevT polynomials of the First Kind** :math:`(T_n(x))`
 .. code-block:: C#
 
