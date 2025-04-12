@@ -34,7 +34,7 @@ Least squares curve fitting is a technique used to find the best-fitting curve f
 
 Root of an Equation
 -------------------
-The fzero function in CCL-Math is a powerful tool for finding the roots of nonlinear equations. It is particularly useful when you need to find a point where a given function equals zero. Here's a brief overview of how it works and some of its key features:
+The fzero function in SepalSolver is a powerful tool for finding the roots of nonlinear equations. It is particularly useful when you need to find a point where a given function equals zero. Here's a brief overview of how it works and some of its key features:
 
 Basic Usage
 The basic syntax for fzero is:
@@ -228,7 +228,57 @@ Finance: Portfolio optimization, risk management, and algorithmic trading.
 Operations Research: Supply chain management, scheduling, and resource allocation2.
 Sepal Solver's focus on performance, accuracy, and ease of use makes it a valuable tool for anyone looking to solve linear programming problems efficiently. Whether you're working on academic research or practical engineering projects, Sepal Solver can significantly enhance your productivity and the quality of your solutions.
 
-Below are some examples of linear programming problems solved using SepalSolver Linear Progra
+Below are some examples of linear programming problems solved using SepalSolver Linear Programming tool
+
+
+
+   .. code-block:: C#
+
+      // import libraries
+      using System;
+      using SepalSolver;
+      using static SepalSolver.Math;
+
+      
+      double[,] A = new double[,]{{ 1.00,  1.00 },
+                                  { 1.00,  0.25 },
+                                  { 1.00, -1.00 },
+                                  {-0.25, -1.00 },
+                                  {-1.00, -1.00 },
+                                  {-1.00,  1.00 }};
+
+      double[] b = [ 2, 1, 2, 1, -1, 2 ];
+      double[] f = [ -1, -0.3333 ];
+      var result = Linprog(f, A, b);
+      Console.WriteLine(result);
+
+   Output:
+
+   .. code-block:: C#
+
+      Running HiGHS 1.9.0 (git hash: 66f735e): Copyright (c) 2024 HiGHS under MIT licence terms
+      Optimal solution found
+        
+         0.6667
+         1.3333
+
+
+      double[] b = [ 2, 1, 2, 1, -1, 2 ];
+      double[] f = [ -1, -0.3333 ];
+      var result = Linprog(f, A, b);
+      Console.WriteLine(result);
+
+   Output:
+
+   .. code-block:: C#
+
+      Running HiGHS 1.9.0 (git hash: 66f735e): Copyright (c) 2024 HiGHS under MIT licence terms
+      Optimal solution found
+        
+         0.6667
+         1.3333
+
+
 Sequential Quadratic Programming
 --------------------------------
 fmincon function is a versatile tool for solving constrained nonlinear optimization problems. It finds the minimum of a scalar function subject to various constraints, including linear, nonlinear, and bound constraints using sequential quadratic programming:

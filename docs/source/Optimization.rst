@@ -256,17 +256,47 @@ Below are some examples of linear programming problems solved using SepalSolver 
 
    .. code-block:: C#
 
-      Running HiGHS 1.7.1 (git hash: n/a): Copyright (c) 2024 HiGHS under MIT licence terms
+      Running HiGHS 1.9.0 (git hash: 66f735e): Copyright (c) 2024 HiGHS under MIT licence terms
       Optimal solution found
-      Running HiGHS 1.7.1 (git hash: n/a): Copyright (c) 2024 HiGHS under MIT licence terms
-      Optimal solution found
-      Running HiGHS 1.7.1 (git hash: n/a): Copyright (c) 2024 HiGHS under MIT licence terms
-      Optimal solution found
-      Running HiGHS 1.7.1 (git hash: n/a): Copyright (c) 2024 HiGHS under MIT licence terms
-      Optimal solution found
+        
+         0.6667
+         1.3333
+
+   .. code-block:: C#
       
-         0.4149
-         0.1701
+      double[,] Aeq = new double[,] { { 1, 1.0 / 4 } };
+      double[] beq = [1.0 / 2];
+      result = Linprog(f, A, b, Aeq, beq);
+      Console.WriteLine(result);
+
+   Output:
+
+   .. code-block:: C#
+
+      Running HiGHS 1.9.0 (git hash: 66f735e): Copyright (c) 2024 HiGHS under MIT licence terms
+      Optimal solution found
+        
+        -0.0000
+         2.0000
+
+
+   .. code-block:: C#
+      
+      double[] Lb = [-1, -0.5], Ub = [1.5, 1.25];
+      result = Linprog(f, A, b, Aeq, beq, Lb, Ub);
+      Console.WriteLine(result);
+
+   Output:
+
+   .. code-block:: C#
+
+      Running HiGHS 1.9.0 (git hash: 66f735e): Copyright (c) 2024 HiGHS under MIT licence terms
+      Optimal solution found
+        
+         0.1875
+         1.2500
+
+
 
 
 Sequential Quadratic Programming
