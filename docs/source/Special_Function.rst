@@ -191,6 +191,7 @@ There are two main types of Chebyshev polynomials: those of the first kind, deno
 Types of Chebyshev polynomials
 =============================+
 **ChebyshevT polynomials of the First Kind** :math:`(T_n(x))`
+
 .. code-block:: C#
 
    // import libraries
@@ -214,6 +215,7 @@ Output:
 
 
 **ChebyshevU polynomials of the Second Kind** :math:`(U_n(x))`
+
 .. code-block:: C#
 
    // import libraries
