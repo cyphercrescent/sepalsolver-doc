@@ -228,17 +228,16 @@ Finance: Portfolio optimization, risk management, and algorithmic trading.
 Operations Research: Supply chain management, scheduling, and resource allocation2.
 Sepal Solver's focus on performance, accuracy, and ease of use makes it a valuable tool for anyone looking to solve linear programming problems efficiently. Whether you're working on academic research or practical engineering projects, Sepal Solver can significantly enhance your productivity and the quality of your solutions.
 
-Below are some examples of linear programming problems solved using SepalSolver Linear Programming tool
+Below are some examples of linear programming problems solved using SepalSolver Linear Programming tool.
 
 
-
+Starting with just inequality conditions
    .. code-block:: C#
 
       // import libraries
       using System;
       using SepalSolver;
       using static SepalSolver.Math;
-
       
       double[,] A = new double[,]{{ 1.00,  1.00 },
                                   { 1.00,  0.25 },
@@ -262,6 +261,7 @@ Below are some examples of linear programming problems solved using SepalSolver 
          0.6667
          1.3333
 
+We can add the equality conditions
    .. code-block:: C#
       
       double[,] Aeq = new double[,] { { 1, 1.0 / 4 } };
@@ -280,6 +280,7 @@ Below are some examples of linear programming problems solved using SepalSolver 
          2.0000
 
 
+We can add lower and upper bound for the variables
    .. code-block:: C#
       
       double[] Lb = [-1, -0.5], Ub = [1.5, 1.25];
