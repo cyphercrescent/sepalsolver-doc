@@ -225,8 +225,7 @@ Linear Programming
 Applications of Linear Programming with Sepal Solver
  - Engineering: Optimizing the design of structures, control systems, and resource allocation.
  - Finance: Portfolio optimization, risk management, and algorithmic trading.
- - Operations Research: Supply chain management, scheduling, and resource allocation2.
- - Sepal Solver's focus on performance, accuracy, and ease of use makes it a valuable tool for anyone looking to solve linear programming problems efficiently. Whether you're working on academic research or practical engineering projects, Sepal Solver can significantly enhance your productivity and the quality of your solutions.
+ - Operations Research: Supply chain management, scheduling, and resource allocation.
 
 Below are some examples of linear programming problems solved using SepalSolver Linear Programming tool.
 
@@ -344,5 +343,4 @@ Least Square Fitting
 Applications of Least Squares Fitting with Sepal Solver
  - Data Analysis: Fitting models to experimental data to identify trends and relationships.
  - Engineering: Modeling physical systems and processes to predict behavior under different conditions.
- - Finance: Analyzing financial data to forecast trends and make informed decisions1.
- - Sepal Solver's focus on performance, accuracy, and ease of use makes it a valuable tool for anyone looking to perform least squares fitting. Whether you're working on academic research or practical engineering projects, Sepal Solver can significantly enhance your productivity and the quality of your solutions.
+ - Finance: Analyzing financial data to forecast trends and make informed decisions.
