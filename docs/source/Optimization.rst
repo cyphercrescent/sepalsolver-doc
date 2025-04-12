@@ -282,6 +282,8 @@ Applications of Least Squares Fitting with Sepal Solver
  - Finance: Analyzing financial data to forecast trends and make informed decisions.
 
 
+Example 1
+
    .. code-block:: C#
 
       // import libraries
@@ -314,21 +316,83 @@ Applications of Least Squares Fitting with Sepal Solver
    .. code-block:: C#
 
                                                   Norm of      First-order
-       Iteration   Func-count       Resnorm          step       optimality
-           0            3          3.5968e5                       2.8768e4
-           1            7          2.9148e5      4.5301e1         4.7091e1
-           2           11          1.4328e5      7.0536e1         7.8426e1
-           3           15          5.8838e4      8.1015e1         8.8027e1
-           4           19          2.1604e4      7.9171e1         6.7359e1
-           5           23          2.4371e3      8.1537e1         6.0719e1
-           6           27          6.2429e1      3.5477e1         2.4062e1
-           7           31          9.6405e0      5.5200e0         3.1853e0
-           8           35          9.5049e0     2.7383e-1        1.3930e-1
-           9           39          9.5049e0     3.5902e-3        2.1213e-3
-          10           43          9.5049e0     9.0844e-6        8.8163e-6
+      Iteration   Func-count       Resnorm          step       optimality
+          0            3          3.5968e5                       2.8768e4
+          1            7          2.9148e5      4.5301e1         4.7091e1
+          2           11          1.4328e5      7.0536e1         7.8426e1
+          3           15          5.8838e4      8.1015e1         8.8027e1
+          4           19          2.1604e4      7.9171e1         6.7359e1
+          5           23          2.4371e3      8.1537e1         6.0719e1
+          6           27          6.2429e1      3.5477e1         2.4062e1
+          7           31          9.6405e0      5.5200e0         3.1853e0
+          8           35          9.5049e0     2.7383e-1        1.3930e-1
+          9           39          9.5049e0     3.5902e-3        2.1213e-3
+         10           43          9.5049e0     9.0844e-6        8.8163e-6
       x =
        498.8309   -0.1013
 
    .. figure:: images/LMTest1.png
       :align: center
       :alt: LMTest1.png
+
+
+Example 2
+
+   .. code-block:: C#
+
+      // import libraries
+      using System;
+      using SepalSolver;
+      using static SepalSolver.Math;
+
+      
+      ColVec xdata, ydata;  Matrix Data;
+      double[] xstar = [2, 4, 5, 0.5], startpt = [1, 2, 3, 1];
+      
+      ColVec model(ColVec x, ColVec xdata) => x[0] + x[1] * Atan(xdata - x[2]) + x[3] * xdata;
+      RowVec A = new double[] { -1, -1, 1, 1 };
+      ColVec fineq(ColVec x) => A*x;  ColVec lb = Zeros(4), ub = 7 + lb;
+      Data = ReadMatrix("data.txt"); xdata = Data["", 0]; ydata = Data["", 1];
+        
+      var opts = OptimSet(Display: true, MaxIter: 200, StepTol: 1e-6, OptimalityTol: 1e-6);
+      var ans = Lsqcurvefit(model, startpt, xdata, ydata, fineq, null, lb, ub, options: opts);
+      Console.WriteLine($"x = {ans.x.T}");
+      Console.WriteLine($"c = {fineq(ans.x)}");
+        
+      Scatter(xdata, ydata); hold = true;
+      Plot(xdata, ans.y_hat, "r", Linewidth: 2);
+        
+      Axis([xdata.Min()-0.01*xdata.Range(), xdata.Max()+0.01*xdata.Range(),
+           ydata.Min()-0.1*ydata.Range(), ydata.Max()+0.1*ydata.Range()]);
+        
+      Xlabel("x"); Ylabel("y"); Legend(["Measured Data", "Model Estimate"], Alignment.UpperLeft);
+      Title("Example of CurveFitting using Lsqcurvefit, with Linear Inequality Constraints");
+
+   Output:
+
+   .. code-block:: C#
+
+                                                 Norm of      First-order
+      Iteration   Func-count       Resnorm          step       optimality
+          0            5          1.3976e3                       1.3931e3
+          1           11          1.1630e3     1.8889e-1         1.3931e3
+          2           17          7.5114e2     4.2178e-1         1.2145e3
+          3           23          3.6309e2     6.4155e-1         8.4162e2
+          4           29          1.0353e2     8.8350e-1         3.8923e2
+          5           35          2.0097e1     7.9115e-1         9.3697e1
+          6           41          5.0281e0     5.9037e-1         4.4726e1
+          7           47          2.8556e0     3.7109e-1         1.0107e1
+          8           53          2.4765e0     2.4384e-1         1.4659e0
+          9           59          2.3073e0     2.6826e-1        8.6907e-1
+         10           65          2.1176e0     5.8189e-1        5.0402e-1
+         11           71          2.0995e0     2.1574e-1        7.6629e-1
+         12           77          2.0992e0     2.7631e-2        8.4314e-2
+         13           83          2.0992e0     1.1540e-3        1.8730e-3
+     x =
+        2.6051    4.0966    4.9968    0.4279
+        
+     c =   -1.2771
+
+   .. figure:: images/LMTest2.png
+      :align: center
+      :alt: LMTest2.png
