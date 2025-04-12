@@ -240,14 +240,17 @@ Below are some examples of linear programming problems solved using SepalSolver 
       using static SepalSolver.Math;
 
       
-      static double fun(ColVec x) => 100 * Pow(x[1] - x[0]*x[0], 2) + Pow(1 - x[0], 2);
-      double[] x0 = [0.5, 0];
-      Matrix AInEq = new double[,]{ { 1, 2} };
-      ColVec bInEq = 1;
-      Matrix AEq = new double[,] { { 2, 1 } };
-      ColVec bEq = 1;
-      ColVec x = Fmincon(fun, x0, x => AInEq * x - bInEq, x => AEq * x - bEq);
-      Console.WriteLine(x);
+      double[,] A = new double[,]{{ 1.00,  1.00 },
+                                  { 1.00,  0.25 },
+                                  { 1.00, -1.00 },
+                                  {-0.25, -1.00 },
+                                  {-1.00, -1.00 },
+                                  {-1.00,  1.00 }};
+
+      double[] b = [ 2, 1, 2, 1, -1, 2 ];
+      double[] f = [ -1, -0.3333 ];
+      var result = Linprog(f, A, b);
+      Console.WriteLine(result);
 
    Output:
 
