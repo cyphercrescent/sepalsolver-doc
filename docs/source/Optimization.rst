@@ -220,6 +220,51 @@ Root of System of Nonlinear Equation
 
 Linear Programming
 -------------------
+Linear programming is a method used to find the best possible outcome in a mathematical model whose requirements are represented by linear relationships. Sepal Solver provides robust tools and algorithms to efficiently solve these optimization problems.
+
+Applications of Linear Programming with Sepal Solver
+Engineering: Optimizing the design of structures, control systems, and resource allocation.
+Finance: Portfolio optimization, risk management, and algorithmic trading.
+Operations Research: Supply chain management, scheduling, and resource allocation2.
+Sepal Solver's focus on performance, accuracy, and ease of use makes it a valuable tool for anyone looking to solve linear programming problems efficiently. Whether you're working on academic research or practical engineering projects, Sepal Solver can significantly enhance your productivity and the quality of your solutions.
+
+Below are some examples of linear programming problems solved using SepalSolver Linear Programming tool
+
+
+
+   .. code-block:: C#
+
+      // import libraries
+      using System;
+      using SepalSolver;
+      using static SepalSolver.Math;
+
+      
+      static double fun(ColVec x) => 100 * Pow(x[1] - x[0]*x[0], 2) + Pow(1 - x[0], 2);
+      double[] x0 = [0.5, 0];
+      Matrix AInEq = new double[,]{ { 1, 2} };
+      ColVec bInEq = 1;
+      Matrix AEq = new double[,] { { 2, 1 } };
+      ColVec bEq = 1;
+      ColVec x = Fmincon(fun, x0, x => AInEq * x - bInEq, x => AEq * x - bEq);
+      Console.WriteLine(x);
+
+   Output:
+
+   .. code-block:: C#
+
+      Running HiGHS 1.7.1 (git hash: n/a): Copyright (c) 2024 HiGHS under MIT licence terms
+      Optimal solution found
+      Running HiGHS 1.7.1 (git hash: n/a): Copyright (c) 2024 HiGHS under MIT licence terms
+      Optimal solution found
+      Running HiGHS 1.7.1 (git hash: n/a): Copyright (c) 2024 HiGHS under MIT licence terms
+      Optimal solution found
+      Running HiGHS 1.7.1 (git hash: n/a): Copyright (c) 2024 HiGHS under MIT licence terms
+      Optimal solution found
+      
+         0.4149
+         0.1701
+
 
 Sequential Quadratic Programming
 --------------------------------
