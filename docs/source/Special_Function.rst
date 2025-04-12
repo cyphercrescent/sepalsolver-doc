@@ -192,6 +192,11 @@ Types of Chebyshev polynomials
 ==============================
 **ChebyshevT polynomials of the First Kind** :math:`(T_n(x))`
 
+::math:: T_0(x) = 1
+::math:: T_1(x) = x
+::math:: T_{n+1}(x) = 2xT_n(x) - T_{n-1}(x) \text{for} n \geq 1
+
+
 .. code-block:: C#
 
    // import libraries
