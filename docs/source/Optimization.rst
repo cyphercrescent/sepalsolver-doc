@@ -84,7 +84,7 @@ fzero also allows for more advanced usage with additional options:
    using static SepalSolver.Math;
 
    static double fun(double x) => Pow(x, 3) - 2 * x - 5;
-   var ops = SolverSet(Display: true);
+   var opts = SolverSet(Display: true);
    double x0 = 2;
    double root = Fzero(fun, x0, opts);
 
@@ -117,106 +117,42 @@ Root of System of Nonlinear Equation
 .. math:: x_0 = [0.1, 0.1, -0.1]^T
 
 
-.. tabs::
+.. code-block:: C#
+
+   // import libraries
+   using System;
+   using SepalSolver;
+   using static SepalSolver.Math;
+
+   double[] x0, res; ColVec x
+   // define the function
+   ColVec fun(ColVec x)
+   {
+      double x1 = x[0], x2 = x[1], x3 = x[2];
+      res = [3 * x1 - Cos(x2 * x3) - 0.5,
+             x1 * x1 - 81*Pow(x2 + 0.1, 2) + Sin(x3) + 1.06,
+             Exp(-x1 * x2) + 20 * x3 + (10 * pi - 3) / 3];
+      return res;
+   };
+            
+   // set initial guess
+   x0 = [0.1, 0.1, -0.1];
+         
+   // call the solver
+   x = Fsolve(fun, x0);
+
+   // display the result
+   Console.WriteLine(x);
+
+   Output: 
+      
+   .. code-block:: C#
+
+      0.5000
+      0.0000
+     -0.5236
+
    
-   .. tab:: CCL-Math
-      CCL-Math Implementation
-
-      .. code-block:: C#
-
-         // import libraries
-         using System;
-         using SepalSolver;
-         using static SepalSolver.Math;
-
-         double[] x0, res; ColVec x
-         // define the function
-         ColVec fun(ColVec x)
-         {
-             double x1 = x[0], x2 = x[1], x3 = x[2];
-             res = [3 * x1 - Cos(x2 * x3) - 0.5,
-                    x1 * x1 - 81*Pow(x2 + 0.1, 2) + Sin(x3) + 1.06,
-                    Exp(-x1 * x2) + 20 * x3 + (10 * pi - 3) / 3];
-             return res;
-         };
-            
-         // set initial guess
-         x0 = [0.1, 0.1, -0.1];
-         
-         // call the solver
-         x = Fsolve(fun, x0);
-
-         // display the result
-         Console.WriteLine(x);
-
-      Output: 
-      
-         .. code-block:: C#
-
-            0.5000
-            0.0000
-           -0.5236
-
-   .. tab:: Python
-
-      Python Implementation
-
-      .. code-block:: python
-
-         import numpy as np
-         from scipy.optimize import fsolve
-
-         # define function
-         def func(x):
-             x1 = x[0]; x2 = x[1]; x3 = x[2]; pi = np.pi;
-             return [3 * x1 - np.cos(x2 * x3) - 0.5,
-                     x1 * x1 - 81*(x2 + 0.1)**2 + np.sin(x3) + 1.06,
-                     np.exp(-x1 * x2) + 20 * x3 + (10 * pi - 3) / 3]
-
-
-         # set inigial guess
-         x0 = [0.1, 0.1, -0.1]
-
-         # call the solver
-         x = fsolve(func, x0)
-            
-         # display the result
-         print(x)
-
-      Output: 
-      
-         .. code-block:: python
- 
-            [ 5.00000000e-01  1.38102142e-13 -5.23598776e-01]
-
-   .. tab:: Matlab
-
-      Matlab Implementation
-
-      .. code-block:: matlab
-
-         % define the function handle
-         f = @(x)[3*x(1) - cos(x(2)*x(2)) - 1/2;
-                  x(1)^2 - 81*(x(2)+0.1)^2 + sin(x(3)) + 1.06;
-                  exp(x(1)*x(2)) + 20*x(3) + (10 * pi - 3)/3 ];
-         
-         % set initial guess
-         x0 = [0.1; 0.1; -0.1];
-
-         % call the solver
-         x = fsolve(f, x0);
-
-         % display the result
-         disp(x);
-
-      Output: 
-      
-         .. code-block:: matlab
-
-             0.5000
-             0.0000
-            -0.5236
-
 
 Linear Programming
 -------------------
@@ -302,7 +238,6 @@ Sequential Quadratic Programming
 --------------------------------
 fmincon function is a versatile tool for solving constrained nonlinear optimization problems. It finds the minimum of a scalar function subject to various constraints, including linear, nonlinear, and bound constraints using sequential quadratic programming:
 
-
    .. code-block:: C#
 
       // import libraries
@@ -338,9 +273,62 @@ fmincon function is a versatile tool for solving constrained nonlinear optimizat
 
 Least Square Fitting
 ---------------------
-    Least squares fitting is a fundamental technique used in data analysis to find the best-fitting curve or line for a set of data points by minimizing the sum of the squares of the differences between the observed values and the values predicted by the model. Sepal Solver, a powerful C# library, provides robust tools to perform least squares fitting efficiently.
+    Least squares fitting is a fundamental technique used in data analysis to find the best-fitting curve or line for a set of data points by minimizing the sum of the squares of the differences between the observed values and the values predicted by the model. 
+    Sepal Solver, Lsqcurvefit is robust tool for performing least squares fitting efficiently.
 
 Applications of Least Squares Fitting with Sepal Solver
  - Data Analysis: Fitting models to experimental data to identify trends and relationships.
  - Engineering: Modeling physical systems and processes to predict behavior under different conditions.
  - Finance: Analyzing financial data to forecast trends and make informed decisions.
+
+
+   .. code-block:: C#
+
+      // import libraries
+      using System;
+      using SepalSolver;
+      using static SepalSolver.Math;
+
+      
+      ColVec xdata, ydata, x, y_est; double[] x0;
+      xdata = new double[] { 0.9, 1.5, 13.8, 19.8, 24.1, 28.2, 35.2, 60.3, 74.6, 81.3 };
+      ydata = new double[] { 455.2, 428.6, 124.1, 67.3, 43.2, 28.1, 13.1, -0.4, -1.3, -1.5 };
+      
+      x0 = [100, -1];
+      static ColVec model(ColVec x, ColVec xdata) => x[0] * Exp(x[1] * xdata);
+      var opts = OptimSet(Display: true, MaxIter: 200, StepTol: 1e-6, OptimalityTol: 1e-6);
+      var ans = Lsqcurvefit(model, x0, xdata, ydata, options: opts);
+      Console.WriteLine($"x = {ans.x.T}");
+      
+      x = Linspace(xdata.First(), xdata.Last());
+      Scatter(xdata, ydata); hold = true;
+      Plot(x, y_est = model(ans.x, x), "r", Linewidth: 2);
+      Axis([xdata.Min()-0.01*xdata.Range(), xdata.Max()+0.01*xdata.Range(),
+           ydata.Min()-0.1*ydata.Range(), ydata.Max()+0.1*ydata.Range()]);
+       
+      Xlabel("x"); Ylabel("y"); Legend(["Measured Data", "Model Estimate"], Alignment.UpperRight);
+      Title("Example of CurveFitting using Lsqcurvefit");
+
+   Output:
+
+   .. code-block:: C#
+
+                                                  Norm of      First-order
+       Iteration   Func-count       Resnorm          step       optimality
+           0            3          3.5968e5                       2.8768e4
+           1            7          2.9148e5      4.5301e1         4.7091e1
+           2           11          1.4328e5      7.0536e1         7.8426e1
+           3           15          5.8838e4      8.1015e1         8.8027e1
+           4           19          2.1604e4      7.9171e1         6.7359e1
+           5           23          2.4371e3      8.1537e1         6.0719e1
+           6           27          6.2429e1      3.5477e1         2.4062e1
+           7           31          9.6405e0      5.5200e0         3.1853e0
+           8           35          9.5049e0     2.7383e-1        1.3930e-1
+           9           39          9.5049e0     3.5902e-3        2.1213e-3
+          10           43          9.5049e0     9.0844e-6        8.8163e-6
+      x =
+       498.8309   -0.1013
+
+   .. figure:: images/LMTest1.png
+      :align: center
+      :alt: LMTest1.png
