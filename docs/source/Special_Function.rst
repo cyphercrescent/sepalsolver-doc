@@ -189,7 +189,7 @@ There are two main types of Chebyshev polynomials: those of the first kind, deno
 ​
  .
 Types of Chebyshev polynomials
-=============================+
+==============================
 **ChebyshevT polynomials of the First Kind** :math:`(T_n(x))`
 
 .. code-block:: C#
