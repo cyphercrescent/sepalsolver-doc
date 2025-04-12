@@ -223,10 +223,10 @@ Linear Programming
     Linear programming is a method used to find the best possible outcome in a mathematical model whose requirements are represented by linear relationships. Sepal Solver provides robust tools and algorithms to efficiently solve these optimization problems.
 
 Applications of Linear Programming with Sepal Solver
-    Engineering: Optimizing the design of structures, control systems, and resource allocation.
-    Finance: Portfolio optimization, risk management, and algorithmic trading.
-    Operations Research: Supply chain management, scheduling, and resource allocation2.
-    Sepal Solver's focus on performance, accuracy, and ease of use makes it a valuable tool for anyone looking to solve linear programming problems efficiently. Whether you're working on academic research or practical engineering projects, Sepal Solver can significantly enhance your productivity and the quality of your solutions.
+ - Engineering: Optimizing the design of structures, control systems, and resource allocation.
+ - Finance: Portfolio optimization, risk management, and algorithmic trading.
+ - Operations Research: Supply chain management, scheduling, and resource allocation2.
+ - Sepal Solver's focus on performance, accuracy, and ease of use makes it a valuable tool for anyone looking to solve linear programming problems efficiently. Whether you're working on academic research or practical engineering projects, Sepal Solver can significantly enhance your productivity and the quality of your solutions.
 
 Below are some examples of linear programming problems solved using SepalSolver Linear Programming tool.
 
@@ -342,7 +342,7 @@ Least Square Fitting
     Least squares fitting is a fundamental technique used in data analysis to find the best-fitting curve or line for a set of data points by minimizing the sum of the squares of the differences between the observed values and the values predicted by the model. Sepal Solver, a powerful C# library, provides robust tools to perform least squares fitting efficiently.
 
 Applications of Least Squares Fitting with Sepal Solver
-    Data Analysis: Fitting models to experimental data to identify trends and relationships.
-    Engineering: Modeling physical systems and processes to predict behavior under different conditions.
-    Finance: Analyzing financial data to forecast trends and make informed decisions1.
-    Sepal Solver's focus on performance, accuracy, and ease of use makes it a valuable tool for anyone looking to perform least squares fitting. Whether you're working on academic research or practical engineering projects, Sepal Solver can significantly enhance your productivity and the quality of your solutions.
+ - Data Analysis: Fitting models to experimental data to identify trends and relationships.
+ - Engineering: Modeling physical systems and processes to predict behavior under different conditions.
+ - Finance: Analyzing financial data to forecast trends and make informed decisions1.
+ - Sepal Solver's focus on performance, accuracy, and ease of use makes it a valuable tool for anyone looking to perform least squares fitting. Whether you're working on academic research or practical engineering projects, Sepal Solver can significantly enhance your productivity and the quality of your solutions.
