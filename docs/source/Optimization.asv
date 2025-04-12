@@ -230,8 +230,8 @@ fmincon function is a versatile tool for solving constrained nonlinear optimizat
 
       // import libraries
       using System;
-      using SepalSolver;
-      using static SepalSolver.Math;
+      using CypherCrescent.MathematicsLibrary;
+      using static CypherCrescent.MathematicsLibrary.Math;
 
       
       static double fun(ColVec x) => 100 * Pow(x[1] - x[0]*x[0], 2) + Pow(1 - x[0], 2);

@@ -1076,6 +1076,55 @@ Integral
 |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
 
 
+Integral
+========
+   Description: 
+       Computes the definite integral of a function using adaptive Gauss-LegendreP quadrature.
+   Param: 
+      | fun:  The function to integrate. The function should accept a double and return a double.
+      | x_1:  The lower bound of the integration interval.
+      | x_2:  The upper bound of the integration interval.
+      | eps:  The desired relative accuracy. The default value is 1e-6.
+   Returns: 
+       The approximate value of the definite integral.
+   Remark: 
+      |  This method uses adaptive Gauss-LegendreP quadrature to approximate the definite integral.
+      |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
+      |  For best results, the function should be smooth within the integration interval.
+      |  If x_1 equals x_2 then the method will return 0.
+   Example: 
+        Integrate the function f(x) = x^2, which can be expressed as:
+
+       .. math::
+          \int_{x_1}^{x_2} x^2 \, dx
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using SepalSolver.Math;
+      
+          // Define the function to integrate
+          Func<double, double> f = (x) => x * x;
+          // Set the lower bound of x
+          double x_1 = 0;
+          // Set the upper bound of x
+          double x_2 = 1;
+          // Calculate the integral
+          double integral = Integral(f, x_1, x_2);
+          // Print the result
+          Console.WriteLine($"The integral of x^2 is approximately: {integral}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          The integral of x^2 is approximately: 0.333333333321056
+|   cref=System.ArgumentNullException is Thrown when the  fun is null.
+|   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+
+
 Integral2
 =========
    Description: 
