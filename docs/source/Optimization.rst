@@ -283,6 +283,12 @@ Applications of Least Squares Fitting with Sepal Solver
 
 
 Example 1
+We are to fit the model :math:`y = a \exp(b*x)` to the data:
+
+.. math:
+   x = [0.9, 1.5, 13.8, 19.8, 24.1, 28.2, 35.2, 60.3, 74.6, 81.3]
+   y = [455.2, 428.6, 124.1, 67.3, 43.2, 28.1, 13.1, -0.4, -1.3, -1.5]
+
 
    .. code-block:: C#
 
@@ -396,3 +402,77 @@ Example 2
    .. figure:: images/LMTest2.png
       :align: center
       :alt: LMTest2.png
+
+
+Example 3
+
+   .. code-block:: C#
+
+      // import libraries
+      using System;
+      using SepalSolver;
+      using static SepalSolver.Math;
+
+      
+      ColVec xdata, ydata; Matrix Data;
+      double[] xstar = [2, 4, 5, 0.5], startpt = [1, 2, 3, 1];
+      
+      ColVec model(ColVec x, ColVec xdata) => x[0] + x[1] * Atan(xdata - x[2]) + x[3] * xdata;
+      ColVec fineq(ColVec x) => x[0]*x[0] + x[1]*x[1] - 4*4; ColVec lb = Zeros(4), ub = 7 + lb;
+      Data = ReadMatrix("data.txt"); xdata = Data["", 0]; ydata = Data["", 1];
+      
+      var opts = OptimSet(Display: true, MaxIter: 200, StepTol: 1e-6, OptimalityTol: 1e-6);
+      var ans = Lsqcurvefit(model, startpt, xdata, ydata, fineq, null, lb, ub, options: opts);
+      Console.WriteLine($"x = {ans.x.T}");
+      Console.WriteLine($"c = {fineq(ans.x)}");
+      Scatter(xdata, ydata); hold = true;
+      Plot(xdata, ans.y_hat, "r", Linewidth: 2);
+      
+      Axis([xdata.Min()-0.01*xdata.Range(), xdata.Max()+0.01*xdata.Range(),
+           ydata.Min()-0.1*ydata.Range(), ydata.Max()+0.1*ydata.Range()]);
+      
+      Xlabel("x"); Ylabel("y"); Legend(["Measured Data", "Model Estimate"], Alignment.UpperLeft);
+      Title("Example of CurveFitting using Lsqcurvefit, with Nonlinear Inequality Constraints");
+
+   Output:
+
+   .. code-block:: C#
+
+                                                  Norm of      First-order
+       Iteration   Func-count       Resnorm          step       optimality
+           0            5          1.3966e3                       1.3925e3
+           1           11          1.1524e3     1.9786e-1         1.3925e3
+           2           17          7.1222e2     4.5735e-1         1.2070e3
+           3           23          2.7403e2     7.6918e-1         8.1104e2
+           4           29          5.2501e1     9.2865e-1         2.9989e2
+           5           35          7.9208e0     5.9767e-1         1.0672e2
+           6           41          4.2964e0     2.3862e-1         5.0586e1
+           7           47          3.9139e0     2.1554e-1         6.4189e0
+           8           53          3.2689e0     4.7673e-1         1.3069e0
+           9           59          3.6700e0     8.4588e-1         1.9192e0
+          10           65          4.5163e0     3.7708e-2         4.1515e1
+          11           71          5.7708e0     2.2339e-2         1.3584e2
+          12           77          7.6806e0     1.1377e-2         4.3460e2
+          13           83          1.0638e1     5.7316e-3         1.3711e3
+          14           89          1.5252e1     2.8754e-3         4.3040e3
+          15           95          2.2488e1     1.4390e-3         1.3492e4
+          16          101          3.3900e1     7.1820e-4         4.2321e4
+          17          107          5.2093e1     3.5617e-4         1.3310e5
+          18          113          8.1707e1     1.7360e-4         4.2111e5
+          19          119          1.3183e2     8.5298e-5         1.3487e6
+          20          125          2.2263e2     4.2839e-5         4.4250e6
+          21          131          4.0640e2     2.1757e-5         1.5187e7
+          22          137          8.4378e2     1.1164e-5         5.6478e7
+          23          143          2.1246e3     5.8277e-6         2.3955e8
+          24          149          6.8620e3     3.1322e-6         1.2273e9
+          25          155          2.9114e4     1.7571e-6         7.9044e9
+          26          161          1.6020e5     1.0379e-6        6.4207e10
+          27          167          1.1052e6     6.4665e-7        6.3963e11
+      x =
+         1.5057    3.7058    5.0185    0.6598
+     
+      c =    0.0000
+
+   .. figure:: images/LMTest3.png
+      :align: center
+      :alt: LMTest3.png
