@@ -196,7 +196,7 @@ Types of Chebyshev polynomials
    \begin{array}{rcl}
    T_0(x) &=& 1                                             \\
    T_1(x) &=& x                                             \\
-   T_{n+1}(x) &=& 2xT_n(x) - T_{n-1}(x) \text{for} n \geq 1 
+   T_{n+1}(x) &=& 2xT_n(x) - T_{n-1}(x) ~\text{for}~ n \geq 1 
    \end{array}
 
 
@@ -229,7 +229,7 @@ Output:
    \begin{array}{rcl}
    U_0(x) &=& 1                                             \\
    U_1(x) &=& 2x                                             \\
-   U_{n+1}(x) &=& 2xU_n(x) - U_{n-1}(x) \text{for} n \geq 1 
+   U_{n+1}(x) &=& 2xU_n(x) - U_{n-1}(x) ~\text{for}~ n \geq 1 
    \end{array}
 
 
