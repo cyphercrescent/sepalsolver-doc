@@ -243,6 +243,47 @@ BesselJ
 
 
 
+Fzero
+=====
+   Description: 
+       Computes the root of a nonlinear equation.
+       This method finds the root (zero) of the specified nonlinear function, starting from an initial guess. An optional parameter allows customization of solver settings.
+
+       .. code-block:: CSharp 
+
+          double Fzero(Func<double, double> fun, double x0)
+          double Fzero(Func<double, double> fun, double x0, Solvers.Set options)
+   Param: 
+      | fun:  The nonlinear function whose root is to be computed. The function must take a double and return a double.
+      | x0:  The initial guess for the root.
+      | options:  Optional. Solver settings that specify parameters like tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
+   Returns: 
+       The computed root of the nonlinear equation.
+   Example: 
+       Compute the root of x^2 - 4 = 0
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+      
+          // Define the function
+          Func<double, double> function = x => x * x - 4;
+      
+          // Compute the root with default options
+          var root = Fzero(function, 2.0);
+          Console.WriteLine($"Root: {root}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Root: 2
+
+
 decic
 =====
    Description: 
