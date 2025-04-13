@@ -192,9 +192,13 @@ Types of Chebyshev polynomials
 ==============================
 **ChebyshevT polynomials of the First Kind** :math:`(T_n(x))`
 
-::math:: T_0(x) = 1
-::math:: T_1(x) = x
-::math:: T_{n+1}(x) = 2xT_n(x) - T_{n-1}(x) \text{for} n \geq 1
+::math:: 
+   \begin{array}{rcl}
+   T_0(x) &=& 1                                             \\
+   T_1(x) &=& x                                             \\
+   T_{n+1}(x) &=& 2xT_n(x) - T_{n-1}(x) \text{for} n \geq 1 
+   \end{array}
+
 
 
 .. code-block:: C#
@@ -220,9 +224,13 @@ Output:
 
 
 **ChebyshevU polynomials of the Second Kind** :math:`(U_n(x))`
-::math:: U_0(x) = 1
-::math:: U_1(x) = 2x
-::math:: U_{n+1}(x) = 2xU_n(x) - U_{n-1}(x) \text{for} n \geq 1
+::math:: 
+   \begin{array}{rcl}
+   U_0(x) &=& 1                                             \\
+   U_1(x) &=& 2x                                             \\
+   U_{n+1}(x) &=& 2xU_n(x) - U_{n-1}(x) \text{for} n \geq 1 
+   \end{array}
+
 
 .. code-block:: C#
 
