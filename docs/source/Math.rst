@@ -243,6 +243,89 @@ BesselJ
 
 
 
+Fzero
+=====
+   Description: 
+       Computes the root of a nonlinear equation.
+       This method finds the root (zero) of the specified nonlinear function, starting from an initial guess. An optional parameter allows customization of solver settings.
+
+       .. code-block:: CSharp 
+
+          double Fzero(Func<double, double> fun, double x0)
+          double Fzero(Func<double, double> fun, double x0, Solvers.Set options)
+   Param: 
+      | fun:  The nonlinear function whose root is to be computed. The function must take a double and return a double.
+      | x0:  The initial guess for the root.
+      | options:  Optional. Solver settings that specify parameters like tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
+   Returns: 
+       The computed root of the nonlinear equation.
+   Example: 
+       Compute the root of :math:`x^3 - 10 = 0`
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+      
+          // Define the function
+          Func<double, double> function = x => Pow(x,3) - 10;;
+      
+          // Compute the root with default options
+          var root = Fzero(function, 2.0);
+          Console.WriteLine($"Root: {root}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Root: 2.154434690031884
+
+
+Fsolve
+======
+   Description: 
+       Finds the roots of nonlinear equations.
+       This method computes the root (zero) of the specified nonlinear functions, starting from an initial guess. Optional solver settings can be provided to customize the process.
+
+       .. code-block:: CSharp 
+
+          double Fsolve(Func<double, double> fun, double x0, Solvers.Set options = null)
+          Complex Fsolve(Func<Complex, Complex> fun, double x0, Solvers.Set options = null)
+          ColVec Fsolve(Func<ColVec, ColVec> fun, ColVec x0, Solvers.Set options = null)
+   Param: 
+      | fun:  The nonlinear function whose root is to be computed. The function can take a double or complex scalar or array values as input and return a scaler or complex or array values.
+      | x0:  The initial guess for the root of the function.
+      | options:  Optional. Solver settings that specify parameters such as tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
+   Returns: 
+       The computed root or root(s) of the nonlinear equations.
+   Example: 
+       Compute the root of the equation :math:`x^2 - 5 = 0`.
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+      
+          // Define the function
+          Func<double, double> function = x => Pow(x, 2) - 5;
+      
+          // Compute the root with default options
+          var root = Fsolve(function, 2.0);
+          Console.WriteLine($"Root: {root}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Root: 2.23606797749979
+
+
 decic
 =====
    Description: 
