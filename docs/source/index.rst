@@ -32,7 +32,7 @@ Contents
    Polynomial_Computation
    Numerical_Integration
    Ordinary_Differential_Equation
-   Numerical_Laplace_Transform_Inversion
+   Numerical_Laplace_Transform_and_Inversion
    Advanced_Engineering_Applications
    api
 
