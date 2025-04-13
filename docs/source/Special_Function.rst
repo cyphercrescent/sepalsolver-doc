@@ -192,7 +192,7 @@ Types of Chebyshev polynomials
 ==============================
 **ChebyshevT polynomials of the First Kind** :math:`(T_n(x))`
 
-::math:: 
+..math:: 
    \begin{array}{rcl}
    T_0(x) &=& 1                                             \\
    T_1(x) &=& x                                             \\
@@ -224,7 +224,8 @@ Output:
 
 
 **ChebyshevU polynomials of the Second Kind** :math:`(U_n(x))`
-::math:: 
+
+..math:: 
    \begin{array}{rcl}
    U_0(x) &=& 1                                             \\
    U_1(x) &=& 2x                                             \\
