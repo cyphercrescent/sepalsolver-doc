@@ -260,7 +260,7 @@ Fzero
    Returns: 
        The computed root of the nonlinear equation.
    Example: 
-       Compute the root of x^2 - 4 = 0
+       Compute the root of :math:`x^3 - 10 = 0`
 
        .. code-block:: CSharp 
 
@@ -270,7 +270,7 @@ Fzero
           using static SepalSolver.Math;
       
           // Define the function
-          Func<double, double> function = x => x * x - 4;
+          Func<double, double> function = x => Pow(x,3) - 10;;
       
           // Compute the root with default options
           var root = Fzero(function, 2.0);
@@ -281,7 +281,7 @@ Fzero
 
        .. code-block:: Terminal 
 
-          Root: 2
+          Root: 2.154434690031884
 
 
 decic
