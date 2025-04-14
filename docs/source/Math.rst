@@ -326,6 +326,66 @@ Fsolve
           Root: 2.23606797749979
 
 
+Linprog
+=======
+   Description: 
+       Solves a linear programming problem using the Linprog method.
+       This method optimizes a linear objective function under constraints defined by 
+       inequality and equality systems, as well as variable bounds.
+
+       .. code-block:: CSharp 
+
+          ColVec Linprog(RowVec c, Matrix AInEq = null, ColVec bInEq = null, Matrix AEq = null, ColVec bEq = null, 
+          ColVec Lb = null, ColVec Ub = null, Optimizers.Set options = null)
+   Param: 
+      | c:  The row vector representing the coefficients of the linear objective function to be minimized.
+      | AInEq:  Optional. The matrix representing inequality constraint coefficients.
+              If null, no inequality constraints are applied.
+      | bInEq:  Optional. The column vector representing the right-hand side values of the inequality constraints.
+              If null, no inequality constraints are applied.
+      | AEq:  Optional. The matrix representing equality constraint coefficients.
+            If null, no equality constraints are applied.
+      | bEq:  Optional. The column vector representing the right-hand side values of the equality constraints.
+            If null, no equality constraints are applied.
+      | Lb:  Optional. The column vector representing the lower bounds for the variables.
+           If null, the variables are unbounded below.
+      | Ub:  Optional. The column vector representing the upper bounds for the variables.
+           If null, the variables are unbounded above.
+      | options:  Optional. Solver settings that allow customization of parameters such as 
+                tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
+   Returns: 
+       A column vector representing the optimized solution to the linear programming problem.
+   Example: 
+       Solve a linear programming problem with the objective function:
+       Minimize: c * x
+       Subject to: AInEq * x <= bInEq, AEq * x = bEq, Lb <= x <= Ub.
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Define the coefficients
+          RowVec c = new RowVec(new[] { -1.0, -2.0 });
+          Matrix AInEq = new Matrix(new[,] { { 1.0, 1.0 }, { -1.0, 2.0 } });
+          ColVec bInEq = new ColVec(new[] { 4.0, 2.0 });
+          ColVec Lb = new ColVec(new[] { 0.0, 0.0 }); // Lower bounds
+          ColVec Lb = new ColVec(new[] { 3.0, 3.0 }); // Upper bounds
+          
+          // Solve the problem
+          ColVec solution = Linprog(c, AInEq, bInEq, null, null, Lb, Ub);
+          Console.WriteLine($"Solution: {solution}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+        0    1
+
+
 decic
 =====
    Description: 
