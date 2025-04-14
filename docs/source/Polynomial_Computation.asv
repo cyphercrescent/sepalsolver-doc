@@ -21,20 +21,12 @@ Divide one polynomial by another to obtain a quotient and a remainder. This oper
 
 Polynomial Multiplication:
 --------------------------
-Multiply two polynomials to obtain a new polynomial. This is essential in algebraic manipulation and is used in areas such as signal processing and cryptography.
+ Multiply two polynomials to obtain a new polynomial. This is essential in algebraic manipulation and is used in areas such as signal processing and cryptography.
 
-Factorization: 
---------------
-Factor a polynomial into a product of lower-degree polynomials. This helps in simplifying complex expressions and solving polynomial equations.
+Factorization: Factor a polynomial into a product of lower-degree polynomials. This helps in simplifying complex expressions and solving polynomial equations.
 
-Least Squares Approximation: 
-----------------------------
-Fit a polynomial to a set of data points in a way that minimizes the sum of the squares of the differences between the data points and the polynomial. This is widely used in regression analysis and data fitting.
+Least Squares Approximation: Fit a polynomial to a set of data points in a way that minimizes the sum of the squares of the differences between the data points and the polynomial. This is widely used in regression analysis and data fitting.
 
-Differentiation and Integration: 
---------------------------------
-Compute the derivative or integral of a polynomial. These operations are fundamental in calculus and are used in various applications, including physics and engineering.
+Differentiation and Integration: Compute the derivative or integral of a polynomial. These operations are fundamental in calculus and are used in various applications, including physics and engineering.
 
-Polynomial Evaluation: 
------------------------
-Evaluate a polynomial at a given point. This is a basic operation used in many algorithms and applications, such as computer graphics and numerical methods.
+Polynomial Evaluation: Evaluate a polynomial at a given point. This is a basic operation used in many algorithms and applications, such as computer graphics and numerical methods.
