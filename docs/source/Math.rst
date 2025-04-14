@@ -357,8 +357,8 @@ Linprog
        A column vector representing the optimized solution to the linear programming problem.
    Example: 
        Solve a linear programming problem with the objective function:
-       Minimize: c * x
-       Subject to: AInEq * x <= bInEq, AEq * x = bEq, Lb <= x <= Ub.
+       Minimize: c = -x1 - x2
+       Subject to: x1 + x2 <= 4, -x1 + x2 <= 2, 0 <= x1, x2 <= 3.
 
        .. code-block:: CSharp 
 
