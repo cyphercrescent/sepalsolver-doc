@@ -507,6 +507,73 @@ Fminsearch
        1    1
 
 
+Fmincon
+=======
+   Description: 
+       Finds the minimum of a scalar objective function subject to various constraints, 
+       including inequality, equality, and bound constraints using sequential quadratic programming.
+
+       .. code-block:: CSharp 
+
+          ColVec Fmincon(Func<ColVec, double> fun, ColVec x0, 
+                         Func<ColVec, ColVec> funInEq = null, 
+                         Func<ColVec, ColVec> funEq = null, 
+                         ColVec lb = null, ColVec ub = null, 
+                         Optimizers.Set options = null)
+   Param: 
+      | fun:  The scalar objective function to be minimized. It must take a column vector of decision variables and return a double.
+      | x0:  The initial guess for the decision variables.
+      | funInEq:  Optional. A function that defines nonlinear inequality constraints.
+                Takes a column vector and returns a column vector of constraint values.
+      | funEq:  Optional. A function that defines nonlinear equality constraints.
+              Takes a column vector and returns a column vector of constraint values.
+      | lb:  Optional. The column vector representing the lower bounds for decision variables.
+      | ub:  Optional. The column vector representing the upper bounds for decision variables.
+      | options:  Optional. Solver settings such as tolerance and maximum iterations.
+                Defaults to null if not provided.
+   Returns: 
+       The optimized decision variables that minimize the objective function within the specified constraints.
+   Example: 
+       Solve a constrained nonlinear optimization problem:
+       Minimize: f(x, y) = x^2 + y^2
+       Subject to: x + y >= 1, x^2 + y^2 <= 4, 0 <= x, y <= 3.
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          
+          // Define the objective function
+          Func<ColVec, double> objective = vars => Pow(vars[0], 2) + Pow(vars[1], 2);
+          
+          // Define inequality constraints
+          Func<ColVec, ColVec> constraints = vars => new ColVec(new[]
+          {
+              -(vars[0] + vars[1] - 1), // x + y >= 1
+              Pow(vars[0], 2) + Pow(vars[1], 2) - 4 // x^2 + y^2 <= 4
+          });
+          
+          // Set bounds
+          ColVec lb = new ColVec(new[] { 0.0, 0.0 });
+          ColVec ub = new ColVec(new[] { 3.0, 3.0 });
+          
+          // Initial guess
+          ColVec x0 = new ColVec(new[] { 0.5, 0.5 });
+          
+          // Solve the optimization problem
+          ColVec solution = Fmincon(objective, x0, constraints, null, lb, ub);
+          Console.WriteLine($"Optimized Decision Variables: {solution}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+       Optimized Decision Variables:
+       x = 0.6, y = 0.4
+
+
 decic
 =====
    Description: 
