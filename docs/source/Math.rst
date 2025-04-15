@@ -451,6 +451,62 @@ Intlinprog
         0    5    15
 
 
+Fminsearch
+==========
+   Description: 
+       Finds the local minimum of a nonlinear scalar objective function.
+       This method uses an iterative solver to minimize the given function, optionally subject to constraints and bounds.
+
+       .. code-block:: CSharp 
+
+          ColVec Fminsearch(Func<ColVec, double> fun, ColVec x0, 
+                            Func<ColVec, ColVec> funInEq = null, 
+                            Func<ColVec, ColVec> funEq = null, 
+                            ColVec lb = null, ColVec ub = null, 
+                            Optimizers.Set options = null)
+   Param: 
+      | fun:  The nonlinear scalar objective function to be minimized. Must take a column vector of decision variables and return a double.
+      | x0:  The initial guess for the decision variables.
+      | funInEq:  Optional. A function defining nonlinear inequality constraints.
+                Takes a column vector and returns a column vector of constraint values.
+      | funEq:  Optional. A function defining nonlinear equality constraints.
+              Takes a column vector and returns a column vector of constraint values.
+      | lb:  Optional. The column vector representing the lower bounds for decision variables.
+      | ub:  Optional. The column vector representing the upper bounds for decision variables.
+      | options:  Optional. Solver settings such as tolerance and maximum iterations.
+                Defaults to null if not provided.
+   Returns: 
+       A column vector representing the decision variables that minimize the objective function.
+   Example: 
+       Solve the Rosenbrock function optimization problem:
+       Minimize: f(x, y) = (1 - x)^2 + 100 * (y - x^2)^2
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+      
+          // Define the Rosenbrock function
+          Func<ColVec, double> objective = vars => 
+              Pow(1 - vars[0], 2) + 100 * Pow(vars[1] - Pow(vars[0], 2), 2);
+      
+          // Set initial guess
+          ColVec x0 = new ColVec(new[] { -1.2, 1.0 });
+      
+          // Solve the optimization problem
+          ColVec solution = Fminsearch(objective, x0);
+          Console.WriteLine($"Optimized Decision Variables: {solution}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+       Optimized Decision Variables:
+       x = 1, y = 1
+
+
 decic
 =====
    Description: 
