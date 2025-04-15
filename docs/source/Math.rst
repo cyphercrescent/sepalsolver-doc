@@ -386,6 +386,71 @@ Linprog
         0    1
 
 
+Intlinprog
+==========
+   Description: 
+       Solves an Integer Linear Programming (ILP) problem using the Intlinprog method.
+       This method optimizes a linear objective function under constraints defined by 
+       inequality and equality systems, variable bounds, and ensures that specific variables 
+       are integers.
+
+       .. code-block:: CSharp 
+
+          ColVec Intlinprog(RowVec c, int[] IntVar, Matrix AInEq = null, ColVec bInEq = null, 
+          Matrix AEq = null, ColVec bEq = null, ColVec Lb = null, ColVec Ub = null, 
+          Optimizers.Set options = null)
+   Param: 
+      | c:  The row vector representing the coefficients of the linear objective function to be minimized.
+      | IntVar:  The array of indices specifying which variables must be integers.
+      | AInEq:  Optional. The matrix representing inequality constraint coefficients.
+              If null, no inequality constraints are applied.
+      | bInEq:  Optional. The column vector representing the right-hand side values of the inequality constraints.
+              If null, no inequality constraints are applied.
+      | AEq:  Optional. The matrix representing equality constraint coefficients.
+            If null, no equality constraints are applied.
+      | bEq:  Optional. The column vector representing the right-hand side values of the equality constraints.
+            If null, no equality constraints are applied.
+      | Lb:  Optional. The column vector representing the lower bounds for the variables.
+           If null, the variables are unbounded below.
+      | Ub:  Optional. The column vector representing the upper bounds for the variables.
+           If null, the variables are unbounded above.
+      | options:  Optional. Solver settings that allow customization of parameters such as 
+                tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
+   Returns: 
+       A column vector representing the optimized integer solution to the Integer Linear Programming problem.
+   Example: 
+       Solve an Integer Linear Programming problem with the objective function:
+       Maximize: c = 60x1 + 40x2 + 70x3
+       Subject to: 4x1 + 2x2 + 3x2 <= 60, 3x1 + 2x2 + 2x3 <= 40, 2x1 + x2 + 4x3 <= 36, x1, x2, x3 >= 0 and are integers.
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Define the coefficients
+          RowVec c = new RowVec(new[] { 60, 40, 70 });
+          Matrix AInEq = new Matrix(new[,] { { 4, 2, 3 }, { 3, 2, 2 }, { 2, 1, 4 } });
+          ColVec bInEq = new ColVec(new[] { 60, 40, 36 });
+          
+          int[] IntVar = new[] { 0 }; // x1 is an integers
+          int[] IntVar = new[] { 1 }; // x2 is an integers
+          int[] IntVar = new[] { 2 }; // x3 is an integers
+          
+          // Solve the problem
+          ColVec solution = Intlinprog(c, IntVar, AInEq, bInEq, null, null, null, null);
+          Console.WriteLine($"Integer Solution: {solution}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+        0    5    15
+
+
 decic
 =====
    Description: 
