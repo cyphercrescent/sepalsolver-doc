@@ -496,15 +496,14 @@ Fminsearch
       
           // Solve the optimization problem
           ColVec solution = Fminsearch(objective, x0);
-          Console.WriteLine($"Optimized Decision Variables: {solution}");
+          Console.WriteLine($"Optimized Solution: {solution}");
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-       Optimized Decision Variables:
-       1    1
+          Optimized Solution:  1    1
 
 
 Fmincon
@@ -563,15 +562,14 @@ Fmincon
           
           // Solve the optimization problem
           ColVec solution = Fmincon(objective, x0, constraints, null, lb, ub);
-          Console.WriteLine($"Optimized Decision Variables: {solution}");
+          Console.WriteLine($"Optimized Solution: {solution}");
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-       Optimized Decision Variables:
-       x = 0.6, y = 0.4
+          Optimized Solution: 0.6    0.4
 
 
 decic
