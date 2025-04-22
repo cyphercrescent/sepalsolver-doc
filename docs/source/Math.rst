@@ -600,8 +600,9 @@ Bfgs
        A column vector representing the decision variables that minimize the objective function.
    Example: 
        **Unconstrained Optimization: Solve the Rosenbrock Function**
-       ..math::
-       Minimize: f(x, y) = (1 - x)^2 + 100 * (y - x^2)^2
+
+       .. math::
+          \Minimize: f(x, y) = (1 - x)^2 + 100 * (y - x^2)^2 \
 
        .. code-block:: CSharp 
 
@@ -628,9 +629,10 @@ Bfgs
        Optimized Decision Variables: 1    1
    Example: 
        **Constrained Optimization: Solve a Quadratic Problem**
-       ..math::
-       \Maximize: f(x, y) = x * y\
-       \Subject to: x^2 + 4 * y^2 = 1\
+
+       .. math::
+          \Maximize: f(x, y) = x * y \
+       \Subject to: x^2 + 4 * y^2 = 1 \
 
        .. code-block:: CSharp 
 
