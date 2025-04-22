@@ -601,7 +601,7 @@ Bfgs
    Example: 
        **Unconstrained Optimization: Solve the Rosenbrock Function**
 
-       .. math::
+      .. math::
           \Minimize: \
           \f(x, y) = (1 - x)^2 + 100 * (y - x^2)^2 \
 
@@ -632,10 +632,10 @@ Bfgs
        **Constrained Optimization: Solve a Quadratic Problem**
 
        .. math::
-          \Maximize: \
-          \f(x, y) = x * y \
-          \Subject to: \
-          \x^2 + 4 * y^2 = 1 \
+          Maximize: 
+          f(x, y) = x * y 
+          Subject to: \
+          x^2 + 4 * y^2 = 1 
 
        .. code-block:: CSharp 
 
