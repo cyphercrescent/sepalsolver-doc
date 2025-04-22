@@ -569,7 +569,97 @@ Fmincon
 
        .. code-block:: Terminal 
 
-          Optimized Solution: 0.6    0.4
+          Optimized Solution: 0.6    0.4    
+
+
+Bfgs
+====
+   Description: 
+       Finds the minimum of a multivariable objective function using the BFGS quasi-Newton method.
+       The method utilizes gradient-based optimization to iteratively improve the solution to unconstrained problems. It is optionally subject to constraints and bounds.
+
+       .. code-block:: CSharp 
+
+          ColVec Bfgs(Func<ColVec, double> fun, ColVec x0, 
+                      Func<ColVec, ColVec> funInEq = null, 
+                      Func<ColVec, ColVec> funEq = null, 
+                      ColVec lb = null, ColVec ub = null, 
+                      Optimizers.Set options = null)
+   Param: 
+      | fun:  The nonlinear scalar objective function to be minimized. Must take a column vector of decision variables and return a scalar point value.
+      | x0:  The initial guess for the decision variables.
+      | funInEq:  Optional. A function defining nonlinear inequality constraints.
+                Takes a column vector and returns a column vector of constraint values.
+      | funEq:  Optional. A function defining nonlinear equality constraints.
+              Takes a column vector and returns a column vector of constraint values.
+      | lb:  Optional. The column vector representing the lower bounds for decision variables.
+      | ub:  Optional. The column vector representing the upper bounds for decision variables.
+      | options:  Optional. Solver settings such as tolerance and maximum iterations.
+                Defaults to null if not provided.
+   Returns: 
+       A column vector representing the decision variables that minimize the objective function.
+   Example: 
+       **Unconstrained Optimization: Solve the Rosenbrock Function**
+       ..math::
+       Minimize: f(x, y) = (1 - x)^2 + 100 * (y - x^2)^2
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+      
+          // Define the Rosenbrock function
+          Func<ColVec, double> objective = vars => 
+              Pow(1 - vars[0], 2) + 100 * Pow(vars[1] - Pow(vars[0], 2), 2);
+      
+          // Set initial guess
+          ColVec x0 = new ColVec(new[] { -1.2, 1.0 });
+      
+          // Solve the optimization problem
+          ColVec solution = Bfgs(objective, x0);
+          Console.WriteLine($"Optimized Decision Variables: {solution}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+       Optimized Decision Variables: 1    1
+   Example: 
+       **Constrained Optimization: Solve a Quadratic Problem**
+       ..math::
+       \Maximize: f(x, y) = x * y\
+       \Subject to: x^2 + 4 * y^2 = 1\
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+      
+          // Define the quadratic objective function
+          Func<ColVec, double> objective = vars => vars[0] * vars[1];
+      
+          // Define equality constraint
+          Func<ColVec, ColVec> constraints = vars => new ColVec(new[]
+          {
+              Pow(vars[0], 2) + 4 * Pow(vars[1], 2) - 1 // x^2 + y^2 <= 4
+          });
+      
+          // Initial guess
+          ColVec x0 = new ColVec(new[] { 1, 1 });
+      
+          // Solve the optimization problem
+          ColVec solution = Bfgs(objective, x0, constraints, null, lb, ub);
+          Console.WriteLine($"Optimized Decision Variables: {solution}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+       Optimized Decision Variables: 0.7071    0.3536
 
 
 decic
