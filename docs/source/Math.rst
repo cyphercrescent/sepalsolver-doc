@@ -632,10 +632,10 @@ Bfgs
        **Constrained Optimization: Solve a Quadratic Problem**
 
        .. math::
-          Maximize: 
-          f(x, y) = x * y 
-          Subject to: \
-          x^2 + 4 * y^2 = 1 
+          **Maximize:** \ 
+          f(x, y) = x * y \
+          **Subject to:** \
+          x^2 + 4 y^2 = 1 \
 
        .. code-block:: CSharp 
 
@@ -647,16 +647,16 @@ Bfgs
           Func<ColVec, double> objective = vars => vars[0] * vars[1];
       
           // Define equality constraint
-          Func<ColVec, ColVec> constraints = vars => new ColVec(new[]
+          Func<ColVec, ColVec> eqconstraints = vars => new ColVec(new[]
           {
-              Pow(vars[0], 2) + 4 * Pow(vars[1], 2) - 1 // x^2 + y^2 <= 4
+              Pow(vars[0], 2) + 4 * Pow(vars[1], 2) - 1 // x^2 + 4 * y^2 = 1
           });
       
           // Initial guess
           ColVec x0 = new ColVec(new[] { 1, 1 });
       
           // Solve the optimization problem
-          ColVec solution = Bfgs(objective, x0, constraints, null, lb, ub);
+          ColVec solution = Bfgs(objective, x0, null, eqconstraints, null, null);
           Console.WriteLine($"Optimized Decision Variables: {solution}");
 
       Output: 
