@@ -630,11 +630,11 @@ Bfgs
    Example: 
 
         .. math::
-           \begin{array}{rcl}
-                 Maximize:& &\\
-                 & f(x, y) &= xy \\
-                 Subject~to:& & \\
-                 &x^2 + 4 y^2 &= 1 \\
+           \begin{array}{rl}
+                 Maximize:& \\
+                 & f(x, y) = xy \\
+                 Subject~to:& \\
+                 &x^2 + 4 y^2 = 1 \\
            \end{array}
 
        .. code-block:: CSharp 
