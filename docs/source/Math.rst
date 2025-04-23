@@ -602,7 +602,7 @@ Bfgs
        **Unconstrained Optimization: Solve the Rosenbrock Function**
 
         .. math::
-           Minimize: `~f(x, y) = (1 - x)^2 + 100 * (y - x^2)^2`~
+           Minimize: ~f(x, y) = (1 - x)^2 + 100(y - x^2)^2
 
        .. code-block:: CSharp 
 
@@ -611,8 +611,8 @@ Bfgs
           using SepalSolver;
       
           // Define the Rosenbrock function
-          Func<ColVec, double> objective = vars => 
-              Pow(1 - vars[0], 2) + 100 * Pow(vars[1] - Pow(vars[0], 2), 2);
+          Func<ColVec, double> objective = x => 
+              Pow(1 - x[0], 2) + 100 * Pow(x[1] - Pow(x[0], 2), 2);
       
           // Set initial guess
           ColVec x0 = new ColVec(new[] { -1.2, 1.0 });
@@ -631,10 +631,10 @@ Bfgs
 
         .. math::
            \begin{array}{rcl}
-                 Maximize: \\
-                 f(x, y) = xy \\
-                 Subject to: \\
-                 x^2 + 4 y^2 = 1 \\
+                 Maximize:& &\\
+                 & f(x, y) &= xy \\
+                 Subject~to:& & \\
+                 &x^2 + 4 y^2 &= 1 \\
            \end{array}
 
        .. code-block:: CSharp 
