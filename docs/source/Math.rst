@@ -629,7 +629,8 @@ Bfgs
 
        Optimized Decision Variables: 1    1
    Example: 
-        .. maths::
+
+        .. math::
            \begin{array}{rcl}
                  Maximize: 
                  f(x, y) = xy 
