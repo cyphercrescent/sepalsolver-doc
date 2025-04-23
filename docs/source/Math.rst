@@ -629,13 +629,12 @@ Bfgs
 
        Optimized Decision Variables: 1    1
    Example: 
-        //Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 2]`.
         .. maths::
            \begin{array}{rcl}
-                 Maximize: \\
-                 f(x, y) = xy \\
-                 Subject to: \\
-                 x^2 + 4 y^2 = 1 \\ 
+                 Maximize: 
+                 f(x, y) = xy 
+                 Subject to:
+                 x^2 + 4 y^2 = 1 
            \end{array}
 
        .. code-block:: CSharp 
