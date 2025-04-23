@@ -630,24 +630,13 @@ Bfgs
        Optimized Decision Variables: 1    1
    Example: 
         //Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 2]`.
-        //First we have to convert this to a system of first order differential equations,
-        //**Constrained Optimization: Solve a Quadratic Problem**
-
-        //.. math::
-           
-
-          //.. math::
-          // \begin{array}{rcl}
-          //      y' &=& v \\
-          //       v' &=& (1 - y^2)v - y
-          //  \end{array}
         .. maths::
-         \begin{Array}{rcl}
-           Maximize: 
-             f(x, y) = xy
-           Subject to:
-             x^2 + 4 y^2 = 1   
-         \End{Array}
+           \begin{array}{rcl}
+                 Maximize: \\
+                 f(x, y) = xy \\
+                 Subject to: \\
+                 x^2 + 4 y^2 = 1 \\ 
+           \end{array}
 
        .. code-block:: CSharp 
 
