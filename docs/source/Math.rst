@@ -601,9 +601,8 @@ Bfgs
    Example: 
        **Unconstrained Optimization: Solve the Rosenbrock Function**
 
-      .. math::
-          \Minimize: \
-          \f(x, y) = (1 - x)^2 + 100 * (y - x^2)^2 \
+        .. math::
+           Minimize: `~f(x, y) = (1 - x)^2 + 100 * (y - x^2)^2`~
 
        .. code-block:: CSharp 
 
@@ -632,10 +631,10 @@ Bfgs
 
         .. math::
            \begin{array}{rcl}
-                 Maximize: 
-                 f(x, y) = xy 
-                 Subject to:
-                 x^2 + 4 y^2 = 1 
+                 Maximize: \\
+                 f(x, y) = xy \\
+                 Subject to: \\
+                 x^2 + 4 y^2 = 1 \\
            \end{array}
 
        .. code-block:: CSharp 
