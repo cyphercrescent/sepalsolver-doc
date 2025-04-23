@@ -644,27 +644,32 @@ Bfgs
           using SepalSolver;
       
           // Define the quadratic objective function
-          Func<ColVec, double> objective = vars => vars[0] * vars[1];
+          double Objective(ColVec V)
+          {
+              double x = V[0], y = V[1];
+              return x*y;
+          }
       
           // Define equality constraint
-          Func<ColVec, ColVec> eqconstraints = vars => new ColVec(new[]
+          ColVec eqconstraints(ColVec V)
           {
-              Pow(vars[0], 2) + 4 * Pow(vars[1], 2) - 1 // x^2 + 4 * y^2 = 1
-          });
+              double x = V[0], y = V[1];
+              return Pow(x, 2) + 4 * Pow(y, 2) - 1;
+          }
       
           // Initial guess
           ColVec x0 = new ColVec(new[] { 1, 1 });
       
           // Solve the optimization problem
           ColVec solution = Bfgs(objective, x0, null, eqconstraints, null, null);
-          Console.WriteLine($"Optimized Decision Variables: {solution}");
+          Console.WriteLine($"Optimized Decision Variables: {solution.T}");
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-       Optimized Decision Variables: 0.7071    0.3536
+          Optimized Decision Variables: 0.7071    0.3536
 
 
 decic
