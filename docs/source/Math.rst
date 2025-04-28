@@ -361,11 +361,11 @@ Linprog
         .. math::
             \begin{array}
                   Minimize:& \\
-                  &c = -x1 - x2 \\
-                  subject~to:& \\
-                  &x1 + x2 <= 4 \\
+                  & c = -x1 - x2 \\
+                  subject~to: & \\
+                  & x1 + x2 <= 4 \\
                   -x1 + x2 <= 2 & \\
-                  &x1>=0, x2 <= 3. \\
+                  & x1 >= 0, x2 <= 3 \\
             \end{array}
 
        .. code-block:: CSharp 
