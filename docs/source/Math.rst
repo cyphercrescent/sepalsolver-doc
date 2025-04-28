@@ -359,10 +359,10 @@ Linprog
        Solve a linear programming problem with the objective function:
 
         .. math::
-            \begin{array}
+            \begin{array}{rl}
                   Minimize:& \\
                   & c = -x1 - x2 \\
-                  subject~to: & \\
+                  subject~to:& \\
                   & x1 + x2 <= 4 \\
                   -x1 + x2 <= 2 & \\
                   & x1 >= 0, x2 <= 3 \\
