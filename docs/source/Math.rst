@@ -357,8 +357,27 @@ Linprog
        A column vector representing the optimized solution to the linear programming problem.
    Example: 
        Solve a linear programming problem with the objective function:
-       Minimize: c = -x1 - x2
-       Subject to: x1 + x2 <= 4, -x1 + x2 <= 2, 0 <= x1, x2 <= 3.
+
+        .. math::
+           \begin{array}
+                 Minimize:& \\
+                 & c = -x1 - x2 \\
+                 subject~to:& \\
+                 &x1 + x2 <= 4\\
+                 -x1 + x2 <= 2 & \\
+                 & x1>=0, x2 <= 3. \\
+           \end{array}
+      // Minimize: c = -x1 - x2
+      // Subject to: x1 + x2 <= 4, -x1 + x2 <= 2, 0 <= x1, x2 <= 3.
+      // 
+
+      // .. math::
+      //     \begin{array}{rl}
+      //           Maximize:& \\
+      //           & f(x, y) = xy \\
+      //           Subject~to:& \\
+      //           &x^2 + 4 y^2 = 1 \\
+      //     \end{array}
 
        .. code-block:: CSharp 
 
@@ -488,8 +507,8 @@ Fminsearch
           using SepalSolver;
       
           // Define the Rosenbrock function
-          Func<ColVec, double> objective = vars => 
-              Pow(1 - vars[0], 2) + 100 * Pow(vars[1] - Pow(vars[0], 2), 2);
+          Func<ColVec, double> objective = x => 
+              Pow(1 - x[0], 2) + 100 * Pow(x[1] - Pow(x[0], 2), 2);
       
           // Set initial guess
           ColVec x0 = new ColVec(new[] { -1.2, 1.0 });
@@ -544,13 +563,13 @@ Fmincon
           using SepalSolver;
           
           // Define the objective function
-          Func<ColVec, double> objective = vars => Pow(vars[0], 2) + Pow(vars[1], 2);
+          Func<ColVec, double> objective = x => Pow(x[0], 2) + Pow(x[1], 2);
           
           // Define inequality constraints
-          Func<ColVec, ColVec> constraints = vars => new ColVec(new[]
+          Func<ColVec, ColVec> constraints = x => new ColVec(new[]
           {
-              -(vars[0] + vars[1] - 1), // x + y >= 1
-              Pow(vars[0], 2) + Pow(vars[1], 2) - 4 // x^2 + y^2 <= 4
+              -(x[0] + x[1] - 1), // x + y >= 1
+              Pow(x[0], 2) + Pow(x[1], 2) - 4 // x^2 + y^2 <= 4
           });
           
           // Set bounds
@@ -669,7 +688,8 @@ Bfgs
 
        .. code-block:: Terminal 
 
-          Optimized Decision Variables: 0.7071    0.3536
+          Optimized Decision Variables:
+                -0.7310    0.3631
 
 
 decic
