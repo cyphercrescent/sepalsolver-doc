@@ -359,25 +359,14 @@ Linprog
        Solve a linear programming problem with the objective function:
 
         .. math::
-           \begin{array}
-                 Minimize:& \\
-                 & c = -x1 - x2 \\
-                 subject~to:& \\
-                 &x1 + x2 <= 4\\
-                 -x1 + x2 <= 2 & \\
-                 & x1>=0, x2 <= 3. \\
-           \end{array}
-      // Minimize: c = -x1 - x2
-      // Subject to: x1 + x2 <= 4, -x1 + x2 <= 2, 0 <= x1, x2 <= 3.
-      // 
-
-      // .. math::
-      //     \begin{array}{rl}
-      //           Maximize:& \\
-      //           & f(x, y) = xy \\
-      //           Subject~to:& \\
-      //           &x^2 + 4 y^2 = 1 \\
-      //     \end{array}
+            \begin{array}
+                  Minimize:& \\
+                  &c = -x1 - x2 \\
+                  subject~to:& \\
+                  &x1 + x2 <= 4 \\
+                  -x1 + x2 <= 2 & \\
+                  &x1>=0, x2 <= 3. \\
+            \end{array}
 
        .. code-block:: CSharp 
 
