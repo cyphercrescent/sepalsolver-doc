@@ -356,17 +356,7 @@ Linprog
    Returns: 
        A column vector representing the optimized solution to the linear programming problem.
    Example: 
-       Solve a linear programming problem with the objective function:
-
-        .. math::
-            \begin{array}{rl}
-                  Minimize:& \\
-                  & c = -x1 - x2 \\
-                  subject~to:& \\
-                  & x1 + x2 <= 4 \\
-                  -x1 + x2 <= 2 & \\
-                  & x1 >= 0, x2 <= 3 \\
-            \end{array}
+       Solve a linear programming problem with the objective function
 
        .. code-block:: CSharp 
 
@@ -376,11 +366,11 @@ Linprog
           using static SepalSolver.Math;
           
           // Define the coefficients
-          RowVec c = new RowVec(new[] { -1.0, -2.0 });
-          Matrix AInEq = new Matrix(new[,] { { 1.0, 1.0 }, { -1.0, 2.0 } });
-          ColVec bInEq = new ColVec(new[] { 4.0, 2.0 });
-          ColVec Lb = new ColVec(new[] { 0.0, 0.0 }); // Lower bounds
-          ColVec Lb = new ColVec(new[] { 3.0, 3.0 }); // Upper bounds
+          RowVec c = new double [] { -1.0, -2.0 };
+          Matrix AInEq = new double[,] { { 1.0, 1.0 }, { -1.0, 2.0 } });
+          ColVec bInEq = new[] { 4.0, 2.0 };
+          ColVec Lb = new[] double{ 0.0, 0.0 }; // Lower bounds
+          ColVec Lb = new double[] { 3.0, 3.0 }; // Upper bounds
           
           // Solve the problem
           ColVec solution = Linprog(c, AInEq, bInEq, null, null, Lb, Ub);
@@ -428,8 +418,16 @@ Intlinprog
        A column vector representing the optimized integer solution to the Integer Linear Programming problem.
    Example: 
        Solve an Integer Linear Programming problem with the objective function:
-       Maximize: c = 60x1 + 40x2 + 70x3
-       Subject to: 4x1 + 2x2 + 3x2 <= 60, 3x1 + 2x2 + 2x3 <= 40, 2x1 + x2 + 4x3 <= 36, x1, x2, x3 >= 0 and are integers.
+
+       .. math::
+          \begin{array}{rl}
+                Maximize:& \\
+                & c = 60x1 + 40x2 + 70x3
+                Subject to:& \\
+                & 4x1 + 2x2 + 3x2 <= 60 \\
+                3x1 + 2x2 + 2x3 <= 40 & \\
+                & 2x1 + x2 + 4x3 <= 36 \\ 
+                x1, x2, x3 >= 0 and are integers & \\
 
        .. code-block:: CSharp 
 
@@ -439,13 +437,11 @@ Intlinprog
           using static SepalSolver.Math;
           
           // Define the coefficients
-          RowVec c = new RowVec(new[] { 60, 40, 70 });
-          Matrix AInEq = new Matrix(new[,] { { 4, 2, 3 }, { 3, 2, 2 }, { 2, 1, 4 } });
-          ColVec bInEq = new ColVec(new[] { 60, 40, 36 });
+          RowVec c = new double[] { 60, 40, 70 };
+          Matrix AInEq = new double [,] { { 4, 2, 3 }, { 3, 2, 2 }, { 2, 1, 4 } };
+          ColVec bInEq = new double [] { 60, 40, 36 };
           
-          int[] IntVar = new[] { 0 }; // x1 is an integers
-          int[] IntVar = new[] { 1 }; // x2 is an integers
-          int[] IntVar = new[] { 2 }; // x3 is an integers
+          int[] IntVar = [0, 1, 2]; // x1, x2, x3 are an integers
           
           // Solve the problem
           ColVec solution = Intlinprog(c, IntVar, AInEq, bInEq, null, null, null, null);
@@ -487,6 +483,8 @@ Fminsearch
        A column vector representing the decision variables that minimize the objective function.
    Example: 
        Solve the Rosenbrock function optimization problem:
+
+       .. math::
        Minimize: f(x, y) = (1 - x)^2 + 100 * (y - x^2)^2
 
        .. code-block:: CSharp 
@@ -500,7 +498,7 @@ Fminsearch
               Pow(1 - x[0], 2) + 100 * Pow(x[1] - Pow(x[0], 2), 2);
       
           // Set initial guess
-          ColVec x0 = new ColVec(new[] { -1.2, 1.0 });
+          ColVec x0 = new double[] { -1.2, 1.0 };
       
           // Solve the optimization problem
           ColVec solution = Fminsearch(objective, x0);
@@ -542,8 +540,16 @@ Fmincon
        The optimized decision variables that minimize the objective function within the specified constraints.
    Example: 
        Solve a constrained nonlinear optimization problem:
-       Minimize: f(x, y) = x^2 + y^2
-       Subject to: x + y >= 1, x^2 + y^2 <= 4, 0 <= x, y <= 3.
+
+       .. math::
+          \begin{array}{rl}
+                Minimize:& \\
+                & f(x, y) = x^2 + y^2 \\
+                Subject~to:& \\
+                & x + y >= 1 \\
+                x^2 + y^2 <= 4& \\
+                & 0 <= x, y <= 3 \\
+          \end{array}
 
        .. code-block:: CSharp 
 
@@ -552,25 +558,28 @@ Fmincon
           using SepalSolver;
           
           // Define the objective function
-          Func<ColVec, double> objective = x => Pow(x[0], 2) + Pow(x[1], 2);
+          double objective (ColVec x)
+          {
+              return Pow(x[0], 2) + Pow(x[1], 2);
+          }
           
           // Define inequality constraints
-          Func<ColVec, ColVec> constraints = x => new ColVec(new[]
+          Colvec constraints (Colvec x)
           {
-              -(x[0] + x[1] - 1), // x + y >= 1
-              Pow(x[0], 2) + Pow(x[1], 2) - 4 // x^2 + y^2 <= 4
-          });
+             new double[]{ -(x[0] + x[1] - 1), // x + y >= 1
+              Pow(x[0], 2) + Pow(x[1], 2) - 4 };// x^2 + y^2 <= 4
+          };
           
           // Set bounds
-          ColVec lb = new ColVec(new[] { 0.0, 0.0 });
-          ColVec ub = new ColVec(new[] { 3.0, 3.0 });
+          ColVec lb = new double[] { 0.0, 0.0 };
+          ColVec ub = new double[] { 3.0, 3.0 };
           
           // Initial guess
-          ColVec x0 = new ColVec(new[] { 0.5, 0.5 });
+          ColVec x0 = new double[] { 0.5, 0.5 });
           
           // Solve the optimization problem
           ColVec solution = Fmincon(objective, x0, constraints, null, lb, ub);
-          Console.WriteLine($"Optimized Solution: {solution}");
+          Console.WriteLine($"Optimized Solution: {solution.T}");
 
       Output: 
 
@@ -627,7 +636,7 @@ Bfgs
       
           // Solve the optimization problem
           ColVec solution = Bfgs(objective, x0);
-          Console.WriteLine($"Optimized Decision Variables: {solution}");
+          Console.WriteLine($"Optimized Decision Variables: {solution.T}");
 
       Output: 
 
@@ -642,7 +651,7 @@ Bfgs
                  Maximize:& \\
                  & f(x, y) = xy \\
                  Subject~to:& \\
-                 &x^2 + 4 y^2 = 1 \\
+                 & x^2 + 4 y^2 = 1 \\
            \end{array}
 
        .. code-block:: CSharp 
