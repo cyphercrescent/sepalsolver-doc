@@ -690,6 +690,106 @@ Bfgs
                 -0.7310    0.3631
 
 
+Lsqcurvefit
+===========
+   Description: 
+       Performs nonlinear least squares curve fitting using the Levenberg-Marquardt algorithm.
+       The function optimizes model parameters to best fit measured data by minimizing the residuals.
+
+       .. code-block:: CSharp 
+
+           (ColVec x, int exitflag, double resnorm, ColVec sigma_x, ColVec y_hat, ColVec sigma_y, List<IterationState> history) Lsqnonlin(Func<ColVec, ColVec> Model, ColVec x0, Func<ColVec, ColVec> funInEq = null, Func<ColVec, ColVec> funEq = null, ColVec lb = null, ColVec ub = null, Optimizers.Set options = null)
+   Param: 
+      | Model:  The nonlinear model function to be fitted. Takes an independent variable and parameter vector
+              as inputs and returns computed values.
+      | x0:  Initial guess for model parameters.
+      | IndVar:  The independent variable values.
+      | Measured:  The observed dependent variable values.
+      | funInEq:  Optional. Function defining inequality constraints on parameters.
+      | funEq:  Optional. Function defining equality constraints on parameters.
+      | lb:  Optional. Lower bound constraints for parameters.
+      | ub:  Optional. Upper bound constraints for parameters.
+      | options:  Optional solver settings such as tolerance and maximum iterations.
+   Returns: 
+       Returns a tuple containing the optimized parameter values, exit flag, residual norm, parameter uncertainties,
+       estimated model output, output uncertainties, and iteration history.
+   Example: 
+       Fits an exponential decay model to observed data.
+      
+       // Define exponential decay model: 
+
+       .. math:: y = a * exp(b * x)
+
+       .. code-block:: CSharp 
+
+       using System;
+       using SepalSolver;
+      
+       // create the model
+       Func<ColVec, ColVec, ColVec> model = (x, p) =>
+       {
+           return p[0] * ColVec.Exp(p[1] * x);
+       };
+      
+       // Define independent variable data points
+       ColVec x_data = new ColVec(new[] { 0, 1, 2, 3, 4, 5 });
+      
+       // Define observed measurements
+       ColVec y_data = new ColVec(new[] { 10, 7.5, 5.6, 4.1, 3.1, 2.5 });
+      
+       // Initial parameter guess
+       ColVec p0 = new ColVec(new[] { 10, -0.5 });
+      
+       // Fit the model
+       var result = Lsqcurvefit(model, p0, x_data, y_data);
+      
+       Console.WriteLine($"Optimized Parameters: {result.x.T}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+       Optimized Parameters: 9.95    -0.48
+   Example: 
+       **Example 2: Gaussian Peak Fitting**
+       Fits a Gaussian curve to noisy peak data.
+      
+
+       .. code-block:: CSharp 
+
+       using System;
+       using SepalSolver;
+      
+       // Given the Gaussian peak model: 
+       .. math::y = a * exp(-(x - b)^2 / (2 * c^2))
+       Func<ColVec, ColVec, ColVec> model = (x, p) =>
+       {
+           return p[0] * ColVec.Exp(-(x - p[1]).Pow(2) / (2 * p[2].Pow(2)));
+       };
+      
+       // Independent variable data points
+       ColVec x_data = new ColVec(new[] { -3, -2, -1, 0, 1, 2, 3 });
+      
+       // Observed peak data
+       ColVec y_data = new ColVec(new[] { 0.1, 0.5, 1.2, 2.0, 1.3, 0.6, 0.2 });
+      
+       // Initial guess for parameters
+       ColVec p0 = new ColVec(new[] { 2, 0, 1 });
+      
+       // Fit the model
+       var result = Lsqcurvefit(model, p0, x_data, y_data);
+      
+       Console.WriteLine($"Optimized Parameters: {result.x.T}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+       Optimized Parameters: 2.1    -0.1    0.95
+
+
 decic
 =====
    Description: 
