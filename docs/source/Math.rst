@@ -544,11 +544,11 @@ Fmincon
        .. math::
           \begin{array}{rl}
                 Minimize:& \\
-                & f(x, y) = x^2 + y^2 \\
-                Subject~to:& \\
-                & x + y >= 1 \\
-                x^2 + y^2 <= 4& \\
-                & 0 <= x, y <= 3 \\
+                         & f(x, y) = x^2 + y^2 \\
+              Subject~to:& \\
+                         & x + y >= 1 \\
+                         & x^2 + y^2 <= 4 \\
+                         & 0 <= x, y <= 3 \\
           \end{array}
 
        .. code-block:: CSharp 
