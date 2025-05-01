@@ -252,10 +252,11 @@ Fzero
        .. code-block:: CSharp 
 
           double Fzero(Func<double, double> fun, double x0)
+          double Fzero(Func<double, double> fun, double[] x0)
           double Fzero(Func<double, double> fun, double x0, Solvers.Set options)
    Param: 
       | fun:  The nonlinear function whose root is to be computed. The function must take a double and return a double.
-      | x0:  The initial guess for the root.
+      | x0:  The initial guess for the root or the interval bounding the root.
       | options:  Optional. Solver settings that specify parameters like tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
    Returns: 
        The computed root of the nonlinear equation.
@@ -270,7 +271,7 @@ Fzero
           using static SepalSolver.Math;
       
           // Define the function
-          Func<double, double> function = x => Pow(x,3) - 10;;
+          Func<double, double> function = x => Pow(x,3) - 10;
       
           // Compute the root with default options
           var root = Fzero(function, 2.0);
@@ -288,12 +289,12 @@ Fsolve
 ======
    Description: 
        Finds the roots of nonlinear equations.
-       This method computes the root (zero) of the specified nonlinear functions, starting from an initial guess. Optional solver settings can be provided to customize the process.
+       This method computes the root (zero) of the specified system of nonlinear functions, starting from an initial guess. Optional solver settings can be provided to customize the process.
 
        .. code-block:: CSharp 
 
           double Fsolve(Func<double, double> fun, double x0, Solvers.Set options = null)
-          Complex Fsolve(Func<Complex, Complex> fun, double x0, Solvers.Set options = null)
+          Complex Fsolve(Func<Complex, Complex> fun, Complex x0, Solvers.Set options = null)
           ColVec Fsolve(Func<ColVec, ColVec> fun, ColVec x0, Solvers.Set options = null)
    Param: 
       | fun:  The nonlinear function whose root is to be computed. The function can take a double or complex scalar or array values as input and return a scaler or complex or array values.
@@ -302,28 +303,52 @@ Fsolve
    Returns: 
        The computed root or root(s) of the nonlinear equations.
    Example: 
-       Compute the root of the equation :math:`x^2 - 5 = 0`.
+       Compute the root of the equation 
+       
+       ..math::
+          
+          3x_1 - \cos(x_2 x_3) - \frac{1}{2} = 0
+          x_1^2 - 81(x_2+0.1)^2 + \sin(x_3) + 1.06 = 0
+          e^{x_1x_2 } + 20x_3 + \frac{10\pi-3}{ 3} = 0
+          x_0 = [0.1, 0.1, -0.1]^T
+          
 
        .. code-block:: CSharp 
 
-          // Import libraries
+          // import libraries
           using System;
           using SepalSolver;
           using static SepalSolver.Math;
-      
-          // Define the function
-          Func<double, double> function = x => Pow(x, 2) - 5;
-      
-          // Compute the root with default options
-          var root = Fsolve(function, 2.0);
-          Console.WriteLine($"Root: {root}");
+          
+          double[] x0, res; ColVec x
+          // define the function
+          ColVec fun(ColVec x)
+          {
+               double x1 = x[0], x2 = x[1], x3 = x[2];
+               res = [3 * x1 - Cos(x2 * x3) - 0.5,
+               x1 * x1 - 81*Pow(x2 + 0.1, 2) + Sin(x3) + 1.06,
+               Exp(-x1 * x2) + 20 * x3 + (10 * pi - 3) / 3];
+               return res;
+          };
+          
+          // set initial guess
+          x0 = [0.1, 0.1, -0.1];
+          
+          // call the solver
+          x = Fsolve(fun, x0);
+          
+          // display the result
+          Console.WriteLine(x);
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          Root: 2.23606797749979
+          
+          0.5000
+          0.0000
+         -0.5236
 
 
 Linprog
@@ -422,11 +447,11 @@ Intlinprog
        .. math::
           \begin{array}{rl}
                 Maximize:& \\
-                & c = 60x1 + 40x2 + 70x3
+                         & c = 60x1 + 40x2 + 70x3
                 Subject to:& \\
-                & 4x1 + 2x2 + 3x2 <= 60 \\
-                3x1 + 2x2 + 2x3 <= 40 & \\
-                & 2x1 + x2 + 4x3 <= 36 \\ 
+                           & 4x1 + 2x2 + 3x2 <= 60 \\
+                           & 3x1 + 2x2 + 2x3 <= 40 \\
+                           & 2x1 + x2 + 4x3 <= 36 \\ 
                 x1, x2, x3 >= 0 and are integers & \\
 
        .. code-block:: CSharp 
@@ -463,11 +488,9 @@ Fminsearch
 
        .. code-block:: CSharp 
 
-          ColVec Fminsearch(Func<ColVec, double> fun, ColVec x0, 
-                            Func<ColVec, ColVec> funInEq = null, 
-                            Func<ColVec, ColVec> funEq = null, 
-                            ColVec lb = null, ColVec ub = null, 
-                            Optimizers.Set options = null)
+          (ColVec x, double fval, int exitflag, ColVec fineq, ColVec feq, List<IterationState> history) 
+          Fminsearch(Func<ColVec, double> fun, ColVec x0, Func<ColVec, ColVec> funInEq = null, 
+                            Func<ColVec, ColVec> funEq = null, ColVec lb = null, ColVec ub = null, Optimizers.Set options = null)
    Param: 
       | fun:  The nonlinear scalar objective function to be minimized. Must take a column vector of decision variables and return a double.
       | x0:  The initial guess for the decision variables.
