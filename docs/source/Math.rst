@@ -401,7 +401,7 @@ Linprog
                          & x + y \leq 4  \\
                          &-x + 2y \leq 2 \\
                 Bounds: & \\
-                        & 0 \leq x, y, \leq 3 \\   
+                        & 0 \leq x, y \leq 3 \\   
           \end{array}
 
        .. code-block:: CSharp 
