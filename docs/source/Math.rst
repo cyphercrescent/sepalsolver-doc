@@ -305,11 +305,18 @@ Fsolve
    Example: 
        Compute the root of the equation 
        
-       ..math::
+
+       .. math::
           
-          3x_1 - \cos(x_2 x_3) - \frac{1}{2} = 0
-          x_1^2 - 81(x_2+0.1)^2 + \sin(x_3) + 1.06 = 0
-          e^{x_1x_2 } + 20x_3 + \frac{10\pi-3}{ 3} = 0
+          \begin{matrix}
+          3x_1 - \cos(x_2 x_3) - \frac{1}{2} = 0 \\
+          x_1^2 - 81(x_2+0.1)^2 + \sin(x_3) + 1.06 = 0 \\
+          e^{x_1x_2 } + 20x_3 + \frac{10\pi-3}{ 3} = 0 \\
+          \end{matrix}
+          
+
+       .. math::
+       
           x_0 = [0.1, 0.1, -0.1]^T
           
 
@@ -339,6 +346,9 @@ Fsolve
           
           // display the result
           Console.WriteLine(x);
+          
+         // display the result
+         Console.WriteLine(x);
 
       Output: 
 
@@ -445,6 +455,7 @@ Intlinprog
        Solve an Integer Linear Programming problem with the objective function:
 
        .. math::
+       
           \begin{array}{rl}
                 Maximize:& \\
                          & c = 60x1 + 40x2 + 70x3
@@ -508,7 +519,7 @@ Fminsearch
        Solve the Rosenbrock function optimization problem:
 
        .. math::
-       Minimize: f(x, y) = (1 - x)^2 + 100 * (y - x^2)^2
+          Minimize: f(x, y) = (1 - x)^2 + 100 * (y - x^2)^2
 
        .. code-block:: CSharp 
 
