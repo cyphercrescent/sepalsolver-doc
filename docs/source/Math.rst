@@ -688,7 +688,7 @@ Bfgs
 
        .. code-block:: Terminal 
 
-       Optimized Decision Variables: 1    1
+          Optimized Decision Variables: 1    1
    Example: 
 
         .. math::
@@ -743,7 +743,8 @@ Lsqcurvefit
 
        .. code-block:: CSharp 
 
-           (ColVec x, int exitflag, double resnorm, ColVec sigma_x, ColVec y_hat, ColVec sigma_y, List<IterationState> history) Lsqnonlin(Func<ColVec, ColVec> Model, ColVec x0, Func<ColVec, ColVec> funInEq = null, Func<ColVec, ColVec> funEq = null, ColVec lb = null, ColVec ub = null, Optimizers.Set options = null)
+          (ColVec x, int exitflag, double resnorm, ColVec sigma_x, ColVec y_hat, ColVec sigma_y, List<IterationState> history) Lsqcurvefit(Func<ColVec, ColVec, ColVec> Model, ColVec x0, ColVec IndVar, ColVec Measured, Func<ColVec, ColVec> funInEq = null, Func<ColVec, ColVec> funEq = null,  ColVec lb = null, ColVec ub = null, Optimizers.Set options = null);
+          (ColVec  Lsqnonlin(Func<ColVec, ColVec> Model, ColVec x0, Func<ColVec, ColVec> funInEq = null, Func<ColVec, ColVec> funEq = null, ColVec lb = null, ColVec ub = null, Optimizers.Set options = null)
    Param: 
       | Model:  The nonlinear model function to be fitted. Takes an independent variable and parameter vector
               as inputs and returns computed values.
@@ -764,9 +765,9 @@ Lsqcurvefit
 
        .. math::
           \begin{array}
-           y = a * \exp(b * x)
-           X_data = [0, 1, 2, 3, 4, 5 ]
-           Y_data = [ 10, 7.5, 5.6, 4.1, 3.1, 2.5]
+                y = a * \exp(b * x)
+                X_data = [0, 1, 2, 3, 4, 5 ]
+                Y_data = [ 10, 7.5, 5.6, 4.1, 3.1, 2.5]
           \end(array)
           
        // Define exponential decay model: 
@@ -778,33 +779,32 @@ Lsqcurvefit
        using SepalSolver;
       
        // create the model
-       Func<ColVec, ColVec, ColVec> model = (x, p) =>
-       {
-           return p[0] * ColVec.Exp(p[1] * x);
-       };
+          Func<ColVec, ColVec, ColVec> model = (x, p) =>
+          {
+              return p[0] * ColVec.Exp(p[1] * x);
+          };
       
-       // Define independent variable data points
-       ColVec x_data = new double[] { 0, 1, 2, 3, 4, 5 };
+          // Define independent variable data points
+          ColVec x_data = new double[] { 0, 1, 2, 3, 4, 5 };
       
-       // Define observed measurements
-       ColVec y_data = new double[] { 10, 7.5, 5.6, 4.1, 3.1, 2.5 };
+          // Define observed measurements
+          ColVec y_data = new double[] { 10, 7.5, 5.6, 4.1, 3.1, 2.5 };
       
-       // Initial parameter guess
-       ColVec p0 = new double[] { 10, -0.5 };
+          // Initial parameter guess
+          ColVec p0 = new double[] { 10, -0.5 };
       
-       // Fit the model
-       var result = Lsqcurvefit(model, p0, x_data, y_data);
+          // Fit the model
+          var result = Lsqcurvefit(model, p0, x_data, y_data);
       
-       Console.WriteLine($"Optimized Parameters: {result.x.T}");
+          Console.WriteLine($"Optimized Parameters: {result.x.T}");
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-       Optimized Parameters: 9.95    -0.48
+          Optimized Parameters: 9.95    -0.48
    Example: 
-       
        Fits a Gaussian curve to noisy peak data.
 
        .. math::
@@ -817,35 +817,37 @@ Lsqcurvefit
 
        .. code-block:: CSharp 
 
-       using System;
-       using SepalSolver;
+          using System;
+          using SepalSolver;
       
-       // Create Gaussian peak model: 
-       Func<ColVec, ColVec, ColVec> model = (x, p) =>
-       {
-           return p[0] * ColVec.Exp(-(x - p[1]).Pow(2) / (2 * p[2].Pow(2)));
-       };
+          // Create Gaussian peak model: 
+          Func<ColVec, ColVec, ColVec> model = (x, p) =>
+          {
+              return p[0] * ColVec.Exp(-(x - p[1]).Pow(2) / (2 * p[2].Pow(2)));
+          };
       
-       // Independent variable data points
-       ColVec x_data = new double[] { -3, -2, -1, 0, 1, 2, 3 };
+          // Independent variable data points
+          ColVec x_data = new double[] { -3, -2, -1, 0, 1, 2, 3 };
       
-       // Observed peak data
-       ColVec y_data = new double[] { 0.1, 0.5, 1.2, 2.0, 1.3, 0.6, 0.2 };
+          // Observed peak data
+          ColVec y_data = new double[] { 0.1, 0.5, 1.2, 2.0, 1.3, 0.6, 0.2 };
       
-       // Initial guess for parameters
-       ColVec p0 = new double[] { 2, 0, 1 };
+          // Initial guess for parameters
+          ColVec p0 = new double[] { 2, 0, 1 };
       
-       // Fit the model
-       var result = Lsqcurvefit(model, p0, x_data, y_data);
-      
-       Console.WriteLine($"Optimized Parameters: {result.x.T}");
+          // Fit the model
+          var result = Lsqcurvefit(model, p0, x_data, y_data);
+          
+          // Displace the result
+          Console.WriteLine($"Optimized Parameters: {result.x.T}");
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-       Optimized Parameters: 2.1    -0.1    0.95
+          Optimized Parameters:
+                2.1    -0.1    0.95
 
 
 decic
