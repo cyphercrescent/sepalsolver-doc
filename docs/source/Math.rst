@@ -765,13 +765,14 @@ Lsqcurvefit
        
 
        .. math::
+      
           \begin{array}
                 y = a * \exp(b * x)
                 X_data = [0, 1, 2, 3, 4, 5 ]
                 Y_data = [ 10, 7.5, 5.6, 4.1, 3.1, 2.5]
-          \end(array)
+          \end{array}
           
-       // Define exponential decay model: 
+       
        
 
        .. code-block:: CSharp 
@@ -814,7 +815,7 @@ Lsqcurvefit
                 Given data set:
                     & X_data = [-3, -2, -1, 0, 1, 2, 3]
                     & Y_data = [0.1, 0.5, 1.2, 2.0, 1.3, 0.6, 0.2]
-          \end(array)
+          \end{array}
 
        .. code-block:: CSharp 
 
