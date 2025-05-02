@@ -760,10 +760,17 @@ Lsqcurvefit
        estimated model output, output uncertainties, and iteration history.
    Example: 
        Fits an exponential decay model to observed data.
-      
-       // Define exponential decay model: 
+       
 
-       .. math:: y = a * exp(b * x)
+       .. math::
+          \begin{array}
+           y = a * \exp(b * x)
+           X_data = [0, 1, 2, 3, 4, 5 ]
+           Y_data = [ 10, 7.5, 5.6, 4.1, 3.1, 2.5]
+          \end(array)
+          
+       // Define exponential decay model: 
+       
 
        .. code-block:: CSharp 
 
@@ -777,13 +784,13 @@ Lsqcurvefit
        };
       
        // Define independent variable data points
-       ColVec x_data = new ColVec(new[] { 0, 1, 2, 3, 4, 5 });
+       ColVec x_data = new double[] { 0, 1, 2, 3, 4, 5 };
       
        // Define observed measurements
-       ColVec y_data = new ColVec(new[] { 10, 7.5, 5.6, 4.1, 3.1, 2.5 });
+       ColVec y_data = new double[] { 10, 7.5, 5.6, 4.1, 3.1, 2.5 };
       
        // Initial parameter guess
-       ColVec p0 = new ColVec(new[] { 10, -0.5 });
+       ColVec p0 = new double[] { 10, -0.5 };
       
        // Fit the model
        var result = Lsqcurvefit(model, p0, x_data, y_data);
@@ -797,30 +804,36 @@ Lsqcurvefit
 
        Optimized Parameters: 9.95    -0.48
    Example: 
-       **Example 2: Gaussian Peak Fitting**
+       
        Fits a Gaussian curve to noisy peak data.
-      
+
+       .. math::
+          \begin{array}
+                y = a * \exp(-(x - b)^2 / (2 * c^2))
+                Given data set:
+                X_data = [-3, -2, -1, 0, 1, 2, 3]
+                Y_data = [0.1, 0.5, 1.2, 2.0, 1.3, 0.6, 0.2]
+          \end(array)
 
        .. code-block:: CSharp 
 
        using System;
        using SepalSolver;
       
-       // Given the Gaussian peak model: 
-       .. math::y = a * exp(-(x - b)^2 / (2 * c^2))
+       // Create Gaussian peak model: 
        Func<ColVec, ColVec, ColVec> model = (x, p) =>
        {
            return p[0] * ColVec.Exp(-(x - p[1]).Pow(2) / (2 * p[2].Pow(2)));
        };
       
        // Independent variable data points
-       ColVec x_data = new ColVec(new[] { -3, -2, -1, 0, 1, 2, 3 });
+       ColVec x_data = new double[] { -3, -2, -1, 0, 1, 2, 3 };
       
        // Observed peak data
-       ColVec y_data = new ColVec(new[] { 0.1, 0.5, 1.2, 2.0, 1.3, 0.6, 0.2 });
+       ColVec y_data = new double[] { 0.1, 0.5, 1.2, 2.0, 1.3, 0.6, 0.2 };
       
        // Initial guess for parameters
-       ColVec p0 = new ColVec(new[] { 2, 0, 1 });
+       ColVec p0 = new double[] { 2, 0, 1 };
       
        // Fit the model
        var result = Lsqcurvefit(model, p0, x_data, y_data);
