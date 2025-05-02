@@ -812,7 +812,7 @@ Lsqcurvefit
        .. math::  
        
           \begin{array}{rl}
-                    & y = a * \exp\left(\frac{-(x - b)^2 }{ (2 * c^2)}\right)\\
+                    & y = a  \exp\left(\cfrac{-(x - b)^2 }{ (2 c^2)}\right)\\
                 Given data set: & \\
                     & X\_data = [-3, -2, -1, 0, 1, 2, 3]\\
                     & Y\_data = [0.1, 0.5, 1.2, 2.0, 1.3, 0.6, 0.2]
