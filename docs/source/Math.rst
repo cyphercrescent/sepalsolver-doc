@@ -767,9 +767,9 @@ Lsqcurvefit
        .. math::
       
           \begin{array}
-                y = a * \exp(b * x)
-                X_data = [0, 1, 2, 3, 4, 5 ]
-                Y_data = [ 10, 7.5, 5.6, 4.1, 3.1, 2.5]
+                y = a * \exp(b  x) \\
+                X\_data = [0, 1, 2, 3, 4, 5 ] \\
+                Y\_data = [ 10, 7.5, 5.6, 4.1, 3.1, 2.5]
           \end{array}
           
        
@@ -811,10 +811,10 @@ Lsqcurvefit
        .. math::  
           \begin{array}{rl}
                 Fits a Gaussian curve to noisy peak data & \\
-                    & y = a * \exp(\frac(-(x - b)^2 / (2 * c^2)))
-                Given data set:
-                    & X_data = [-3, -2, -1, 0, 1, 2, 3]
-                    & Y_data = [0.1, 0.5, 1.2, 2.0, 1.3, 0.6, 0.2]
+                    & y = a * \exp\left(\frac{-(x - b)^2 }{ (2 * c^2)}\right)\\
+                Given data set: & \\
+                    & X\_data = [-3, -2, -1, 0, 1, 2, 3]\\
+                    & Y\_data = [0.1, 0.5, 1.2, 2.0, 1.3, 0.6, 0.2]
           \end{array}
 
        .. code-block:: CSharp 
