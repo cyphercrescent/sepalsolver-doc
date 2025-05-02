@@ -807,10 +807,11 @@ Lsqcurvefit
 
           Optimized Parameters: 9.95    -0.48
    Example: 
+       Fits a Gaussian curve to noisy peak data
 
        .. math::  
+       
           \begin{array}{rl}
-                Fits a Gaussian curve to noisy peak data & \\
                     & y = a * \exp\left(\frac{-(x - b)^2 }{ (2 * c^2)}\right)\\
                 Given data set: & \\
                     & X\_data = [-3, -2, -1, 0, 1, 2, 3]\\
