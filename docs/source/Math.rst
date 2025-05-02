@@ -471,10 +471,11 @@ Intlinprog
                 Maximize:& \\
                          & c = 60x1 + 40x2 + 70x3
                 Subject to:& \\
-                           & 4x1 + 2x2 + 3x2 <= 60 \\
-                           & 3x1 + 2x2 + 2x3 <= 40 \\
-                           & 2x1 + x2 + 4x3 <= 36 \\ 
+                           & 4x1 + 2x2 + 3x2 \leq 60 \\
+                           & 3x1 + 2x2 + 2x3 \leq 40 \\
+                           & 2x1 + x2 + 4x3 leq 36 \\ 
                 x1, x2, x3 >= 0 and are integers & \\
+          \end{array}
 
        .. code-block:: CSharp 
 
@@ -591,9 +592,9 @@ Fmincon
                 Minimize:& \\
                          & f(x, y) = x^2 + y^2 \\
               Subject~to:& \\
-                         & x + y >= 1 \\
-                         & x^2 + y^2 <= 4 \\
-                         & 0 <= x, y <= 3 \\
+                         & x + y \geq 1 \\
+                         & x^2 + y^2 \leq 4 \\
+                         & 0 <= x, y \leq 3 \\
           \end{array}
 
        .. code-block:: CSharp 
@@ -775,10 +776,10 @@ Lsqcurvefit
 
        .. code-block:: CSharp 
 
-       using System;
-       using SepalSolver;
+          using System;
+          using SepalSolver;
       
-       // create the model
+          // create the model
           Func<ColVec, ColVec, ColVec> model = (x, p) =>
           {
               return p[0] * ColVec.Exp(p[1] * x);
@@ -805,14 +806,14 @@ Lsqcurvefit
 
           Optimized Parameters: 9.95    -0.48
    Example: 
-       Fits a Gaussian curve to noisy peak data.
 
-       .. math::
-          \begin{array}
-                y = a * \exp(-(x - b)^2 / (2 * c^2))
+       .. math::  
+          \begin{array}{rl}
+                Fits a Gaussian curve to noisy peak data & \\
+                    & y = a * \exp(\frac(-(x - b)^2 / (2 * c^2)))
                 Given data set:
-                X_data = [-3, -2, -1, 0, 1, 2, 3]
-                Y_data = [0.1, 0.5, 1.2, 2.0, 1.3, 0.6, 0.2]
+                    & X_data = [-3, -2, -1, 0, 1, 2, 3]
+                    & Y_data = [0.1, 0.5, 1.2, 2.0, 1.3, 0.6, 0.2]
           \end(array)
 
        .. code-block:: CSharp 
