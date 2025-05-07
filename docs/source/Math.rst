@@ -761,15 +761,15 @@ Lsqcurvefit
        Returns a tuple containing the optimized parameter values, exit flag, residual norm, parameter uncertainties,
        estimated model output, output uncertainties, and iteration history.
    Example: 
-       Fits an exponential decay model to observed data.
+       Fits time dependant model to observed data.
        
 
        .. math::
       
           \begin{array}
-                y = a * \exp(b  x) \\
-                X\_data = [0, 1, 2, 3, 4, 5 ] \\
-                Y\_data = [ 10, 7.5, 5.6, 4.1, 3.1, 2.5]
+                Y = x3 * \exp(x1t)+x4*\exp(-x2*t) \\
+                t\_data = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1] \\
+                Y\_data = [ 1.75, 1.5, 1.3, 1.1, 1, 0.83, 0.72, 0.65, 0.55, 0.5] \\
           \end{array}
           
        
@@ -781,31 +781,31 @@ Lsqcurvefit
           using SepalSolver;
       
           // create the model
-          Func<ColVec, ColVec, ColVec> model = (x, p) =>
+          Func<ColVec, ColVec, ColVec> model = (t, p) =>
           {
-              return p[0] * ColVec.Exp(p[1] * x);
+              return p[2] * ColVec.Exp(-p[0] * t) + p[3] * ColVec.Exp(-p[1] * t);
           };
       
           // Define independent variable data points
-          ColVec x_data = new double[] { 0, 1, 2, 3, 4, 5 };
+          ColVec t_data = new double[] { 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 };
       
           // Define observed measurements
-          ColVec y_data = new double[] { 10, 7.5, 5.6, 4.1, 3.1, 2.5 };
+          ColVec y_data = new double[] { 1.75, 1.5, 1.3, 1.1, 1, 0.83, 0.72, 0.65, 0.55, 0.5 };
       
           // Initial parameter guess
-          ColVec p0 = new double[] { 10, -0.5 };
+          ColVec p0 = new double[] { 1, 1, 0, 1};
       
           // Fit the model
-          var result = Lsqcurvefit(model, p0, x_data, y_data);
-      
-          Console.WriteLine($"Optimized Parameters: {result.x.T}");
+          var (x, exitflag, resnorm, sigma_x, y_hat, sigma_y, history) = Lsqcurvefit(model, p0, x_data, y_data);        ///
+          
+           Console.WriteLine($"Optimized Parameters: {x.T}");
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          Optimized Parameters: 9.95    -0.48
+          Optimized Parameters: 1.5942    -1.5213    0.0112    2.0186
    Example: 
        Fits a Gaussian curve to noisy peak data
 
@@ -839,7 +839,7 @@ Lsqcurvefit
           ColVec p0 = new double[] { 2, 0, 1 };
       
           // Fit the model
-          var result = Lsqcurvefit(model, p0, x_data, y_data);
+          var (x, exitflag, resnorm, sigma_x, y_hat, sigma_y, history) = Lsqcurvefit(model, p0, x_data, y_data);
           
           // Displace the result
           Console.WriteLine($"Optimized Parameters: {result.x.T}");
@@ -851,6 +851,10 @@ Lsqcurvefit
 
           Optimized Parameters:
                 2.1    -0.1    0.95
+
+
+Ga
+==
 
 
 decic
