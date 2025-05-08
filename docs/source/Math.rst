@@ -767,11 +767,11 @@ Lsqcurvefit
        .. math::
       
           \begin{array}
-                    & Y = x\_3 * \exp(x\_1t) + x\_4 *\exp(x\_2t) \\
-                 Given that: & \\
-                    t= Linspace(0, 1) \\
-                    Ymeasured = fun(x0 = [-4, -5, 4, -4], xdata) + 0.02 * noise \\
-                    using noise: rand(100) \\
+                    & Y = x_3 * \exp\(x_1t) + x_4 *\exp\(x_2t)\\
+                Given data: & \\
+                    & t= linspace(0, 1) \\
+                    & Ymeasured = fun(x0 = [-4, -5, 4, -4], xdata) + 0.02 * noise\\
+                    & using noise: rand(100)
           \end{array}
        
 
