@@ -243,6 +243,105 @@ BesselJ
 
 
 
+SolverSet
+=========
+   Param: 
+      | fun:  The objective function to optimize. Takes a ColVec parameter and returns a double representing its fitness value.
+      | lb:  Lower bound constraints for the optimization parameters.
+      | ub:  Upper bound constraints for the optimization parameters.
+      | IntVar:  Optional. Specifies indices of variables that should be treated as integers.
+      | Measured:  The observed dependent variable values.
+      | funInEq:  Optional. Function defining inequality constraints on parameters.
+      | funEq:  Optional. Function defining equality constraints on parameters.
+      | options:  Optional settings such as mutation rate, population size, and maximum iterations.
+   Returns: 
+       Returns a scalar value or an array containing the optimized parameter values.
+   Example: 
+       Optimizing a quadratic function.
+       
+
+       .. math::
+      
+          \begin{array}
+                f(x) = -x_1^2 - x_2^2 + 10
+          \end{array}
+      
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+      
+          // Define the objective function
+          Func<ColVec, double> objectiveFunc = (x) => 
+               -Math.Pow(x[0], 2) - Math.Pow(x[1], 2) + 10; // Maximization problem
+      
+          // Define bounds
+          ColVec lb = new double[] { -5, -5 };
+          ColVec ub = new double[] { 5, 5 };
+      
+          // Optimize using Genetic Algorithm
+          ColVec optimalSolution = Ga(objectiveFunc, lb, ub);
+               
+          // Output results
+          Console.WriteLine($"Optimized Solution: {optimalSolution.T}");
+      
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Optimized Solution: 2.1    -1.3
+   Example: 
+       Time-Dependant Parameter Estimation for a Nonlinear System.
+       
+
+       .. math::  
+      
+          \begin{array}{rl}
+                    & Y = x_3 * \exp(-x_1 t) + x_4 * \exp(-x_2 t) \\
+                Given dataset: & \\
+                    & t\_data = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ] \\
+                    & Y\_data = [ 1.75, 1.5, 1.3, 1.1, 1, 0.83, 0.72, 0.65, 0.55, 0.5] \\
+          \end{array}
+      
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+      
+          // Define the nonlinear model
+          Func<ColVec, double> modelFunc = (p) =>
+          {
+              ColVec t = new double[] { 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1};
+              ColVec y = p[2] * ColVec.Exp(-p[0] * t) + p[3] * ColVec.Exp(-p[1] * t);
+              return -ColVec.Sum((y - new double[] { 1.75, 1.5, 1.3, 1.1, 1, 0.83, 0.72, 0.65, 0.55, 0.5 }).Pow(2)); // Least Squares Error
+          };
+      
+          // Define bounds
+          ColVec lb = new double[] { -3, -2, 0, -1 };
+          ColVec ub = new double[] { 5, 5, 5, 5 };
+      
+          // Optimize parameters using GA
+          ColVec optimalParams = Ga(modelFunc, lb, ub);
+      
+          // Output results
+          Console.WriteLine($"Optimized Parameters: {optimalParams.T}");
+      
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Optimized Parameters:
+                1.59    -1.52    0.01    2.02
+
+
 Fzero
 =====
    Description: 
