@@ -738,6 +738,72 @@ Bfgs
 
 Lsqcurvefit
 ===========
+   Description: 
+       Performs nonlinear least squares curve fitting using the Levenberg-Marquardt algorithm.
+       The function optimizes model parameters to best fit measured data by minimizing the residuals.
+
+       .. code-block:: CSharp 
+
+          (ColVec x, int exitflag, double resnorm, ColVec sigma_x, ColVec y_hat, ColVec sigma_y, List<IterationState> history) Lsqcurvefit(Func<ColVec, ColVec, ColVec> Model, ColVec x0, ColVec IndVar, ColVec Measured, Func<ColVec, ColVec> funInEq = null, Func<ColVec, ColVec> funEq = null,  ColVec lb = null, ColVec ub = null, Optimizers.Set options = null);
+          (ColVec  Lsqnonlin(Func<ColVec, ColVec> Model, ColVec x0, Func<ColVec, ColVec> funInEq = null, Func<ColVec, ColVec> funEq = null, ColVec lb = null, ColVec ub = null, Optimizers.Set options = null)
+   Param: 
+      | Model:  The nonlinear model function to be fitted. Takes an independent variable and parameter vector
+              as inputs and returns computed values.
+      | x0:  Initial guess for model parameters.
+      | IndVar:  The independent variable values.
+      | Measured:  The observed dependent variable values.
+      | funInEq:  Optional. Function defining inequality constraints on parameters.
+      | funEq:  Optional. Function defining equality constraints on parameters.
+      | lb:  Optional. Lower bound constraints for parameters.
+      | ub:  Optional. Upper bound constraints for parameters.
+      | options:  Optional solver settings such as tolerance and maximum iterations.
+   Returns: 
+       Returns a tuple containing the optimized parameter values, exit flag, residual norm, parameter uncertainties,
+       estimated model output, output uncertainties, and iteration history.
+   Example: 
+       Fitting a given data points to time dependant model given below:
+       
+
+       .. math::
+      
+          \begin{array}
+                    & Y = x3 * \exp(x\_{1}t) + x\_{4} *\exp(-x\_{2}t) \\
+                 Given that: & \\
+                    & t= Linspace(0, 1) \\
+                    & Ymeasured = fun(x0 = [-4, -5, 4, -4], xdata) + 0.02 * noise; \\
+                    & using noise: rand(100)
+          \end{array}
+       
+
+       .. code-block:: CSharp 
+
+          using System;
+          using SepalSolver;
+           
+           ColVec xdata, ydata, times, y_est, filltime, sgy, filly, lower, upper;
+           ColVec noise = Rand(100); double[] x0;
+           xdata = Linspace(0, 1);
+           
+           // Create the model
+           static ColVec fun(ColVec x, ColVec xdata) => x[2] * Exp(x[0] * xdata) + x[3] * Exp(x[1] * xdata); 
+           
+           // Define observed measurement data
+           ydata = fun(x0 = [-4, -5, 4, -4], xdata) + 0.02 * noise;
+           
+           // Initial parameter guess
+           x0 = [-1, -2, 1, -1];
+           var opts = OptimSet(Display: true, MaxIter: 200, StepTol: 1e-6, OptimalityTol: 1e-6);
+           
+           // Fit the model
+           var ans = Lsqcurvefit(fun, x0, xdata, ydata, options: opts);
+           AnimateHistory(fun, xdata, ydata, ans.history);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Optimized Parameters:  -3.3736    -5.6652    1.7698    -1.7599
    Example: 
        Fits a Gaussian curve to noisy peak data
 
