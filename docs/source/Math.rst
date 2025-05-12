@@ -767,7 +767,7 @@ Lsqcurvefit
        .. math::
       
           \begin{array}
-                    & Y = x_3 * \exp\(x_1t) + x_4 *\exp\(x_2t)\\
+                    & Y = x_3 * \exp(x_1t) + x_4 *\exp(x_2t)\\
                 Given data: & \\
                     & t= linspace(0, 1) \\
                     & Ymeasured = fun(x0 = [-4, -5, 4, -4], xdata) + 0.02 * noise\\
@@ -804,51 +804,6 @@ Lsqcurvefit
        .. code-block:: Terminal 
 
           Optimized Parameters:  -3.3736    -5.6652    1.7698    -1.7599
-   Example: 
-       Fits a Gaussian curve to noisy peak data
-
-       .. math::  
-       
-          \begin{array}{rl}
-                    & y = a  \exp\left(\cfrac{-(x - b)^2 }{ (2 c^2)}\right)\\
-                Given data set: & \\
-                    & X\_data = [-3, -2, -1, 0, 1, 2, 3]\\
-                    & Y\_data = [0.1, 0.5, 1.2, 2.0, 1.3, 0.6, 0.2]
-          \end{array}
-
-       .. code-block:: CSharp 
-
-          using System;
-          using SepalSolver;
-      
-          // Create Gaussian peak model: 
-          Func<ColVec, ColVec, ColVec> model = (x, p) =>
-          {
-              return p[0] * ColVec.Exp(-(x - p[1]).Pow(2) / (2 * p[2].Pow(2)));
-          };
-      
-          // Independent variable data points
-          ColVec x_data = new double[] { -3, -2, -1, 0, 1, 2, 3 };
-      
-          // Observed peak data
-          ColVec y_data = new double[] { 0.1, 0.5, 1.2, 2.0, 1.3, 0.6, 0.2 };
-      
-          // Initial guess for parameters
-          ColVec p0 = new double[] { 2, 0, 1 };
-      
-          // Fit the model
-          var (x, exitflag, resnorm, sigma_x, y_hat, sigma_y, history) = Lsqcurvefit(model, p0, x_data, y_data);
-          
-          // Displace the result
-          Console.WriteLine($"Optimized Parameters: {result.x.T}");
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          Optimized Parameters:
-                2.1    -0.1    0.95
 
 
 Ga
