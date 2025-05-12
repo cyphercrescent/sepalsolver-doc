@@ -610,9 +610,9 @@ Fmincon
           }
           
           // Define inequality constraints
-          Colvec constraints (Colvec x)
+          ColVec constraints (ColVec x)
           {
-             new double[]{ -(x[0] + x[1] - 1), // x + y >= 1
+             return new double[]{ -(x[0] + x[1] - 1), // x + y >= 1
               Pow(x[0], 2) + Pow(x[1], 2) - 4 };// x^2 + y^2 <= 4
           };
           
@@ -767,10 +767,10 @@ Lsqcurvefit
        .. math::
       
           \begin{array}
-                    & Y = x_3 * \exp(x_1t) + x_4 *\exp(x_2t)\\
-                Given data: & \\
-                    & t= linspace(0, 1) \\
-                    & Ymeasured = fun(x0 = [-4, -5, 4, -4], xdata) + 0.02 * noise\\
+                    & Y = x3 * \exp(x\_{1}t) + x\_{4} *\exp(-x\_{2}t) \\
+                 Given that: & \\
+                    & t= Linspace(0, 1) \\
+                    & Ymeasured = fun(x0 = [-4, -5, 4, -4], xdata) + 0.02 * noise; \\
                     & using noise: rand(100)
           \end{array}
        
