@@ -766,7 +766,7 @@ Lsqcurvefit
 
        .. math::
       
-          \begin{array}
+          \begin{array}{rl}
                     & Y = x3 * \exp(x\_{1}t) + x\_{4} *\exp(-x\_{2}t) \\
                  Given that: & \\
                     & t= Linspace(0, 1) \\
