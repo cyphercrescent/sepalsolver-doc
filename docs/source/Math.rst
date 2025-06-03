@@ -296,6 +296,7 @@ Fsolve
           double Fsolve(Func<double, double> fun, double x0, Solvers.Set options = null)
           Complex Fsolve(Func<Complex, Complex> fun, Complex x0, Solvers.Set options = null)
           ColVec Fsolve(Func<ColVec, ColVec> fun, ColVec x0, Solvers.Set options = null)
+          ColVec Fsolve(Func<double[], double[]> fun, ColVec x0, Solvers.Set options = null)
    Param: 
       | fun:  The nonlinear function whose root is to be computed. The function can take a double or complex scalar or array values as input and return a scaler or complex or array values.
       | x0:  The initial guess for the root of the function.
@@ -469,12 +470,12 @@ Intlinprog
        
           \begin{array}{rl}
                 Maximize:& \\
-                         & c = 60x1 + 40x2 + 70x3
+                         & c = 60x_1 + 40x_2 + 70x_3
                 Subject to:& \\
-                           & 4x1 + 2x2 + 3x2 \leq 60 \\
-                           & 3x1 + 2x2 + 2x3 \leq 40 \\
-                           & 2x1 + x2 + 4x3 leq 36 \\ 
-                x1, x2, x3 >= 0 and are integers & \\
+                           & 4x_1 + 2x_2 + 3x_2 \leq 60 \\
+                           & 3x_1 + 2x_2 + 2x_3 \leq 40 \\
+                           & 2x_1 + x_2 + 4x_3 leq 36 \\ 
+                           & x_1, x_2, x_3 >= 0 and are integers \\
           \end{array}
 
        .. code-block:: CSharp 
@@ -594,7 +595,7 @@ Fmincon
               Subject~to:& \\
                          & x + y \geq 1 \\
                          & x^2 + y^2 \leq 4 \\
-                         & 0 <= x, y \leq 3 \\
+                         & 0 \leq x, y \leq 3 \\
           \end{array}
 
        .. code-block:: CSharp 
@@ -766,13 +767,7 @@ Lsqcurvefit
 
        .. math::
       
-          \begin{array}{rl}
-                    & Y = x3 * \exp(x\_{1}t) + x\_{4} *\exp(-x\_{2}t) \\
-                 Given that: & \\
-                    & t= Linspace(0, 1) \\
-                    & Ymeasured = fun(x0 = [-4, -5, 4, -4], xdata) + 0.02 * noise; \\
-                    & using noise: rand(100)
-          \end{array}
+          y(x, t) = x_3 * \exp(x_1t) + x_4 *\exp(-x_2t) 
        
 
        .. code-block:: CSharp 
@@ -836,8 +831,8 @@ Ga
 
        .. math::
       
-          \begin{array}
-                f(x) = -x_1^2 - x_2^2 + 10
+          \begin{array}{rl}
+                      f(x) = -x_1^2 - x_2^2 + 10
           \end{array}
       
 
@@ -849,7 +844,7 @@ Ga
       
           // Define the objective function
           Func<ColVec, double> objectiveFunc = (x) => 
-               -Math.Pow(x[0], 2) - Math.Pow(x[1], 2) + 10; // Maximization problem
+               -Pow(x[0], 2) - Pow(x[1], 2) + 10; // Maximization problem
       
           // Define bounds
           ColVec lb = new double[] { -5, -5 };
@@ -875,10 +870,10 @@ Ga
        .. math::  
       
           \begin{array}{rl}
-                    & Y = x_3 * \exp(-x_1 t) + x_4 * \exp(-x_2 t) \\
-                Given dataset: & \\
+                    & y(x, t) = x_3 * \exp(-x_1 t) + x_4 * \exp(-x_2 t) \\
+                \text{Given dataset:} & \\
                     & t\_data = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ] \\
-                    & Y\_data = [ 1.75, 1.5, 1.3, 1.1, 1, 0.83, 0.72, 0.65, 0.55, 0.5] \\
+                    & y\_data = [ 1.75, 1.5, 1.3, 1.1, 1, 0.83, 0.72, 0.65, 0.55, 0.5] \\
           \end{array}
       
 
@@ -889,19 +884,21 @@ Ga
           using SepalSolver;
       
           // Define the nonlinear model
-          Func<ColVec, double> modelFunc = (p) =>
-          {
-              ColVec t = new double[] { 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1};
-              ColVec y = p[2] * ColVec.Exp(-p[0] * t) + p[3] * ColVec.Exp(-p[1] * t);
-              return -ColVec.Sum((y - new double[] { 1.75, 1.5, 1.3, 1.1, 1, 0.83, 0.72, 0.65, 0.55, 0.5 }).Pow(2)); // Least Squares Error
-          };
+          ColVec t = new double[] { 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1};
+          ColVec y = new double[]{ 1.75, 1.5, 1.3, 1.1, 1, 0.83, 0.72, 0.65, 0.55, 0.5 }
+          
+          double modelFunc(ColVec x)
+          {   
+              ColVec absdiff = y - (x[2] * Exp(-x[0] * t) + x[3] * Exp(-x[1] * t)); // Minimization Problem
+              return absdiff.SumSq();
+           }
       
           // Define bounds
-          ColVec lb = new double[] { -3, -2, 0, -1 };
-          ColVec ub = new double[] { 5, 5, 5, 5 };
+          ColVec lb = new double[] { -2, 1, -1, 1 };
+          ColVec ub = new double[] { -1, 3, 2, 4 };
       
           // Optimize parameters using GA
-          ColVec optimalParams = Ga(modelFunc, lb, ub);
+          ColVec optimalParams = Ga(modelFunc, y, lb, ub);
       
           // Output results
           Console.WriteLine($"Optimized Parameters: {optimalParams.T}");
@@ -913,7 +910,7 @@ Ga
        .. code-block:: Terminal 
 
           Optimized Parameters:
-                1.59    -1.52    0.01    2.02
+                -1.7982    3.000    -0.0289    2.6850
 
 
 decic
