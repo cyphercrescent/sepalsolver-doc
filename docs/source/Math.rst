@@ -767,7 +767,7 @@ Lsqcurvefit
 
        .. math::
       
-          y(x, t) = x_3 * \exp(x_1t) + x_4 *\exp(-x_2t) 
+          y(x, t) = x_3\exp(x_1t) + x_4\exp(-x_2t) 
        
 
        .. code-block:: CSharp 
