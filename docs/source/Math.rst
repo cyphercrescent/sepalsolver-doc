@@ -486,14 +486,14 @@ Intlinprog
           using static SepalSolver.Math;
           
           // Define the coefficients
-          RowVec c = new double[] { 60, 40, 70 };
+          RowVec c = new double[] { -60, -40, -70 };
           Matrix AInEq = new double [,] { { 4, 2, 3 }, { 3, 2, 2 }, { 2, 1, 4 } };
           ColVec bInEq = new double [] { 60, 40, 36 };
           
           int[] IntVar = [0, 1, 2]; // x1, x2, x3 are an integers
           
           // Solve the problem
-          ColVec solution = Intlinprog(c, IntVar, AInEq, bInEq, null, null, null, null);
+          ColVec solution = Intlinprog(c, IntVar, AInEq, bInEq, null, null, Zeros(3));
           Console.WriteLine($"Integer Solution: {solution}");
 
       Output: 
