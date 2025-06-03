@@ -532,7 +532,7 @@ Fminsearch
        Solve the Rosenbrock function optimization problem:
 
        .. math::
-          Minimize: f(x, y) = (1 - x)^2 + 100 * (y - x^2)^2
+          Minimize: f(x, y) = (1 - x)^2 + 100 (y - x^2)^2
 
        .. code-block:: CSharp 
 
