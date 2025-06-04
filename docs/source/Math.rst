@@ -243,6 +243,105 @@ BesselJ
 
 
 
+SolverSet
+=========
+   Description: 
+       Creates and returns a configuration object for solver settings.
+       This method allows customization of solver behavior such as step size, tolerance levels, iteration limits, and parallel execution. It also supports a user-defined Jacobian function to improve solver efficiency and accuracy.
+
+       .. code-block:: CSharp 
+
+           Solvers.Set SolverSet(bool? Display = false, double? StepFactor = null, double? RelTol = null, double? AbsTol = null, 
+           int? MaxIter = null, int? MaxFunEvals = null, bool? UseParallel = null, Func<ColVec, SparseMatrix> UserDefinedJac = null)
+   Param: 
+      | Display:  Optional. If <c>true</c>, enables display of solver progress and results during execution. Defaults to <c>false</c>.
+      | StepFactor:  Optional. A scaling factor for the initial step size used in iterative solvers.
+      | RelTol:  Optional. Relative tolerance. The solver stops when the relative change in the solution is below this threshold.
+      | AbsTol:  Optional. Absolute tolerance. The solver stops when the absolute change in the solution is below this threshold.
+      | MaxIter:  Optional. Maximum number of iterations allowed for the solver.
+      | MaxFunEvals:  Optional. Maximum number of function evaluations allowed.
+      | UseParallel:  Optional. If <c>true</c>, enables parallel computation for supported solvers.
+      | UserDefinedJac:  Optional. A user-defined function that returns the Jacobian matrix of the system. This can improve convergence speed and accuracy.
+   Returns: 
+       An instance of <c>Solvers.Set</c> containing the configured solver settings.
+   Example: 
+       Configure a solver with custom tolerances, display enabled, and a user-defined Jacobian:
+
+       .. code-block:: CSharp 
+
+          using SepalSolver;
+          using static SepalSolver.Math;
+      
+          // Define a Jacobian function
+          SparseMatrix MyJacobian(ColVec x)
+          {
+              var J = new SparseMatrix(2, 2);
+              J[0, 0] = 2 * x[0];
+              J[0, 1] = -Cos(x[1]);
+              J[1, 0] = Exp(x[0]);
+              J[1, 1] = x[1] * x[1];
+              return J;
+          }
+      
+          // Create solver settings
+          var settings = SolverSet(
+              Display: true,
+              StepFactor: 0.5,
+              RelTol: 1e-6,
+              AbsTol: 1e-8,
+              MaxIter: 500,
+              MaxFunEvals: 1000,
+              UseParallel: true,
+              UserDefinedJac: MyJacobian
+          );
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          0.5000
+          0.0000
+         -0.5236
+
+
+OptimSet
+========
+   Description: 
+       Configures and returns a set of optimization parameters.
+       This method allows users to customize various solver settings such as tolerances, iteration limits, and display options. These settings influence the behavior and performance of optimization algorithms.
+
+       .. code-block:: CSharp 
+
+           Optimizers.Set OptimSet(bool? Display = false, double? FuncTol = null, double? OptimalityTol = null, double? StepTol = null, double? ConstraintTol = null,
+           ColVec Weight = null, int? MaxIter = null, int? MaxFunEvals = null, bool? UseParallel = null, dynamic Pltfun = null, int? PopulationSize = null,
+           LevenbergeMaquardt_UpdateType? LMUpdate = null)
+   Param: 
+      | Display:  Optional. If set to <c>true</c>, displays solver progress and results during and after execution. Defaults to <c>false</c>.
+      | FuncTol:  Optional. Function tolerance. The solver stops when the change in the objective function value is less than this threshold.
+      | OptimalityTol:  Optional. Optimality tolerance. Determines the acceptable level of optimality for the solution.
+      | StepTol:  Optional. Step tolerance. The solver stops if the step size becomes smaller than this value.
+      | ConstraintTol:  Optional. Constraint tolerance. Specifies the acceptable violation level for constraints.
+      | Weight:  Optional. A vector of weights used in weighted optimization problems.
+      | MaxIter:  Optional. Maximum number of iterations allowed for the solver.
+      | MaxFunEvals:  Optional. Maximum number of function evaluations allowed.
+      | UseParallel:  Optional. If set to <c>true</c>, enables parallel computation for supported solvers.
+      | Pltfun:  Optional. A plotting function or delegate that visualizes the optimization process.
+      | PopulationSize:  Optional. Specifies the population size for population-based algorithms (e.g., genetic algorithms).
+      | LMUpdate:  Optional. Specifies the update strategy for the Levenberg-Marquardt algorithm.
+   Returns: 
+       An instance of <c>Optimizers.Set</c> containing the configured optimization settings.
+   Example: 
+       Configure an optimization setting with custom tolerances and display enabled:
+
+       .. code-block:: CSharp 
+
+       using SepalSolver;
+       using static SepalSolver.Math;
+      
+       var options = OptimSet(Display: true, FuncTol: 1e-6, MaxIter: 500);
+
+
 Fzero
 =====
    Description: 
