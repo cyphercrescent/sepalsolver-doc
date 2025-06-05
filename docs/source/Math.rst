@@ -330,10 +330,10 @@ OptimSet
       | PopulationSize:  Optional. Specifies the population size for population-based algorithms (e.g., genetic algorithms).
       | LMUpdate:  Optional. Specifies the update strategy for the Levenberg-Marquardt algorithm.
    Returns: 
-       An instance of <c>Optimizers.Set</c> containing the configured optimization settings.
+          Information about the problem solved like, number of iteration, number of function call and other estimated parameters.
    Example: 
        Considering the optimization  of Rosenbrook function below, we can configure an optimization setting with custom tolerances and display enable. When the display is set
-       as true and run the optimizers of solvers, the number of iteration, function evaluation and other estimated parameters are displaced which give a user insight about the 
+       as true and run, it displaced information like number of iteration, number of function call and other estimated parameters. This displaced information gives a user an insight about the 
        activities that takes inside the method during and after runtime.
 
        .. code-block:: CSharp 
@@ -341,7 +341,6 @@ OptimSet
           using SepalSolver;
           using static SepalSolver.Math;
       
-          var options = OptimSet(Display: true, FuncTol: 1e-6, MaxIter: 500);
           // Define the Rosenbrock function
           Func<ColVec, double> objective = x =>
           Pow(1 - x[0], 2) + 100 * Pow(x[1] - Pow(x[0], 2), 2);
