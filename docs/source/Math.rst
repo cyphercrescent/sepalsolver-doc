@@ -332,14 +332,161 @@ OptimSet
    Returns: 
        An instance of <c>Optimizers.Set</c> containing the configured optimization settings.
    Example: 
-       Configure an optimization setting with custom tolerances and display enabled:
+       Considering the optimization  of Rosenbrook function below, we can configure an optimization setting with custom tolerances and display enable. When the display is set
+       as true and run the optimizers of solvers, the number of iteration, function evaluation and other estimated parameters are displaced which give a user insight about the 
+       activities that takes inside the method during and after runtime.
 
        .. code-block:: CSharp 
 
-       using SepalSolver;
-       using static SepalSolver.Math;
+          using SepalSolver;
+          using static SepalSolver.Math;
       
-       var options = OptimSet(Display: true, FuncTol: 1e-6, MaxIter: 500);
+          var options = OptimSet(Display: true, FuncTol: 1e-6, MaxIter: 500);
+          // Define the Rosenbrock function
+          Func<ColVec, double> objective = x =>
+          Pow(1 - x[0], 2) + 100 * Pow(x[1] - Pow(x[0], 2), 2);
+           
+          // Set initial guess
+          var opts = OptimSet(Display: true, MaxIter: 200, StepTol: 1e-6, OptimalityTol: 1e-6);
+          double[] x0 = new double[] { -1.2, 1 };
+      
+          // Solve the optimization problem
+          var solution = Fminsearch(objective, x0, null, null, null, null, opts);
+          Console.WriteLine($"Optimized Solution: {solution.T}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+              fun-count a          f(a)           b f(b)     Procedure
+          1         2e+0        -1e+0         2e+0        -1e+0   initial interval
+          3    1.9434e+0   -1.5467e+0    2.0566e+0   -4.1493e-1   search
+          5      1.92e+0   -1.7621e+0      2.08e+0   -1.6109e-1   search
+          7    1.8869e+0    -2.056e+0    2.1131e+0    2.0962e-1   search
+      
+          Solving for solution between 1.886863 and 2.113137
+          fun-count x         f(x)       Procedure
+              7    2.1131e+0    2.0962e-1    initial
+              8    2.0922e+0   -2.6189e-2    interpolation
+              9    2.0945e+0   -2.7259e-4    interpolation
+             10    2.0946e+0    6.4152e-9    interpolation
+             11    2.0946e+0  -8.9706e-14    interpolation
+             12    2.0946e+0  -8.8818e-16    interpolation
+            Iteration  fun-count f(x)     Procedure
+               0          1      24.2000
+               1          3      20.0500    initial simplex
+               2          5       5.1618    expand
+               3          7       4.4978    reflect
+               4          8       4.4978    reflect
+               5         10       4.4978    contract inside
+               6         12       4.3814    contract inside
+               7         14       4.2453    contract inside
+               8         16       4.2176    reflect
+               9         18       4.2113    contract inside
+              10         20       4.1356    expand
+              11         22       4.1356    contract inside
+              12         24       4.0127    expand
+              13         26       3.9374    expand
+              14         28       3.6026    expand
+              15         29       3.6026    reflect
+              16         31       3.4662    reflect
+              17         33       3.2161    expand
+              18         35       3.1649    reflect
+              19         37       2.7069    expand
+              20         38       2.7069    reflect
+              21         40       2.0022    expand
+              22         42       2.0022    contract inside
+              23         44       2.0022    contract inside
+              24         46       1.8154    expand
+              25         47       1.8154    reflect
+              26         49       1.7348    contract inside
+              27         51       1.3170    expand
+              28         52       1.3170    reflect
+              29         53       1.3170    reflect
+              30         55       1.1595    reflect
+              31         57       1.0767    contract inside
+              32         59       0.8835    reflect
+              33         61       0.8835    contract inside
+              34         63       0.6692    expand
+              35         65       0.6692    contract inside
+              36         66       0.6692    reflect
+              37         68       0.5367    reflect
+              38         70       0.5367    contract inside
+              39         72       0.4233    expand
+              40         73       0.4233    reflect
+              41         75       0.4233    contract inside
+              42         77       0.3985    reflect
+              43         79       0.3145    expand
+              45         82       0.1903    expand
+              46         84       0.1903    contract inside
+              47         85       0.1903    reflect
+              48         87       0.1370    reflect
+              49         88       0.1370    reflect
+              50         90       0.1370    contract inside
+              51         91       0.1370    reflect
+              52         93       0.1131    contract inside
+              53         95       0.1105    contract inside
+              54         97       0.1023    reflect
+              55         99       0.1012    contract inside
+              56        101       0.0795    expand
+              57        102       0.0795    reflect
+              58        103       0.0795    reflect
+              59        105       0.0569    expand
+              60        107       0.0569    contract inside
+              61        109       0.0345    expand
+              62        111       0.0180    expand
+              63        112       0.0180    reflect
+              64        114       0.0169    contract inside
+              65        116       0.0040    reflect
+              66        118       0.0040    contract inside
+              67        119       0.0040    reflect
+              68        121       0.0004    reflect
+              69        123       0.0004    contract inside
+              70        124       0.0004    reflect
+              71        126       0.0004    contract inside
+              72        127       0.0004    reflect
+              73        129       0.0001    contract inside
+              74        131       0.0000    contract inside
+              75        132       0.0000    reflect
+              76        134       0.0000    contract inside
+              77        135       0.0000    reflect
+              78        137       0.0000    contract inside
+              79        139       0.0000    contract inside
+              80        141       0.0000    contract inside
+              81        142       0.0000    reflect
+              82        144       0.0000    contract inside
+              83        146       0.0000    contract inside
+              84        148       0.0000    contract inside
+              85        149       0.0000    reflect
+              86        151       0.0000    contract inside
+              87        153       0.0000    contract inside
+              88        155       0.0000    contract inside
+              89        157       0.0000    contract inside
+              90        159       0.0000    contract inside
+              91        161       0.0000    contract inside
+              92        162       0.0000    reflect
+              93        164       0.0000    contract inside
+              94        166       0.0000    contract inside
+              95        167       0.0000    reflect
+              96        169       0.0000    contract inside
+              97        171       0.0000    contract inside
+              98        173       0.0000    contract inside
+              99        174       0.0000    reflect
+             100        176       0.0000    contract inside
+             101        178       0.0000    contract inside
+             102        179       0.0000    reflect
+             103        181       0.0000    contract inside
+             104        183       0.0000    contract inside
+             105        185       0.0000    contract inside
+             106        187       0.0000    reflect
+             107        189       0.0000    contract inside
+             108        190       0.0000    reflect
+             109        192       0.0000    contract inside
+             110        194       0.0000    contract inside
+             111        196       0.0000    contract inside
+             
+          Optimized Solution: 1.0000    1.0000
 
 
 Fzero
