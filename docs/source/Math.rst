@@ -263,46 +263,63 @@ SolverSet
       | UseParallel:  Optional. If <c>true</c>, enables parallel computation for supported solvers.
       | UserDefinedJac:  Optional. A user-defined function that returns the Jacobian matrix of the system. This can improve convergence speed and accuracy.
    Returns: 
-       An instance of <c>Solvers.Set</c> containing the configured solver settings.
+       Information about the problem solved like, number of iteration, number of function call and other estimated parameters.
    Example: 
-       Configure a solver with custom tolerances, display enabled, and a user-defined Jacobian:
+       Consider the root of the function below and evaluation information displayed using SolverSet. You can set your desired number of iteration and other parameters. It displaced information like number of iteration, number of function call and other estimated parameters. This information provides an insight about the 
+       activities that takes inside the method during and after evaluation of the set function.
+       
+       Compute the root of :math:`x^3 - 10 = 0`
+       
 
        .. code-block:: CSharp 
 
           using SepalSolver;
           using static SepalSolver.Math;
       
-          // Define a Jacobian function
-          SparseMatrix MyJacobian(ColVec x)
-          {
-              var J = new SparseMatrix(2, 2);
-              J[0, 0] = 2 * x[0];
-              J[0, 1] = -Cos(x[1]);
-              J[1, 0] = Exp(x[0]);
-              J[1, 1] = x[1] * x[1];
-              return J;
-          }
-      
-          // Create solver settings
-          var settings = SolverSet(
-              Display: true,
-              StepFactor: 0.5,
-              RelTol: 1e-6,
-              AbsTol: 1e-8,
-              MaxIter: 500,
-              MaxFunEvals: 1000,
-              UseParallel: true,
-              UserDefinedJac: MyJacobian
-          );
+          // Define an objective function
+          static double fun(double x) => Pow(x, 3) - 10;
+          
+          // Call the SolverSet method and set initial guess
+          var opts = SolverSet(Display: true);
+          double x0 = 1.5;
+          
+          // Solve the optimization problem and display of runtime information by SolverSet
+          Console.WriteLine($"Information during Fzero Calculation displayed by SolverSet");
+          double root = Fzero(fun, x0, opts);
+          Console.WriteLine($"Root of the function, F(x) is : {root.T}");
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          0.5000
-          0.0000
-         -0.5236
+          Information during Fzero Calculation displayed by SolverSet
+      
+          Search for an interval around 1.5 containing a sign change:
+          
+          fun-count  a          f(a)           b f(b)     Procedure
+             1       1.5e+0    -6.625e+0       1.5e+0    -6.625e+0   initial interval
+             3    1.4576e+0   -6.9034e+0    1.5424e+0   -6.3304e+0   search
+             5      1.44e+0    -7.014e+0      1.56e+0   -6.2036e+0   search
+             7    1.4151e+0    -7.166e+0    1.5849e+0   -6.0192e+0   search
+             9      1.38e+0   -7.3719e+0      1.62e+0   -5.7485e+0   search
+             11    1.3303e+0   -7.6458e+0    1.6697e+0    -5.345e+0   search
+             13      1.26e+0   -7.9996e+0      1.74e+0    -4.732e+0   search
+             15    1.1606e+0   -8.4367e+0    1.8394e+0   -3.7765e+0   search
+             17      1.02e+0   -8.9388e+0      1.98e+0   -2.2376e+0   search
+             19    8.2118e-1   -9.4463e+0    2.1788e+0    3.4345e-1   search
+      
+          Solving for solution between 0.821177 and 2.178823
+           
+          fun-count x         f(x)       Procedure
+             19    2.1788e+0    3.4345e-1    initial
+             20    2.1312e+0   -3.2017e-1    interpolation
+             21    2.1542e+0   -3.6617e-3    interpolation
+             22    2.1544e+0    7.4508e-7    interpolation
+             23    2.1544e+0  -9.0964e-11    interpolation
+             24    2.1544e+0   1.7764e-15    interpolation
+      
+          Root of the function, F(x) is:   2.154434690031884
 
 
 OptimSet
@@ -332,9 +349,8 @@ OptimSet
    Returns: 
           Information about the problem solved like, number of iteration, number of function call and other estimated parameters.
    Example: 
-       Considering the optimization  of Rosenbrook function below, we can configure an optimization setting with custom tolerances and display enable. When the display is set
-       as true and run, it displaced information like number of iteration, number of function call and other estimated parameters. This displaced information gives a user an insight about the 
-       activities that takes inside the method during and after runtime.
+       Consider the optimization of a Rosenbrock function below and evaluation information displayed using OptimSet. You can set your desired number of iteration and other parameters. It displaced information like number of iteration, number of function call and other estimated parameters. This information provides an insight about the 
+       activities that takes inside the method during and after the estimation of the Rosenbrock problem.
 
        .. code-block:: CSharp 
 
@@ -345,11 +361,11 @@ OptimSet
           Func<ColVec, double> objective = x =>
           Pow(1 - x[0], 2) + 100 * Pow(x[1] - Pow(x[0], 2), 2);
            
-          // Set initial guess
+          // Call the OptimSet method and set initial guess
           var opts = OptimSet(Display: true, MaxIter: 200, StepTol: 1e-6, OptimalityTol: 1e-6);
           double[] x0 = new double[] { -1.2, 1 };
       
-          // Solve the optimization problem
+          // Solve the optimization problem and display of runtime information by OptimSet
           var solution = Fminsearch(objective, x0, null, null, null, null, opts);
           Console.WriteLine($"Optimized Solution: {solution.T}");
 
