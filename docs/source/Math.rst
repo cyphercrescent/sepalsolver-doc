@@ -433,9 +433,11 @@ BesselY
 
       Output: 
 
-       .. figure:: images/BesselfunctionPlotY.png
+       // .. figure:: images/BesselfunctionPlotY.png
+       .. figure:: images/BesselY-Functions.png
           :align: center
-          :alt: BesselfunctionPlotY.png
+       //   :alt: BesselfunctionPlotY.png
+          :alt: BesselY-Functions.png
 
 
 
