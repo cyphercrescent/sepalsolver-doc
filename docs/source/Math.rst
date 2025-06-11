@@ -169,6 +169,17 @@ BesselJ
 
        .. math::
           J_i(x)
+
+       .. code-block:: CSharp 
+
+          double BesselJ(int i, double x)
+          Complex BesselJ(int i, Complex x)
+          Matrix BesselJ(int i, Matrix x)
+          ColVec BesselJ(int i, ColVec x)
+          RowVec BesselJ(int i, RowVec x)
+          SparseMatrix BesselJ(int i, SparseMatrix x)
+          SparseColVec BesselJ(int i, SparseColVec x)
+          SparseRowVec BesselJ(int i, SparseRowVec x)
    Param: 
       | i:  The order of the Bessel function.
       | x:  The value at which to evaluate the Bessel function.
@@ -241,6 +252,243 @@ BesselJ
           :alt: BesselfunctionPlot.png
 
 
+
+
+BesselI
+=======
+   Description: 
+       Computes the modified Bessel function of the first kind Iₙ(x).
+       This method evaluates the exponentially scaled modified Bessel function of the first kind for a given order and value.
+
+       .. math::
+          J_i(x)
+
+       .. code-block:: CSharp 
+
+          double BesselI(int i, double x)
+          Complex BesselI(int i, Complex x)
+          Matrix BesselI(int i, Matrix x)
+          ColVec BesselI(int i, ColVec x)
+          RowVec BesselI(int i, RowVec x)
+          SparseMatrix BesselI(int i, SparseMatrix x)
+          SparseColVec BesselI(int i, SparseColVec x)
+          SparseRowVec BesselI(int i, SparseRowVec x)
+   Param: 
+      | i:  The order of the Bessel function.
+      | x:  The value at which to evaluate the Bessel function.
+   Returns: 
+       The value of the Bessel function of the first kind at the given order and value.
+   Example: 
+       Compute the Bessel function of the first kind for order 0 and value 2.5
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute besseli function
+          var result = Besseli(0, 2.5);
+          
+          // Print result
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          3.28983914405
+   Example: 
+       Compute the Bessel function of the first kind for order 1 and value 2.0
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute besselI function
+          var result = BesselI(1, 2.0);
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1.590637
+   Example: 
+       Compute the Bessel function of the first kind for order 1 and value 3.0
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute besselI function
+          ColVec x = Linspace(0, 10);
+          Matrix y = Enumerable.Range(0, 10).Select(i=>BesselI(i, x)).ToList();
+          
+          // Plot result
+          Plot(x, y); Xlabel("x-axis"); Ylabel("y-axis"); Title("Bessel function I");
+         
+
+      Output: 
+
+       .. figure:: images/BesselfunctionPlotI.png
+          :align: center
+          :alt: BesselfunctionPlotI.png
+
+
+
+
+BesselY
+=======
+   Description: 
+       Computes the Bessel function of the second kind Yₙ(x).
+       This method evaluates the Weber or Neumann Bessel function of the first kind for a given order and value.
+
+       .. math::
+          Y_n(x)
+
+       .. code-block:: CSharp 
+
+          double BesselY(int i, double x)
+          Complex BesselY(int i, Complex x)
+          Matrix BesselY(int i, Matrix x)
+          ColVec BesselY(int i, ColVec x)
+          RowVec BesselY(int i, RowVec x)
+          SparseMatrix BesselY(int i, SparseMatrix x)
+          SparseColVec BesselY(int i, SparseColVec x)
+          SparseRowVec BesselY(int i, SparseRowVec x)
+   Param: 
+      | i:  The order of the Bessel function.
+      | x:  The value at which to evaluate the Bessel function.
+   Returns: 
+       The value of the Bessel function of the second kind at the given order and value (must be positive).
+   Example: 
+       Compute the Bessel function of the first kind for order 0 and value 2.5
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute BesselY function
+          var result = Bessely(0, 2.5);
+          
+          // Print result
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          0.4980703596
+   Example: 
+       Compute the Bessel function of the first kind for order 1 and value 2.0
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute BesselY function
+          var result = Bessely(1, 2.0);
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          -0.1070324315
+   Example: 
+       Compute the Bessel function of the second kind for order 1 and value 3.0
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute bessely function
+          ColVec x = Linspace(0, 10);
+          Matrix y = Enumerable.Range(0, 10).Select(i=>Bessely(i, x)).ToList();
+          
+         // Plot result
+         Plot(x, y); Xlabel("x-axis"); Ylabel("y-axis"); Title("Bessel function I");
+         
+
+      Output: 
+
+       .. figure:: images/BesselfunctionPlotY.png
+          :align: center
+          :alt: BesselfunctionPlotY.png
+
+
+
+
+Gamma
+=====
+   Description: 
+       Computes the Gamma function Γ(z), which generalizes the factorial function to real and complex numbers.
+       This method evaluates the Gamma function Γ(x), for a given real positive numbers or complex numbers.
+
+       .. code-block:: CSharp 
+
+          double Gamma(double z)
+          Complex Gamma(Complex z)
+          Matrix Gamma(Matrix x)
+          ColVec Gamma(ColVec x)
+          RowVec Gamma(RowVec x)
+          SparseMatrix Gamma(SparseMatrix x)
+          SparseColVec Gamma(SparseColVec x)
+          SparseRowVec Gamma(SparseRowVec x)
+          double Gamma(double z, double tolerance = 1e-10)
+   Param: 
+      | z:  The input value (real or complex). For positive integers, Γ(n) = (n-1)!.
+   Returns: 
+       The value of the Gamma function at z.
+   Example: 
+       Compute Γ(4) (equivalent to 3!):
+       
+
+       .. math::
+          
+          \Gamma(4) = 6
+          
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using SepalSolver.Math;
+          
+          // compute Gamma(4)
+          double result = Gamma(4);
+          
+          // display the result
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          
+          6.0000
 
 
 SolverSet
