@@ -1,5 +1,47 @@
 
 
+Hist
+====
+   Description: 
+       Generates a histogram representation of a data vector.
+       This method bins the input values into intervals and returns the histogram data,
+       including counts per bin, positions (typically bin centers), bin size, and min/max of the data range.
+       Suitable for visualizing data distributions.
+
+       .. code-block:: CSharp 
+
+          (List<int> Counts, List<double> Positions, double BinSize, double Vmin, double Vmax) Hist(ColVec V, int bin)
+   Param: 
+      | V:  A column vector (ColVec) containing the numerical data to be analyzed.
+      | bin:  The number of bins to divide the data range into. More bins provide finer granularity.
+   Returns: 
+       A tuple containing:
+       - Counts: Number of elements in each bin
+       - Positions: Center positions of each bin
+       - BinSize: Width of each bin
+       - Vmin: Minimum value in the dataset
+       - Vmax: Maximum value in the dataset
+   Example: 
+       Create a histogram of 1,000 samples drawn from a normal distribution.
+
+       .. code-block:: CSharp 
+
+          // Generate sample data
+          var rand = new Random();
+          var data = Enumerable.Range(0, 1000).Select(_ => rand.NextDouble() * 10).ToList();
+          var vector = new ColVec(data);
+      
+          // Compute histogram
+          var result = Hist(vector, 20);
+      
+          Console.WriteLine("Bin Counts: " + string.Join(", ", result.Counts));
+          Console.WriteLine("Bin Centers: " + string.Join(", ", result.Positions));
+       <Terminal>
+          Bin Counts: 47, 45, 40, 57, 47, 49, 52, 51, 50, 44, 55, 49, 53, 63, 39, 53, 44, 54, 47, 61
+          Bin Centers: 0.25344698280706046, 0.7530616086946283, 1.2526762345821962, 1.7522908604697642, 2.251905486357332, 2.7515201122449, 3.251134738132468, 3.750749364020036, 4.250363989907604, 4.749978615795172, 5.2495932416827396, 5.749207867570307, 6.248822493457875, 6.748437119345443, 7.248051745233011, 7.747666371120578, 8.247280997008145, 8.746895622895714, 9.24651024878328, 9.74612487467085
+       </Terminal>
+
+
 Reshape
 =======
    Description: 
@@ -444,10 +486,10 @@ BesselK
 =======
    Description: 
        Computes the Bessel function of the second kind Kₙ(x).
-       This method evaluates the Weber or Neumann Bessel function of the first kind for a given order and value.
+       This method evaluates the exponentially scaled modified Bessel function for a given order and value.
 
        .. math::
-          Y_n(x)
+          K_n(x)
 
        .. code-block:: CSharp 
 
@@ -567,7 +609,7 @@ Gamma
 
           // import libraries
           using System;
-          using SepalSolver.Math;
+          using static SepalSolver.Math;
           
           // compute Gamma(4)
           double result = Gamma(4);
