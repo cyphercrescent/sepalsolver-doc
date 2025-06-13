@@ -237,7 +237,7 @@ BesselJ
           using SepalSolver;
           using static SepalSolver.Math;
           
-          // Compute besselj function
+          // Compute Besselj function
           ColVec x = Linspace(0, 10);
           Matrix y = Enumerable.Range(0, 10).Select(i=>BesselJ(i, x)).ToList();
           
@@ -288,7 +288,7 @@ BesselI
           using SepalSolver;
           using static SepalSolver.Math;
           
-          // Compute besseli function
+          // Compute BesselI function
           var result = Besseli(0, 2.5);
           
           // Print result
@@ -310,7 +310,7 @@ BesselI
           using SepalSolver;
           using static SepalSolver.Math;
           
-          // Compute besselI function
+          // Compute BesselI function
           var result = BesselI(1, 2.0);
           Console.WriteLine(result);
 
@@ -330,7 +330,7 @@ BesselI
           using SepalSolver;
           using static SepalSolver.Math;
           
-          // Compute besselI function
+          // Compute BesselI function
           ColVec x = Linspace(0, 10);
           Matrix y = Enumerable.Range(0, 10).Select(i=>BesselI(i, x)).ToList();
           
@@ -382,7 +382,7 @@ BesselY
           using static SepalSolver.Math;
           
           // Compute BesselY function
-          var result = Bessely(0, 2.5);
+          var result = BesselY(0, 2.5);
           
           // Print result
           Console.WriteLine(result);
@@ -404,7 +404,7 @@ BesselY
           using static SepalSolver.Math;
           
           // Compute BesselY function
-          var result = Bessely(1, 2.0);
+          var result = BesselY(1, 2.0);
           Console.WriteLine(result);
 
       Output: 
@@ -425,7 +425,7 @@ BesselY
           
           // Compute bessely function
           ColVec x = Linspace(0, 10);
-          Matrix y = Enumerable.Range(0, 10).Select(i=>Bessely(i, x)).ToList();
+          Matrix y = Enumerable.Range(0, 10).Select(i=>BesselY(i, x)).ToList();
           
          // Plot result
          Plot(x, y); Xlabel("x-axis"); Ylabel("y-axis"); Title("Bessel function I");
@@ -433,11 +433,102 @@ BesselY
 
       Output: 
 
-       // .. figure:: images/BesselfunctionPlotY.png
-       .. figure:: images/BesselY-Functions.png
+       .. figure:: images/BesselfunctionPlotY.png
           :align: center
-       //   :alt: BesselfunctionPlotY.png
-          :alt: BesselY-Functions.png
+          :alt: BesselfunctionPlotY.png
+
+
+
+
+BesselK
+=======
+   Description: 
+       Computes the Bessel function of the second kind Kₙ(x).
+       This method evaluates the Weber or Neumann Bessel function of the first kind for a given order and value.
+
+       .. math::
+          Y_n(x)
+
+       .. code-block:: CSharp 
+
+          double BesselK(int i, double x)
+          Complex BesselK(int i, Complex x)
+          Matrix BesselK(int i, Matrix x)
+          ColVec BesselK(int i, ColVec x)
+          RowVec BesselK(int i, RowVec x)
+          SparseMatrix BesselK(int i, SparseMatrix x)
+          SparseColVec BesselK(int i, SparseColVec x)
+          SparseRowVec BesselK(int i, SparseRowVec x)
+   Param: 
+      | i:  The order of the Bessel function.
+      | x:  The value at which to evaluate the Bessel function.
+   Returns: 
+       The value of the Bessel function of the second kind at the given order and value (must be positive).
+   Example: 
+       Compute the Bessel function of the first kind for order 0 and value 2.5
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute BesselK function
+          var result = BesselK(0, 2.5);
+          
+          // Print result
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          0.0623475532
+   Example: 
+       Compute the Bessel function of the first kind for order 1 and value 2.0
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute BesselK function
+          var result = BesselK(1, 2.0);
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          0.1398658818
+   Example: 
+       Compute the Bessel function of the second kind for order 1 and value 2.0
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute BesselK function
+          ColVec x = Linspace(0, 10);
+          Matrix y = Enumerable.Range(0, 10).Select(i=>BesselK(i, x)).ToList();
+          
+         // Plot result
+         Plot(x, y); Xlabel("x-axis"); Ylabel("y-axis"); Title("Bessel function K");
+         
+
+      Output: 
+
+       .. figure:: images/BesselfunctionPlotKwww.png
+          :align: center
+          :alt: BesselfunctionPlotKwww.png
 
 
 
