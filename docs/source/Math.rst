@@ -100,7 +100,7 @@ Meshgrid
 ReadMatrix
 ==========
    Description: 
-       Reads a two-dimensional integer matrix from a file.
+       Reads a two-dimensional elements in matrix from a file.
        This method loads space-separated integers from each line of the specified file and constructs a matrix representation.
 
        .. code-block:: CSharp 
@@ -140,6 +140,247 @@ ReadMatrix
           1 2 3  
           4 5 6  
           7 8 9
+
+
+ReadRowVec
+==========
+   Description: 
+       Reads a row vector of numbers from a file.
+       This method parses a single line of space-separated values from the specified file and constructs a one-dimensional matrix representation.
+
+       .. code-block:: CSharp 
+
+          RowVec ReadRowVec(string filename)
+   Param: 
+      | filename:  The path to the input file containing the row vector data.
+   Returns: 
+       A one-dimensional matrix representing the row vector read from the file.
+   Example: 
+       Read a row vector from a file named "vector.txt":
+
+       .. code-block:: CSharp 
+
+      .     // import libraries 
+            using System;
+            using static SepalSolver.Math;
+            
+            string path = "vector.txt";
+      
+          // Load row vector
+          RowVec rowVec = ReadRowVec(path);
+      
+          // Display contents
+          for (int i = 0; i < rowVec.Cols; i++)
+              Console.Write(rowVec[0, i] + " ");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          10 20 30 40
+
+
+ReadColVec
+==========
+   Description: 
+       Reads a column vector of numbers from a file.
+       This method parses multiple lines of input from the specified file, with each line representing a single value in the column vector.
+
+       .. code-block:: CSharp 
+
+          ColVec ReadColVec(string filename)
+   Param: 
+      | filename:  The path to the input file containing the column vector data.
+   Returns: 
+       A one-dimensional matrix representing the column vector read from the file.
+   Example: 
+       Read a column vector from a file named "colvec.txt":
+
+       .. code-block:: CSharp 
+
+      .     // import libraries 
+            using System;
+            using static SepalSolver.Math;
+            
+            string path = "colvec.txt";
+      
+          // Load column vector
+          ColVec colVec = ReadColVec(path);
+      
+          // Display contents
+          for (int i = 0; i < colVec.Rows; i++)
+              Console.WriteLine(colVec[i, 0]);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          11  
+          22  
+          33  
+          44
+
+
+WriteMatrix
+===========
+   Description: 
+       Writes a two-dimensional matrix of integers to a file.
+       This method serializes the matrix in space-separated format, with each row written on a new line in the target file.
+
+       .. code-block:: CSharp 
+
+          void WriteMatrix(Matrix A, string filename)
+   Param: 
+      | A:  The matrix object to be written to the file.
+      | filename:  The path to the output file where the matrix will be saved.
+   Returns: 
+       This method does not return a value (being a void method)
+   Example: 
+       Write a matrix to a file named "output.txt":
+
+       .. code-block:: CSharp 
+
+      .     // import libraries 
+            using System;
+            using static SepalSolver.Math;
+            
+            string path = "output.txt";
+      
+          // Create a matrix
+          Matrix A = new Matrix(2, 3);
+          A[0, 0] = 12; A[0, 1] = 18; A[0, 2] = 3;
+          A[1, 0] = 15; A[1, 1] = 25; A[1, 2] = 30;
+      
+          // Write to file
+          WriteMatrix(A, path);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+       (Contents of "output.txt")
+          12 18 3  
+          15 25 30
+
+
+All
+===
+   Description: 
+       Determines whether all values in a one-dimensional or two-dimensional array are <c>true</c>.
+       This method checks each element in the input array and returns <c>true</c> only if all values are true; otherwise, <c>false</c>.
+
+       .. code-block:: CSharp 
+
+          bool All(bool[] A)
+          bool All(bool[,] A)
+   Param: 
+      | A:  The array of Boolean values to evaluate.
+   Returns: 
+       <c>true</c> if all elements in the array are <c>true</c>; otherwise, <c>false</c>.
+   Example: 
+       Check if all values in a Boolean array are <c>true</c>:
+
+       .. code-block:: CSharp 
+
+      .     // import libraries 
+            using System;
+      
+            using static SepalSolver.Math;
+            bool[] flags = { true, true, true };
+      
+          // Evaluate
+          bool result = All(flags);
+      
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          True
+
+
+Any
+===
+   Description: 
+       Determines whether any value in a one-dimensional or two-dimensional array is <c>true</c>.
+       This method checks each element in the input array and returns <c>true</c> if at least one value is true; otherwise, <c>false</c>.
+
+       .. code-block:: CSharp 
+
+          bool Any(bool[] A)
+          bool Any(bool[,] A)
+   Param: 
+      | A:  The array of Boolean values to evaluate.
+   Returns: 
+       <c>true</c> if at least one element in the array is <c>true</c>; otherwise, <c>false</c>.
+   Example: 
+       Check if any value in an array or matrix is <c>true</c>:
+
+       .. code-block:: CSharp 
+
+      .     // import libraries 
+            using System;
+            using static SepalSolver.Math;
+            
+            bool[] flags = { false, false, true };
+      
+          // Evaluate
+          bool result = Any(flags);
+      
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          True
+
+
+Find
+====
+   Description: 
+       Returns the indices of <c>true</c> values in a Boolean array or matrix, up to a maximum of <c>k</c> matches.
+       This method scans the input array and collects the positions of all values that evaluate to <c>true</c>, up to the specified limit.
+
+       .. code-block:: CSharp 
+
+          Indexer Find(bool[] A, int k = int.MaxValue)
+          Indexer Find(bool[,] A, int k = int.MaxValue)
+   Param: 
+      | A:  The Boolean array to search for matching <c>true</c> entries.
+      | k:  The maximum number of matching indices to return. Defaults to <c>int.MaxValue</c> if not specified.
+   Returns: 
+       An <c>Indexer</c> object representing the indices where the array values are <c>true</c>, up to a maximum of <c>k</c> entries.
+   Example: 
+       Find up to 3 indices where values are <c>true</c>:
+
+       .. code-block:: CSharp 
+
+      .     // import libraries 
+            using System;
+      
+            using static SepalSolver.Math;
+            bool[] mask = { false, true, false, true, true, true };
+      
+          // Find first 3 matching indices
+          Indexer result = Find(mask, 3);
+      
+          // Display result
+          foreach (int i in result)
+              Console.Write(i + " ");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1 3 4
 
 
 Reshape
