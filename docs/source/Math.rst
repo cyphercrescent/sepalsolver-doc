@@ -160,11 +160,11 @@ ReadRowVec
 
        .. code-block:: CSharp 
 
-      .     // import libraries 
-            using System;
-            using static SepalSolver.Math;
+      .   // import libraries 
+          using System;
+          using static SepalSolver.Math;
             
-            string path = "vector.txt";
+          string path = "vector.txt";
       
           // Load row vector
           RowVec rowVec = ReadRowVec(path);
@@ -199,16 +199,16 @@ ReadColVec
 
        .. code-block:: CSharp 
 
-      .     // import libraries 
-            using System;
-            using static SepalSolver.Math;
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
             
-            string path = "colvec.txt";
+          string path = "colvec.txt";
       
           // Load column vector
           ColVec colVec = ReadColVec(path);
       
-          // Display contents
+          // Output result
           for (int i = 0; i < colVec.Rows; i++)
               Console.WriteLine(colVec[i, 0]);
 
@@ -238,20 +238,18 @@ WriteMatrix
    Returns: 
        This method does not return a value (being a void method)
    Example: 
-       Write a matrix to a file named "output.txt":
+       Write a matrix to a file named "matrixA.txt":
 
        .. code-block:: CSharp 
 
-      .     // import libraries 
-            using System;
-            using static SepalSolver.Math;
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
             
-            string path = "output.txt";
+          string path = "matrixA.txt";
       
           // Create a matrix
-          Matrix A = new Matrix(2, 3);
-          A[0, 0] = 12; A[0, 1] = 18; A[0, 2] = 3;
-          A[1, 0] = 15; A[1, 1] = 25; A[1, 2] = 30;
+          Matrix A = new double[,]{{12, 18, 3}, {15, 25, 30}};
       
           // Write to file
           WriteMatrix(A, path);
@@ -261,7 +259,7 @@ WriteMatrix
 
        .. code-block:: Terminal 
 
-       (Contents of "output.txt")
+       (Contents of "matrixA.txt")
           12 18 3  
           15 25 30
 
@@ -269,8 +267,8 @@ WriteMatrix
 All
 ===
    Description: 
-       Determines whether all values in a one-dimensional or two-dimensional array are <c>true</c>.
-       This method checks each element in the input array and returns <c>true</c> only if all values are true; otherwise, <c>false</c>.
+       Determines whether all values in a one-dimensional or two-dimensional array are true.
+       This method checks each element in the input array and returns true only if all values are true; otherwise, false.
 
        .. code-block:: CSharp 
 
@@ -279,17 +277,17 @@ All
    Param: 
       | A:  The array of Boolean values to evaluate.
    Returns: 
-       <c>true</c> if all elements in the array are <c>true</c>; otherwise, <c>false</c>.
+       True, if all elements in the array are true; otherwise, false.
    Example: 
-       Check if all values in a Boolean array are <c>true</c>:
+       Check if all values in a Boolean array or matrix are true:
 
        .. code-block:: CSharp 
 
-      .     // import libraries 
-            using System;
-      
-            using static SepalSolver.Math;
-            bool[] flags = { true, true, true };
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+          
+          bool[] flags = { true, true, true };
       
           // Evaluate
           bool result = All(flags);
@@ -307,8 +305,8 @@ All
 Any
 ===
    Description: 
-       Determines whether any value in a one-dimensional or two-dimensional array is <c>true</c>.
-       This method checks each element in the input array and returns <c>true</c> if at least one value is true; otherwise, <c>false</c>.
+       Determines whether any value in a one-dimensional or two-dimensional array is true.
+       This method checks each element in the input array and returns true if at least one value is true; otherwise, false.
 
        .. code-block:: CSharp 
 
@@ -317,17 +315,17 @@ Any
    Param: 
       | A:  The array of Boolean values to evaluate.
    Returns: 
-       <c>true</c> if at least one element in the array is <c>true</c>; otherwise, <c>false</c>.
+       True, if at least one element in the array is true; otherwise, false.
    Example: 
-       Check if any value in an array or matrix is <c>true</c>:
+       Check if any value in an array or matrix is true
 
        .. code-block:: CSharp 
 
-      .     // import libraries 
-            using System;
-            using static SepalSolver.Math;
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
             
-            bool[] flags = { false, false, true };
+          bool[] flags = { false, false, true };
       
           // Evaluate
           bool result = Any(flags);
@@ -345,28 +343,28 @@ Any
 Find
 ====
    Description: 
-       Returns the indices of <c>true</c> values in a Boolean array or matrix, up to a maximum of <c>k</c> matches.
-       This method scans the input array and collects the positions of all values that evaluate to <c>true</c>, up to the specified limit.
+       Returns the indices of true values in a Boolean array or matrix, up to a maximum of k matches.
+       This method scans the input array and collects the positions of all values that evaluate to true, up to the specified limit.
 
        .. code-block:: CSharp 
 
           Indexer Find(bool[] A, int k = int.MaxValue)
           Indexer Find(bool[,] A, int k = int.MaxValue)
    Param: 
-      | A:  The Boolean array to search for matching <c>true</c> entries.
-      | k:  The maximum number of matching indices to return. Defaults to <c>int.MaxValue</c> if not specified.
+      | A:  The Boolean array to search for matching true entries.
+      | k:  The maximum number of matching indices to return. Defaults to int.MaxValue if not specified.
    Returns: 
-       An <c>Indexer</c> object representing the indices where the array values are <c>true</c>, up to a maximum of <c>k</c> entries.
+       An Indexer object representing the index where the array values are true, up to a maximum of k entries.
    Example: 
-       Find up to 3 indices where values are <c>true</c>:
+       Find up to 3 indices where values are true:
 
        .. code-block:: CSharp 
 
-      .     // import libraries 
-            using System;
-      
-            using static SepalSolver.Math;
-            bool[] mask = { false, true, false, true, true, true };
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+          
+          bool[] mask = { false, true, false, true, true, true };
       
           // Find first 3 matching indices
           Indexer result = Find(mask, 3);
