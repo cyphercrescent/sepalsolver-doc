@@ -46,6 +46,102 @@ Hist
           Bin Centers: 0.25344698280706046, 0.7530616086946283, 1.2526762345821962, 1.7522908604697642, 2.251905486357332, 2.7515201122449, 3.251134738132468, 3.750749364020036, 4.250363989907604, 4.749978615795172, 5.2495932416827396, 5.749207867570307, 6.248822493457875, 6.748437119345443, 7.248051745233011, 7.747666371120578, 8.247280997008145, 8.746895622895714, 9.24651024878328, 9.74612487467085
 
 
+Meshgrid
+========
+   Description: 
+       Generates coordinate matrices from coordinate vectors.
+       This method creates two 2D arrays representing all pairs of x and y coordinates from the input vectors, which is often used for evaluating functions over a grid.
+
+       .. code-block:: CSharp 
+
+          (Matrix X, Matrix Y) Meshgrid(ColVec x, ColVec y)
+          (Matrix X, Matrix Y) Meshgrid(ColVec x)
+   Param: 
+      | x:  The vector representing X-axis values.
+      | y:  The vector representing Y-axis values.
+   Returns: 
+       A tuple of two 2D arrays:
+       - The first array contains copies of the x vector arranged in rows.
+       - The second array contains copies of the y vector arranged in columns.
+   Example: 
+       Generate a 2D grid from x = [1, 2, 3] and y = [10, 20]
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using static SepalSolver.Math
+      
+          // Define input vectors
+          ColVec x =new double[]{ 1, 2, 3 };
+          ColVec y = new double[] { 10, 20 };
+      
+          // Call meshgrid function
+          var (X, Y) = Meshgrid(x, y);
+      
+          // Print result
+          for (int i = 0; i < Y.Numel; i++) {
+              for (int j = 0; j < X.Numel; j++) {
+                  Console.Write($"({X[i,j]},{Y[i,j]}) ");
+              }
+              Console.WriteLine();
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          (1,10) (1,20) 
+          (2,10) (2,20)
+          (3,10) (3,20)
+
+
+ReadMatrix
+==========
+   Description: 
+       Reads a two-dimensional integer matrix from a file.
+       This method loads space-separated integers from each line of the specified file and constructs a matrix representation.
+
+       .. code-block:: CSharp 
+
+          Matrix ReadMatrix(string filename)
+   Param: 
+      | filename:  The path to the input file containing the matrix data.
+   Returns: 
+       A two-dimensional integer array containing the values read from the file.
+   Example: 
+       Read a matrix from a file named "matrix.txt":
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using static SepalSolver.Math
+       
+          string path = "matrix.txt";
+      
+          // Load matrix
+          Matrix matrix = ReadMatrix(path);
+      
+          // Display contents
+          for (int i = 0; i < matrix.Rows; i++)
+          {
+              for (int j = 0; j < matrix.Cols; j++)
+                  Console.Write(matrix[i, j] + " ");
+              Console.WriteLine();
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1 2 3  
+          4 5 6  
+          7 8 9
+
+
 Reshape
 =======
    Description: 
