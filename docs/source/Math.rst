@@ -400,7 +400,7 @@ DivRem
 
        .. code-block:: CSharp 
 
-      .   // import libraries 
+          // import libraries 
           using System;
           using static SepalSolver.Math;
       
@@ -437,7 +437,7 @@ Num2Str
 
        .. code-block:: CSharp 
 
-      .   // import libraries 
+          // import libraries 
           using System;
           using static SepalSolver.Math;
       
@@ -479,15 +479,15 @@ Arrayfun
 
        .. code-block:: CSharp 
 
-      .   // import libraries 
+          // import libraries 
           using System;
           using static SepalSolver.Math;
            
           // Create column vector
-          ColVec vec = new double[] { 1.0, 4.0, 9.0, 25.0 };
+          ColVec vec = new double[] { 1.0, 9.0, 16 64.0 };
       
           // Apply transformation
-          ColVec result = Arrayfun(Math.Sqrt, vec);
+          ColVec result = Arrayfun(Sqrt, vec);
       
           // Display result
           for (int i = 0; i < result.Rows; i++)
@@ -663,6 +663,99 @@ Abs
        .. code-block:: Terminal 
 
           5
+
+
+Zeros
+=====
+   Description: 
+       Generates a one-dimensional  0r two-dimensional array of zeros with specified dimensions.
+       This method creates a vector of M rows or matrix of M rows and N columns, where every element is initialized to zero.
+
+       .. code-block:: CSharp 
+
+          double[] Zeros(int N)
+          double[,] Zeros(int M, int N)
+          double[,] Zeros(int[] S)
+   Param: 
+      | M:  The number of rows in the resulting matrix.
+      | N:  The number of columns in the resulting matrix.
+      | S:  The number of equal columns and rows in the resulting matrix.
+   Returns: 
+       An array of vector of size M or matrix of size M by N filled with zeros.
+   Example: 
+       Create a 3x4 matrix of zeros:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+          
+          // Generate 4 by 3 matrix 
+          double[,] zeros = Zeros(3, 4);
+      
+          // Display matrix
+          for (int i = 0; i < zeros.Rows; i++)
+          {
+              for (int j = 0; j < zeros.Cols; j++)
+                  Console.Write(zeros[i, j] + " ");
+              Console.WriteLine();
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          0 0 0 0  
+          0 0 0 0  
+          0 0 0 0
+
+
+Ones
+====
+   Description: 
+       Generates a two-dimensional array of ones with specified dimensions.
+       This method creates a matrix of M rows and N columns, where every element is initialized to 1.0.
+
+       .. code-block:: CSharp 
+
+          double[] Ones(int M)
+          double[,] Ones(int M, int N)
+          double[,] Ones(int[] S) 
+   Param: 
+      | M:  The number of rows in the resulting matrix.
+      | N:  The number of columns in the resulting matrix.
+      | S:  Array of integer rows and columns in the resulting matrix.
+   Returns: 
+       An array of vector of size M or matrix of size M by N filled with ones.
+   Example: 
+       Create a 2x3 matrix of ones:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+            
+          //Generate Matrix 2 by 3 with all the element has 1.0
+          double[,] ones = Ones(2, 3);
+      
+          // Display matrix
+          for (int i = 0; i < ones.Rows; i++)
+          {
+              for (int j = 0; j < ones.Cols; j++)
+                  Console.Write(ones[i, j] + " ");
+              Console.WriteLine();
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1 1 1  
+          1 1 1
 
 
 BesselJ
