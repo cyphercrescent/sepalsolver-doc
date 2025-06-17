@@ -758,6 +758,55 @@ Ones
           1 1 1
 
 
+Repmat
+======
+   Description: 
+       Replicates a scalar value across a one-dimensional array or two-dimensional matrix of specified size.
+       This method returns a vector of size M or matrix of size M x N in which every element is initialized to the scalar value <c>A</c>.
+
+       .. code-block:: CSharp 
+
+          double[] Repmat(double A, int M)
+          double[,] Repmat(double A, int M, int N)
+          double[,] Repmat(double A, int[] S)
+          Matrix Repmat(Matrix A, int M, int N)
+          Matrix Repmat(Matrix A, int[] S)
+   Param: 
+      | A:  The scalar value or matrix to replicate.
+      | M:  The number of rows in the resulting matrix.
+      | N:  The number of columns in the resulting matrix.
+      | S:  Array of integer rows and columns in the resulting matrix.
+   Returns: 
+       A matrix of dimensions M x N where all values are equal to A.
+   Example: 
+       Create a 2x4 matrix filled with the value 3.14:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+          
+          // Replicate all elements of a matrix same.
+          double[,] replicated = Repmat(3.14, 2, 4);
+      
+          // Display matrix
+          for (int i = 0; i < replicated.Rows; i++)
+          {
+              for (int j = 0; j < replicated.Cols; j++)
+                  Console.Write(replicated[i, j] + " ");
+              Console.WriteLine();
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          3.14 3.14 3.14 3.14  
+          3.14 3.14 3.14 3.14
+
+
 BesselJ
 =======
    Description: 
