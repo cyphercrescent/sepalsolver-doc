@@ -381,6 +381,129 @@ Find
           1 3 4
 
 
+DivRem
+======
+   Description: 
+       Computes the quotient and remainder of integer division.
+       This method performs an integer division of a dividend, a by a divisor, b and returns both the quotient and remainder as a tuple.
+
+       .. code-block:: CSharp 
+
+          (int, int) DivRem(int a, int b)
+   Param: 
+      | a:  The dividend—value to be divided.
+      | b:  The divisor—value by which to divide.
+   Returns: 
+       A tuple containing the integer quotient and remainder:(quotient, remainder).
+   Example: 
+       Divide 17 by 5 and get both the quotient and remainder:
+
+       .. code-block:: CSharp 
+
+      .   // import libraries 
+          using System;
+          using static SepalSolver.Math;
+      
+          // Perform division
+          (int q, int r) = DivRem(17, 5);
+      
+          Console.WriteLine($"Quotient: {q}, Remainder: {r}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Quotient: 3, Remainder: 2
+
+
+Num2Str
+=======
+   Description: 
+       Converts a double-precision floating-point number to its string representation.
+       This method transforms the numeric input into a human-readable string format, suitable for display or formatting purposes.
+
+       .. code-block:: CSharp 
+
+          string Num2Str(double num)
+          string Num2Str(int num)
+          string Num2Str(Complex num)
+   Param: 
+      | num:  The <c>double</c> value to be converted.
+   Returns: 
+       A <c>string</c> that represents the given double-precision number.
+   Example: 
+       Convert a double value to a string:
+
+       .. code-block:: CSharp 
+
+      .   // import libraries 
+          using System;
+          using static SepalSolver.Math;
+      
+          double pi = 3.14159;
+          string result = Num2Str(pi);
+      
+          Console.WriteLine($"Pi as string: {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Pi as string: 3.14159
+
+
+Arrayfun
+========
+   Description: 
+       Applies a scalar function to each element of a column vector or row vector or matrix.
+       This method maps a user-defined function across every element in the input array or matrix and produces a transformed array or matrix of the same size.
+
+       .. code-block:: CSharp 
+
+          ColVec Arrayfun(Func&lt;double, double&gt; fun, ColVec X)
+          ColVec Arrayfun(Func<double, double, double> fun, ColVec X, ColVec Y)
+          RowVec Arrayfun(Func<double, double> fun, RowVec X)
+          RowVec Arrayfun(Func<double, double, double> fun, RowVec X, RowVec Y)
+          Matrix Arrayfun(Func<double, double> fun, Matrix X)
+          Matrix Arrayfun(Func<double, double, double> fun, Matrix X, Matrix Y)
+   Param: 
+      | fun:  A unary function that defines how each element should be transformed.
+      | X:  The input column vector or row vector or matrix whose elements will be transformed.
+      | Y:  The second column vector or row vector or matrix of input values.
+   Returns: 
+       A new array or matrix with each element equal to function of inputed values where variable x is the corresponding element in variable X.
+   Example: 
+       Apply the square root function to a column vector:
+
+       .. code-block:: CSharp 
+
+      .   // import libraries 
+          using System;
+          using static SepalSolver.Math;
+           
+          // Create column vector
+          ColVec vec = new double[] { 1.0, 4.0, 9.0, 25.0 };
+      
+          // Apply transformation
+          ColVec result = Arrayfun(Math.Sqrt, vec);
+      
+          // Display result
+          for (int i = 0; i < result.Rows; i++)
+              Console.WriteLine(result[i, 0]);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1  
+          2  
+          3  
+          5
+
+
 Reshape
 =======
    Description: 
