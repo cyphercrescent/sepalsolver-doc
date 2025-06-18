@@ -1124,6 +1124,93 @@ Logspace
           1.00 3.16 10.00 31.62 100.00
 
 
+Interp1
+=======
+   Description: 
+       Performs one-dimensional linear interpolation.
+       This method estimates the output value at a query point <c>x</c> by linearly interpolating between known data points in <c>X</c> and corresponding values in <c>Y</c>.
+
+       .. code-block:: CSharp 
+
+          double Interp1(ColVec X, ColVec Y, double x)
+   Param: 
+      | X:  A column vector containing the known x-coordinates, which must be sorted in ascending order.
+      | Y:  A column vector containing the corresponding y-values.
+      | x:  The x-value at which to evaluate the interpolated result.
+   Returns: 
+       A scalar value representing the linearly interpolated value at the given point x.
+   Example: 
+       Estimate a y-value at x = 1.5 from lookup data using linear interpolation:
+
+       .. math::
+          \begin{array}{rl}
+                &X = 0.0,   1.0,   2.0,   3.0 \\
+                &Y = 0.0,   10.0,  20.0,  30.0 \\   
+          \end{array}
+
+       .. code-block:: CSharp 
+
+      .   // import libraries 
+          using System;
+          using static SepalSolver.Math;
+       
+          ColVec X = new ColVec(new double[] { 0.0, 1.0, 2.0, 3.0 });
+          ColVec Y = new ColVec(new double[] { 0.0, 10.0, 20.0, 30.0 });
+      
+          double x = 1.5;
+          double y = Interp1(X, Y, x);
+      
+          Console.WriteLine($"Interpolated value at x=1.5: {y}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Interpolated value: 15
+
+
+Getcol
+======
+   Description: 
+       Extracts a specified column from a two-dimensional array.
+       This method retrieves the column at index j from the input matrix data and returns it as a one-dimensional array.
+
+       .. code-block:: CSharp 
+
+          double[] Getcol(int j, double[,] data)
+   Param: 
+      | j:  The zero-based index of the column to extract.
+      | data:  The two-dimensional array from which the column will be retrieved.
+   Returns: 
+       An array representing the j_th column of the matrix data.
+   Example: 
+       Extract the first column from a 3x3 matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+      
+          using static SepalSolver.Math;
+          
+          // Create 3 by 3 matrix
+          double[,] matrix = new double[,] {{ 1.0, 2.0, 3.0 },{ 4.0, 5.0, 6.0 }, { 7.0, 8.0, 9.0 }};
+      
+          // Get column 0 (first column)
+          double[] col = Getcol(0, matrix);
+      
+          foreach (double val in col)
+              Console.Write(val + " ");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1 4 7
+
+
 BesselJ
 =======
    Description: 
