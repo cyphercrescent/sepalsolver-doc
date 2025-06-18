@@ -1211,6 +1211,47 @@ Getcol
           1 4 7
 
 
+Getrow
+======
+   Description: 
+       Extracts a specified row from a two-dimensional array.
+       This method retrieves the row at index i from the input matrix data and returns it as a one-dimensional array.
+
+       .. code-block:: CSharp 
+
+          double[] Getrow(int i, double[,] data)
+   Param: 
+      | i:  The index of the row to extract.
+      | data:  The two-dimensional array from which the row will be retrieved.
+   Returns: 
+       An array representing the i-th row of matrix data element.
+   Example: 
+       Extract the third row from a 4x3 matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+          
+          // Create a 4 by 3 matrix
+          double[,] matrix = {{ 1.0, 2.0, 3.0 },{ 4.0, 5.0, 6.0 },{ 7.0, 8.0, 9.0 },{ 10.0, 11.0, 12.0 }};
+      
+          // Get row 2 (third row)
+          double[] row = Getrow(2, matrix);
+          
+          // Output the matrix
+          foreach (double val in row)
+              Console.Write(val + " ");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          7 8 9
+
+
 BesselJ
 =======
    Description: 
