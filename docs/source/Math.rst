@@ -1252,8 +1252,8 @@ Getrow
           7 8 9
 
 
-data)=>J.Select(j
-=================
+=>J.Select(j
+============
    Description: 
        Extracts specified columns from a two-dimensional array using an indexer.
        This method returns a new Matrix containing only the columns of data specified by the I-indexer.
@@ -1508,6 +1508,89 @@ Vcart
           3 4  
           5 6  
           7 8
+
+
+Pow
+===
+   Description: 
+       Raises a scalar number or elements in a vector or matrix to the power of another.
+       This method computes the result of raising x to the power n, returning x^n.
+
+       .. code-block:: CSharp 
+
+          double Pow(double x, double n)
+          Pow(Complex x, double n)
+          Pow(Complex x, double n)
+          SparseMatrix PowTW(SparseMatrix x, double n)
+          SparseColVec PowTW(SparseColVec x, double n)
+          SparseRowVec PowTW(SparseRowVec x, double n)
+   Param: 
+      | x:  The base value.
+      | n:  The exponent value (can be negative, fractional, or zero).
+   Returns: 
+       A value(s) representing x raised to the power n.
+   Example: 
+       Compute 2 raised to the power 3:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+      
+          // Raise 2 to the power of 3
+          double result = Pow(2.0, 3.0);
+          Console.WriteLine($"2³ = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          2³ = 8
+
+
+Diff
+====
+   Description: 
+       Computes the first-order discrete difference of a one-dimensional or two-dimensional array.
+       This method returns a new array where each element is the difference between consecutive elements of the input array X.
+
+       .. code-block:: CSharp 
+
+          double[] Diff(double[] X)
+          ColVec Diff(ColVec X) 
+          RowVec Diff(RowVec X) 
+          double[,] Diff(double[,] X, int dim = 0)
+          Matrix Diff(Matrix X, int dim = 0)
+   Param: 
+      | X:  A one-dimensional or two-dimensional array of double values. Must contain at least two elements.
+   Returns: 
+       A new array of size less than 1 , where each element is the difference X[i+1] - X[i].
+   Example: 
+       Compute differences in a numeric sequence:'[ 1.0, 4.0, 9.0, 16.0]'
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a vector
+          double[] values = new double[] { 1.0, 4.0, 9.0, 16.0 };
+          
+          // Calculate the vector differences 
+          double[] delta = Diff(values);
+      
+          foreach (double d in delta)
+              Console.Write(d + " ");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          3 5 7
 
 
 BesselJ
