@@ -1150,7 +1150,7 @@ Interp1
 
        .. code-block:: CSharp 
 
-      .   // import libraries 
+          // import libraries 
           using System;
           using static SepalSolver.Math;
        
@@ -1250,6 +1250,264 @@ Getrow
        .. code-block:: Terminal 
 
           7 8 9
+
+
+=>J.Select(j
+============
+   Description: 
+       Extracts specified columns from a two-dimensional array using an indexer.
+       This method returns a new Matrix containing only the columns of data specified by the I-indexer.
+
+       .. code-block:: CSharp 
+
+          Matrix Getcols(indexer I, double[,] data)
+   Param: 
+      | I:  An indexer object specifying the zero-based column indices to select.
+      | data:  The two-dimensional array from which columns are extracted.
+   Returns: 
+       A Matrix composed of the selected columns from the input matrix data, in the order defined by I-indexer.
+   Example: 
+       Extract columns 1 and 3 from a 3x4 matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+          
+          // Create a 3 by 4 matrix
+          Matrix matrix = new double[,]{
+              { 10, 20, 30, 40 },
+              { 50, 60, 70, 80 },
+              { 90, 100, 110, 120 }
+          };
+          
+          // Set the matrix index to be extracted
+          indexer I = new indexer(new int[] { 1, 3 }); // select 2nd and 4th columns
+          
+          // Extract the matrix
+          Matrix cols = Getcols(I, matrix);
+          
+          // Output the extracted matrix
+          console.writeline($"The extracted matrix is: {cols}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          20 40  
+          60 80  
+          100 120
+
+
+Getrows
+=======
+   Description: 
+       Extracts specified rows from a two-dimensional array using an indexer.
+       This method returns a new Matrix data composed of the rows from matrix data that correspond to the indices specified by I-indexer.
+
+       .. code-block:: CSharp 
+
+          Matrix Getrows(indexer I, double[,] data)
+   Param: 
+      | I:  An indexer object that specifies the zero-based indices of the rows to extract.
+      | data:  The two-dimensional array from which rows will be selected.
+   Returns: 
+       A Matrix containing the rows of data specified by I-indexer, in the same order.
+   Example: 
+       Extract the 1st and 3rd rows from a 4x3 matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a 4 by 3 matrix
+          Matrix matrix = new double[,] {
+              { 10, 20, 30 },
+              { 40, 50, 60 },
+              { 70, 80, 90 },
+              { 100, 110, 120 }
+          };
+          // Set the matrix index to be extracted
+          indexer I = new indexer(new int[] { 0, 2 }); // first and third rows
+          
+          // Extract the matrix
+          Matrix rows = Getrows(I, matrix);
+      
+          // Output the extracted matrix
+          console.writeline($"The extracted matrix is: {rows}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          10 20 30  
+          70 80 90
+
+
+Hcart
+=====
+   Description: 
+       Horizontally concatenates a scalar with a row vector. Also concatenates a matrix with a matrix. The two matrices must have equal row count.
+       This method concatenate a scalar value to a vector or matrix to a matrix and other combination returning a new vector or matrix with an additional leading element.
+
+       .. code-block:: CSharp 
+
+          RowVec Hcart(double a, RowVec B)
+          RowVec Hcart(RowVec A, double b)
+          RowVec Hcart(RowVec A, RowVec B
+          RowVec Hcart(RowVec A, params RowVec[] RowVecs)
+          Matrix Hcart(Matrix A, Matrix B)
+          Matrix Hcart(Matrix A, params Matrix[] Matrices)
+   Param: 
+      | a, b:  The scalar value to prepend.
+      | A, B:  The input array (row or column vector) or matrix to which a will be prepended.
+   Returns: 
+       A vector or matrix consisting of concatenated values.
+   Example: 
+       Concatenate the value 1.0 to a row vector:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+      
+          // Create a row vector
+          RowVec B = new RowVec(new double[] { 2.0, 3.0, 4.0 });
+          
+          // Concatenate the scaler value and the vector together.
+          RowVec result = Hcart(1.0, B);
+          
+          // Output the result
+          console.writeline($"The concatenated matrix is: {rows}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1 2 3 4
+   Example: 
+       Horizontally concatenate two 2x2 matrices:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+          
+          // Create a 2 by 2 matrix
+          Matrix A = new double[,] {
+              { 1, 2 },
+              { 3, 4 }
+          };
+          
+          // Create a 2 by 2 matrix
+          Matrix B = new double[,] {
+              { 5, 6 },
+              { 7, 8 }
+          };
+          Concatenate the two matrix together
+          Matrix result = Hcart(A, B);
+      
+          // Output the result
+          console.writeline($"The concatenated matrix is: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1 2 5 6  
+          3 4 7 8
+
+
+Vcart
+=====
+   Description: 
+       Vertically concatenates a scalar with a column vector or concatenates a matrix with a matrix. The two matrices must equal column count.
+       concatenate a scalar value to a vector or matrix to a matrix and other combination returning a new vector or matrix with an additional leading element. 
+
+       .. code-block:: CSharp 
+
+          ColVec Vcart(double a, ColVec B)
+          ColVec Vcart(ColVec A, double b)
+          ColVec Vcart(ColVec A, ColVec B)
+          ColVec Vcart(ColVec A, params ColVec[] ColVecs)
+          Matrix Vcart(Matrix A, Matrix B)
+          Matrix Vcart(Matrix A, params Matrix[] Matrices)
+   Param: 
+      | a, b:  The scalar value to be placed at the top or below of the resulting vector.
+      | A, B:  The input column vector or matrix whose elements will appear before or after a.
+   Returns: 
+       A vector or matrix consisting of a followed by the entries of B.
+   Example: 
+       Prepend a scalar to a column vector:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a vector
+          ColVec B = new double[] { 2.0, 3.0, 4.0 };
+          
+          // Concatenate the scalar value and the vector together
+          ColVec result = Vcart(1.0, B);
+      
+          // Output the result
+          console.writeline($"The concatenated matrix is: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1  
+          2  
+          3  
+          4
+   Example: 
+       Vertically concatenate two 2x2 matrices:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Create 2 by 2 matrix
+          Matrix A = new Matrix(new double[,] {
+              { 1, 2 },
+              { 3, 4 }
+          });
+          // Create 2 by 2 matrix
+          Matrix B = new Matrix(new double[,] {
+              { 5, 6 },
+              { 7, 8 }
+          });
+      
+          //Concatenate the two matrices
+          Matrix result = Vcart(A, B);
+      
+          // Output the result
+          console.writeline($"The concatenated matrix is: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1 2  
+          3 4  
+          5 6  
+          7 8
 
 
 BesselJ
