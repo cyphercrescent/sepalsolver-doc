@@ -1252,8 +1252,8 @@ Getrow
           7 8 9
 
 
-=>J.Select(j
-============
+data)=>J.Select(j
+=================
    Description: 
        Extracts specified columns from a two-dimensional array using an indexer.
        This method returns a new Matrix containing only the columns of data specified by the I-indexer.
