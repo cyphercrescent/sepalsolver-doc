@@ -1785,6 +1785,20 @@ PowTW
        .. code-block:: CSharp 
 
           ColVec PowTW(ColVec A, ColVec B)
+          RowVec PowTW(RowVec A, RowVec B)
+          Matrix PowTW(Matrix A, Matrix B)
+          ColVec PowTW(double x, ColVec N)
+          RowVec PowTW(double x, RowVec N)
+          Matrix PowTW(double x, Matrix N)
+          ColVec PowTW(ColVec x, double n)
+          RowVec PowTW(RowVec x, double n)
+          Matrix PowTW(Matrix x, double n)
+          Matrix PowTW(ColVec A, RowVec B)
+          Matrix PowTW(RowVec A, ColVec B)
+          Matrix PowTW(Matrix A, ColVec B)
+          Matrix PowTW(ColVec B, Matrix A)
+          Matrix PowTW(Matrix A, RowVec B)
+          Matrix PowTW(RowVec B, Matrix A)
    Param: 
       | A:  The base vector or matrix.
       | B:  The exponent vector or matrix. Must have the same length as A.
@@ -1989,6 +2003,159 @@ Sqr
        .. code-block:: Terminal 
 
           25
+
+
+Floor
+=====
+   Description: 
+       Returns the largest integer less than or equal to the specified number.
+       This method rounds down to the nearest integer, always moving toward negative infinity regardless of the sign of the input.
+
+       .. code-block:: CSharp 
+
+          double Floor(double x)
+   Param: 
+      | x:  The double-precision floating-point number to floor.
+   Returns: 
+       The largest integer less than or equal to x. If x is already an integer, returns x unchanged.
+   Example: 
+       Floor a positive decimal number:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a positive decimal value
+          double value = 4.7;
+          
+          // Calculate the floor
+          double result = Floor(value);
+      
+          // Output the result
+          console.writeline($"The floor is: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          4
+
+
+Ceil
+====
+   Description: 
+       Returns the smallest integer greater than or equal to the specified number.
+       This method rounds up to the nearest integer, always moving toward positive infinity regardless of the sign of the input.
+
+       .. code-block:: CSharp 
+
+          double Ceil(double x)
+   Param: 
+      | x:  The double-precision floating-point number to ceiling.
+   Returns: 
+       The smallest integer greater than or equal to x. If x is already an integer, returns x unchanged.
+   Example: 
+       Ceiling a positive decimal number:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a positive decimal value
+          double value = 4.2;
+          
+          // Calculate the ceiling
+          double result = Ceil(value);
+      
+          // Output the result
+          console.writeline($"The ceiling is: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          5
+
+
+Max
+===
+   Description: 
+       Returns the larger of two or more real or, floating-point number or maximum among elelments of a vector or matrices.
+       This method compares two integer values and returns the one with the greater value.
+
+       .. code-block:: CSharp 
+
+          int Max(int A, int B)
+   Param: 
+      | A:  The first scalar, array or matrix to compare.
+      | B:  The second scaler, array or matrix to compare.
+   Returns: 
+       The maximum number from two or more given vectors or matrices. If A and B are equal, returns either value.
+   Example: 
+       Find the maximum of two positive integers:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create two integer values
+          int valueA = 15;
+          int valueB = 23;
+          
+          // Find the maximum
+          int result = Max(valueA, valueB);
+      
+          // Output the result
+          console.writeline($"The maximum is: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          23
+   Example: 
+       Find the element-wise maximum of two 2x2 matrices:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create first 2x2 matrix
+          Matrix A = new Matrix(new double[,] {
+              { 1, 8 },
+              { 5, 2 }
+          });
+          
+          // Create second 2x2 matrix
+          Matrix B = new Matrix(new double[,] {
+              { 3, 4 },
+              { 1, 7 }
+          });
+          
+          // Find element-wise maximum
+          Matrix result = Max(A, B);
+      
+          // Output the result
+          console.writeline($"The maximum is: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          3 8
+          5 7
 
 
 BesselJ
