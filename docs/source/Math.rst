@@ -1513,7 +1513,7 @@ Vcart
 Pow
 ===
    Description: 
-       Raises a scalar number or elements in a vector or matrix to the power of another.
+       Raises a real or complex numbers or elements in a vector or matrix to the power of another.
        This method computes the result of raising x to the power n, returning x^n.
 
        .. code-block:: CSharp 
@@ -1591,6 +1591,404 @@ Diff
        .. code-block:: Terminal 
 
           3 5 7
+
+
+MultTW
+======
+   Description: 
+       Performs element-wise (Hadamard) multiplication of two column vectors or multiplication of two matrices. Vector and Matrix A and B must have the same size.
+       This method multiplies corresponding elements of A and B, producing a new vector or matrix of the same length.
+
+       .. code-block:: CSharp 
+
+          ColVec MultTW(ColVec A, ColVec B)
+          RowVec MultTW(RowVec A, RowVec B)
+          Matrix MultTW(Matrix A, Matrix B)
+          Matrix MultTW(ColVec A, RowVec B)
+          Matrix MultTW(RowVec A, ColVec B)
+          Matrix MultTW(Matrix A, ColVec B)
+          Matrix MultTW(ColVec B, Matrix A)
+          Matrix MultTW(Matrix A, RowVec B)
+          Matrix MultTW(RowVec B, Matrix A)
+   Param: 
+      | A:  The first input column vector or matrix.
+      | B:  The second input column vector or matrix, of the same size as A.
+   Returns: 
+       A vector containing the element-wise products A[i] * B[i] or matrix containing the element-wise products A[i,j] * B[i,j]], for all valid indices.
+   Example: 
+       Multiply two 3-element vectors element-wise:
+       .. Math::
+          \begin{array}{rl}
+                &A = [1.0,   2.0,   3.0] \\
+                &B = [4.0,  5.0,  6.0] \\   
+          \end{array}
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Create two column vector A and B
+          ColVec A = new double[] { 1.0, 2.0, 3.0 };
+          ColVec B = new double[] { 4.0, 5.0, 6.0 };
+      
+          // Calculation of element-wise multiplication
+          ColVec result = MultTW(A, B);
+      
+          // Output the result
+          console.writeline($"Multiplication of two column-wise vector: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Multiplication of two column-wise vector:
+          4  
+          10  
+          18
+   Example: 
+       Multiply two 2x2 matrices element-wise:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create Matrix A and Matrix B
+          Matrix A = new double[,] {
+              { 1, 2 },
+              { 3, 4 }
+          };
+      
+          Matrix B = new double[,] {
+              { 5, 6 },
+              { 7, 8 }
+          };
+      
+          // Calculation of element-wise multiplication
+          Matrix result = MultTW(A, B);
+      
+          // Output the result
+          console.writeline($"Multiplication of two Matrix-wise: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Multiplication of two Matrix-wise:
+          5 12  
+          21 32
+
+
+DivTW
+=====
+   Description: 
+       Performs element-wise division of two column vectors or matrices.No element in the divisor vector or matrix should be zero.
+       This method divides each element of column vector or matrix A by the corresponding element in column vector or matrix B, returning a new vector or matrix of the same size.
+
+       .. code-block:: CSharp 
+
+          ColVec DivTW(ColVec A, ColVec B)
+          RowVec DivTW(RowVec A, RowVec B)
+          Matrix DivTW(Matrix A, Matrix B)
+          ColVec DivTW(double a, ColVec B)
+          RowVec DivTW(double a, RowVec B)
+          Matrix DivTW(double a, Matrix B)
+          Matrix DivTW(ColVec A, RowVec B)
+          Matrix DivTW(RowVec A, ColVec B)
+          Matrix DivTW(Matrix A, ColVec B)
+          Matrix DivTW(ColVec B, Matrix A)
+          Matrix DivTW(Matrix A, RowVec B)
+          Matrix DivTW(RowVec B, Matrix A)
+   Param: 
+      | A:  The numerator vector.
+      | B:  The denominator vector. Must be the same size as A. No element of vector or matric B should be zero.
+   Returns: 
+       A vector or matrix containing the element-wise quotients A[i] / B[i] or A[i,j]/B[i,j].
+   Example: 
+       Divide two column vectors element-wise:
+       .. Math::
+          \begin{array}{rl}
+                &A = [10.0,   20.0,   30.0] \\
+                &B = [2.0,  4.0,  5.0] \\   
+          \end{array}
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+          
+          // Create column vector A and vector B
+          ColVec A = new double[] { 10.0, 20.0, 30.0 };
+          ColVec B = new double[] { 2.0, 4.0, 5.0 };
+           
+          // Calculation of element-wise division
+          ColVec result = DivTW(A, B);
+      
+          // Output the result
+          console.writeline($"Division of two column-wise: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          5  
+          5  
+          6
+   Example: 
+       Divide two 2x2 matrices element-wise:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+          
+          //Create matrix A and matrix B
+          Matrix A = new double[,] {
+              { 10, 20 },
+              { 30, 40 }
+          };
+      
+          Matrix B = new double[,] {
+              { 2, 4 },
+              { 5, 10 }
+          };
+          
+          // Calculation of element-wise division
+          Matrix result = DivTW(A, B);
+      
+          // Output the result
+          console.writeline($"Division of two matrix-wise: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          5 5  
+          6 4
+
+
+PowTW
+=====
+   Description: 
+       Performs element-wise exponentiation of two column vectors or matrices.
+       This method raises each element of vector or matrix A to the corresponding power in vector or matrix B, producing a new vector or matrix. The size of vector or matrix A and B must be the same.
+
+       .. code-block:: CSharp 
+
+          ColVec PowTW(ColVec A, ColVec B)
+   Param: 
+      | A:  The base vector or matrix.
+      | B:  The exponent vector or matrix. Must have the same length as A.
+   Returns: 
+       A vector or matrix containing the element-wise exponentiation
+   Example: 
+       Raise elements of one vector to the powers in another:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+          
+          // Create vector A and vector B
+          ColVec A = new double[] { 2.0, 3.0, 4.0 };
+          ColVec B = new double[] { 3.0, 2.0, 0.5 };
+          
+          // Calculation of element-wise exponent
+          ColVec result = PowTW(A, B);
+      
+          // Output the result
+          console.writeline($"Exponent of two column-wise: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          8  
+          9  
+          2
+   Example: 
+       Raise each element of one 2x2 matrix to the powers in another:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+      
+          // Create matrix A and B
+          Matrix A = new double[,] {
+              { 2.0, 3.0 },
+              { 4.0, 36.0 }
+          };
+      
+          Matrix B = new double[,] {
+              { 3.0, 2.0 },
+              { 1.0, 0.5 }
+          };
+          
+          // Calculation of element-wise exponent
+          Matrix result = PowTW(A, B);
+      
+          // Output the result
+          console.writeline($"Exponent of two matrix-wise: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          8 9  
+          4 6
+
+
+Round
+=====
+   Description: 
+       Rounds a floating-point number or complex number or each element in a vector or matrix to a specified number of decimal places.
+       This method returns a double value rounded to the nearest number with the specified number of decimal places using standard rounding rules (round half to even).
+
+       .. code-block:: CSharp 
+
+          double Round(double x, int decP = 0)
+          Complex Round(Complex c, int decP = 0)
+          Matrix Round(Matrix x, int decP = 0)
+          ColVec Round(ColVec x, int decP = 0)
+          RowVec Round(RowVec x, int decP = 0)
+          SparseMatrix Round(SparseMatrix x, int decP = 0)
+          SparseColVec Round(SparseColVec x, int decP = 0)
+          SparseRowVec Round(SparseRowVec x, int decP = 0)
+   Param: 
+      | x:  The double-precision floating-point number or complex number or each element in a vector or matrix to be rounded.
+      | decP:  The number of decimal places to round to. Default is 0 (rounds to nearest integer). Must be between 0 and 15.
+   Returns: 
+       A double value rounded to the specified number of decimal places.
+   Example: 
+       Round a number, 3.14159 to the nearest integer:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a double value
+          double value = 3.14159;
+          
+          // Round to nearest integer (default behavior)
+          double result = Round(value, 0);
+      
+          // Output the result
+          console.writeline($"The rounded value is: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          3
+
+
+Sqrt
+====
+   Description: 
+       Calculates the square root of a specified number.
+       This method returns the positive square root of the input value. For negative inputs, the result is NaN (Not a Number).
+
+       .. code-block:: CSharp 
+
+          double Sqrt(double x)
+          Complex Sqrt(Complex x)
+          Matrix Sqrt(Matrix x)
+          ColVec Sqrt(ColVec x)
+          RowVec Sqrt(RowVec x)
+          SparseMatrix Sqrt(SparseMatrix x)
+          SparseColVec Sqrt(SparseColVec x)
+          SparseRowVec Sqrt(SparseRowVec x)
+   Param: 
+      | x:  The number whose square root is to be calculated. Must be non-negative for real results.
+   Returns: 
+       The positive square root of x. Returns NaN if x is negative, and positive infinity if x is positive infinity.
+   Example: 
+       Calculate the square root of a positive number, 25:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a double value
+          double value = 25.0;
+          
+          // Calculate the square root
+          double result = Sqrt(value);
+      
+          // Output the result
+          console.writeline($"The square root is: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          5
+
+
+Sqr
+===
+   Description: 
+       Calculates the square of a specified number.
+       This method returns the result of multiplying the input value by itself (x * x).
+
+       .. code-block:: CSharp 
+
+          double Sqr(double x)
+          Complex Sqr(Complex x)
+          Matrix Sqr(Matrix x)
+          ColVec Sqr(ColVec x)
+          RowVec Sqr(RowVec x)
+          SparseMatrix Sqr(SparseMatrix x)
+          SparseColVec Sqr(SparseColVec x)
+          SparseRowVec Sqr(SparseRowVec x)
+   Param: 
+      | x:  The number to be squared.
+   Returns: 
+       The square of x (x * x). Returns positive infinity if the result overflows.
+   Example: 
+       Calculate the square of a positive number:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a double value
+          double value = 5.0;
+          
+          // Calculate the square
+          double result = Sqr(value);
+      
+          // Output the result
+          console.writeline($"The square is: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          25
 
 
 BesselJ
