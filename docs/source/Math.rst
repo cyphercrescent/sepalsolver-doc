@@ -2577,7 +2577,6 @@ Cosh
    Returns: 
        A double representing the hyperbolic cosine of x, always greater than or equal to 1.
        Returns PositiveInfinity if x is PositiveInfinity or NegativeInfinity.
-       Returns NaN if x is NaN.
    Example: 
        Calculate the hyperbolic cosine of a positive value:
 
@@ -2610,16 +2609,28 @@ Tanh
 ====
    Description: 
        Computes the hyperbolic tangent of a given value.
+       The hyperbolic tangent is defined as (e^x - e^(-x)) / (e^x + e^(-x)) and maps any real number to the range (-1, 1).
+
+       .. code-block:: CSharp 
+
+          double Tanh(double x)
+          Complex Tanh(Complex x)
+          Matrix Tanh(Matrix x)
+          ColVec Tanh(ColVec x)
+          RowVec Tanh(RowVec x)
+          SparseMatrix Tanh(SparseMatrix x)
+          SparseColVec Tanh(SparseColVec x)
+          SparseRowVec Atanh(SparseRowVec x)   
    Param: 
       | x:  A double-precision floating-point number representing the value for which to calculate the hyperbolic tangent.
    Returns: 
-       The hyperbolic tangent of qn input value.
-   Remark: 
-      |  The hyperbolic tangent is defined as (e^x - e^(-x)) / (e^x + e^(-x)) and maps any real number to the range (-1, 1).
-      |  Useful in various mathematical computations and commonly appears in machine learning and signal processing contexts.
+       The hyperbolic tangent of a number.
    Example: 
-       <code>
-          // Import required namespaces
+       Evaluate hyperbolic tangent of the number, 1
+
+       .. code-block:: CSharp 
+
+          // import libraries
           using System;
           using static SepalSolver.Math;
            
@@ -2628,7 +2639,6 @@ Tanh
            
           // Output the result
           Console.WriteLine($"Tanh(1.0) = {result}");
-       </code>
 
       Output: 
 
@@ -2636,6 +2646,223 @@ Tanh
        .. code-block:: Terminal 
 
           Tanh(1.0) = 0.7615941559557649
+
+
+Atanh
+=====
+   Description: 
+       Calculates the inverse hyperbolic tangent (area hyperbolic tangent) of a specified value.
+       The inverse hyperbolic tangent is defined as 0.5 * ln((1 + x) / (1 - x)).
+       The function is undefined for values less than or equal to -1 and greater than or equal to 1.
+
+       .. code-block:: CSharp 
+
+          double Atanh(double x)
+          Complex Atanh(Complex x)
+          Matrix Atanh(Matrix x)
+          ColVec Atanh(ColVec x)
+          RowVec Atanh(RowVec x)
+          SparseMatrix Atanh(SparseMatrix x)
+          SparseColVec Atanh(SparseColVec x)
+          SparseRowVec Atanh(SparseRowVec x)
+   Param: 
+      | x:  A double-precision floating-point number in the range (-1, 1), representing the value for which to compute the inverse hyperbolic tangent.
+   Returns: 
+       The inverse hyperbolic tangent of <paramref name="x"/>.
+   Example: 
+       Evaluate the inverse hyperbolic tangent of the number, 0.5.
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Compute the inverse hyperbolic tangent of a number
+          double result = Atanh(0.5);
+           
+          // Output the result
+          Console.WriteLine($"Atanh(0.5) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Atanh(0.5) = 0.5493061443340549
+
+
+Exp
+===
+   Description: 
+       Computes the exponential function of the specified value.
+       The exponential function is defined as e^x, where e is approximately 2.71828.
+
+       .. code-block:: CSharp 
+
+          double Exp(double x)
+          Complex Exp(Complex x)
+          Matrix Exp(Matrix x)
+          ColVec Exp(ColVec x)
+          RowVec Exp(RowVec x)
+          SparseMatrix Exp(SparseMatrix x)
+          SparseColVec Exp(SparseColVec x)
+          SparseRowVec Exp(SparseRowVec x)
+   Param: 
+      | x:  A double-precision floating-point number representing the power to raise Euler's number (e) to.
+   Returns: 
+       The exponential of a number, i.e., e raised to the power x.
+   Example: 
+       Evaluate the exponential value of number, 2.
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Compute the exponential of a number
+          double result = Exp(2.0);
+           
+          // Output the result
+          Console.WriteLine($"Exp(2.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Exp(2.0) = 7.38905609893065
+
+
+Log
+===
+   Description: 
+       Calculates the natural (base e) logarithm of a specified value.
+       The natural logarithm is the inverse of the exponential function. 
+
+       .. code-block:: CSharp 
+
+          double Log(double x)
+          Complex Log(Complex x)
+          Matrix Log(Matrix x)
+          ColVec Log(ColVec x)
+          RowVec Log(RowVec x)
+          SparseMatrix Log(SparseMatrix x)
+          SparseColVec Log(SparseColVec x)
+          SparseRowVec Log(SparseRowVec x)
+   Param: 
+      | x:  A one-dimensional or two-dimensional array or double-precision floating-point number greater than zero, representing the value whose logarithm is to be calculated.
+   Returns: 
+       The natural logarithm (ln) of a number.
+   Example: 
+       Evaluate the natural logaraithm of the number, 10
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Compute the natural logarithm of a number
+          double result = Log(10.0);
+           
+          // Output the result
+          Console.WriteLine($"Log(10.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Log(10.0) = 2.302585092994046
+
+
+Log2
+====
+   Description: 
+       Computes the base-2 logarithm of the specified value.
+       This means, to what power must 2 be raised to yield x?"
+
+       .. code-block:: CSharp 
+
+          double Log2(double x)
+          Complex Log2(Complex x)
+          Matrix Log2(Matrix x)
+          ColVec Log2(ColVec x)
+          RowVec Log2(RowVec x)
+          SparseMatrix Log2(SparseMatrix x)
+          SparseColVec Log2(SparseColVec x)
+          SparseRowVec Log2(SparseRowVec x)
+   Param: 
+      | x:  A one-dimensional or two-dimensional array or double-precision floating-point number greater than zero, representing the value whose base-2 logarithm is to be calculated.
+   Returns: 
+       The base-2 logarithm of the number, x.
+   Example: 
+       Evaluate
+       
+
+       .. code-block:: CSharp 
+
+           // import libraries
+           using System;
+           using static SepalSolver.Math;
+           
+           // Compute the base-2 logarithm of a number
+           double result = Log2(16.0);
+           
+           // Output the result
+           Console.WriteLine($"Log2(16.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Log2(16.0) = 4
+
+
+Log10
+=====
+   Description: 
+       Computes the base-10 logarithm of the specified value.
+       It is mean that to what power must 10 be raised to equal number x.  
+
+       .. code-block:: CSharp 
+
+          double Log10(double x)
+          Complex Log10(Complex x)
+          Matrix Log10(Matrix x)
+          ColVec Log10(ColVec x)
+          RowVec Log10(RowVec x)
+          SparseMatrix Log10(SparseMatrix x)
+          SparseColVec Log10(SparseColVec x)
+          SparseRowVec Log10(SparseRowVec x)
+   Param: 
+      | x:  A double-precision floating-point number greater than zero, representing the value whose base-10 logarithm is to be calculated.
+   Returns: 
+       The base-10 logarithm (common logarithm) of the number, x.
+   Example: 
+       Evaluate the logarithm of 1000 to base 10.
+
+       .. code-block:: CSharp 
+
+           // Import required namespaces
+           using System;
+           using static SepalSolver.Math;
+           
+           // Compute the base-10 logarithm of a number
+           double result = Log10(1000.0);
+           
+           // Output the result
+           Console.WriteLine($"Log10(1000.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Log10(1000.0) = 3
 
 
 BesselJ
