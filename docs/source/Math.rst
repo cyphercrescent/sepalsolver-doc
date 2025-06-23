@@ -2092,6 +2092,9 @@ Max
        .. code-block:: CSharp 
 
           int Max(int A, int B)
+          Max(double A, double B)
+          Complex Max(Complex A, Complex B)
+          Complex Max(Complex A, Complex B)
    Param: 
       | A:  The first scalar, array or matrix to compare.
       | B:  The second scaler, array or matrix to compare.
@@ -2156,6 +2159,350 @@ Max
 
           3 8
           5 7
+
+
+Min
+===
+   Description: 
+       Returns the smaller of two 32-bit signed integers.
+       This method compares two integer values and returns the one with the lesser value.
+
+       .. code-block:: CSharp 
+
+          int Min(int A, int B)
+          double Min(double A, double B)
+          Complex Min(Complex A, Complex B)
+          Matrix Min(Matrix A, Matrix B)
+          Matrix Min(Matrix A, double b)
+          Matrix Min(double b, Matrix A)
+          ColVec Min(ColVec A, ColVec B)
+          ColVec Min(ColVec A, double b)
+          ColVec Min(double b, ColVec A)
+          RowVec Min(RowVec A, RowVec B)
+          RowVec Min(RowVec A, double b)
+          RowVec Min(double b, RowVec A)
+   Param: 
+      | A:  The first integer to compare.
+      | B:  The second integer to compare.
+   Returns: 
+       The smaller of the two input values. If A and B are equal, returns either value.
+   Example: 
+       Find the minimum of two positive integers:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create two integer values
+          int valueA = 15;
+          int valueB = 23;
+          
+          // Find the minimum
+          int result = Min(valueA, valueB);
+      
+          // Output the result
+          console.writeline($"The minimum is: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          15
+
+
+Sin
+===
+   Description: 
+       Calculates the sine of the specified angle in radians.
+       This method returns the sine of the input angle, where the angle is measured in radians. The result is between -1 and 1.
+
+       .. code-block:: CSharp 
+
+          double Sin(double x)
+          Complex Sin(Complex x)
+          Matrix Sin(Matrix x)
+          ColVec Sin(ColVec x)
+          RowVec Sin(RowVec x)
+          SparseMatrix Sin(SparseMatrix x)
+          SparseColVec Sin(SparseColVec x)
+          SparseRowVec Sin(SparseRowVec x)
+   Param: 
+      | x:  The angle in radians for which to calculate the sine.
+   Returns: 
+       The sine of x, ranging from -1 to 1. Returns  0 if x is positive or negative infinity.
+   Example: 
+       Calculate the sine of common angles:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Calculate sine of π/2 radians (90 degrees)
+          double angle = Pi / 2;
+          double result = Sin(angle);
+          
+          // Output the result
+          console.writeline($"Sin(π/2) = {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Sin(π/2) = 1
+
+
+Asin
+====
+   Description: 
+       Calculates the arcsine (inverse sine) of the specified value.
+       This method returns the angle in radians whose sine is the specified value. The input must be between -1 and 1, and the result is between -π/2 and π/2.
+
+       .. code-block:: CSharp 
+
+          double Asin(double x)
+          Complex Asin(Complex x)
+          Matrix Asin(Matrix x)
+          ColVec Asin(ColVec x)
+          RowVec Asin(RowVec x)
+          SparseMatrix Asin(SparseMatrix x)
+          SparseColVec Asin(SparseColVec x)
+          SparseRowVec Asin(SparseRowVec x)
+   Param: 
+      | x:  The sine value for which to calculate the arcsine. Must be between -1 and 1 inclusive.
+   Returns: 
+       The angle in radians whose sine equals x, ranging from -π/2 to π/2. Returns NaN if x is outside the range [-1, 1].
+   Example: 
+       Calculate the arcsine of common values:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Calculate arcsine of 1 (which should be π/2)
+          double value = 1.0;
+          double result = Asin(value);
+          
+          // Output the result
+          console.writeline($"Asin(1) = {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Asin(1) = 1.5707963267948966
+   Example: 
+       Calculate the arcsine of zero and negative values:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Calculate arcsine of 0 and -1
+          double asinZero = Asin(0);
+          double asinNegativeOne = Asin(-1);
+      
+          // Output the results
+          console.writeline($"Asin(0) = {asinZero}")
+          console.writeline($"Asin(-1) = {asinNegativeOne}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Asin(0) = 0
+          Asin(-1) = -1.5707963267948966
+
+
+Cos
+===
+   Description: 
+       Calculates the cosine of the specified angle in radians.
+       This method returns the cosine of the input angle, where the angle is measured in radians. The result is between -1 and 1.
+
+       .. code-block:: CSharp 
+
+          double Cos(double x)
+          Complex Cos(Complex x)
+          Matrix Cos(Matrix x)
+          ColVec Cos(ColVec x)
+          RowVec Cos(RowVec x)
+          SparseMatrix Cos(SparseMatrix x)
+          SparseColVec Cos(SparseColVec x)
+          SparseRowVec Cos(SparseRowVec x)
+   Param: 
+      | x:  The angle in radians for which to calculate the cosine.
+   Returns: 
+       The cosine of x, ranging from -1 to 1. Returns 0 if x is positive or negative infinity.
+   Example: 
+       Calculate the cosine of common angles:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Calculate cosine of 0 radians (0 degrees)
+          double angle = 0;
+          double result = Cos(angle);
+          
+          // Output the result
+          console.writeline($"Cos(0) = {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Cos(0) = 1
+
+
+Acos
+====
+   Description: 
+       Calculates the arccosine (inverse cosine) of the specified value.
+       This method returns the angle in radians whose cosine is the specified value. The input must be between -1 and 1, and the result is between 0 and π.
+
+       .. code-block:: CSharp 
+
+          double Acos(double x)
+          Complex Acos(Complex x)
+          Matrix Acos(Matrix x)
+          ColVec Acos(ColVec x)
+          RowVec Acos(RowVec x)
+          SparseMatrix Acos(SparseMatrix x)
+          SparseColVec Acos(SparseColVec x)
+          SparseRowVec Acos(SparseRowVec x) 
+   Param: 
+      | x:  The cosine value for which to calculate the arccosine. Must be between -1 and 1 inclusive.
+   Returns: 
+       The angle in radians whose cosine equals x, ranging from 0 to π. Returns NaN if x is outside the range [-1, 1].
+   Example: 
+       Calculate the arccosine of common values:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Calculate arccosine of 1 (which should be 0)
+          double value = 1.0;
+          double result = Acos(value);
+          
+          // Output the result
+          console.writeline($"Acos(1) = {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Acos(1) = 0
+
+
+Tan
+===
+   Description: 
+       Calculates the tangent of the specified angle in radians.
+       This method returns the tangent of the input angle, where the angle is measured in radians. The tangent function has vertical asymptotes at odd multiples of π/2.
+
+       .. code-block:: CSharp 
+
+          double Tan(double x)
+          Complex Tan(Complex x)
+          Matrix Tan(Matrix x)
+          ColVec Tan(ColVec x)
+          RowVec Tan(RowVec x)
+          SparseMatrix Tan(SparseMatrix x)
+          SparseColVec Tan(SparseColVec x)
+          SparseRowVec Tan(SparseRowVec x)
+   Param: 
+      | x:  The angle in radians for which to calculate the tangent.
+   Returns: 
+       The tangent of x. Returns NaN if x is NaN. At odd multiples of π/2, the result approaches positive or negative infinity.
+   Example: 
+       Calculate the tangent of angle pi/3:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Calculate tangent of 0 radians (0 degrees)
+          double angle = pi/3;
+          double result = Tan(angle);
+          
+          // Output the result
+          console.writeline($"Tan(pi/3) = {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Tan(0) = 1.7320508075688772
+
+
+Atan
+====
+   Description: 
+       Computes the arctangent (inverse tangent) of a specified number.
+       This method returns the angle in radians whose tangent is the specified number. The angle is in the range -π/2 to π/2 radians.
+
+       .. code-block:: CSharp 
+
+          double Atan(double x)
+          Complex Atan(Complex x)
+          Matrix Atan(Matrix x)
+          ColVec Atan(ColVec x)
+          RowVec Atan(RowVec x)
+          SparseMatrix Atan(SparseMatrix x)
+          SparseColVec Atan(SparseColVec x)
+          SparseRowVec Atan(SparseRowVec x)
+   Param: 
+      | x:  A number representing a tangent value for which the arctangent is to be computed.
+   Returns: 
+       A double representing the arctangent of x in radians, in the range -π/2 ≤ atan(x) ≤ π/2.
+   Example: 
+       Calculate the arctangent of 1.0:
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the input value
+          double x = 1.0;
+          
+          // Calculate the arctangent
+          double result = Atan(x);
+      
+          // Output the result
+          Console.WriteLine($"Atan({x}) = {result} radians");
+          Console.WriteLine($"Atan({x}) = {result * 180 / Math.PI} degrees");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Atan(1) = 0.7853981633974483 radians
+          Atan(1) = 45 degrees
 
 
 BesselJ
