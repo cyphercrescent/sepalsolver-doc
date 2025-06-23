@@ -2619,15 +2619,15 @@ Tanh
       |  Useful in various mathematical computations and commonly appears in machine learning and signal processing contexts.
    Example: 
        <code>
-           // Import required namespaces
-           using System;
-           using static SepalSolver.Math;
+          // Import required namespaces
+          using System;
+          using static SepalSolver.Math;
            
-           // Compute the hyperbolic tangent of a number
-           double result = Tanh(1.0);
+          // Compute the hyperbolic tangent of a number
+          double result = Tanh(1.0);
            
-           // Output the result
-           Console.WriteLine($"Tanh(1.0) = {result}");
+          // Output the result
+          Console.WriteLine($"Tanh(1.0) = {result}");
        </code>
 
       Output: 
@@ -2635,7 +2635,7 @@ Tanh
 
        .. code-block:: Terminal 
 
-           Tanh(1.0) = 0.7615941559557649
+          Tanh(1.0) = 0.7615941559557649
 
 
 BesselJ
