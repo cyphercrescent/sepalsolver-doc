@@ -2505,6 +2505,139 @@ Atan
           Atan(1) = 45 degrees
 
 
+Sinh
+====
+   Description: 
+       Computes the hyperbolic sine of a specified number.
+       This method returns the hyperbolic sine of x, defined as (e^x - e^(-x))/2. The hyperbolic sine function is an odd function with domain (-∞, +∞) and range (-∞, +∞).
+
+       .. code-block:: CSharp 
+
+          double Sinh(double x)
+          Complex Sinh(Complex x)
+          Matrix Sinh(Matrix x)
+          ColVec Sinh(ColVec x)
+          RowVec Sinh(RowVec x)
+          SparseMatrix Sinh(SparseMatrix x)
+          SparseColVec Sinh(SparseColVec x)
+          SparseRowVec Sinh(SparseRowVec x)
+   Param: 
+      | x:  A number representing the value for which the hyperbolic sine is to be computed.
+   Returns: 
+       A double representing the hyperbolic sine of x.
+       Returns PositiveInfinity if x is PositiveInfinity.
+       Returns NegativeInfinity if x is NegativeInfinity.
+       Returns NaN if x is NaN.
+   Example: 
+       Calculate the hyperbolic sine of a positive value:
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the input value
+          double x = 2.0;
+          
+          // Calculate the hyperbolic sine
+          double result = Sinh(x);
+      
+          // Output the result
+          Console.WriteLine($"Sinh({x}) = {result}");
+          Console.WriteLine($"Verification: (e^{x} - e^(-{x}))/2 = {(Math.Exp(x) - Math.Exp(-x)) / 2}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Sinh(2) = 3.6268604078470186
+          Verification: (e^2 - e^(-2))/2 = 3.6268604078470186
+
+
+Cosh
+====
+   Description: 
+       Computes the hyperbolic cosine of a specified number.
+       This method returns the hyperbolic cosine of x, defined as (e^x + e^(-x))/2. The hyperbolic cosine function is an even function with domain (-∞, +∞) and range [1, +∞).
+
+       .. code-block:: CSharp 
+
+          double Cosh(double x)
+          Complex Cosh(Complex x)
+          Matrix Cosh(Matrix x)
+          ColVec Cosh(ColVec x)
+          RowVec Cosh(RowVec x)
+          SparseMatrix Cosh(SparseMatrix x)
+          SparseColVec Cosh(SparseColVec x)
+          SparseRowVec Cosh(SparseRowVec x)
+   Param: 
+      | x:  A number representing the value for which the hyperbolic cosine is to be computed.
+   Returns: 
+       A double representing the hyperbolic cosine of x, always greater than or equal to 1.
+       Returns PositiveInfinity if x is PositiveInfinity or NegativeInfinity.
+       Returns NaN if x is NaN.
+   Example: 
+       Calculate the hyperbolic cosine of a positive value:
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the input value
+          double x = 1.5;
+          
+          // Calculate the hyperbolic cosine
+          double result = Cosh(x);
+      
+          // Output the result
+          Console.WriteLine($"Cosh({x}) = {result}");
+          Console.WriteLine($"Verification: (e^{x} + e^(-{x}))/2 = {(Math.Exp(x) + Math.Exp(-x)) / 2}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Cosh(1.5) = 2.352409615243247
+          Verification: (e^1.5 + e^(-1.5))/2 = 2.352409615243247
+
+
+Tanh
+====
+   Description: 
+       Computes the hyperbolic tangent of a given value.
+   Param: 
+      | x:  A double-precision floating-point number representing the value for which to calculate the hyperbolic tangent.
+   Returns: 
+       The hyperbolic tangent of qn input value.
+   Remark: 
+      |  The hyperbolic tangent is defined as (e^x - e^(-x)) / (e^x + e^(-x)) and maps any real number to the range (-1, 1).
+      |  Useful in various mathematical computations and commonly appears in machine learning and signal processing contexts.
+   Example: 
+       <code>
+           // Import required namespaces
+           using System;
+           using static SepalSolver.Math;
+           
+           // Compute the hyperbolic tangent of a number
+           double result = Tanh(1.0);
+           
+           // Output the result
+           Console.WriteLine($"Tanh(1.0) = {result}");
+       </code>
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+           Tanh(1.0) = 0.7615941559557649
+
+
 BesselJ
 =======
    Description: 
