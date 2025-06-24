@@ -296,6 +296,7 @@ Fsolve
           double Fsolve(Func<double, double> fun, double x0, Solvers.Set options = null)
           Complex Fsolve(Func<Complex, Complex> fun, Complex x0, Solvers.Set options = null)
           ColVec Fsolve(Func<ColVec, ColVec> fun, ColVec x0, Solvers.Set options = null)
+          ColVec Fsolve(Func<double[], double[]> fun, ColVec x0, Solvers.Set options = null)
    Param: 
       | fun:  The nonlinear function whose root is to be computed. The function can take a double or complex scalar or array values as input and return a scaler or complex or array values.
       | x0:  The initial guess for the root of the function.
@@ -469,12 +470,12 @@ Intlinprog
        
           \begin{array}{rl}
                 Maximize:& \\
-                         & c = 60x1 + 40x2 + 70x3
+                         & c = 60x_1 + 40x_2 + 70x_3
                 Subject to:& \\
-                           & 4x1 + 2x2 + 3x2 \leq 60 \\
-                           & 3x1 + 2x2 + 2x3 \leq 40 \\
-                           & 2x1 + x2 + 4x3 leq 36 \\ 
-                x1, x2, x3 >= 0 and are integers & \\
+                           & 4x_1 + 2x_2 + 3x_2 \leq 60 \\
+                           & 3x_1 + 2x_2 + 2x_3 \leq 40 \\
+                           & 2x_1 + x_2 + 4x_3 leq 36 \\ 
+                           & x_1, x_2, x_3 >= 0 and are integers \\
           \end{array}
 
        .. code-block:: CSharp 
@@ -594,7 +595,7 @@ Fmincon
               Subject~to:& \\
                          & x + y \geq 1 \\
                          & x^2 + y^2 \leq 4 \\
-                         & 0 <= x, y \leq 3 \\
+                         & 0 \leq x, y \leq 3 \\
           \end{array}
 
        .. code-block:: CSharp 
@@ -610,9 +611,9 @@ Fmincon
           }
           
           // Define inequality constraints
-          Colvec constraints (Colvec x)
+          ColVec constraints (ColVec x)
           {
-             new double[]{ -(x[0] + x[1] - 1), // x + y >= 1
+             return new double[]{ -(x[0] + x[1] - 1), // x + y >= 1
               Pow(x[0], 2) + Pow(x[1], 2) - 4 };// x^2 + y^2 <= 4
           };
           
@@ -766,13 +767,7 @@ Lsqcurvefit
 
        .. math::
       
-          \begin{array}
-                    & Y = x_3 * \exp\(x_1t) + x_4 *\exp\(x_2t)\\
-                Given data: & \\
-                    & t= linspace(0, 1) \\
-                    & Ymeasured = fun(x0 = [-4, -5, 4, -4], xdata) + 0.02 * noise\\
-                    & using noise: rand(100)
-          \end{array}
+          y(x, t) = x_3 * \exp(x_1t) + x_4 *\exp(-x_2t) 
        
 
        .. code-block:: CSharp 
@@ -804,51 +799,6 @@ Lsqcurvefit
        .. code-block:: Terminal 
 
           Optimized Parameters:  -3.3736    -5.6652    1.7698    -1.7599
-   Example: 
-       Fits a Gaussian curve to noisy peak data
-
-       .. math::  
-       
-          \begin{array}{rl}
-                    & y = a  \exp\left(\cfrac{-(x - b)^2 }{ (2 c^2)}\right)\\
-                Given data set: & \\
-                    & X\_data = [-3, -2, -1, 0, 1, 2, 3]\\
-                    & Y\_data = [0.1, 0.5, 1.2, 2.0, 1.3, 0.6, 0.2]
-          \end{array}
-
-       .. code-block:: CSharp 
-
-          using System;
-          using SepalSolver;
-      
-          // Create Gaussian peak model: 
-          Func<ColVec, ColVec, ColVec> model = (x, p) =>
-          {
-              return p[0] * ColVec.Exp(-(x - p[1]).Pow(2) / (2 * p[2].Pow(2)));
-          };
-      
-          // Independent variable data points
-          ColVec x_data = new double[] { -3, -2, -1, 0, 1, 2, 3 };
-      
-          // Observed peak data
-          ColVec y_data = new double[] { 0.1, 0.5, 1.2, 2.0, 1.3, 0.6, 0.2 };
-      
-          // Initial guess for parameters
-          ColVec p0 = new double[] { 2, 0, 1 };
-      
-          // Fit the model
-          var (x, exitflag, resnorm, sigma_x, y_hat, sigma_y, history) = Lsqcurvefit(model, p0, x_data, y_data);
-          
-          // Displace the result
-          Console.WriteLine($"Optimized Parameters: {result.x.T}");
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          Optimized Parameters:
-                2.1    -0.1    0.95
 
 
 Ga
@@ -881,8 +831,8 @@ Ga
 
        .. math::
       
-          \begin{array}
-                f(x) = -x_1^2 - x_2^2 + 10
+          \begin{array}{rl}
+                      f(x) = -x_1^2 - x_2^2 + 10
           \end{array}
       
 
@@ -894,7 +844,7 @@ Ga
       
           // Define the objective function
           Func<ColVec, double> objectiveFunc = (x) => 
-               -Math.Pow(x[0], 2) - Math.Pow(x[1], 2) + 10; // Maximization problem
+               -Pow(x[0], 2) - Pow(x[1], 2) + 10; // Maximization problem
       
           // Define bounds
           ColVec lb = new double[] { -5, -5 };
@@ -920,10 +870,10 @@ Ga
        .. math::  
       
           \begin{array}{rl}
-                    & Y = x_3 * \exp(-x_1 t) + x_4 * \exp(-x_2 t) \\
-                Given dataset: & \\
+                    & y(x, t) = x_3 * \exp(-x_1 t) + x_4 * \exp(-x_2 t) \\
+                \text{Given dataset:} & \\
                     & t\_data = [0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1 ] \\
-                    & Y\_data = [ 1.75, 1.5, 1.3, 1.1, 1, 0.83, 0.72, 0.65, 0.55, 0.5] \\
+                    & y\_data = [ 1.75, 1.5, 1.3, 1.1, 1, 0.83, 0.72, 0.65, 0.55, 0.5] \\
           \end{array}
       
 
@@ -934,19 +884,21 @@ Ga
           using SepalSolver;
       
           // Define the nonlinear model
-          Func<ColVec, double> modelFunc = (p) =>
-          {
-              ColVec t = new double[] { 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1};
-              ColVec y = p[2] * ColVec.Exp(-p[0] * t) + p[3] * ColVec.Exp(-p[1] * t);
-              return -ColVec.Sum((y - new double[] { 1.75, 1.5, 1.3, 1.1, 1, 0.83, 0.72, 0.65, 0.55, 0.5 }).Pow(2)); // Least Squares Error
-          };
+          ColVec t = new double[] { 0.1, 0.2, 0.3, 0.4, 0.5, 0.6, 0.7, 0.8, 0.9, 1};
+          ColVec y = new double[]{ 1.75, 1.5, 1.3, 1.1, 1, 0.83, 0.72, 0.65, 0.55, 0.5 }
+          
+          double modelFunc(ColVec x)
+          {   
+              ColVec absdiff = y - (x[2] * Exp(-x[0] * t) + x[3] * Exp(-x[1] * t)); // Minimization Problem
+              return absdiff.SumSq();
+           }
       
           // Define bounds
-          ColVec lb = new double[] { -3, -2, 0, -1 };
-          ColVec ub = new double[] { 5, 5, 5, 5 };
+          ColVec lb = new double[] { -2, 1, -1, 1 };
+          ColVec ub = new double[] { -1, 3, 2, 4 };
       
           // Optimize parameters using GA
-          ColVec optimalParams = Ga(modelFunc, lb, ub);
+          ColVec optimalParams = Ga(modelFunc, y, lb, ub);
       
           // Output results
           Console.WriteLine($"Optimized Parameters: {optimalParams.T}");
@@ -958,7 +910,7 @@ Ga
        .. code-block:: Terminal 
 
           Optimized Parameters:
-                1.59    -1.52    0.01    2.02
+                -1.7982    3.000    -0.0289    2.6850
 
 
 decic
@@ -1367,21 +1319,32 @@ Ode45i
    Description: 
        Solves inmplicit ordinary differential equations (ODE) using Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45i).
    Param: 
-      | fun:  The function that represents the implicit ODE. The function should accept three doubles (time, state, and its derivative) and return a double representing the derivative of the state.
+      | fun:  A function that represents the implicit ODE. 
+            Signature: double fun(double t, double y, double yp);
+                       ColVec fun(double t, ColVec y, ColVec yp);
+               * t: time.
+               * y: state.
+               * yp: derivative of the state.
+               * Returns: the residual of the implicit ODE.
       | initcon:  A tuple containing two elements:
-                   * double y0:  initial state.
-                   * double yp0: initial rate of change.
-      | tspan:  The initial value of the dependent variable (state).
-      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+                   * y0:  initial state.
+                   * yp0: initial rate of change.
+      | tspan:  A two-element array [t0, tf] specifying the time interval for integration.
+      | options:  Optional parameters for the ODE solver, such as:
+                    * RelTol: relative tolerance, 
+                    * AbsTol: absolute tolerance, 
+                    * MaxStep: maximum step size,
+                    * Stats: Statistics toggle. 
+                    Use Odeset(...) to configure
    Returns: 
-       A tuple containing two elements:
-          * ColVec T: A column vector of time points at which the solution was computed.
-          * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
+       A tuple (T, Y) where:
+          * T: Column vector of time points at which the solution was computed.
+          * Y: Matrix of solution values; each row corresponds to the state at the respective time in T.
    Remark: 
       |  This method uses Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45i) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
    Example: 
-        Solve the ODE :math:`~ty^2y'^3 - y^3y'^2 + t(t^2 + 1)y' - t^2y = 0~` with initial condition :math:`~y(0) = \sqrt{1.5}~`.
+        Solve the ODE :math:`~ty^2y'^3 - y^3y'^2 + t(t^2 + 1)y' - t^2y = 0~` with initial condition :math:`~y(1) = \sqrt{1.5}~`.
           
 
        .. code-block:: CSharp 
@@ -1392,14 +1355,18 @@ Ode45i
       
           //define ODE
           static double fun(double t, double y, double yp) =>
-             t* y * y* yp * yp* yp - y* y * y* yp * yp + t* (t* t + 1) * yp - t* t * y;
+             t* y * y* yp * yp* yp - y* y * y* yp * yp + t* (t * t + 1) * yp - t* t * y;
              
           var opts = Odeset(Stats: true);
-          double t0 = 1, y0 = Sqrt(t0 * t0 + 1 / 2.0), yp0 = 0;
+          double t0 = 1, y0 = Sqrt(t0 * t0 + 0.5), yp0 = 0;
           (y0, yp0) = decic(fun, t0, y0, 1, yp0, 0);
           (ColVec T, Matrix Y) = Ode45i(fun, (y0, yp0), [t0, 10], opts);
+          
+          // Compare with exact solution
           ColVec Y_exact = T.Select(t => Sqrt(t * t + 0.5)).ToList();
           Console.WriteLine(Hcart(Y, Y_exact));
+          
+          //Plotting
           Plot(T, Y, "*"); hold = true;
           Plot(T, Y_exact, "-o"); hold = false;
           Title("Implicit differential (weissinger) equation with ODE45i");
@@ -1444,6 +1411,91 @@ Ode45i
 
 |   cref=System.ArgumentNullException is Thrown when the  dydx is null.
 |   cref=System.ArgumentException is Thrown when the  tspan array has less than two elements.
+
+
+Ode45a
+======
+   Description: 
+       Solves semi-explicit differential-algebraic equations (DAEs) of the form M(t, y) * y' = f(t, y)
+       using an adaptive explicit Runge-Kutta method of 4th and 5th order (Ode45a).
+   Param: 
+      | fun:  A function representing the right-hand side of the DAE. 
+            Signature: ColVec fun(double t, ColVec y);
+               * t: time.
+               * y: state.
+               * Returns: right-hand side of the DAE.
+      | Mass:  A function defining the mass matrix M(t, y). This matrix may be time- and state-dependent.
+             Signature: Matrix Mass(double t, ColVec y);
+                * t: time.
+                * y: state.
+                * Returns: the mass of the DAE.
+      | initcon:  An array of doubles representing the initial conditions for the state vector y.
+                The length must match the dimension of the system.
+      | tspan:  A two-element array specifying the time interval for integration: [t0, tf].
+      | options:  Optional parameters for the ODE solver, such as:
+                    * RelTol: relative tolerance, 
+                    * AbsTol: absolute tolerance, 
+                    * MaxStep: maximum step size, 
+                    * Stats: Statistics toggle.
+                    Use Odeset(...) to configure
+   Returns: 
+       A tuple (T, Y) where:
+          * T: Column vector of time points at which the solution was computed.
+          * Y: Matrix of solution values; each row corresponds to the state at the respective time in T.
+   Remark: 
+      |  This method uses Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45i) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
+      |  For best results, the function should be smooth within the integration interval.
+   Example: 
+       Solve the Ascher Linear DAE:
+
+       .. math::
+       
+          \begin{bmatrix} 
+               1 & -t \\  0 & 0            
+          \end{bmatrix} 
+          \begin{bmatrix}
+              y'(t)\\ z'(t)             
+          \end{bmatrix} 
+              =
+          \begin{bmatrix}
+              -1 & 1 + t \\
+              \beta & -1-\beta t              
+          \end{bmatrix}
+          \begin{bmatrix}
+              y(t) \\
+              z(t)
+          \end{bmatrix}
+          +
+          \begin{bmatrix}
+              0\\
+              \sin(t)
+          \end{bmatrix}
+      
+       With initial condition :math:`y(0) = 1, z(0) = \beta`.
+
+       .. code-block:: CSharp 
+
+           using SepalSolver.Math;
+      
+           double beta = 50;
+           ColVec AscherLinear(double t, ColVec y) => new double[]
+           {
+               -y[0] + (1 + t)*y[1],
+               beta*y[0] - (1 + beta*t)*y[1] + Sin(t)
+           };
+      
+           Matrix Mass(double t, ColVec y) => new double[,]{{1, -t}, {0, 0} };
+      
+           double[] y0 = [1, beta], tspan = [0, 2];
+           var opts = Odeset(Stats: true, RelTol: 1e-5);
+           (ColVec T, Matrix Y) = Ode45a(AscherLinear, Mass, y0, tspan, opts);
+           Plot(T, Y);
+           Title("AscherLinearDAE Ode45a");
+           Xlabel("Time t");
+           Ylabel("Solution y");
+           SaveAs(Path + "AscherLinearDAE.png");
+|   cref=System.ArgumentNullException is 
+|   cref=System.ArgumentException is 
 
 
 Polyfit
