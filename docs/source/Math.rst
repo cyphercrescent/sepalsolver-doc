@@ -505,7 +505,7 @@ Intlinprog
                            & 4x_1 + 2x_2 + 3x_2 \leq 60 \\
                            & 3x_1 + 2x_2 + 2x_3 \leq 40 \\
                            & 2x_1 + x_2 + 4x_3 \leq 36 \\ 
-                           & x_1, x_2, x_3 >= 0 \text{and are integers} \\
+                           & x_1, x_2, x_3 >= 0 ~\text{and are integers} \\
           \end{array}
 
        .. code-block:: CSharp 
@@ -1047,17 +1047,28 @@ Ode23
        Solves non stiff ordinary differential equations (ODE) using the Bogacki-Shampine method (Ode23).
    Parameters: 
        dydx: 
-            The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
+            A function that represents the ODE. 
+                    | double dydx(double t, double y);
+                    | ColVec dydx(double t, ColVec y);
+               * t: time.
+               * y: state.
+               * Returns: evaluation of the ODE.
        initcon: 
-               The initial value of the dependent variable (state).
+               An array of doubles representing the initial conditions for the state vector y.
+               The length must match the dimension of the system.
        tspan: 
-             An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+             A two-element array specifying the time interval for integration: [t0, tf].
        options: 
-               Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+               Optional parameters for the ODE solver, such as:
+                   * RelTol: relative tolerance, 
+                   * AbsTol: absolute tolerance, 
+                   * MaxStep: maximum step size, 
+                   * Stats: Statistics toggle.
+                   Use Odeset(...) to configure
    Returns: 
-       A tuple containing two elements:
-          * ColVec T: A column vector of time points at which the solution was computed.
-          * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
+       A tuple (T, Y) where:
+          * T: Column vector of time points at which the solution was computed.
+          * Y: Matrix of solution values; each row corresponds to the state at the respective time in T.
    Remark: 
       |  This method uses the Bogacki-Shampine method (Ode23) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
@@ -1109,17 +1120,28 @@ Ode45
        Solves non stiff ordinary differential equations (ODE) using the Dormand-Prince method (Ode45).
    Parameters: 
        dydx: 
-            The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
+            A function that represents the ODE. 
+                    | double dydx(double t, double y);
+                    | ColVec dydx(double t, ColVec y);
+               * t: time.
+               * y: state.
+               * Returns: evaluation of the ODE.
        initcon: 
-               The initial value of the dependent variable (state).
+               An array of doubles representing the initial conditions for the state vector y.
+               The length must match the dimension of the system.
        tspan: 
-             An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+             A two-element array specifying the time interval for integration: [t0, tf].
        options: 
-               Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+               Optional parameters for the ODE solver, such as:
+                   * RelTol: relative tolerance, 
+                   * AbsTol: absolute tolerance, 
+                   * MaxStep: maximum step size, 
+                   * Stats: Statistics toggle.
+                   Use Odeset(...) to configure
    Returns: 
-       A tuple containing two elements:
-          * ColVec T: A column vector of time points at which the solution was computed.
-          * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
+       A tuple (T, Y) where:
+          * T: Column vector of time points at which the solution was computed.
+          * Y: Matrix of solution values; each row corresponds to the state at the respective time in T.
    Remark: 
       |  This method uses the Dormand-Prince method (Ode45) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
@@ -1171,17 +1193,28 @@ Ode56
        Solves non stiff ordinary differential equations (ODE) using the Jim Verner 5th and 6th order pair method (Ode56).
    Parameters: 
        dydx: 
-            The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
+            A function that represents the ODE. 
+                    | double dydx(double t, double y);
+                    | ColVec dydx(double t, ColVec y);
+               * t: time.
+               * y: state.
+               * Returns: evaluation of the ODE.
        initcon: 
-               The initial value of the dependent variable (state).
+               An array of doubles representing the initial conditions for the state vector y.
+               The length must match the dimension of the system.
        tspan: 
-             An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+             A two-element array specifying the time interval for integration: [t0, tf].
        options: 
-               Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+               Optional parameters for the ODE solver, such as:
+                   * RelTol: relative tolerance, 
+                   * AbsTol: absolute tolerance, 
+                   * MaxStep: maximum step size, 
+                   * Stats: Statistics toggle.
+                   Use Odeset(...) to configure
    Returns: 
-       A tuple containing two elements:
-          * ColVec T: A column vector of time points at which the solution was computed.
-          * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
+       A tuple (T, Y) where:
+          * T: Column vector of time points at which the solution was computed.
+          * Y: Matrix of solution values; each row corresponds to the state at the respective time in T.
    Remark: 
       |  This method uses the Jim Verner 5th and 6th order pair method (Ode56) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
@@ -1233,17 +1266,28 @@ Ode78
        Solves non stiff ordinary differential equations (ODE) using the Jim Verner 7th and 8th order pair method (Ode78).
    Parameters: 
        dydx: 
-            The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
+            A function that represents the ODE. 
+                    | double dydx(double t, double y);
+                    | ColVec dydx(double t, ColVec y);
+               * t: time.
+               * y: state.
+               * Returns: evaluation of the ODE.
        initcon: 
-               The initial value of the dependent variable (state).
+               An array of doubles representing the initial conditions for the state vector y.
+               The length must match the dimension of the system.
        tspan: 
-             An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+             A two-element array specifying the time interval for integration: [t0, tf].
        options: 
-               Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+               Optional parameters for the ODE solver, such as:
+                   * RelTol: relative tolerance, 
+                   * AbsTol: absolute tolerance, 
+                   * MaxStep: maximum step size, 
+                   * Stats: Statistics toggle.
+                   Use Odeset(...) to configure
    Returns: 
-       A tuple containing two elements:
-          * ColVec T: A column vector of time points at which the solution was computed.
-          * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
+       A tuple (T, Y) where:
+          * T: Column vector of time points at which the solution was computed.
+          * Y: Matrix of solution values; each row corresponds to the state at the respective time in T.
    Remark: 
       |  This method uses the Jim Verner 7th and 8th order pair method (Ode78) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
@@ -1295,17 +1339,28 @@ Ode89
        Solves non stiff ordinary differential equations (ODE) using the Jim Verner 8th and 9th order pair method (Ode89).
    Parameters: 
        dydx: 
-            The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
+            A function that represents the ODE. 
+                    | double dydx(double t, double y);
+                    | ColVec dydx(double t, ColVec y);
+               * t: time.
+               * y: state.
+               * Returns: evaluation of the ODE.
        initcon: 
-               The initial value of the dependent variable (state).
+               An array of doubles representing the initial conditions for the state vector y.
+               The length must match the dimension of the system.
        tspan: 
-             An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+             A two-element array specifying the time interval for integration: [t0, tf].
        options: 
-               Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+               Optional parameters for the ODE solver, such as:
+                   * RelTol: relative tolerance, 
+                   * AbsTol: absolute tolerance, 
+                   * MaxStep: maximum step size, 
+                   * Stats: Statistics toggle.
+                   Use Odeset(...) to configure
    Returns: 
-       A tuple containing two elements:
-          * ColVec T: A column vector of time points at which the solution was computed.
-          * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
+       A tuple (T, Y) where:
+          * T: Column vector of time points at which the solution was computed.
+          * Y: Matrix of solution values; each row corresponds to the state at the respective time in T.
    Remark: 
       |  This method uses the Jim Verner 8th and 9th order pair method (Ode89) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
@@ -1357,17 +1412,28 @@ Ode45s
        Solves stiff ordinary differential equations (ODE) using Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45s).
    Parameters: 
        dydx: 
-            The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
+            A function that represents the ODE. 
+                    | double dydx(double t, double y);
+                    | ColVec dydx(double t, ColVec y);
+               * t: time.
+               * y: state.
+               * Returns: evaluation of the ODE.
        initcon: 
-               The initial value of the dependent variable (state).
+               An array of doubles representing the initial conditions for the state vector y.
+               The length must match the dimension of the system.
        tspan: 
-             An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+             A two-element array specifying the time interval for integration: [t0, tf].
        options: 
-               Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+               Optional parameters for the ODE solver, such as:
+                   * RelTol: relative tolerance, 
+                   * AbsTol: absolute tolerance, 
+                   * MaxStep: maximum step size, 
+                   * Stats: Statistics toggle.
+                   Use Odeset(...) to configure
    Returns: 
-       A tuple containing two elements:
-          * ColVec T: A column vector of time points at which the solution was computed.
-          * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
+       A tuple (T, Y) where:
+          * T: Column vector of time points at which the solution was computed.
+          * Y: Matrix of solution values; each row corresponds to the state at the respective time in T.
    Remark: 
       |  This method uses Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45s) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
@@ -1551,7 +1617,7 @@ Ode45a
           * T: Column vector of time points at which the solution was computed.
           * Y: Matrix of solution values; each row corresponds to the state at the respective time in T.
    Remark: 
-      |  This method uses Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45i) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
+      |  This method uses Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45a) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
    Example: 
        Solve the Ascher Linear DAE:
