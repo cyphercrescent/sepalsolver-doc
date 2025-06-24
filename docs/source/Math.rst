@@ -1420,8 +1420,10 @@ Ode45i
    Parameters: 
        fun: 
            A function that represents the implicit ODE. 
-           Signature: double fun(double t, double y, double yp);
+                <code>
+                      double fun(double t, double y, double yp);
                       ColVec fun(double t, ColVec y, ColVec yp);
+                </code>     
               * t: time.
               * y: state.
               * yp: derivative of the state.
