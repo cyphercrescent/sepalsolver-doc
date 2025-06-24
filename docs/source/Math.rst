@@ -11,7 +11,7 @@ Reshape
           Matrix Reshape(double[] data, int[] Size)
           Matrix Reshape(List<double> data, int[] Size)
           Matrix Reshape(Matrix data, int[] Size)
-   Param: 
+   Parameters: 
       | data:  The one-dimensional or multi-dimensional array to be reshaped.
       | Size:  An array containing the dimensions [rows, columns] for the new matrix.
    Returns: 
@@ -68,7 +68,7 @@ Hypot
           Matrix Hypot(Matrix x, RowVec y)
           Matrix Hypot(Matrix x, ColVec y)
           Matrix Hypot(ColVec x, Matrix y)
-   Param: 
+   Parameters: 
       | x:  The length of one side of the triangle.
       | y:  The length of the other side of the triangle.
    Returns: 
@@ -135,7 +135,7 @@ Abs
           SparseColVec Abs(SparseColVec x)
           SparseRowVec Abs(SparseRowVec x)
           SparseMatrix Abs(SparseMatrix x)
-   Param: 
+   Parameters: 
       | x:  The input value for which the absolute value is to be calculated.
    Returns: 
        The absolute value of the input.
@@ -169,7 +169,7 @@ BesselJ
 
        .. math::
           J_i(x)
-   Param: 
+   Parameters: 
       | i:  The order of the Bessel function.
       | x:  The value at which to evaluate the Bessel function.
    Returns: 
@@ -254,7 +254,7 @@ Fzero
           double Fzero(Func<double, double> fun, double x0)
           double Fzero(Func<double, double> fun, double[] x0)
           double Fzero(Func<double, double> fun, double x0, Solvers.Set options)
-   Param: 
+   Parameters: 
       | fun:  The nonlinear function whose root is to be computed. The function must take a double and return a double.
       | x0:  The initial guess for the root or the interval bounding the root.
       | options:  Optional. Solver settings that specify parameters like tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
@@ -297,7 +297,7 @@ Fsolve
           Complex Fsolve(Func<Complex, Complex> fun, Complex x0, Solvers.Set options = null)
           ColVec Fsolve(Func<ColVec, ColVec> fun, ColVec x0, Solvers.Set options = null)
           ColVec Fsolve(Func<double[], double[]> fun, ColVec x0, Solvers.Set options = null)
-   Param: 
+   Parameters: 
       | fun:  The nonlinear function whose root is to be computed. The function can take a double or complex scalar or array values as input and return a scaler or complex or array values.
       | x0:  The initial guess for the root of the function.
       | options:  Optional. Solver settings that specify parameters such as tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
@@ -373,7 +373,7 @@ Linprog
 
           ColVec Linprog(RowVec c, Matrix AInEq = null, ColVec bInEq = null, Matrix AEq = null, ColVec bEq = null, 
           ColVec Lb = null, ColVec Ub = null, Optimizers.Set options = null)
-   Param: 
+   Parameters: 
       | c:  The row vector representing the coefficients of the linear objective function to be minimized.
       | AInEq:  Optional. The matrix representing inequality constraint coefficients.
               If null, no inequality constraints are applied.
@@ -444,7 +444,7 @@ Intlinprog
           ColVec Intlinprog(RowVec c, int[] IntVar, Matrix AInEq = null, ColVec bInEq = null, 
           Matrix AEq = null, ColVec bEq = null, ColVec Lb = null, ColVec Ub = null, 
           Optimizers.Set options = null)
-   Param: 
+   Parameters: 
       | c:  The row vector representing the coefficients of the linear objective function to be minimized.
       | IntVar:  The array of indices specifying which variables must be integers.
       | AInEq:  Optional. The matrix representing inequality constraint coefficients.
@@ -515,7 +515,7 @@ Fminsearch
           (ColVec x, double fval, int exitflag, ColVec fineq, ColVec feq, List<IterationState> history) 
           Fminsearch(Func<ColVec, double> fun, ColVec x0, Func<ColVec, ColVec> funInEq = null, 
                             Func<ColVec, ColVec> funEq = null, ColVec lb = null, ColVec ub = null, Optimizers.Set options = null)
-   Param: 
+   Parameters: 
       | fun:  The nonlinear scalar objective function to be minimized. Must take a column vector of decision variables and return a double.
       | x0:  The initial guess for the decision variables.
       | funInEq:  Optional. A function defining nonlinear inequality constraints.
@@ -572,7 +572,7 @@ Fmincon
                          Func<ColVec, ColVec> funEq = null, 
                          ColVec lb = null, ColVec ub = null, 
                          Optimizers.Set options = null)
-   Param: 
+   Parameters: 
       | fun:  The scalar objective function to be minimized. It must take a column vector of decision variables and return a double.
       | x0:  The initial guess for the decision variables.
       | funInEq:  Optional. A function that defines nonlinear inequality constraints.
@@ -649,7 +649,7 @@ Bfgs
                       Func<ColVec, ColVec> funEq = null, 
                       ColVec lb = null, ColVec ub = null, 
                       Optimizers.Set options = null)
-   Param: 
+   Parameters: 
       | fun:  The nonlinear scalar objective function to be minimized. Must take a column vector of decision variables and return a scalar point value.
       | x0:  The initial guess for the decision variables.
       | funInEq:  Optional. A function defining nonlinear inequality constraints.
@@ -747,7 +747,7 @@ Lsqcurvefit
 
           (ColVec x, int exitflag, double resnorm, ColVec sigma_x, ColVec y_hat, ColVec sigma_y, List<IterationState> history) Lsqcurvefit(Func<ColVec, ColVec, ColVec> Model, ColVec x0, ColVec IndVar, ColVec Measured, Func<ColVec, ColVec> funInEq = null, Func<ColVec, ColVec> funEq = null,  ColVec lb = null, ColVec ub = null, Optimizers.Set options = null);
           (ColVec  Lsqnonlin(Func<ColVec, ColVec> Model, ColVec x0, Func<ColVec, ColVec> funInEq = null, Func<ColVec, ColVec> funEq = null, ColVec lb = null, ColVec ub = null, Optimizers.Set options = null)
-   Param: 
+   Parameters: 
       | Model:  The nonlinear model function to be fitted. Takes an independent variable and parameter vector
               as inputs and returns computed values.
       | x0:  Initial guess for model parameters.
@@ -814,7 +814,7 @@ Ga
                     Optimizers.Set options = null);
           ColVec Ga(Func<ColVec, ColVec> fun, ColVec Measured, ColVec lb, ColVec ub, Func<ColVec,
                     ColVec> funInEq = null, Func<ColVec, ColVec> funEq = null, Optimizers.Set options = null)
-   Param: 
+   Parameters: 
       | fun:  The objective function to optimize. Takes a ColVec parameter and returns a double representing its fitness value.
       | lb:  Lower bound constraints for the optimization parameters.
       | ub:  Upper bound constraints for the optimization parameters.
@@ -917,7 +917,7 @@ decic
 =====
    Description: 
        Compute consistent initial conditions for ODE45I.
-   Param: 
+   Parameters: 
       | fun:  The function that represents the implicit ODE. The function should accept three doubles (time, state, and its derivative) and return a double representing the derivative of the state.
       | t0:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
       | y0:  The initial value of the dependent variable (state).
@@ -970,7 +970,7 @@ Ode23
 =====
    Description: 
        Solves non stiff ordinary differential equations (ODE) using the Bogacki-Shampine method (Ode23).
-   Param: 
+   Parameters: 
       | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
       | initcon:  The initial value of the dependent variable (state).
       | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
@@ -1028,7 +1028,7 @@ Ode45
 =====
    Description: 
        Solves non stiff ordinary differential equations (ODE) using the Dormand-Prince method (Ode45).
-   Param: 
+   Parameters: 
       | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
       | initcon:  The initial value of the dependent variable (state).
       | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
@@ -1086,7 +1086,7 @@ Ode56
 =====
    Description: 
        Solves non stiff ordinary differential equations (ODE) using the Jim Verner 5th and 6th order pair method (Ode56).
-   Param: 
+   Parameters: 
       | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
       | initcon:  The initial value of the dependent variable (state).
       | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
@@ -1144,7 +1144,7 @@ Ode78
 =====
    Description: 
        Solves non stiff ordinary differential equations (ODE) using the Jim Verner 7th and 8th order pair method (Ode78).
-   Param: 
+   Parameters: 
       | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
       | initcon:  The initial value of the dependent variable (state).
       | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
@@ -1202,7 +1202,7 @@ Ode89
 =====
    Description: 
        Solves non stiff ordinary differential equations (ODE) using the Jim Verner 8th and 9th order pair method (Ode89).
-   Param: 
+   Parameters: 
       | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
       | initcon:  The initial value of the dependent variable (state).
       | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
@@ -1260,7 +1260,7 @@ Ode45s
 ======
    Description: 
        Solves stiff ordinary differential equations (ODE) using Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45s).
-   Param: 
+   Parameters: 
       | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
       | initcon:  The initial value of the dependent variable (state).
       | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
@@ -1318,7 +1318,7 @@ Ode45i
 ======
    Description: 
        Solves inmplicit ordinary differential equations (ODE) using Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45i).
-   Param: 
+   Parameters: 
       | fun:  A function that represents the implicit ODE. 
             Signature: double fun(double t, double y, double yp);
                        ColVec fun(double t, ColVec y, ColVec yp);
@@ -1418,7 +1418,7 @@ Ode45a
    Description: 
        Solves semi-explicit differential-algebraic equations (DAEs) of the form M(t, y) * y' = f(t, y)
        using an adaptive explicit Runge-Kutta method of 4th and 5th order (Ode45a).
-   Param: 
+   Parameters: 
       | fun:  A function representing the right-hand side of the DAE. 
             Signature: ColVec fun(double t, ColVec y);
                * t: time.
@@ -1507,7 +1507,7 @@ Polyfit
        .. math::
           P(x) = a_0 + a_1 x + a_2 x^2 + ... + a_N x^N
        that best fits the given data points (X, Y).
-   Param: 
+   Parameters: 
       | X:  The x-coordinates of the data points.
       | Y:  The y-coordinates of the data points.
       | N:  The degree of the polynomial to fit.
@@ -1556,7 +1556,7 @@ Roots
 
           Complex[] Roots(double[] Coeffs)
           Complex[] Roots(Complex[] Coeffs)
-   Param: 
+   Parameters: 
       | Coeffs:  The coefficients of the polynomial, ordered from the highest degree to the constant term.
    Returns: 
        An array of Complex numbers representing the roots of the polynomial.
@@ -1646,7 +1646,7 @@ Deconv
 
           (double[] Quotient, double[] Remainder) Deconv(double[] Polynomial, double[] Divisor)
           (Complex[] Quotient, Complex[] Remainder) Deconv(Complex[] Polynomial, Complex[] Divisor)
-   Param: 
+   Parameters: 
       | Polynomial:  The coefficients of the dividend polynomial (numerator).
       | Divisor:  The coefficients of the divisor polynomial (denominator).
    Returns: 
@@ -1738,7 +1738,7 @@ Conv
 
           double[] Conv(double[] Polynomial, double[] Multiplier)
           Complex[] Conv(Complex[] Polynomial, Complex[] Multiplier)
-   Param: 
+   Parameters: 
       | Polynomial:  The coefficients of the first polynomial.
       | Multiplier:  The coefficients of the second polynomial.
    Returns: 
@@ -1801,7 +1801,7 @@ Integral
 ========
    Description: 
        Computes the definite integral of a function using adaptive Gauss-LegendreP quadrature.
-   Param: 
+   Parameters: 
       | fun:  The function to integrate. The function should accept a double and return a double.
       | x_1:  The lower bound of the integration interval.
       | x_2:  The upper bound of the integration interval.
@@ -1850,7 +1850,7 @@ Integral
 ========
    Description: 
        Computes the definite integral of a function using adaptive Gauss-LegendreP quadrature.
-   Param: 
+   Parameters: 
       | fun:  The function to integrate. The function should accept a double and return a double.
       | x_1:  The lower bound of the integration interval.
       | x_2:  The upper bound of the integration interval.
@@ -1910,7 +1910,7 @@ Integral2
           double Integral2( Func<double, double, double> fun, double x_1, double x_2, double y_1, Func<double, double> y_2)
           double Integral2( Func<double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, double y_2)
           double Integral2( Func<double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, Func<double, double> y_2)
-   Param: 
+   Parameters: 
       | fun:  The function to integrate. The function should accept two doubles (x, y) and return a double.
       | x_1:  The lower bound of the x integration.
       | x_2:  The upper bound of the x integration.
@@ -2131,7 +2131,7 @@ Integral3
           double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, double y_1, Func<double, double> y_2, Func<double, double, double> z_1, Func<double, double, double> z_2)
           double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, double y_2, Func<double, double, double> z_1, Func<double, double, double> z_2)
           double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, Func<double, double> y_2, Func<double, double, double> z_1, Func<double, double, double> z_2)
-   Param: 
+   Parameters: 
       | fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
       | x_1:  The lower bound of the x integration.
       | x_2:  The upper bound of the x integration.
@@ -2839,7 +2839,7 @@ Integral4
 =========
    Description: 
        Computes the definite quadruple integral of a function over a region where the y-bounds are defined by functions of x, and the z-bounds are defined by functions of x and y, using adaptive Gauss-LegendreP quadrature.
-   Param: 
+   Parameters: 
       | fun:  The function to integrate. The function should accept four doubles (w, x, y, z) and return a double.
       | w_1:  The lower bound of the w integration.
       | w_2:  The upper bound of the w integration.
