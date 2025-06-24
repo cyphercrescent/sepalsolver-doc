@@ -501,10 +501,10 @@ Intlinprog
           \begin{array}{rl}
                 Maximize:& \\
                          & c = 60x_1 + 40x_2 + 70x_3 \\
-                Subject to:& \\
+                Subject~to:& \\
                            & 4x_1 + 2x_2 + 3x_2 \leq 60 \\
                            & 3x_1 + 2x_2 + 2x_3 \leq 40 \\
-                           & 2x_1 + x_2 + 4x_3 leq 36 \\ 
+                           & 2x_1 + x_2 + 4x_3 \leq 36 \\ 
                            & x_1, x_2, x_3 >= 0 \text{and are integers} \\
           \end{array}
 
