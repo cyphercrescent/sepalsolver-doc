@@ -12,8 +12,8 @@ Reshape
           Matrix Reshape(List<double> data, int[] Size)
           Matrix Reshape(Matrix data, int[] Size)
    Parameters: 
-      | data:  The one-dimensional or multi-dimensional array to be reshaped.
-      | Size:  An array containing the dimensions [rows, columns] for the new matrix.
+       The one-dimensional or multi-dimensional array to be reshaped.
+       An array containing the dimensions [rows, columns] for the new matrix.
    Returns: 
        A output with the specified dimensions.
    Example: 
@@ -69,8 +69,8 @@ Hypot
           Matrix Hypot(Matrix x, ColVec y)
           Matrix Hypot(ColVec x, Matrix y)
    Parameters: 
-      | x:  The length of one side of the triangle.
-      | y:  The length of the other side of the triangle.
+       The length of one side of the triangle.
+       The length of the other side of the triangle.
    Returns: 
        The length of the hypotenuse.
    Example: 
@@ -136,7 +136,7 @@ Abs
           SparseRowVec Abs(SparseRowVec x)
           SparseMatrix Abs(SparseMatrix x)
    Parameters: 
-      | x:  The input value for which the absolute value is to be calculated.
+       The input value for which the absolute value is to be calculated.
    Returns: 
        The absolute value of the input.
    Example: 
@@ -170,8 +170,8 @@ BesselJ
        .. math::
           J_i(x)
    Parameters: 
-      | i:  The order of the Bessel function.
-      | x:  The value at which to evaluate the Bessel function.
+       The order of the Bessel function.
+       The value at which to evaluate the Bessel function.
    Returns: 
        The value of the Bessel function of the first kind at the given order and value.
    Example: 
@@ -255,9 +255,9 @@ Fzero
           double Fzero(Func<double, double> fun, double[] x0)
           double Fzero(Func<double, double> fun, double x0, Solvers.Set options)
    Parameters: 
-      | fun:  The nonlinear function whose root is to be computed. The function must take a double and return a double.
-      | x0:  The initial guess for the root or the interval bounding the root.
-      | options:  Optional. Solver settings that specify parameters like tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
+       The nonlinear function whose root is to be computed. The function must take a double and return a double.
+       The initial guess for the root or the interval bounding the root.
+       Optional. Solver settings that specify parameters like tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
    Returns: 
        The computed root of the nonlinear equation.
    Example: 
@@ -298,9 +298,9 @@ Fsolve
           ColVec Fsolve(Func<ColVec, ColVec> fun, ColVec x0, Solvers.Set options = null)
           ColVec Fsolve(Func<double[], double[]> fun, ColVec x0, Solvers.Set options = null)
    Parameters: 
-      | fun:  The nonlinear function whose root is to be computed. The function can take a double or complex scalar or array values as input and return a scaler or complex or array values.
-      | x0:  The initial guess for the root of the function.
-      | options:  Optional. Solver settings that specify parameters such as tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
+       The nonlinear function whose root is to be computed. The function can take a double or complex scalar or array values as input and return a scaler or complex or array values.
+       The initial guess for the root of the function.
+       Optional. Solver settings that specify parameters such as tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
    Returns: 
        The computed root or root(s) of the nonlinear equations.
    Example: 
@@ -374,21 +374,21 @@ Linprog
           ColVec Linprog(RowVec c, Matrix AInEq = null, ColVec bInEq = null, Matrix AEq = null, ColVec bEq = null, 
           ColVec Lb = null, ColVec Ub = null, Optimizers.Set options = null)
    Parameters: 
-      | c:  The row vector representing the coefficients of the linear objective function to be minimized.
-      | AInEq:  Optional. The matrix representing inequality constraint coefficients.
-              If null, no inequality constraints are applied.
-      | bInEq:  Optional. The column vector representing the right-hand side values of the inequality constraints.
-              If null, no inequality constraints are applied.
-      | AEq:  Optional. The matrix representing equality constraint coefficients.
-            If null, no equality constraints are applied.
-      | bEq:  Optional. The column vector representing the right-hand side values of the equality constraints.
-            If null, no equality constraints are applied.
-      | Lb:  Optional. The column vector representing the lower bounds for the variables.
-           If null, the variables are unbounded below.
-      | Ub:  Optional. The column vector representing the upper bounds for the variables.
-           If null, the variables are unbounded above.
-      | options:  Optional. Solver settings that allow customization of parameters such as 
-                tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
+       The row vector representing the coefficients of the linear objective function to be minimized.
+       Optional. The matrix representing inequality constraint coefficients.
+       If null, no inequality constraints are applied.
+       Optional. The column vector representing the right-hand side values of the inequality constraints.
+       If null, no inequality constraints are applied.
+       Optional. The matrix representing equality constraint coefficients.
+       If null, no equality constraints are applied.
+       Optional. The column vector representing the right-hand side values of the equality constraints.
+       If null, no equality constraints are applied.
+       Optional. The column vector representing the lower bounds for the variables.
+       If null, the variables are unbounded below.
+       Optional. The column vector representing the upper bounds for the variables.
+       If null, the variables are unbounded above.
+       Optional. Solver settings that allow customization of parameters such as 
+       tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
    Returns: 
        A column vector representing the optimized solution to the linear programming problem.
    Example: 
@@ -445,22 +445,22 @@ Intlinprog
           Matrix AEq = null, ColVec bEq = null, ColVec Lb = null, ColVec Ub = null, 
           Optimizers.Set options = null)
    Parameters: 
-      | c:  The row vector representing the coefficients of the linear objective function to be minimized.
-      | IntVar:  The array of indices specifying which variables must be integers.
-      | AInEq:  Optional. The matrix representing inequality constraint coefficients.
-              If null, no inequality constraints are applied.
-      | bInEq:  Optional. The column vector representing the right-hand side values of the inequality constraints.
-              If null, no inequality constraints are applied.
-      | AEq:  Optional. The matrix representing equality constraint coefficients.
-            If null, no equality constraints are applied.
-      | bEq:  Optional. The column vector representing the right-hand side values of the equality constraints.
-            If null, no equality constraints are applied.
-      | Lb:  Optional. The column vector representing the lower bounds for the variables.
-           If null, the variables are unbounded below.
-      | Ub:  Optional. The column vector representing the upper bounds for the variables.
-           If null, the variables are unbounded above.
-      | options:  Optional. Solver settings that allow customization of parameters such as 
-                tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
+       The row vector representing the coefficients of the linear objective function to be minimized.
+       The array of indices specifying which variables must be integers.
+       Optional. The matrix representing inequality constraint coefficients.
+       If null, no inequality constraints are applied.
+       Optional. The column vector representing the right-hand side values of the inequality constraints.
+       If null, no inequality constraints are applied.
+       Optional. The matrix representing equality constraint coefficients.
+       If null, no equality constraints are applied.
+       Optional. The column vector representing the right-hand side values of the equality constraints.
+       If null, no equality constraints are applied.
+       Optional. The column vector representing the lower bounds for the variables.
+       If null, the variables are unbounded below.
+       Optional. The column vector representing the upper bounds for the variables.
+       If null, the variables are unbounded above.
+       Optional. Solver settings that allow customization of parameters such as 
+       tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
    Returns: 
        A column vector representing the optimized integer solution to the Integer Linear Programming problem.
    Example: 
@@ -516,16 +516,16 @@ Fminsearch
           Fminsearch(Func<ColVec, double> fun, ColVec x0, Func<ColVec, ColVec> funInEq = null, 
                             Func<ColVec, ColVec> funEq = null, ColVec lb = null, ColVec ub = null, Optimizers.Set options = null)
    Parameters: 
-      | fun:  The nonlinear scalar objective function to be minimized. Must take a column vector of decision variables and return a double.
-      | x0:  The initial guess for the decision variables.
-      | funInEq:  Optional. A function defining nonlinear inequality constraints.
-                Takes a column vector and returns a column vector of constraint values.
-      | funEq:  Optional. A function defining nonlinear equality constraints.
-              Takes a column vector and returns a column vector of constraint values.
-      | lb:  Optional. The column vector representing the lower bounds for decision variables.
-      | ub:  Optional. The column vector representing the upper bounds for decision variables.
-      | options:  Optional. Solver settings such as tolerance and maximum iterations.
-                Defaults to null if not provided.
+       The nonlinear scalar objective function to be minimized. Must take a column vector of decision variables and return a double.
+       The initial guess for the decision variables.
+       Optional. A function defining nonlinear inequality constraints.
+       Takes a column vector and returns a column vector of constraint values.
+       Optional. A function defining nonlinear equality constraints.
+       Takes a column vector and returns a column vector of constraint values.
+       Optional. The column vector representing the lower bounds for decision variables.
+       Optional. The column vector representing the upper bounds for decision variables.
+       Optional. Solver settings such as tolerance and maximum iterations.
+       Defaults to null if not provided.
    Returns: 
        A column vector representing the decision variables that minimize the objective function.
    Example: 
@@ -573,16 +573,16 @@ Fmincon
                          ColVec lb = null, ColVec ub = null, 
                          Optimizers.Set options = null)
    Parameters: 
-      | fun:  The scalar objective function to be minimized. It must take a column vector of decision variables and return a double.
-      | x0:  The initial guess for the decision variables.
-      | funInEq:  Optional. A function that defines nonlinear inequality constraints.
-                Takes a column vector and returns a column vector of constraint values.
-      | funEq:  Optional. A function that defines nonlinear equality constraints.
-              Takes a column vector and returns a column vector of constraint values.
-      | lb:  Optional. The column vector representing the lower bounds for decision variables.
-      | ub:  Optional. The column vector representing the upper bounds for decision variables.
-      | options:  Optional. Solver settings such as tolerance and maximum iterations.
-                Defaults to null if not provided.
+       The scalar objective function to be minimized. It must take a column vector of decision variables and return a double.
+       The initial guess for the decision variables.
+       Optional. A function that defines nonlinear inequality constraints.
+       Takes a column vector and returns a column vector of constraint values.
+       Optional. A function that defines nonlinear equality constraints.
+       Takes a column vector and returns a column vector of constraint values.
+       Optional. The column vector representing the lower bounds for decision variables.
+       Optional. The column vector representing the upper bounds for decision variables.
+       Optional. Solver settings such as tolerance and maximum iterations.
+       Defaults to null if not provided.
    Returns: 
        The optimized decision variables that minimize the objective function within the specified constraints.
    Example: 
@@ -650,16 +650,16 @@ Bfgs
                       ColVec lb = null, ColVec ub = null, 
                       Optimizers.Set options = null)
    Parameters: 
-      | fun:  The nonlinear scalar objective function to be minimized. Must take a column vector of decision variables and return a scalar point value.
-      | x0:  The initial guess for the decision variables.
-      | funInEq:  Optional. A function defining nonlinear inequality constraints.
-                Takes a column vector and returns a column vector of constraint values.
-      | funEq:  Optional. A function defining nonlinear equality constraints.
-              Takes a column vector and returns a column vector of constraint values.
-      | lb:  Optional. The column vector representing the lower bounds for decision variables.
-      | ub:  Optional. The column vector representing the upper bounds for decision variables.
-      | options:  Optional. Solver settings such as tolerance and maximum iterations.
-                Defaults to null if not provided.
+       The nonlinear scalar objective function to be minimized. Must take a column vector of decision variables and return a scalar point value.
+       The initial guess for the decision variables.
+       Optional. A function defining nonlinear inequality constraints.
+       Takes a column vector and returns a column vector of constraint values.
+       Optional. A function defining nonlinear equality constraints.
+       Takes a column vector and returns a column vector of constraint values.
+       Optional. The column vector representing the lower bounds for decision variables.
+       Optional. The column vector representing the upper bounds for decision variables.
+       Optional. Solver settings such as tolerance and maximum iterations.
+       Defaults to null if not provided.
    Returns: 
        A column vector representing the decision variables that minimize the objective function.
    Example: 
@@ -748,16 +748,16 @@ Lsqcurvefit
           (ColVec x, int exitflag, double resnorm, ColVec sigma_x, ColVec y_hat, ColVec sigma_y, List<IterationState> history) Lsqcurvefit(Func<ColVec, ColVec, ColVec> Model, ColVec x0, ColVec IndVar, ColVec Measured, Func<ColVec, ColVec> funInEq = null, Func<ColVec, ColVec> funEq = null,  ColVec lb = null, ColVec ub = null, Optimizers.Set options = null);
           (ColVec  Lsqnonlin(Func<ColVec, ColVec> Model, ColVec x0, Func<ColVec, ColVec> funInEq = null, Func<ColVec, ColVec> funEq = null, ColVec lb = null, ColVec ub = null, Optimizers.Set options = null)
    Parameters: 
-      | Model:  The nonlinear model function to be fitted. Takes an independent variable and parameter vector
-              as inputs and returns computed values.
-      | x0:  Initial guess for model parameters.
-      | IndVar:  The independent variable values.
-      | Measured:  The observed dependent variable values.
-      | funInEq:  Optional. Function defining inequality constraints on parameters.
-      | funEq:  Optional. Function defining equality constraints on parameters.
-      | lb:  Optional. Lower bound constraints for parameters.
-      | ub:  Optional. Upper bound constraints for parameters.
-      | options:  Optional solver settings such as tolerance and maximum iterations.
+       The nonlinear model function to be fitted. Takes an independent variable and parameter vector
+       as inputs and returns computed values.
+       Initial guess for model parameters.
+       The independent variable values.
+       The observed dependent variable values.
+       Optional. Function defining inequality constraints on parameters.
+       Optional. Function defining equality constraints on parameters.
+       Optional. Lower bound constraints for parameters.
+       Optional. Upper bound constraints for parameters.
+       Optional solver settings such as tolerance and maximum iterations.
    Returns: 
        Returns a tuple containing the optimized parameter values, exit flag, residual norm, parameter uncertainties,
        estimated model output, output uncertainties, and iteration history.
@@ -815,14 +815,14 @@ Ga
           ColVec Ga(Func<ColVec, ColVec> fun, ColVec Measured, ColVec lb, ColVec ub, Func<ColVec,
                     ColVec> funInEq = null, Func<ColVec, ColVec> funEq = null, Optimizers.Set options = null)
    Parameters: 
-      | fun:  The objective function to optimize. Takes a ColVec parameter and returns a double representing its fitness value.
-      | lb:  Lower bound constraints for the optimization parameters.
-      | ub:  Upper bound constraints for the optimization parameters.
-      | IntVar:  Optional. Specifies indices of variables that should be treated as integers.
-      | Measured:  The observed dependent variable values.
-      | funInEq:  Optional. Function defining inequality constraints on parameters.
-      | funEq:  Optional. Function defining equality constraints on parameters.
-      | options:  Optional settings such as mutation rate, population size, and maximum iterations.
+       The objective function to optimize. Takes a ColVec parameter and returns a double representing its fitness value.
+       Lower bound constraints for the optimization parameters.
+       Upper bound constraints for the optimization parameters.
+       Optional. Specifies indices of variables that should be treated as integers.
+       The observed dependent variable values.
+       Optional. Function defining inequality constraints on parameters.
+       Optional. Function defining equality constraints on parameters.
+       Optional settings such as mutation rate, population size, and maximum iterations.
    Returns: 
        Returns a scalar value or an array containing the optimized parameter values.
    Example: 
@@ -918,13 +918,13 @@ decic
    Description: 
        Compute consistent initial conditions for ODE45I.
    Parameters: 
-      | fun:  The function that represents the implicit ODE. The function should accept three doubles (time, state, and its derivative) and return a double representing the derivative of the state.
-      | t0:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
-      | y0:  The initial value of the dependent variable (state).
-      | ytruth:  An array of intergers indicating which component of y0 is fixed and which is not.
-      | yp0:  The initial time derivative of the dependent variable (state).
-      | yptruth:  An array of intergers indicating which component yp0 is fixed and which is not.
-      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+       The function that represents the implicit ODE. The function should accept three doubles (time, state, and its derivative) and return a double representing the derivative of the state.
+       An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+       The initial value of the dependent variable (state).
+       An array of intergers indicating which component of y0 is fixed and which is not.
+       The initial time derivative of the dependent variable (state).
+       An array of intergers indicating which component yp0 is fixed and which is not.
+       Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
    Returns: 
        A tuple containing two elements:
           * double y0: modified initial state.
@@ -971,10 +971,10 @@ Ode23
    Description: 
        Solves non stiff ordinary differential equations (ODE) using the Bogacki-Shampine method (Ode23).
    Parameters: 
-      | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
-      | initcon:  The initial value of the dependent variable (state).
-      | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
-      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+       The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
+       The initial value of the dependent variable (state).
+       An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+       Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
    Returns: 
        A tuple containing two elements:
           * ColVec T: A column vector of time points at which the solution was computed.
@@ -1029,10 +1029,10 @@ Ode45
    Description: 
        Solves non stiff ordinary differential equations (ODE) using the Dormand-Prince method (Ode45).
    Parameters: 
-      | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
-      | initcon:  The initial value of the dependent variable (state).
-      | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
-      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+       The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
+       The initial value of the dependent variable (state).
+       An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+       Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
    Returns: 
        A tuple containing two elements:
           * ColVec T: A column vector of time points at which the solution was computed.
@@ -1087,10 +1087,10 @@ Ode56
    Description: 
        Solves non stiff ordinary differential equations (ODE) using the Jim Verner 5th and 6th order pair method (Ode56).
    Parameters: 
-      | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
-      | initcon:  The initial value of the dependent variable (state).
-      | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
-      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+       The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
+       The initial value of the dependent variable (state).
+       An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+       Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
    Returns: 
        A tuple containing two elements:
           * ColVec T: A column vector of time points at which the solution was computed.
@@ -1145,10 +1145,10 @@ Ode78
    Description: 
        Solves non stiff ordinary differential equations (ODE) using the Jim Verner 7th and 8th order pair method (Ode78).
    Parameters: 
-      | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
-      | initcon:  The initial value of the dependent variable (state).
-      | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
-      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+       The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
+       The initial value of the dependent variable (state).
+       An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+       Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
    Returns: 
        A tuple containing two elements:
           * ColVec T: A column vector of time points at which the solution was computed.
@@ -1203,10 +1203,10 @@ Ode89
    Description: 
        Solves non stiff ordinary differential equations (ODE) using the Jim Verner 8th and 9th order pair method (Ode89).
    Parameters: 
-      | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
-      | initcon:  The initial value of the dependent variable (state).
-      | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
-      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+       The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
+       The initial value of the dependent variable (state).
+       An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+       Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
    Returns: 
        A tuple containing two elements:
           * ColVec T: A column vector of time points at which the solution was computed.
@@ -1261,10 +1261,10 @@ Ode45s
    Description: 
        Solves stiff ordinary differential equations (ODE) using Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45s).
    Parameters: 
-      | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
-      | initcon:  The initial value of the dependent variable (state).
-      | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
-      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+       The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
+       The initial value of the dependent variable (state).
+       An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+       Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
    Returns: 
        A tuple containing two elements:
           * ColVec T: A column vector of time points at which the solution was computed.
@@ -1319,23 +1319,23 @@ Ode45i
    Description: 
        Solves inmplicit ordinary differential equations (ODE) using Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45i).
    Parameters: 
-      | fun:  A function that represents the implicit ODE. 
-            Signature: double fun(double t, double y, double yp);
-                       ColVec fun(double t, ColVec y, ColVec yp);
-               * t: time.
-               * y: state.
-               * yp: derivative of the state.
-               * Returns: the residual of the implicit ODE.
-      | initcon:  A tuple containing two elements:
-                   * y0:  initial state.
-                   * yp0: initial rate of change.
-      | tspan:  A two-element array [t0, tf] specifying the time interval for integration.
-      | options:  Optional parameters for the ODE solver, such as:
-                    * RelTol: relative tolerance, 
-                    * AbsTol: absolute tolerance, 
-                    * MaxStep: maximum step size,
-                    * Stats: Statistics toggle. 
-                    Use Odeset(...) to configure
+       A function that represents the implicit ODE. 
+       Signature: double fun(double t, double y, double yp);
+                  ColVec fun(double t, ColVec y, ColVec yp);
+          * t: time.
+          * y: state.
+          * yp: derivative of the state.
+          * Returns: the residual of the implicit ODE.
+       A tuple containing two elements:
+          * y0:  initial state.
+          * yp0: initial rate of change.
+       A two-element array [t0, tf] specifying the time interval for integration.
+       Optional parameters for the ODE solver, such as:
+           * RelTol: relative tolerance, 
+           * AbsTol: absolute tolerance, 
+           * MaxStep: maximum step size,
+           * Stats: Statistics toggle. 
+           Use Odeset(...) to configure
    Returns: 
        A tuple (T, Y) where:
           * T: Column vector of time points at which the solution was computed.
@@ -1419,25 +1419,25 @@ Ode45a
        Solves semi-explicit differential-algebraic equations (DAEs) of the form M(t, y) * y' = f(t, y)
        using an adaptive explicit Runge-Kutta method of 4th and 5th order (Ode45a).
    Parameters: 
-      | fun:  A function representing the right-hand side of the DAE. 
-            Signature: ColVec fun(double t, ColVec y);
-               * t: time.
-               * y: state.
-               * Returns: right-hand side of the DAE.
-      | Mass:  A function defining the mass matrix M(t, y). This matrix may be time- and state-dependent.
-             Signature: Matrix Mass(double t, ColVec y);
-                * t: time.
-                * y: state.
-                * Returns: the mass of the DAE.
-      | initcon:  An array of doubles representing the initial conditions for the state vector y.
-                The length must match the dimension of the system.
-      | tspan:  A two-element array specifying the time interval for integration: [t0, tf].
-      | options:  Optional parameters for the ODE solver, such as:
-                    * RelTol: relative tolerance, 
-                    * AbsTol: absolute tolerance, 
-                    * MaxStep: maximum step size, 
-                    * Stats: Statistics toggle.
-                    Use Odeset(...) to configure
+       A function representing the right-hand side of the DAE. 
+       Signature: ColVec fun(double t, ColVec y);
+          * t: time.
+          * y: state.
+          * Returns: right-hand side of the DAE.
+       A function defining the mass matrix M(t, y). This matrix may be time- and state-dependent.
+       Signature: Matrix Mass(double t, ColVec y);
+          * t: time.
+          * y: state.
+          * Returns: the mass of the DAE.
+       An array of doubles representing the initial conditions for the state vector y.
+       The length must match the dimension of the system.
+       A two-element array specifying the time interval for integration: [t0, tf].
+       Optional parameters for the ODE solver, such as:
+           * RelTol: relative tolerance, 
+           * AbsTol: absolute tolerance, 
+           * MaxStep: maximum step size, 
+           * Stats: Statistics toggle.
+           Use Odeset(...) to configure
    Returns: 
        A tuple (T, Y) where:
           * T: Column vector of time points at which the solution was computed.
@@ -1508,9 +1508,9 @@ Polyfit
           P(x) = a_0 + a_1 x + a_2 x^2 + ... + a_N x^N
        that best fits the given data points (X, Y).
    Parameters: 
-      | X:  The x-coordinates of the data points.
-      | Y:  The y-coordinates of the data points.
-      | N:  The degree of the polynomial to fit.
+       The x-coordinates of the data points.
+       The y-coordinates of the data points.
+       The degree of the polynomial to fit.
    Returns: 
        An array containing the coefficients of the fitted polynomial, starting with the coefficient of the highest degree term.
    Example: 
@@ -1557,7 +1557,7 @@ Roots
           Complex[] Roots(double[] Coeffs)
           Complex[] Roots(Complex[] Coeffs)
    Parameters: 
-      | Coeffs:  The coefficients of the polynomial, ordered from the highest degree to the constant term.
+       The coefficients of the polynomial, ordered from the highest degree to the constant term.
    Returns: 
        An array of Complex numbers representing the roots of the polynomial.
    Example: 
@@ -1647,8 +1647,8 @@ Deconv
           (double[] Quotient, double[] Remainder) Deconv(double[] Polynomial, double[] Divisor)
           (Complex[] Quotient, Complex[] Remainder) Deconv(Complex[] Polynomial, Complex[] Divisor)
    Parameters: 
-      | Polynomial:  The coefficients of the dividend polynomial (numerator).
-      | Divisor:  The coefficients of the divisor polynomial (denominator).
+       The coefficients of the dividend polynomial (numerator).
+       The coefficients of the divisor polynomial (denominator).
    Returns: 
        A tuple containing two arrays:
           - Quotient: The coefficients of the quotient polynomial.
@@ -1739,8 +1739,8 @@ Conv
           double[] Conv(double[] Polynomial, double[] Multiplier)
           Complex[] Conv(Complex[] Polynomial, Complex[] Multiplier)
    Parameters: 
-      | Polynomial:  The coefficients of the first polynomial.
-      | Multiplier:  The coefficients of the second polynomial.
+       The coefficients of the first polynomial.
+       The coefficients of the second polynomial.
    Returns: 
        An array containing the coefficients of the resulting polynomial.
    Example: 
@@ -1802,10 +1802,10 @@ Integral
    Description: 
        Computes the definite integral of a function using adaptive Gauss-LegendreP quadrature.
    Parameters: 
-      | fun:  The function to integrate. The function should accept a double and return a double.
-      | x_1:  The lower bound of the integration interval.
-      | x_2:  The upper bound of the integration interval.
-      | eps:  The desired relative accuracy. The default value is 1e-6.
+       The function to integrate. The function should accept a double and return a double.
+       The lower bound of the integration interval.
+       The upper bound of the integration interval.
+       The desired relative accuracy. The default value is 1e-6.
    Returns: 
        The approximate value of the definite integral.
    Remark: 
@@ -1851,10 +1851,10 @@ Integral
    Description: 
        Computes the definite integral of a function using adaptive Gauss-LegendreP quadrature.
    Parameters: 
-      | fun:  The function to integrate. The function should accept a double and return a double.
-      | x_1:  The lower bound of the integration interval.
-      | x_2:  The upper bound of the integration interval.
-      | eps:  The desired relative accuracy. The default value is 1e-6.
+       The function to integrate. The function should accept a double and return a double.
+       The lower bound of the integration interval.
+       The upper bound of the integration interval.
+       The desired relative accuracy. The default value is 1e-6.
    Returns: 
        The approximate value of the definite integral.
    Remark: 
@@ -1911,12 +1911,12 @@ Integral2
           double Integral2( Func<double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, double y_2)
           double Integral2( Func<double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, Func<double, double> y_2)
    Parameters: 
-      | fun:  The function to integrate. The function should accept two doubles (x, y) and return a double.
-      | x_1:  The lower bound of the x integration.
-      | x_2:  The upper bound of the x integration.
-      | y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-      | y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-      | eps:  The desired relative accuracy. The default value is 1e-6.
+       The function to integrate. The function should accept two doubles (x, y) and return a double.
+       The lower bound of the x integration.
+       The upper bound of the x integration.
+       A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+       A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+       The desired relative accuracy. The default value is 1e-6.
    Returns: 
        The approximate value of the definite double integral.
    Remark: 
@@ -2132,14 +2132,14 @@ Integral3
           double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, double y_2, Func<double, double, double> z_1, Func<double, double, double> z_2)
           double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, Func<double, double> y_2, Func<double, double, double> z_1, Func<double, double, double> z_2)
    Parameters: 
-      | fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
-      | x_1:  The lower bound of the x integration.
-      | x_2:  The upper bound of the x integration.
-      | y_1:  A double or function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-      | y_2:  A double or  function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-      | z_1:  A double or  function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
-      | z_2:  A double or function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
-      | eps:  The desired relative accuracy. The default value is 1e-6.
+       The function to integrate. The function should accept three doubles (x, y, z) and return a double.
+       The lower bound of the x integration.
+       The upper bound of the x integration.
+       A double or function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+       A double or  function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+       A double or  function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
+       A double or function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
+       The desired relative accuracy. The default value is 1e-6.
    Returns: 
        The approximate value of the definite triple integral.
    Remark: 
@@ -2840,16 +2840,16 @@ Integral4
    Description: 
        Computes the definite quadruple integral of a function over a region where the y-bounds are defined by functions of x, and the z-bounds are defined by functions of x and y, using adaptive Gauss-LegendreP quadrature.
    Parameters: 
-      | fun:  The function to integrate. The function should accept four doubles (w, x, y, z) and return a double.
-      | w_1:  The lower bound of the w integration.
-      | w_2:  The upper bound of the w integration.
-      | x_1:  A function that defines the lower bound of the x integration as a function of w. It should accept a double (w) and return a double (x).
-      | x_2:  A function that defines the upper bound of the x integration as a function of w. It should accept a double (w) and return a double (x).
-      | y_1:  A function that defines the lower bound of the y integration as a function of w and x. It should accept two doubles (w, x) and return a double (y).
-      | y_2:  A function that defines the upper bound of the y integration as a function of w and x. It should accept two doubles (w, x) and return a double (y).
-      | z_1:  A function that defines the lower bound of the z integration as a function of w, x and y. It should accept three doubles (w, x, y) and return a double (z).
-      | z_2:  A function that defines the upper bound of the z integration as a function of w, x and y. It should accept three doubles (w, x, y) and return a double (z).
-      | eps:  The desired relative accuracy. The default value is 1e-6.
+       The function to integrate. The function should accept four doubles (w, x, y, z) and return a double.
+       The lower bound of the w integration.
+       The upper bound of the w integration.
+       A function that defines the lower bound of the x integration as a function of w. It should accept a double (w) and return a double (x).
+       A function that defines the upper bound of the x integration as a function of w. It should accept a double (w) and return a double (x).
+       A function that defines the lower bound of the y integration as a function of w and x. It should accept two doubles (w, x) and return a double (y).
+       A function that defines the upper bound of the y integration as a function of w and x. It should accept two doubles (w, x) and return a double (y).
+       A function that defines the lower bound of the z integration as a function of w, x and y. It should accept three doubles (w, x, y) and return a double (z).
+       A function that defines the upper bound of the z integration as a function of w, x and y. It should accept three doubles (w, x, y) and return a double (z).
+       The desired relative accuracy. The default value is 1e-6.
    Returns: 
        The approximate value of the definite triple integral.
    Remark: 
