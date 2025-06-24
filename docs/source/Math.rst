@@ -1590,13 +1590,13 @@ Ode45a
    Parameters: 
        fun: 
            A function representing the right-hand side of the DAE. 
-           Signature: ColVec fun(double t, ColVec y);
+                   | ColVec fun(double t, ColVec y);
               * t: time.
               * y: state.
               * Returns: right-hand side of the DAE.
        Mass: 
             A function defining the mass matrix M(t, y). This matrix may be time- and state-dependent.
-            Signature: Matrix Mass(double t, ColVec y);
+                    | Matrix Mass(double t, ColVec y);
                * t: time.
                * y: state.
                * Returns: the mass of the DAE.
