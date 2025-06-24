@@ -2386,7 +2386,7 @@ Acos
           SparseColVec Acos(SparseColVec x)
           SparseRowVec Acos(SparseRowVec x) 
    Param: 
-      | x:  The cosine value for which to calculate the arccosine. Must be between -1 and 1 inclusive.
+      | x:  A scalar number or one-dimensional or two-dimensional array for which to calculate the arccosine. Must be between -1 and 1 inclusive.
    Returns: 
        The angle in radians whose cosine equals x, ranging from 0 to π. Returns NaN if x is outside the range [-1, 1].
    Example: 
@@ -2474,7 +2474,7 @@ Atan
           SparseColVec Atan(SparseColVec x)
           SparseRowVec Atan(SparseRowVec x)
    Param: 
-      | x:  A number representing a tangent value for which the arctangent is to be computed.
+      | x:  A scalar number or one-dimensional or two-dimensional array representing a tangent value for which the arctangent is to be computed.
    Returns: 
        A double representing the arctangent of x in radians, in the range -π/2 ≤ atan(x) ≤ π/2.
    Example: 
@@ -2522,7 +2522,7 @@ Sinh
           SparseColVec Sinh(SparseColVec x)
           SparseRowVec Sinh(SparseRowVec x)
    Param: 
-      | x:  A number representing the value for which the hyperbolic sine is to be computed.
+      | x:  A scalar number one-dimensional or two-dimensional array representing the value for which the hyperbolic sine is to be computed.
    Returns: 
        A double representing the hyperbolic sine of x.
        Returns PositiveInfinity if x is PositiveInfinity.
@@ -2573,7 +2573,7 @@ Cosh
           SparseColVec Cosh(SparseColVec x)
           SparseRowVec Cosh(SparseRowVec x)
    Param: 
-      | x:  A number representing the value for which the hyperbolic cosine is to be computed.
+      | x:  A scalar number or one-dimensional or two-dimensional array representing the value for which the hyperbolic cosine is to be computed.
    Returns: 
        A double representing the hyperbolic cosine of x, always greater than or equal to 1.
        Returns PositiveInfinity if x is PositiveInfinity or NegativeInfinity.
@@ -2666,9 +2666,9 @@ Atanh
           SparseColVec Atanh(SparseColVec x)
           SparseRowVec Atanh(SparseRowVec x)
    Param: 
-      | x:  A double-precision floating-point number in the range (-1, 1), representing the value for which to compute the inverse hyperbolic tangent.
+      | x:  A one-dimensional or two-dimensional array or double-precision floating-point number in the range (-1, 1), representing the value for which to compute the inverse hyperbolic tangent.
    Returns: 
-       The inverse hyperbolic tangent of <paramref name="x"/>.
+       The inverse hyperbolic tangent of the number, x.
    Example: 
        Evaluate the inverse hyperbolic tangent of the number, 0.5.
 
@@ -2709,7 +2709,7 @@ Exp
           SparseColVec Exp(SparseColVec x)
           SparseRowVec Exp(SparseRowVec x)
    Param: 
-      | x:  A double-precision floating-point number representing the power to raise Euler's number (e) to.
+      | x:  A one-dimensional or two-dimensional array or double-precision floating-point number representing the power to raise Euler's number (e) to.
    Returns: 
        The exponential of a number, i.e., e raised to the power x.
    Example: 
@@ -2799,8 +2799,7 @@ Log2
    Returns: 
        The base-2 logarithm of the number, x.
    Example: 
-       Evaluate
-       
+       Evaluate log 16 to base 2.
 
        .. code-block:: CSharp 
 
@@ -2839,7 +2838,7 @@ Log10
           SparseColVec Log10(SparseColVec x)
           SparseRowVec Log10(SparseRowVec x)
    Param: 
-      | x:  A double-precision floating-point number greater than zero, representing the value whose base-10 logarithm is to be calculated.
+      | x:  A one-dimensional or two-dimensional array or double-precision floating-point number greater than zero, representing the value whose base-10 logarithm is to be calculated.
    Returns: 
        The base-10 logarithm (common logarithm) of the number, x.
    Example: 
@@ -2847,7 +2846,7 @@ Log10
 
        .. code-block:: CSharp 
 
-           // Import required namespaces
+           // import libraries
            using System;
            using static SepalSolver.Math;
            
