@@ -1334,6 +1334,56 @@ Getrow
           100 120
 
 
+Getrows
+=======
+   Description: 
+       Extracts specified rows from a two-dimensional array using an indexer.
+       This method returns a new Matrix data composed of the rows from matrix data that correspond to the indices specified by I-indexer.
+
+       .. code-block:: CSharp 
+
+          Matrix Getrows(indexer I, double[,] data)
+   Parameters: 
+       I: 
+         An indexer object that specifies the zero-based indices of the rows to extract.
+       data: 
+            The two-dimensional array from which rows will be selected.
+   Returns: 
+       A Matrix containing the rows of data specified by I-indexer, in the same order.
+   Example: 
+       Extract the 1st and 3rd rows from a 4x3 matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a 4 by 3 matrix
+          double[,] matrix = new double[,]
+          {
+              { 10, 20,  30,  40  },
+              { 50, 60,  70,  80  },
+              { 90, 100, 110, 120 }
+          };
+          // Set the matrix index to be extracted
+          indexer I = new indexer(new int[] { 0, 2 }); // first and third rows
+          
+          // Extract the matrix
+          Matrix rows = Getrows([0, 2], matrix);
+      
+          // Output the extracted matrix
+          Console.WriteLine($"The extracted matrix is: {rows}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          10 20 30  
+          70 80 90
+
+
 BesselJ
 =======
    Description: 
