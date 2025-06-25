@@ -3000,6 +3000,8 @@ BesselJ
           using System;
           using SepalSolver;
           using static SepalSolver.Math;
+          using static SepalSolver.PlotLib.Chart;
+          using static SepalSolver.PlotLib.Chart.Location;
           
           // Compute besselj function
           ColVec x = Linspace(0, 10);
@@ -3067,7 +3069,7 @@ BesselI
 
           3.28983914405
    Example: 
-       Compute the Bessel function of the first kind for order 1 and value 2.0
+       Compute the Modified Bessel function of the first kind for order 1 and value 2.0
 
        .. code-block:: CSharp 
 
@@ -3087,7 +3089,7 @@ BesselI
 
           1.590637
    Example: 
-       Compute the Bessel function of the first kind for order 1 and value 3.0
+       Compute the Modified Bessel function of the first kind for order 1 and value 3.0
 
        .. code-block:: CSharp 
 
@@ -3095,6 +3097,8 @@ BesselI
           using System;
           using SepalSolver;
           using static SepalSolver.Math;
+          using static SepalSolver.PlotLib.Chart;
+          using static SepalSolver.PlotLib.Chart.Location;
           
           // Compute BesselI function
           ColVec x = Linspace(0, 5);
@@ -3145,7 +3149,7 @@ BesselY
    Returns: 
        The value of the Bessel function of the second kind at the given order and value (must be positive).
    Example: 
-       Compute the Bessel function of the first kind for order 0 and value 2.5
+       Compute the Bessel function of the second kind for order 0 and value 2.5
 
        .. code-block:: CSharp 
 
@@ -3195,6 +3199,8 @@ BesselY
           using System;
           using SepalSolver;
           using static SepalSolver.Math;
+          using static SepalSolver.PlotLib.Chart;
+          using static SepalSolver.PlotLib.Chart.Location;
           
           // Compute BesselY function
           ColVec x = Linspace(0.01, 10, 500);
@@ -3220,7 +3226,7 @@ BesselY
 BesselK
 =======
    Description: 
-       Computes the Bessel function of the second kind Kₙ(x).
+       Computes the Modified Bessel function of the second kind Kₙ(x).
        This method evaluates the exponentially scaled modified Bessel function for a given order and value.
 
        .. math::
@@ -3242,9 +3248,9 @@ BesselK
        x: 
          The value at which to evaluate the Bessel function.
    Returns: 
-       The value of the Bessel function of the second kind at the given order and value (must be positive).
+       The value of the Modified Bessel function of the second kind at the given order and value (must be positive).
    Example: 
-       Compute the Bessel function of the first kind for order 0 and value 2.5
+       Compute the Modified Bessel function of the first kind for order 0 and value 2.5
 
        .. code-block:: CSharp 
 
@@ -3296,18 +3302,23 @@ BesselK
           using static SepalSolver.Math;
           
           // Compute BesselK function
-          ColVec x = Linspace(0, 10);
-          Matrix y = Enumerable.Range(0, 10).Select(i=>BesselK(i, x)).ToList();
+          ColVec x = Linspace(0.01, 5, 500);
+          Matrix y = Enumerable.Range(0, 5).Select(i => BesselK(i, x)).ToList();
           
-         // Plot result
-         Plot(x, y); Xlabel("x-axis"); Ylabel("y-axis"); Title("Bessel function K");
+          // Plot result
+          Plot(x, y);
+          Axis([0, 5, 0, 5]);
+          Xlabel("x-axis"); Ylabel("y-axis");
+          Title("Bessel function K");
+          Legend(Enumerable.Range(0, 5).Select(i => "K_"+ i + "(x)"));
+          SaveAs(imagepath + "BesselfunctionPlotK.png");
          
 
       Output: 
 
-       .. figure:: images/BesselfunctionPlotKwww.png
+       .. figure:: images/BesselfunctionPlotK.png
           :align: center
-          :alt: BesselfunctionPlotKwww.png
+          :alt: BesselfunctionPlotK.png
 
 
 
