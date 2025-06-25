@@ -2713,6 +2713,227 @@ Tanh
           Tanh(1.0) = 0.7615941559557649
 
 
+Atanh
+=====
+   Description: 
+       Calculates the inverse hyperbolic tangent (area hyperbolic tangent) of a specified value.
+       The inverse hyperbolic tangent is defined as 0.5 * ln((1 + x) / (1 - x)).
+       The function is undefined for values less than or equal to -1 and greater than or equal to 1.
+
+       .. code-block:: CSharp 
+
+          double Atanh(double x)
+          Complex Atanh(Complex x)
+          Matrix Atanh(Matrix x)
+          ColVec Atanh(ColVec x)
+          RowVec Atanh(RowVec x)
+          SparseMatrix Atanh(SparseMatrix x)
+          SparseColVec Atanh(SparseColVec x)
+          SparseRowVec Atanh(SparseRowVec x)
+   Parameters: 
+       x: 
+         A one-dimensional or two-dimensional array or double-precision floating-point number in the range (-1, 1), representing the value for which to compute the inverse hyperbolic tangent.
+   Returns: 
+       The inverse hyperbolic tangent of the number, x.
+   Example: 
+       Evaluate the inverse hyperbolic tangent of the number, 0.5.
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Compute the inverse hyperbolic tangent of a number
+          double result = Atanh(0.5);
+           
+          // Output the result
+          Console.WriteLine($"Atanh(0.5) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Atanh(0.5) = 0.5493061443340549
+
+
+Exp
+===
+   Description: 
+       Computes the exponential function of the specified value.
+       The exponential function is defined as e^x, where e is approximately 2.71828.
+
+       .. code-block:: CSharp 
+
+          double Exp(double x)
+          Complex Exp(Complex x)
+          Matrix Exp(Matrix x)
+          ColVec Exp(ColVec x)
+          RowVec Exp(RowVec x)
+          SparseMatrix Exp(SparseMatrix x)
+          SparseColVec Exp(SparseColVec x)
+          SparseRowVec Exp(SparseRowVec x)
+   Parameters: 
+       x: 
+         A one-dimensional or two-dimensional array or double-precision floating-point number representing the power to raise Euler's number (e) to.
+   Returns: 
+       The exponential of a number, i.e., e raised to the power x.
+   Example: 
+       Evaluate the exponential value of number, 2.
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Compute the exponential of a number
+          double result = Exp(2.0);
+           
+          // Output the result
+          Console.WriteLine($"Exp(2.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Exp(2.0) = 7.38905609893065
+
+
+Log
+===
+   Description: 
+       Calculates the natural (base e) logarithm of a specified value.
+       The natural logarithm is the inverse of the exponential function. 
+
+       .. code-block:: CSharp 
+
+          double Log(double x)
+          Complex Log(Complex x)
+          Matrix Log(Matrix x)
+          ColVec Log(ColVec x)
+          RowVec Log(RowVec x)
+          SparseMatrix Log(SparseMatrix x)
+          SparseColVec Log(SparseColVec x)
+          SparseRowVec Log(SparseRowVec x)
+   Parameters: 
+       x: 
+         A one-dimensional or two-dimensional array or double-precision floating-point number greater than zero, representing the value whose logarithm is to be calculated.
+   Returns: 
+       The natural logarithm (ln) of a number.
+   Example: 
+       Evaluate the natural logaraithm of the number, 10
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Compute the natural logarithm of a number
+          double result = Log(10.0);
+           
+          // Output the result
+          Console.WriteLine($"Log(10.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Log(10.0) = 2.302585092994046
+
+
+Log2
+====
+   Description: 
+       Computes the base-2 logarithm of the specified value.
+       This means, to what power must 2 be raised to yield x?"
+
+       .. code-block:: CSharp 
+
+          double Log2(double x)
+          Complex Log2(Complex x)
+          Matrix Log2(Matrix x)
+          ColVec Log2(ColVec x)
+          RowVec Log2(RowVec x)
+          SparseMatrix Log2(SparseMatrix x)
+          SparseColVec Log2(SparseColVec x)
+          SparseRowVec Log2(SparseRowVec x)
+   Parameters: 
+       x: 
+         A one-dimensional or two-dimensional array or double-precision floating-point number greater than zero, representing the value whose base-2 logarithm is to be calculated.
+   Returns: 
+       The base-2 logarithm of the number, x.
+   Example: 
+       Evaluate log 16 to base 2.
+
+       .. code-block:: CSharp 
+
+           // import libraries
+           using System;
+           using static SepalSolver.Math;
+           
+           // Compute the base-2 logarithm of a number
+           double result = Log2(16.0);
+           
+           // Output the result
+           Console.WriteLine($"Log2(16.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Log2(16.0) = 4
+
+
+Log10
+=====
+   Description: 
+       Computes the base-10 logarithm of the specified value.
+       It is mean that to what power must 10 be raised to equal number x.  
+
+       .. code-block:: CSharp 
+
+          double Log10(double x)
+          Complex Log10(Complex x)
+          Matrix Log10(Matrix x)
+          ColVec Log10(ColVec x)
+          RowVec Log10(RowVec x)
+          SparseMatrix Log10(SparseMatrix x)
+          SparseColVec Log10(SparseColVec x)
+          SparseRowVec Log10(SparseRowVec x)
+   Parameters: 
+       x: 
+         A one-dimensional or two-dimensional array or double-precision floating-point number greater than zero, representing the value whose base-10 logarithm is to be calculated.
+   Returns: 
+       The base-10 logarithm (common logarithm) of the number, x.
+   Example: 
+       Evaluate the logarithm of 1000 to base 10.
+
+       .. code-block:: CSharp 
+
+           // import libraries
+           using System;
+           using static SepalSolver.Math;
+           
+           // Compute the base-10 logarithm of a number
+           double result = Log10(1000.0);
+           
+           // Output the result
+           Console.WriteLine($"Log10(1000.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Log10(1000.0) = 3
+
+
 BesselJ
 =======
    Description: 
@@ -2795,6 +3016,624 @@ BesselJ
           :alt: BesselfunctionPlot.png
 
 
+
+
+BesselI
+=======
+   Description: 
+       Computes the modified Bessel function of the first kind Iₙ(x).
+       This method evaluates the exponentially scaled modified Bessel function of the first kind for a given order and value.
+
+       .. math::
+          J_i(x)
+
+       .. code-block:: CSharp 
+
+          double BesselI(int i, double x)
+          Complex BesselI(int i, Complex x)
+          Matrix BesselI(int i, Matrix x)
+          ColVec BesselI(int i, ColVec x)
+          RowVec BesselI(int i, RowVec x)
+          SparseMatrix BesselI(int i, SparseMatrix x)
+          SparseColVec BesselI(int i, SparseColVec x)
+          SparseRowVec BesselI(int i, SparseRowVec x)
+   Parameters: 
+       i: 
+         The order of the Bessel function.
+       x: 
+         The value at which to evaluate the Bessel function.
+   Returns: 
+       The value of the Bessel function of the first kind at the given order and value.
+   Example: 
+       Compute the Bessel function of the first kind for order 0 and value 2.5
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute BesselI function
+          var result = Besseli(0, 2.5);
+          
+          // Print result
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          3.28983914405
+   Example: 
+       Compute the Bessel function of the first kind for order 1 and value 2.0
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute BesselI function
+          var result = BesselI(1, 2.0);
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1.590637
+   Example: 
+       Compute the Bessel function of the first kind for order 1 and value 3.0
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute BesselI function
+          ColVec x = Linspace(0, 10);
+          Matrix y = Enumerable.Range(0, 10).Select(i=>BesselI(i, x)).ToList();
+          
+          // Plot result
+          Plot(x, y); Xlabel("x-axis"); Ylabel("y-axis"); Title("Bessel function I");
+         
+
+      Output: 
+
+       .. figure:: images/BesselfunctionPlotI.png
+          :align: center
+          :alt: BesselfunctionPlotI.png
+
+
+
+
+BesselY
+=======
+   Description: 
+       Computes the Bessel function of the second kind Yₙ(x).
+       This method evaluates the Weber or Neumann Bessel function of the first kind for a given order and value.
+
+       .. math::
+          Y_n(x)
+
+       .. code-block:: CSharp 
+
+          double BesselY(int i, double x)
+          Complex BesselY(int i, Complex x)
+          Matrix BesselY(int i, Matrix x)
+          ColVec BesselY(int i, ColVec x)
+          RowVec BesselY(int i, RowVec x)
+          SparseMatrix BesselY(int i, SparseMatrix x)
+          SparseColVec BesselY(int i, SparseColVec x)
+          SparseRowVec BesselY(int i, SparseRowVec x)
+   Parameters: 
+       i: 
+         The order of the Bessel function.
+       x: 
+         The value at which to evaluate the Bessel function.
+   Returns: 
+       The value of the Bessel function of the second kind at the given order and value (must be positive).
+   Example: 
+       Compute the Bessel function of the first kind for order 0 and value 2.5
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute BesselY function
+          var result = BesselY(0, 2.5);
+          
+          // Print result
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          0.4980703596
+   Example: 
+       Compute the Bessel function of the first kind for order 1 and value 2.0
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute BesselY function
+          var result = BesselY(1, 2.0);
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          -0.1070324315
+   Example: 
+       Compute the Bessel function of the second kind for order 1 and value 3.0
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute bessely function
+          ColVec x = Linspace(0, 10);
+          Matrix y = Enumerable.Range(0, 10).Select(i=>BesselY(i, x)).ToList();
+          
+         // Plot result
+         Plot(x, y); Xlabel("x-axis"); Ylabel("y-axis"); Title("Bessel function I");
+         
+
+      Output: 
+
+       .. figure:: images/BesselfunctionPlotY.png
+          :align: center
+          :alt: BesselfunctionPlotY.png
+
+
+
+
+BesselK
+=======
+   Description: 
+       Computes the Bessel function of the second kind Kₙ(x).
+       This method evaluates the exponentially scaled modified Bessel function for a given order and value.
+
+       .. math::
+          K_n(x)
+
+       .. code-block:: CSharp 
+
+          double BesselK(int i, double x)
+          Complex BesselK(int i, Complex x)
+          Matrix BesselK(int i, Matrix x)
+          ColVec BesselK(int i, ColVec x)
+          RowVec BesselK(int i, RowVec x)
+          SparseMatrix BesselK(int i, SparseMatrix x)
+          SparseColVec BesselK(int i, SparseColVec x)
+          SparseRowVec BesselK(int i, SparseRowVec x)
+   Parameters: 
+       i: 
+         The order of the Bessel function.
+       x: 
+         The value at which to evaluate the Bessel function.
+   Returns: 
+       The value of the Bessel function of the second kind at the given order and value (must be positive).
+   Example: 
+       Compute the Bessel function of the first kind for order 0 and value 2.5
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute BesselK function
+          var result = BesselK(0, 2.5);
+          
+          // Print result
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          0.0623475532
+   Example: 
+       Compute the Bessel function of the first kind for order 1 and value 2.0
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute BesselK function
+          var result = BesselK(1, 2.0);
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          0.1398658818
+   Example: 
+       Compute the Bessel function of the second kind for order 1 and value 2.0
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using SepalSolver;
+          using static SepalSolver.Math;
+          
+          // Compute BesselK function
+          ColVec x = Linspace(0, 10);
+          Matrix y = Enumerable.Range(0, 10).Select(i=>BesselK(i, x)).ToList();
+          
+         // Plot result
+         Plot(x, y); Xlabel("x-axis"); Ylabel("y-axis"); Title("Bessel function K");
+         
+
+      Output: 
+
+       .. figure:: images/BesselfunctionPlotKwww.png
+          :align: center
+          :alt: BesselfunctionPlotKwww.png
+
+
+
+
+Gamma
+=====
+   Description: 
+       Computes the Gamma function Γ(z), which generalizes the factorial function to real and complex numbers.
+       This method evaluates the Gamma function Γ(x), for a given real positive numbers or complex numbers.
+
+       .. code-block:: CSharp 
+
+          double Gamma(double z)
+          Complex Gamma(Complex z)
+          Matrix Gamma(Matrix x)
+          ColVec Gamma(ColVec x)
+          RowVec Gamma(RowVec x)
+          SparseMatrix Gamma(SparseMatrix x)
+          SparseColVec Gamma(SparseColVec x)
+          SparseRowVec Gamma(SparseRowVec x)
+          double Gamma(double z, double tolerance = 1e-10)
+   Parameters: 
+       z: 
+         The input value (real or complex). For positive integers, Γ(n) = (n-1)!.
+   Returns: 
+       The value of the Gamma function at z.
+   Example: 
+       Compute Γ(4) (equivalent to 3!):
+       
+
+       .. math::
+          
+          \Gamma(4) = 6
+          
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+          
+          // compute Gamma(4)
+          double result = Gamma(4);
+          
+          // display the result
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          
+          6.0000
+
+
+SolverSet
+=========
+   Description: 
+       Creates and returns a configuration object for solver settings.
+       This method allows customization of solver behavior such as step size, tolerance levels, iteration limits, and parallel execution. It also supports a user-defined Jacobian function to improve solver efficiency and accuracy.
+
+       .. code-block:: CSharp 
+
+           Solvers.Set SolverSet(bool? Display = false, double? StepFactor = null, double? RelTol = null, double? AbsTol = null, 
+           int? MaxIter = null, int? MaxFunEvals = null, bool? UseParallel = null, Func<ColVec, SparseMatrix> UserDefinedJac = null)
+   Parameters: 
+       Display: 
+               Optional. If <c>true</c>, enables display of solver progress and results during execution. Defaults to <c>false</c>.
+       StepFactor: 
+                  Optional. A scaling factor for the initial step size used in iterative solvers.
+       RelTol: 
+              Optional. Relative tolerance. The solver stops when the relative change in the solution is below this threshold.
+       AbsTol: 
+              Optional. Absolute tolerance. The solver stops when the absolute change in the solution is below this threshold.
+       MaxIter: 
+               Optional. Maximum number of iterations allowed for the solver.
+       MaxFunEvals: 
+                   Optional. Maximum number of function evaluations allowed.
+       UseParallel: 
+                   Optional. If <c>true</c>, enables parallel computation for supported solvers.
+       UserDefinedJac: 
+                      Optional. A user-defined function that returns the Jacobian matrix of the system. This can improve convergence speed and accuracy.
+   Returns: 
+       Information about the problem solved like, number of iteration, number of function call and other estimated parameters.
+   Example: 
+       Consider the root of the function below and evaluation information displayed using SolverSet. You can set your desired number of iteration and other parameters. It displaced information like number of iteration, number of function call and other estimated parameters. This information provides an insight about the 
+       activities that takes inside the method during and after evaluation of the set function.
+       
+       Compute the root of :math:`x^3 - 10 = 0`
+       
+
+       .. code-block:: CSharp 
+
+          using SepalSolver;
+          using static SepalSolver.Math;
+      
+          // Define an objective function
+          static double fun(double x) => Pow(x, 3) - 10;
+          
+          // Call the SolverSet method and set initial guess
+          var opts = SolverSet(Display: true);
+          double x0 = 1.5;
+          
+          // Solve the optimization problem and display of runtime information by SolverSet
+          Console.WriteLine($"Information during Fzero Calculation displayed by SolverSet");
+          double root = Fzero(fun, x0, opts);
+          Console.WriteLine($"Root of the function, F(x) is : {root.T}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Information during Fzero Calculation displayed by SolverSet
+      
+          Search for an interval around 1.5 containing a sign change:
+          
+          fun-count  a          f(a)           b f(b)     Procedure
+             1       1.5e+0    -6.625e+0       1.5e+0    -6.625e+0   initial interval
+             3    1.4576e+0   -6.9034e+0    1.5424e+0   -6.3304e+0   search
+             5      1.44e+0    -7.014e+0      1.56e+0   -6.2036e+0   search
+             7    1.4151e+0    -7.166e+0    1.5849e+0   -6.0192e+0   search
+             9      1.38e+0   -7.3719e+0      1.62e+0   -5.7485e+0   search
+             11   1.3303e+0   -7.6458e+0    1.6697e+0    -5.345e+0   search
+             13     1.26e+0   -7.9996e+0      1.74e+0    -4.732e+0   search
+             15   1.1606e+0   -8.4367e+0    1.8394e+0   -3.7765e+0   search
+             17     1.02e+0   -8.9388e+0      1.98e+0   -2.2376e+0   search
+             19   8.2118e-1   -9.4463e+0    2.1788e+0    3.4345e-1   search
+      
+          Solving for solution between 0.821177 and 2.178823
+           
+          fun-count x         f(x)       Procedure
+             19    2.1788e+0    3.4345e-1    initial
+             20    2.1312e+0   -3.2017e-1    interpolation
+             21    2.1542e+0   -3.6617e-3    interpolation
+             22    2.1544e+0    7.4508e-7    interpolation
+             23    2.1544e+0  -9.0964e-11    interpolation
+             24    2.1544e+0   1.7764e-15    interpolation
+      
+          Root of the function, F(x) is:   2.154434690031884
+
+
+OptimSet
+========
+   Description: 
+       Configures and returns a set of optimization parameters.
+       This method allows users to customize various solver settings such as tolerances, iteration limits, and display options. These settings influence the behavior and performance of optimization algorithms.
+
+       .. code-block:: CSharp 
+
+           Optimizers.Set OptimSet(bool? Display = false, double? FuncTol = null, double? OptimalityTol = null, double? StepTol = null, double? ConstraintTol = null,
+           ColVec Weight = null, int? MaxIter = null, int? MaxFunEvals = null, bool? UseParallel = null, dynamic Pltfun = null, int? PopulationSize = null,
+           LevenbergeMaquardt_UpdateType? LMUpdate = null)
+   Parameters: 
+       Display: 
+               Optional. If set to <c>true</c>, displays solver progress and results during and after execution. Defaults to <c>false</c>.
+       FuncTol: 
+               Optional. Function tolerance. The solver stops when the change in the objective function value is less than this threshold.
+       OptimalityTol: 
+                     Optional. Optimality tolerance. Determines the acceptable level of optimality for the solution.
+       StepTol: 
+               Optional. Step tolerance. The solver stops if the step size becomes smaller than this value.
+       ConstraintTol: 
+                     Optional. Constraint tolerance. Specifies the acceptable violation level for constraints.
+       Weight: 
+              Optional. A vector of weights used in weighted optimization problems.
+       MaxIter: 
+               Optional. Maximum number of iterations allowed for the solver.
+       MaxFunEvals: 
+                   Optional. Maximum number of function evaluations allowed.
+       UseParallel: 
+                   Optional. If set to <c>true</c>, enables parallel computation for supported solvers.
+       Pltfun: 
+              Optional. A plotting function or delegate that visualizes the optimization process.
+       PopulationSize: 
+                      Optional. Specifies the population size for population-based algorithms (e.g., genetic algorithms).
+       LMUpdate: 
+                Optional. Specifies the update strategy for the Levenberg-Marquardt algorithm.
+   Returns: 
+          Information about the problem solved like, number of iteration, number of function call and other estimated parameters.
+   Example: 
+       Consider the optimization of a Rosenbrock function below and evaluation information displayed using OptimSet. You can set your desired number of iteration and other parameters. It displaced information like number of iteration, number of function call and other estimated parameters. This information provides an insight about the 
+       activities that takes inside the method during and after the estimation of the Rosenbrock problem.
+
+       .. code-block:: CSharp 
+
+          using SepalSolver;
+          using static SepalSolver.Math;
+      
+          // Define the Rosenbrock function
+          Func<ColVec, double> objective = x =>
+          Pow(1 - x[0], 2) + 100 * Pow(x[1] - Pow(x[0], 2), 2);
+           
+          // Call the OptimSet method and set initial guess
+          var opts = OptimSet(Display: true, MaxIter: 200, StepTol: 1e-6, OptimalityTol: 1e-6);
+          double[] x0 = new double[] { -1.2, 1 };
+      
+          // Solve the optimization problem and display of runtime information by OptimSet
+          var solution = Fminsearch(objective, x0, null, null, null, null, opts);
+          Console.WriteLine($"Optimized Solution: {solution.T}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+              fun-count a          f(a)           b f(b)     Procedure
+          1         2e+0        -1e+0         2e+0        -1e+0   initial interval
+          3    1.9434e+0   -1.5467e+0    2.0566e+0   -4.1493e-1   search
+          5      1.92e+0   -1.7621e+0      2.08e+0   -1.6109e-1   search
+          7    1.8869e+0    -2.056e+0    2.1131e+0    2.0962e-1   search
+      
+          Solving for solution between 1.886863 and 2.113137
+          fun-count x         f(x)       Procedure
+              7    2.1131e+0    2.0962e-1    initial
+              8    2.0922e+0   -2.6189e-2    interpolation
+              9    2.0945e+0   -2.7259e-4    interpolation
+             10    2.0946e+0    6.4152e-9    interpolation
+             11    2.0946e+0  -8.9706e-14    interpolation
+             12    2.0946e+0  -8.8818e-16    interpolation
+            Iteration  fun-count f(x)     Procedure
+               0          1      24.2000
+               1          3      20.0500    initial simplex
+               2          5       5.1618    expand
+               3          7       4.4978    reflect
+               4          8       4.4978    reflect
+               5         10       4.4978    contract inside
+               6         12       4.3814    contract inside
+               7         14       4.2453    contract inside
+               8         16       4.2176    reflect
+               9         18       4.2113    contract inside
+              10         20       4.1356    expand
+              11         22       4.1356    contract inside
+              12         24       4.0127    expand
+              13         26       3.9374    expand
+              14         28       3.6026    expand
+              15         29       3.6026    reflect
+              16         31       3.4662    reflect
+              17         33       3.2161    expand
+              18         35       3.1649    reflect
+              19         37       2.7069    expand
+              20         38       2.7069    reflect
+              21         40       2.0022    expand
+              22         42       2.0022    contract inside
+              23         44       2.0022    contract inside
+              24         46       1.8154    expand
+              25         47       1.8154    reflect
+              26         49       1.7348    contract inside
+              27         51       1.3170    expand
+              28         52       1.3170    reflect
+              29         53       1.3170    reflect
+              30         55       1.1595    reflect
+              31         57       1.0767    contract inside
+              32         59       0.8835    reflect
+              33         61       0.8835    contract inside
+              34         63       0.6692    expand
+              35         65       0.6692    contract inside
+              36         66       0.6692    reflect
+              37         68       0.5367    reflect
+              38         70       0.5367    contract inside
+              39         72       0.4233    expand
+              40         73       0.4233    reflect
+              41         75       0.4233    contract inside
+              42         77       0.3985    reflect
+              43         79       0.3145    expand
+              45         82       0.1903    expand
+              46         84       0.1903    contract inside
+              47         85       0.1903    reflect
+              48         87       0.1370    reflect
+              49         88       0.1370    reflect
+              50         90       0.1370    contract inside
+              51         91       0.1370    reflect
+              52         93       0.1131    contract inside
+              53         95       0.1105    contract inside
+              54         97       0.1023    reflect
+              55         99       0.1012    contract inside
+              56        101       0.0795    expand
+              57        102       0.0795    reflect
+              58        103       0.0795    reflect
+              59        105       0.0569    expand
+              60        107       0.0569    contract inside
+              61        109       0.0345    expand
+              62        111       0.0180    expand
+              63        112       0.0180    reflect
+              64        114       0.0169    contract inside
+              65        116       0.0040    reflect
+              66        118       0.0040    contract inside
+              67        119       0.0040    reflect
+              68        121       0.0004    reflect
+              69        123       0.0004    contract inside
+              70        124       0.0004    reflect
+              71        126       0.0004    contract inside
+              72        127       0.0004    reflect
+              73        129       0.0001    contract inside
+              74        131       0.0000    contract inside
+              75        132       0.0000    reflect
+              76        134       0.0000    contract inside
+              77        135       0.0000    reflect
+              78        137       0.0000    contract inside
+              79        139       0.0000    contract inside
+              80        141       0.0000    contract inside
+              81        142       0.0000    reflect
+              82        144       0.0000    contract inside
+              83        146       0.0000    contract inside
+              84        148       0.0000    contract inside
+              85        149       0.0000    reflect
+              86        151       0.0000    contract inside
+              87        153       0.0000    contract inside
+              88        155       0.0000    contract inside
+              89        157       0.0000    contract inside
+              90        159       0.0000    contract inside
+              91        161       0.0000    contract inside
+              92        162       0.0000    reflect
+              93        164       0.0000    contract inside
+              94        166       0.0000    contract inside
+              95        167       0.0000    reflect
+              96        169       0.0000    contract inside
+              97        171       0.0000    contract inside
+              98        173       0.0000    contract inside
+              99        174       0.0000    reflect
+             100        176       0.0000    contract inside
+             101        178       0.0000    contract inside
+             102        179       0.0000    reflect
+             103        181       0.0000    contract inside
+             104        183       0.0000    contract inside
+             105        185       0.0000    contract inside
+             106        187       0.0000    reflect
+             107        189       0.0000    contract inside
+             108        190       0.0000    reflect
+             109        192       0.0000    contract inside
+             110        194       0.0000    contract inside
+             111        196       0.0000    contract inside
+             
+          Optimized Solution: 1.0000    1.0000
 
 
 Fzero
