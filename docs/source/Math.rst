@@ -570,6 +570,7 @@ Fminsearch
 
        .. math::
           Minimize: f(x, y) = (1 - x)^2 + 100(y - x^2)^2
+          
 
        .. code-block:: CSharp 
 
