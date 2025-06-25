@@ -268,9 +268,9 @@ WriteMatrix
 
        .. code-block:: Terminal 
 
-       (Contents of "matrixA.txt")
-          12 18 3  
-          15 25 30
+          (Contents of "matrixA.txt")
+              12 18 3  
+              15 25 30
 
 
 All
