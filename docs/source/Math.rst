@@ -719,7 +719,7 @@ Zeros
           using static SepalSolver.Math;
           
           // Generate 4 by 3 matrix 
-          double[,] zeros = Zeros(3, 4);
+          Matrix zeros = Zeros(3, 4);
       
           // Display matrix
           Console.WriteLine(zeros);
@@ -730,9 +730,9 @@ Zeros
 
        .. code-block:: Terminal 
 
-          0 0 0 0  
-          0 0 0 0  
-          0 0 0 0
+           0.0000    0.0000    0.0000    0.0000
+           0.0000    0.0000    0.0000    0.0000
+           0.0000    0.0000    0.0000    0.0000
 
 
 Ones
@@ -776,8 +776,8 @@ Ones
 
        .. code-block:: Terminal 
 
-          1 1 1  
-          1 1 1
+          1.0000    1.0000    1.0000
+          1.0000    1.0000    1.0000
 
 
 Repmat
