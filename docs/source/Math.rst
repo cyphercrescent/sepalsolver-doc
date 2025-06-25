@@ -1102,6 +1102,238 @@ Linspace
            -1.0000   -0.7778   -0.5556   -0.3333   -0.1111    0.1111    0.3333    0.5556    0.7778    1.0000
 
 
+Logspace
+========
+   Description: 
+       Generates a logarithmically spaced array of double values between powers of 10.
+       This method creates a one-dimensional array with N values spaced evenly on a logarithmic scale, ranging from <c>10^a</c> to <c>10^b</c>, inclusive.
+
+       .. code-block:: CSharp 
+
+          double[] Logspace(double a, double b, int N = 100)
+   Parameters: 
+       a: 
+         The base-10 exponent of the starting value (10^a).
+       b: 
+         The base-10 exponent of the ending value (10^b).
+       N: 
+         The number of points to generate. Default is 100.
+   Returns: 
+       An array of N values logarithmically spaced between 10^a and 10^b.
+   Example: 
+       Generate 5 values from 10⁰ to 10²:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+          
+          // Generate logarithmically space between 1 and 100 inclusive
+          RowVec freqs = Logspace(0, 2, 5);
+      
+          // Display result,
+          Console.WriteLine(freqs);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1.0000    3.1623   10.0000   31.6228  100.0000
+
+
+Interp1
+=======
+   Description: 
+       Performs one-dimensional linear interpolation.
+       This method estimates the output value at a query point <c>x</c> by linearly interpolating between known data points in <c>X</c> and corresponding values in <c>Y</c>.
+
+       .. code-block:: CSharp 
+
+          double Interp1(ColVec X, ColVec Y, double x)
+          ColVec Interp1(ColVec X, ColVec Y, ColVec x)
+          double Interp1(RowVec X, RowVec Y, double x)
+          RowVec Interp1(RowVec X, RowVec Y, RowVec x)
+          RowVec Interp1(ColVec X, Matrix Y, double x)
+          ColVec Interp1(RowVec X, Matrix Y, double x)
+          double Interp2(ColVec X, RowVec Y, Matrix Z, double x, double y)
+   Parameters: 
+       X: 
+         A column vector containing the known x-coordinates, which must be sorted in ascending order.
+       Y: 
+         A column vector containing the corresponding y-values.
+       x: 
+         The x-value at which to evaluate the interpolated result.
+   Returns: 
+       A scalar value representing the linearly interpolated value at the given point x.
+   Example: 
+       Estimate a y-value at x = 1.5 from lookup data using linear interpolation:
+
+       .. math::
+          \begin{array}{rl}
+                &X = 0.0,   1.0,   2.0,   3.0 \\
+                &Y = 0.0,   10.0,  20.0,  30.0 \\   
+          \end{array}
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+       
+          ColVec X = new ColVec(new double[] { 0.0, 1.0, 2.0, 3.0 });
+          ColVec Y = new ColVec(new double[] { 0.0, 10.0, 20.0, 30.0 });
+      
+          double x = 1.5;
+          double y = Interp1(X, Y, x);
+      
+          Console.WriteLine($"Interpolated value at x=1.5: {y}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Interpolated value: 15
+
+
+Getcol
+======
+   Description: 
+       Extracts a specified column from a two-dimensional array.
+       This method retrieves the column at index j from the input matrix data and returns it as a one-dimensional array.
+
+       .. code-block:: CSharp 
+
+          double[] Getcol(int j, double[,] data)
+   Parameters: 
+       j: 
+         The zero-based index of the column to extract.
+       data: 
+            The two-dimensional array from which the column will be retrieved.
+   Returns: 
+       An array representing the j_th column of the matrix data.
+   Example: 
+       Extract the first column from a 3x3 matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+      
+          using static SepalSolver.Math;
+          
+          // Create 3 by 3 matrix
+          double[,] matrix = new double[,] {{ 1.0, 2.0, 3.0 },{ 4.0, 5.0, 6.0 }, { 7.0, 8.0, 9.0 }};
+      
+          // Get column 0 (first column)
+          ColVec col = Getcol(0, matrix);
+      
+          // Display
+          Console.WriteLine(col);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+             1.0000
+             4.0000
+             7.0000
+
+
+Getrow
+======
+   Description: 
+       Extracts a specified row from a two-dimensional array.
+       This method retrieves the row at index i from the input matrix data and returns it as a one-dimensional array.
+
+       .. code-block:: CSharp 
+
+          double[] Getrow(int i, double[,] data)
+   Parameters: 
+       i: 
+         The index of the row to extract.
+       data: 
+            The two-dimensional array from which the row will be retrieved.
+   Returns: 
+       An array representing the i-th row of matrix data element.
+   Example: 
+       Extract the third row from a 4x3 matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+          
+          // Create a 4 by 3 matrix
+          double[,] matrix = {{ 1.0, 2.0, 3.0 },{ 4.0, 5.0, 6.0 },{ 7.0, 8.0, 9.0 },{ 10.0, 11.0, 12.0 }};
+      
+          // Get row 2 (third row)
+          RowVec row = Getrow(2, matrix);
+          
+          // Output the matrix
+          Console.WriteLine(row);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          7.0000    8.0000    9.0000
+
+
+=>J.Select(j
+============
+   Description: 
+       Extracts specified columns from a two-dimensional array using an indexer.
+       This method returns a new Matrix containing only the columns of data specified by the I-indexer.
+
+       .. code-block:: CSharp 
+
+          Matrix Getcols(indexer I, double[,] data)
+   Parameters: 
+       I: 
+         An indexer object specifying the zero-based column indices to select.
+       data: 
+            The two-dimensional array from which columns are extracted.
+   Returns: 
+       A Matrix composed of the selected columns from the input matrix data, in the order defined by I-indexer.
+   Example: 
+       Extract columns 1 and 3 from a 3x4 matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+          
+          // Create a 3 by 4 matrix
+          double[,] matrix = new double[,]
+          {
+              { 10, 20,  30,  40  },
+              { 50, 60,  70,  80  },
+              { 90, 100, 110, 120 }
+          };
+          
+          // Extract the 2nd and 4th columns
+          Matrix cols = Getcols([1,3], matrix);
+          
+          // Output the extracted matrix
+          console.WriteLine(cols)
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          20 40  
+          60 80  
+          100 120
+
+
 BesselJ
 =======
    Description: 
