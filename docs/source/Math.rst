@@ -918,10 +918,10 @@ Kron
 
        .. code-block:: Terminal 
 
-          0 5 0 10  
-          6 7 12 14  
-          0 15 0 20  
-          18 21 24 28
+           0.0000    5.0000    0.0000   10.0000
+           6.0000    7.0000   12.0000   14.0000
+           0.0000   15.0000    0.0000   20.0000
+          18.0000   21.0000   24.0000   28.0000
 
 
 Rand
@@ -953,19 +953,19 @@ Rand
           using System;
           using static SepalSolver.Math;
            
-          double[,] randomMatrix = Rand(3, 3);
+          Matrix randomMatrix = Rand(3, 3);
       
           // Print matrix contents
-          Console.WriteLine(randomMatrix)
+          Console.WriteLine(randomMatrix);
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          0.42 0.75 0.31  
-          0.89 0.06 0.94  
-          0.12 0.54 0.78
+          0.7258    0.2380    0.9046
+          0.4605    0.5800    0.3383
+          0.5736    0.5158    0.6105
 
 
 Randn
@@ -1009,8 +1009,9 @@ Randn
 
        .. code-block:: Terminal 
 
-          3.02 6.87 4.11  
-          5.73 8.34 1.95
+          7.0471    4.1810    1.8153
+          3.1696    3.8715    4.8268
+          7.8102    3.7101    6.7009
 
 
 Randt
