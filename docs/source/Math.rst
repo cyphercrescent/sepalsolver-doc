@@ -1547,6 +1547,279 @@ Vcart
           7 8
 
 
+Pow
+===
+   Description: 
+       Raises a real or complex numbers or elements in a vector or matrix to the power of another.
+       This method computes the result of raising x to the power n, returning x^n.
+
+       .. code-block:: CSharp 
+
+          double Pow(double x, double n)
+          Pow(Complex x, double n)
+          Pow(Complex x, double n)
+          SparseMatrix PowTW(SparseMatrix x, double n)
+          SparseColVec PowTW(SparseColVec x, double n)
+          SparseRowVec PowTW(SparseRowVec x, double n)
+   Parameters: 
+       x: 
+         The base value.
+       n: 
+         The exponent value (can be negative, fractional, or zero).
+   Returns: 
+       A value(s) representing x raised to the power n.
+   Example: 
+       Compute 2 raised to the power 3:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+      
+          // Raise 2 to the power of 3
+          double result = Pow(2.0, 3.0);
+          Console.WriteLine($"2³ = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          2³ = 8
+
+
+Diff
+====
+   Description: 
+       Computes the first-order discrete difference of a one-dimensional or two-dimensional array.
+       This method returns a new array where each element is the difference between consecutive elements of the input array X.
+
+       .. code-block:: CSharp 
+
+          double[] Diff(double[] X)
+          ColVec Diff(ColVec X) 
+          RowVec Diff(RowVec X) 
+          double[,] Diff(double[,] X, int dim = 0)
+          Matrix Diff(Matrix X, int dim = 0)
+   Parameters: 
+       X: 
+         A one-dimensional or two-dimensional array of double values. Must contain at least two elements.
+   Returns: 
+       A new array of size less than 1 , where each element is the difference X[i+1] - X[i].
+   Example: 
+       Compute differences in a numeric sequence:'[ 1.0, 4.0, 9.0, 16.0]'
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a vector
+          double[] values = new double[] { 1.0, 4.0, 9.0, 16.0 };
+          
+          // Calculate the vector differences 
+          double[] delta = Diff(values);
+      
+          foreach (double d in delta)
+              Console.Write(d + " ");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          3 5 7
+
+
+MultTW
+======
+   Description: 
+       Performs element-wise (Hadamard) multiplication of two column vectors or multiplication of two matrices. Vector and Matrix A and B must have the same size.
+       This method multiplies corresponding elements of A and B, producing a new vector or matrix of the same length.
+
+       .. code-block:: CSharp 
+
+          ColVec MultTW(ColVec A, ColVec B)
+          RowVec MultTW(RowVec A, RowVec B)
+          Matrix MultTW(Matrix A, Matrix B)
+          Matrix MultTW(ColVec A, RowVec B)
+          Matrix MultTW(RowVec A, ColVec B)
+          Matrix MultTW(Matrix A, ColVec B)
+          Matrix MultTW(ColVec B, Matrix A)
+          Matrix MultTW(Matrix A, RowVec B)
+          Matrix MultTW(RowVec B, Matrix A)
+   Parameters: 
+       A: 
+         The first input column vector or matrix.
+       B: 
+         The second input column vector or matrix, of the same size as A.
+   Returns: 
+       A vector containing the element-wise products A[i] * B[i] or matrix containing the element-wise products A[i,j] * B[i,j]], for all valid indices.
+   Example: 
+       Multiply two 3-element vectors element-wise:
+       .. Math::
+          \begin{array}{rl}
+                &A = [1.0,   2.0,   3.0] \\
+                &B = [4.0,  5.0,  6.0] \\   
+          \end{array}
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Create two column vector A and B
+          ColVec A = new double[] { 1.0, 2.0, 3.0 };
+          ColVec B = new double[] { 4.0, 5.0, 6.0 };
+      
+          // Calculation of element-wise multiplication
+          ColVec result = MultTW(A, B);
+      
+          // Output the result
+          console.writeline($"Multiplication of two column-wise vector: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Multiplication of two column-wise vector:
+          4  
+          10  
+          18
+   Example: 
+       Multiply two 2x2 matrices element-wise:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create Matrix A and Matrix B
+          Matrix A = new double[,] {
+              { 1, 2 },
+              { 3, 4 }
+          };
+      
+          Matrix B = new double[,] {
+              { 5, 6 },
+              { 7, 8 }
+          };
+      
+          // Calculation of element-wise multiplication
+          Matrix result = MultTW(A, B);
+      
+          // Output the result
+          console.writeline($"Multiplication of two Matrix-wise: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Multiplication of two Matrix-wise:
+          5 12  
+          21 32
+
+
+DivTW
+=====
+   Description: 
+       Performs element-wise division of two column vectors or matrices.No element in the divisor vector or matrix should be zero.
+       This method divides each element of column vector or matrix A by the corresponding element in column vector or matrix B, returning a new vector or matrix of the same size.
+
+       .. code-block:: CSharp 
+
+          ColVec DivTW(ColVec A, ColVec B)
+          RowVec DivTW(RowVec A, RowVec B)
+          Matrix DivTW(Matrix A, Matrix B)
+          ColVec DivTW(double a, ColVec B)
+          RowVec DivTW(double a, RowVec B)
+          Matrix DivTW(double a, Matrix B)
+          Matrix DivTW(ColVec A, RowVec B)
+          Matrix DivTW(RowVec A, ColVec B)
+          Matrix DivTW(Matrix A, ColVec B)
+          Matrix DivTW(ColVec B, Matrix A)
+          Matrix DivTW(Matrix A, RowVec B)
+          Matrix DivTW(RowVec B, Matrix A)
+   Parameters: 
+       A: 
+         The numerator vector.
+       B: 
+         The denominator vector. Must be the same size as A. No element of vector or matric B should be zero.
+   Returns: 
+       A vector or matrix containing the element-wise quotients A[i] / B[i] or A[i,j]/B[i,j].
+   Example: 
+       Divide two column vectors element-wise:
+       .. Math::
+          \begin{array}{rl}
+                &A = [10.0,   20.0,   30.0] \\
+                &B = [2.0,  4.0,  5.0] \\   
+          \end{array}
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+          
+          // Create column vector A and vector B
+          ColVec A = new double[] { 10.0, 20.0, 30.0 };
+          ColVec B = new double[] { 2.0, 4.0, 5.0 };
+           
+          // Calculation of element-wise division
+          ColVec result = DivTW(A, B);
+      
+          // Output the result
+          console.writeline($"Division of two column-wise: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          5  
+          5  
+          6
+   Example: 
+       Divide two 2x2 matrices element-wise:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+          
+          //Create matrix A and matrix B
+          Matrix A = new double[,] {
+              { 10, 20 },
+              { 30, 40 }
+          };
+      
+          Matrix B = new double[,] {
+              { 2, 4 },
+              { 5, 10 }
+          };
+          
+          // Calculation of element-wise division
+          Matrix result = DivTW(A, B);
+      
+          // Output the result
+          console.writeline($"Division of two matrix-wise: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          5 5  
+          6 4
+
+
 BesselJ
 =======
    Description: 
