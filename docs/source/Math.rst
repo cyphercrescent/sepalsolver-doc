@@ -1820,6 +1820,98 @@ DivTW
           6 4
 
 
+PowTW
+=====
+   Description: 
+       Performs element-wise exponentiation of two column vectors or matrices.
+       This method raises each element of vector or matrix A to the corresponding power in vector or matrix B, producing a new vector or matrix. The size of vector or matrix A and B must be the same.
+
+       .. code-block:: CSharp 
+
+          ColVec PowTW(ColVec A, ColVec B)
+          RowVec PowTW(RowVec A, RowVec B)
+          Matrix PowTW(Matrix A, Matrix B)
+          ColVec PowTW(double x, ColVec N)
+          RowVec PowTW(double x, RowVec N)
+          Matrix PowTW(double x, Matrix N)
+          ColVec PowTW(ColVec x, double n)
+          RowVec PowTW(RowVec x, double n)
+          Matrix PowTW(Matrix x, double n)
+          Matrix PowTW(ColVec A, RowVec B)
+          Matrix PowTW(RowVec A, ColVec B)
+          Matrix PowTW(Matrix A, ColVec B)
+          Matrix PowTW(ColVec B, Matrix A)
+          Matrix PowTW(Matrix A, RowVec B)
+          Matrix PowTW(RowVec B, Matrix A)
+   Parameters: 
+       A: 
+         The base vector or matrix.
+       B: 
+         The exponent vector or matrix. Must have the same length as A.
+   Returns: 
+       A vector or matrix containing the element-wise exponentiation
+   Example: 
+       Raise elements of one vector to the powers in another:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+          
+          // Create vector A and vector B
+          ColVec A = new double[] { 2.0, 3.0, 4.0 };
+          ColVec B = new double[] { 3.0, 2.0, 0.5 };
+          
+          // Calculation of element-wise exponent
+          ColVec result = PowTW(A, B);
+      
+          // Output the result
+          console.writeline($"Exponent of two column-wise: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          8  
+          9  
+          2
+   Example: 
+       Raise each element of one 2x2 matrix to the powers in another:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+      
+          // Create matrix A and B
+          Matrix A = new double[,] {
+              { 2.0, 3.0 },
+              { 4.0, 36.0 }
+          };
+      
+          Matrix B = new double[,] {
+              { 3.0, 2.0 },
+              { 1.0, 0.5 }
+          };
+          
+          // Calculation of element-wise exponent
+          Matrix result = PowTW(A, B);
+      
+          // Output the result
+          console.writeline($"Exponent of two matrix-wise: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          8 9  
+          4 6
+
+
 BesselJ
 =======
    Description: 
