@@ -3025,7 +3025,7 @@ BesselI
        This method evaluates the exponentially scaled modified Bessel function of the first kind for a given order and value.
 
        .. math::
-          J_i(x)
+          I_i(x)
 
        .. code-block:: CSharp 
 
