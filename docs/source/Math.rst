@@ -1366,10 +1366,8 @@ Getrows
               { 50, 60,  70,  80  },
               { 90, 100, 110, 120 }
           };
-          // Set the matrix index to be extracted
-          indexer I = new indexer(new int[] { 0, 2 }); // first and third rows
           
-          // Extract the matrix
+          // Extract the first and third rows
           Matrix rows = Getrows([0, 2], matrix);
       
           // Output the extracted matrix
@@ -1380,8 +1378,8 @@ Getrows
 
        .. code-block:: Terminal 
 
-          10 20 30  
-          70 80 90
+          10.0000   20.0000   30.0000   40.0000
+          90.0000  100.0000  110.0000  120.0000
 
 
 BesselJ
