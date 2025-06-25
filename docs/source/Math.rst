@@ -1382,6 +1382,171 @@ Getrows
           90.0000  100.0000  110.0000  120.0000
 
 
+Hcart
+=====
+   Description: 
+       Horizontally concatenates a scalar with a row vector. Also concatenates a matrix with a matrix. The two matrices must have equal row count.
+       This method concatenate a scalar value to a vector or matrix to a matrix and other combination returning a new vector or matrix with an additional leading element.
+
+       .. code-block:: CSharp 
+
+          RowVec Hcart(double a, RowVec B)
+          RowVec Hcart(RowVec A, double b)
+          RowVec Hcart(RowVec A, RowVec B
+          RowVec Hcart(RowVec A, params RowVec[] RowVecs)
+          Matrix Hcart(Matrix A, Matrix B)
+          Matrix Hcart(Matrix A, params Matrix[] Matrices)
+   Parameters: 
+       a, b: 
+            The scalar value to prepend.
+       A, B: 
+            The input array (row or column vector) or matrix to which a will be prepended.
+   Returns: 
+       A vector or matrix consisting of concatenated values.
+   Example: 
+       Concatenate the value 1.0 to a row vector:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+      
+          // Create a row vector
+          RowVec B = new RowVec(new double[] { 2.0, 3.0, 4.0 });
+          
+          // Concatenate the scaler value and the vector together.
+          RowVec result = Hcart(1.0, B);
+          
+          // Output the result
+          console.writeline($"The concatenated matrix is: {rows}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1 2 3 4
+   Example: 
+       Horizontally concatenate two 2x2 matrices:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+          
+          // Create a 2 by 2 matrix
+          Matrix A = new double[,] {
+              { 1, 2 },
+              { 3, 4 }
+          };
+          
+          // Create a 2 by 2 matrix
+          Matrix B = new double[,] {
+              { 5, 6 },
+              { 7, 8 }
+          };
+          Concatenate the two matrix together
+          Matrix result = Hcart(A, B);
+      
+          // Output the result
+          console.writeline($"The concatenated matrix is: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1 2 5 6  
+          3 4 7 8
+
+
+Vcart
+=====
+   Description: 
+       Vertically concatenates a scalar with a column vector or concatenates a matrix with a matrix. The two matrices must equal column count.
+       concatenate a scalar value to a vector or matrix to a matrix and other combination returning a new vector or matrix with an additional leading element. 
+
+       .. code-block:: CSharp 
+
+          ColVec Vcart(double a, ColVec B)
+          ColVec Vcart(ColVec A, double b)
+          ColVec Vcart(ColVec A, ColVec B)
+          ColVec Vcart(ColVec A, params ColVec[] ColVecs)
+          Matrix Vcart(Matrix A, Matrix B)
+          Matrix Vcart(Matrix A, params Matrix[] Matrices)
+   Parameters: 
+       a, b: 
+            The scalar value to be placed at the top or below of the resulting vector.
+       A, B: 
+            The input column vector or matrix whose elements will appear before or after a.
+   Returns: 
+       A vector or matrix consisting of a followed by the entries of B.
+   Example: 
+       Prepend a scalar to a column vector:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a vector
+          ColVec B = new double[] { 2.0, 3.0, 4.0 };
+          
+          // Concatenate the scalar value and the vector together
+          ColVec result = Vcart(1.0, B);
+      
+          // Output the result
+          console.writeline($"The concatenated matrix is: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1  
+          2  
+          3  
+          4
+   Example: 
+       Vertically concatenate two 2x2 matrices:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Create 2 by 2 matrix
+          Matrix A = new Matrix(new double[,] {
+              { 1, 2 },
+              { 3, 4 }
+          });
+          // Create 2 by 2 matrix
+          Matrix B = new Matrix(new double[,] {
+              { 5, 6 },
+              { 7, 8 }
+          });
+      
+          //Concatenate the two matrices
+          Matrix result = Vcart(A, B);
+      
+          // Output the result
+          console.writeline($"The concatenated matrix is: {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1 2  
+          3 4  
+          5 6  
+          7 8
+
+
 BesselJ
 =======
    Description: 
