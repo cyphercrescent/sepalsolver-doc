@@ -814,7 +814,7 @@ Repmat
           using static SepalSolver.Math;
           
           // Replicate all elements of a matrix same.
-          Matrix replicated = Repmat(3.14, 2, 4);
+          Matrix replicated = Repmat(pi, 2, 4);
       
           // Display matrix
           Console.WriteLine(replicated);
@@ -825,8 +825,8 @@ Repmat
 
        .. code-block:: Terminal 
 
-          3.14 3.14 3.14 3.14  
-          3.14 3.14 3.14 3.14
+          3.1416    3.1416    3.1416    3.1416
+          3.1416    3.1416    3.1416    3.1416
 
 
 Repelem
