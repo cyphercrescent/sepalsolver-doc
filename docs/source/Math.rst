@@ -1,5 +1,528 @@
 
 
+Hist
+====
+   Description: 
+       Generates a histogram representation of a data vector.
+       This method bins the input values into intervals and returns the histogram data,
+       including counts per bin, positions (typically bin centers), bin size, and min/max of the data range.
+       Suitable for visualizing data distributions.
+
+       .. code-block:: CSharp 
+
+          (List<int> Counts, List<double> Positions, double BinSize, double Vmin, double Vmax) Hist(ColVec V, int bin)
+   Parameters: 
+       V: 
+         A column vector (ColVec) containing the numerical data to be analyzed.
+       bin: 
+           The number of bins to divide the data range into. More bins provide finer granularity.
+   Returns: 
+       A tuple (Counts, Positions, BinSize, Vmin, Vmax):
+           * Counts: Number of elements in each bin
+           * Positions: Center positions of each bin
+           * BinSize: Width of each bin
+           * Vmin: Minimum value in the dataset
+           * Vmax: Maximum value in the dataset
+   Example: 
+       Create a histogram of 1,000 samples drawn from a normal distribution.
+
+       .. code-block:: CSharp 
+
+          // Generate sample data
+          var rand = new Random();
+          var data = Enumerable.Range(0, 1000).Select(_ => rand.NextDouble() * 10).ToList();
+          var vector = new ColVec(data);
+      
+          // Compute histogram
+          var result = Hist(vector, 20);
+      
+          Console.WriteLine("Bin Counts: " + string.Join(", ", result.Counts));
+          Console.WriteLine("Bin Centers: " + string.Join(", ", result.Positions));
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Bin Counts: 47, 45, 40, 57, 47, 49, 52, 51, 50, 44, 55, 49, 53, 63, 39, 53, 44, 54, 47, 61
+          Bin Centers: 0.25344698280706046, 0.7530616086946283, 1.2526762345821962, 1.7522908604697642, 2.251905486357332, 2.7515201122449, 3.251134738132468, 3.750749364020036, 4.250363989907604, 4.749978615795172, 5.2495932416827396, 5.749207867570307, 6.248822493457875, 6.748437119345443, 7.248051745233011, 7.747666371120578, 8.247280997008145, 8.746895622895714, 9.24651024878328, 9.74612487467085
+
+
+Meshgrid
+========
+   Description: 
+       Generates coordinate matrices from coordinate vectors.
+       This method creates two 2D arrays representing all pairs of x and y coordinates from the input vectors, which is often used for evaluating functions over a grid.
+
+       .. code-block:: CSharp 
+
+          (Matrix X, Matrix Y) Meshgrid(ColVec x, ColVec y)
+          (Matrix X, Matrix Y) Meshgrid(ColVec x)
+   Parameters: 
+       x: 
+         The vector representing X-axis values.
+       y: 
+         The vector representing Y-axis values.
+   Returns: 
+       A tuple (X, Y):
+           * X: first 2D array contains copies of the x vector arranged in rows.
+           * Y: second 2D array contains copies of the y vector arranged in columns.
+   Example: 
+       Generate a 2D grid from x = [1, 2, 3] and y = [10, 20]
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using static SepalSolver.Math
+      
+          // Define input vectors
+          ColVec x =new double[]{ 1, 2, 3 };
+          ColVec y = new double[] { 10, 20 };
+      
+          // Call meshgrid function
+          var (X, Y) = Meshgrid(x, y);
+      
+          // Print result
+          for (int i = 0; i < Y.Numel; i++) {
+              for (int j = 0; j < X.Numel; j++) {
+                  Console.Write($"({X[i,j]},{Y[i,j]}) ");
+              }
+              Console.WriteLine();
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          (1,10) (1,20) 
+          (2,10) (2,20)
+          (3,10) (3,20)
+
+
+ReadMatrix
+==========
+   Description: 
+       Reads a two-dimensional elements in matrix from a file.
+       This method loads space-separated integers from each line of the specified file and constructs a matrix representation.
+
+       .. code-block:: CSharp 
+
+          Matrix ReadMatrix(string filename)
+   Parameters: 
+       filename: 
+                The path to the input file containing the matrix data.
+   Returns: 
+       A two-dimensional integer array containing the values read from the file.
+   Example: 
+       Read a matrix from a file named "matrix.txt":
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using static SepalSolver.Math
+       
+          string path = "matrix.txt";
+      
+          // Load matrix
+          Matrix matrix = ReadMatrix(path);
+      
+          // Display contents
+          for (int i = 0; i < matrix.Rows; i++)
+          {
+              for (int j = 0; j < matrix.Cols; j++)
+                  Console.Write(matrix[i, j] + " ");
+              Console.WriteLine();
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1 2 3  
+          4 5 6  
+          7 8 9
+
+
+ReadRowVec
+==========
+   Description: 
+       Reads a row vector of numbers from a file.
+       This method parses a single line of space-separated values from the specified file and constructs a one-dimensional matrix representation.
+
+       .. code-block:: CSharp 
+
+          RowVec ReadRowVec(string filename)
+   Parameters: 
+       filename: 
+                The path to the input file containing the row vector data.
+   Returns: 
+       A one-dimensional matrix representing the row vector read from the file.
+   Example: 
+       Read a row vector from a file named "vector.txt":
+
+       .. code-block:: CSharp 
+
+      .   // import libraries 
+          using System;
+          using static SepalSolver.Math;
+            
+          string path = "vector.txt";
+      
+          // Load row vector
+          RowVec rowVec = ReadRowVec(path);
+      
+          // Display contents
+          for (int i = 0; i < rowVec.Cols; i++)
+              Console.Write(rowVec[0, i] + " ");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          10 20 30 40
+
+
+ReadColVec
+==========
+   Description: 
+       Reads a column vector of numbers from a file.
+       This method parses multiple lines of input from the specified file, with each line representing a single value in the column vector.
+
+       .. code-block:: CSharp 
+
+          ColVec ReadColVec(string filename)
+   Parameters: 
+       filename: 
+                The path to the input file containing the column vector data.
+   Returns: 
+       A one-dimensional matrix representing the column vector read from the file.
+   Example: 
+       Read a column vector from a file named "colvec.txt":
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+            
+          string path = "colvec.txt";
+      
+          // Load column vector
+          ColVec colVec = ReadColVec(path);
+      
+          // Output result
+          for (int i = 0; i < colVec.Rows; i++)
+              Console.WriteLine(colVec[i, 0]);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          11  
+          22  
+          33  
+          44
+
+
+WriteMatrix
+===========
+   Description: 
+       Writes a two-dimensional matrix of integers to a file.
+       This method serializes the matrix in space-separated format, with each row written on a new line in the target file.
+
+       .. code-block:: CSharp 
+
+          void WriteMatrix(Matrix A, string filename)
+   Parameters: 
+       A: 
+         The matrix object to be written to the file.
+       filename: 
+                The path to the output file where the matrix will be saved.
+   Returns: 
+       This method does not return a value (being a void method)
+   Example: 
+       Write a matrix to a file named "matrixA.txt":
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+            
+          string path = "matrixA.txt";
+      
+          // Create a matrix
+          Matrix A = new double[,]{{12, 18, 3}, {15, 25, 30}};
+      
+          // Write to file
+          WriteMatrix(A, path);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+       (Contents of "matrixA.txt")
+          12 18 3  
+          15 25 30
+
+
+All
+===
+   Description: 
+       Determines whether all values in a one-dimensional or two-dimensional array are true.
+       This method checks each element in the input array and returns true only if all values are true; otherwise, false.
+
+       .. code-block:: CSharp 
+
+          bool All(bool[] A)
+          bool All(bool[,] A)
+   Parameters: 
+       A: 
+         The array of Boolean values to evaluate.
+   Returns: 
+       True, if all elements in the array are true; otherwise, false.
+   Example: 
+       Check if all values in a Boolean array or matrix are true:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+          
+          bool[] flags = { true, true, true };
+      
+          // Evaluate
+          bool result = All(flags);
+      
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          True
+
+
+Any
+===
+   Description: 
+       Determines whether any value in a one-dimensional or two-dimensional array is true.
+       This method checks each element in the input array and returns true if at least one value is true; otherwise, false.
+
+       .. code-block:: CSharp 
+
+          bool Any(bool[] A)
+          bool Any(bool[,] A)
+   Parameters: 
+       A: 
+         The array of Boolean values to evaluate.
+   Returns: 
+       True, if at least one element in the array is true; otherwise, false.
+   Example: 
+       Check if any value in an array or matrix is true
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+            
+          bool[] flags = { false, false, true };
+      
+          // Evaluate
+          bool result = Any(flags);
+      
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          True
+
+
+Find
+====
+   Description: 
+       Returns the indices of true values in a Boolean array or matrix, up to a maximum of k matches.
+       This method scans the input array and collects the positions of all values that evaluate to true, up to the specified limit.
+
+       .. code-block:: CSharp 
+
+          Indexer Find(bool[] A, int k = int.MaxValue)
+          Indexer Find(bool[,] A, int k = int.MaxValue)
+   Parameters: 
+       A: 
+         The Boolean array to search for matching true entries.
+       k: 
+         The maximum number of matching indices to return. Defaults to int.MaxValue if not specified.
+   Returns: 
+       An Indexer object representing the index where the array values are true, up to a maximum of k entries.
+   Example: 
+       Find up to 3 indices where values are true:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+          
+          bool[] mask = { false, true, false, true, true, true };
+      
+          // Find first 3 matching indices
+          Indexer result = Find(mask, 3);
+      
+          // Display result
+          foreach (int i in result)
+              Console.Write(i + " ");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1 3 4
+
+
+DivRem
+======
+   Description: 
+       Computes the quotient and remainder of integer division.
+       This method performs an integer division of a dividend, a by a divisor, b and returns both the quotient and remainder as a tuple.
+
+       .. code-block:: CSharp 
+
+          (int, int) DivRem(int a, int b)
+   Parameters: 
+       a: 
+         The dividend—value to be divided.
+       b: 
+         The divisor—value by which to divide.
+   Returns: 
+       A tuple containing the integer quotient and remainder:(quotient, remainder).
+   Example: 
+       Divide 17 by 5 and get both the quotient and remainder:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+      
+          // Perform division
+          (int q, int r) = DivRem(17, 5);
+      
+          Console.WriteLine($"Quotient: {q}, Remainder: {r}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Quotient: 3, Remainder: 2
+
+
+Num2Str
+=======
+   Description: 
+       Converts a double-precision floating-point number to its string representation.
+       This method transforms the numeric input into a human-readable string format, suitable for display or formatting purposes.
+
+       .. code-block:: CSharp 
+
+          string Num2Str(double num)
+          string Num2Str(int num)
+          string Num2Str(Complex num)
+   Parameters: 
+       num: 
+           The <c>double</c> value to be converted.
+   Returns: 
+       A <c>string</c> that represents the given double-precision number.
+   Example: 
+       Convert a double value to a string:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+      
+          double pi = 3.14159;
+          string result = Num2Str(pi);
+      
+          Console.WriteLine($"Pi as string: {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Pi as string: 3.14159
+
+
+Arrayfun
+========
+   Description: 
+       Applies a scalar function to each element of a column vector or row vector or matrix.
+       This method maps a user-defined function across every element in the input array or matrix and produces a transformed array or matrix of the same size.
+
+       .. code-block:: CSharp 
+
+          ColVec Arrayfun(Func&lt;double, double&gt; fun, ColVec X)
+          ColVec Arrayfun(Func<double, double, double> fun, ColVec X, ColVec Y)
+          RowVec Arrayfun(Func<double, double> fun, RowVec X)
+          RowVec Arrayfun(Func<double, double, double> fun, RowVec X, RowVec Y)
+          Matrix Arrayfun(Func<double, double> fun, Matrix X)
+          Matrix Arrayfun(Func<double, double, double> fun, Matrix X, Matrix Y)
+   Parameters: 
+       fun: 
+           A unary function that defines how each element should be transformed.
+       X: 
+         The input column vector or row vector or matrix whose elements will be transformed.
+       Y: 
+         The second column vector or row vector or matrix of input values.
+   Returns: 
+       A new array or matrix with each element equal to function of inputed values where variable x is the corresponding element in variable X.
+   Example: 
+       Apply the square root function to a column vector:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+           
+          // Create column vector
+          ColVec vec = new double[] { 1.0, 9.0, 16 64.0 };
+      
+          // Apply transformation
+          ColVec result = Arrayfun(Sqrt, vec);
+      
+          // Display result
+          for (int i = 0; i < result.Rows; i++)
+              Console.WriteLine(result[i, 0]);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1  
+          2  
+          3  
+          5
+
+
 Reshape
 =======
    Description: 
@@ -164,6 +687,105 @@ Abs
        .. code-block:: Terminal 
 
           5
+
+
+Zeros
+=====
+   Description: 
+       Generates a one-dimensional  0r two-dimensional array of zeros with specified dimensions.
+       This method creates a vector of M rows or matrix of M rows and N columns, where every element is initialized to zero.
+
+       .. code-block:: CSharp 
+
+          double[] Zeros(int N)
+          double[,] Zeros(int M, int N)
+          double[,] Zeros(int[] S)
+   Parameters: 
+       M: 
+         The number of rows in the resulting matrix.
+       N: 
+         The number of columns in the resulting matrix.
+       S: 
+         The number of equal columns and rows in the resulting matrix.
+   Returns: 
+       An array of vector of size M or matrix of size M by N filled with zeros.
+   Example: 
+       Create a 3x4 matrix of zeros:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+          
+          // Generate 4 by 3 matrix 
+          double[,] zeros = Zeros(3, 4);
+      
+          // Display matrix
+          for (int i = 0; i < zeros.Rows; i++)
+          {
+              for (int j = 0; j < zeros.Cols; j++)
+                  Console.Write(zeros[i, j] + " ");
+              Console.WriteLine();
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          0 0 0 0  
+          0 0 0 0  
+          0 0 0 0
+
+
+Ones
+====
+   Description: 
+       Generates a two-dimensional array of ones with specified dimensions.
+       This method creates a matrix of M rows and N columns, where every element is initialized to 1.0.
+
+       .. code-block:: CSharp 
+
+          double[] Ones(int M)
+          double[,] Ones(int M, int N)
+          double[,] Ones(int[] S) 
+   Parameters: 
+       M: 
+         The number of rows in the resulting matrix.
+       N: 
+         The number of columns in the resulting matrix.
+       S: 
+         Array of integer rows and columns in the resulting matrix.
+   Returns: 
+       An array of vector of size M or matrix of size M by N filled with ones.
+   Example: 
+       Create a 2x3 matrix of ones:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+            
+          //Generate Matrix 2 by 3 with all the element has 1.0
+          double[,] ones = Ones(2, 3);
+      
+          // Display matrix
+          for (int i = 0; i < ones.Rows; i++)
+          {
+              for (int j = 0; j < ones.Cols; j++)
+                  Console.Write(ones[i, j] + " ");
+              Console.WriteLine();
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1 1 1  
+          1 1 1
 
 
 BesselJ
