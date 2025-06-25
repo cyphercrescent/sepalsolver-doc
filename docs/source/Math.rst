@@ -3196,13 +3196,17 @@ BesselY
           using SepalSolver;
           using static SepalSolver.Math;
           
-          // Compute bessely function
-          ColVec x = Linspace(0, 10);
-          Matrix y = Enumerable.Range(0, 10).Select(i=>BesselY(i, x)).ToList();
+          // Compute BesselY function
+          ColVec x = Linspace(0.01, 10, 500);
+          Matrix y = Enumerable.Range(0, 5).Select(i => BesselY(i, x)).ToList();
           
-         // Plot result
-         Plot(x, y); Xlabel("x-axis"); Ylabel("y-axis"); Title("Bessel function I");
-         
+          // Plot result
+          Plot(x, y);
+          Axis([0, 10, -2, 1]);
+          Xlabel("x-axis"); Ylabel("y-axis");
+          Title("Bessel function Y");
+          Legend(Enumerable.Range(0, 5).Select(i => "Y_"+ i + "(x)"), LowerRight);
+          SaveAs(imagepath + "BesselfunctionPlotY.png");
 
       Output: 
 
