@@ -722,12 +722,8 @@ Zeros
           double[,] zeros = Zeros(3, 4);
       
           // Display matrix
-          for (int i = 0; i < zeros.Rows; i++)
-          {
-              for (int j = 0; j < zeros.Cols; j++)
-                  Console.Write(zeros[i, j] + " ");
-              Console.WriteLine();
-          }
+          Console.WriteLine(zeros);
+          
 
       Output: 
 
@@ -769,15 +765,11 @@ Ones
           using static SepalSolver.Math;
             
           //Generate Matrix 2 by 3 with all the element has 1.0
-          double[,] ones = Ones(2, 3);
+          Matrix ones = Ones(2, 3);
       
           // Display matrix
-          for (int i = 0; i < ones.Rows; i++)
-          {
-              for (int j = 0; j < ones.Cols; j++)
-                  Console.Write(ones[i, j] + " ");
-              Console.WriteLine();
-          }
+          Console.WriteLine(ones);
+          
 
       Output: 
 
@@ -822,15 +814,11 @@ Repmat
           using static SepalSolver.Math;
           
           // Replicate all elements of a matrix same.
-          double[,] replicated = Repmat(3.14, 2, 4);
+          Matrix replicated = Repmat(3.14, 2, 4);
       
           // Display matrix
-          for (int i = 0; i < replicated.Rows; i++)
-          {
-              for (int j = 0; j < replicated.Cols; j++)
-                  Console.Write(replicated[i, j] + " ");
-              Console.WriteLine();
-          }
+          Console.WriteLine(replicated);
+          
 
       Output: 
 
@@ -875,12 +863,7 @@ Repelem
           Matrix expanded = Repelem(A, 2, 3);
       
           // Display result
-          for (int i = 0; i < expanded.Rows; i++)
-          {
-              for (int j = 0; j < expanded.Cols; j++)
-                  Console.Write(expanded[i, j] + " ");
-              Console.WriteLine();
-          }
+          Console.WriteLine(expanded);
 
       Output: 
 
@@ -928,12 +911,7 @@ Kron
           Matrix result = Kron(A, B);
       
           // Display result
-          for (int i = 0; i < result.Rows; i++)
-          {
-              for (int j = 0; j < result.Cols; j++)
-                  Console.Write(result[i, j] + " ");
-              Console.WriteLine();
-          }
+          Console.WriteLine(result);
 
       Output: 
 
@@ -978,12 +956,7 @@ Rand
           double[,] randomMatrix = Rand(3, 3);
       
           // Print matrix contents
-          for (int i = 0; i < randomMatrix.Rows; i++)
-          {
-              for (int j = 0; j < randomMatrix.Cols; j++)
-                  Console.Write($"{randomMatrix[i, j]:F2} ");
-              Console.WriteLine();
-          }
+          Console.WriteLine(randomMatrix)
 
       Output: 
 
@@ -1026,15 +999,10 @@ Randn
           using System;
           using static SepalSolver.Math;
             
-          double[,] randval = Randn(2, 3, 5.0, 2.0);
+          Matrix randval = Randn(2, 3, 5.0, 2.0);
       
           // Display result
-          for (int i = 0; i < randval.Rows; i++)
-          {
-              for (int j = 0; j < randval.Cols; j++)
-                  Console.Write($"{randval[i, j]:F2} ");
-              Console.WriteLine();
-          }
+          Console.WriteLine(randval)
 
       Output: 
 
@@ -1078,15 +1046,10 @@ Randt
           using System;
           using static SepalSolver.Math;
           
-          double[,] triMatrix = Randt(2, 3, 10, 15, 20);
+          Matrix triMatrix = Randt(2, 3, 10, 15, 20);
       
-          // Display result
-          for (int i = 0; i < triMatrix.Rows; i++)
-          {
-              for (int j = 0; j < triMatrix.Cols; j++)
-                  Console.Write($"{triMatrix[i, j]:F2} ");
-              Console.WriteLine();
-          }
+          // Display result// Display result
+          Console.WriteLine(triMatrix);
 
       Output: 
 
@@ -1095,6 +1058,47 @@ Randt
 
           13.47 16.89 14.12  
           11.53 15.00 17.26
+
+
+Linspace
+========
+   Description: 
+       Generates a linearly spaced array of double values between two endpoints.
+       This method produces a one-dimensional array of N evenly spaced values from a to b, inclusive. If N is 1, the array contains just a.
+
+       .. code-block:: CSharp 
+
+          double[] Linspace(double a, double b, int N = 100)
+   Parameters: 
+       a: 
+         The starting value of the range.
+       b: 
+         The ending value of the range.
+       N: 
+         The number of evenly spaced points to generate. Default is 100.
+   Returns: 
+       An array containing N linearly spaced values between a and b.
+   Example: 
+       Generate 10 points from -1 to 1:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+          
+          //Generate point from -1 to 1
+          RowVec line = Linspace(-1.0, 1.0, 10);
+      
+          // Display result
+          Console.WriteLine(line);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          -1.00 -0.78 -0.56 -0.33 -0.11 0.11 0.33 0.56 0.78 1.00
 
 
 BesselJ
