@@ -857,7 +857,7 @@ Repelem
           using static SepalSolver.Math;
           
           // Create a 2 by 2 matrix
-          Matrix A  = new double[,]{{1, 2},{3,4}}
+          Matrix A  = new double[,]{{1, 2},{3,4}};
       
           // Apply element-wise replication
           Matrix expanded = Repelem(A, 2, 3);
@@ -870,10 +870,10 @@ Repelem
 
        .. code-block:: Terminal 
 
-          1 1 1 2 2 2  
-          1 1 1 2 2 2  
-          3 3 3 4 4 4  
-          3 3 3 4 4 4
+          1.0000    1.0000    1.0000    2.0000    2.0000    2.0000
+          1.0000    1.0000    1.0000    2.0000    2.0000    2.0000
+          3.0000    3.0000    3.0000    4.0000    4.0000    4.0000
+          3.0000    3.0000    3.0000    4.0000    4.0000    4.0000
 
 
 Kron
