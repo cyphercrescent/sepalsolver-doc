@@ -788,6 +788,315 @@ Ones
           1 1 1
 
 
+Repmat
+======
+   Description: 
+       Replicates a scalar value across a one-dimensional array or two-dimensional matrix of specified size.
+       This method returns a vector of size M or matrix of size M x N in which every element is initialized to the scalar value <c>A</c>.
+
+       .. code-block:: CSharp 
+
+          double[] Repmat(double A, int M)
+          double[,] Repmat(double A, int M, int N)
+          double[,] Repmat(double A, int[] S)
+          Matrix Repmat(Matrix A, int M, int N)
+          Matrix Repmat(Matrix A, int[] S)
+   Parameters: 
+       A: 
+         The scalar value or matrix to replicate.
+       M: 
+         The number of rows in the resulting matrix.
+       N: 
+         The number of columns in the resulting matrix.
+       S: 
+         Array of integer rows and columns in the resulting matrix.
+   Returns: 
+       A matrix of dimensions M x N where all values are equal to A.
+   Example: 
+       Create a 2x4 matrix filled with the value 3.14:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+          
+          // Replicate all elements of a matrix same.
+          double[,] replicated = Repmat(3.14, 2, 4);
+      
+          // Display matrix
+          for (int i = 0; i < replicated.Rows; i++)
+          {
+              for (int j = 0; j < replicated.Cols; j++)
+                  Console.Write(replicated[i, j] + " ");
+              Console.WriteLine();
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          3.14 3.14 3.14 3.14  
+          3.14 3.14 3.14 3.14
+
+
+Repelem
+=======
+   Description: 
+       Replicates each element of a matrix a specified number of times along both axes.
+       This method expands the input matrix by repeating each element M times row-wise (vertically) and N times column-wise (horizontally), returning the result as a new Matrix with repetitive elements.
+
+       .. code-block:: CSharp 
+
+          Matrix Repelem(Matrix A, int M, int N)
+   Parameters: 
+       A: 
+         The input matrix whose elements will be replicated.
+       M: 
+         The number of times to repeat each element along the row (vertical) direction.
+       N: 
+         The number of times to repeat each element along the column (horizontal) direction.
+   Returns: 
+       A new Matrix instance containing the expanded result with replicated elements.
+   Example: 
+       Create a 4x6 matrix by replicating a 2x2 matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+          
+          // Create a 2 by 2 matrix
+          Matrix A  = new double[,]{{1, 2},{3,4}}
+      
+          // Apply element-wise replication
+          Matrix expanded = Repelem(A, 2, 3);
+      
+          // Display result
+          for (int i = 0; i < expanded.Rows; i++)
+          {
+              for (int j = 0; j < expanded.Cols; j++)
+                  Console.Write(expanded[i, j] + " ");
+              Console.WriteLine();
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          1 1 1 2 2 2  
+          1 1 1 2 2 2  
+          3 3 3 4 4 4  
+          3 3 3 4 4 4
+
+
+Kron
+====
+   Description: 
+       Computes the Kronecker product of two matrices.
+       This method generates a block matrix by multiplying each element of matrix X by the entire matrix Y, preserving the structure of X.
+
+       .. code-block:: CSharp 
+
+          Matrix Kron(Matrix X, Matrix Y)
+   Parameters: 
+       X: 
+         The first matrix (left operand) of the Kronecker product.
+       Y: 
+         The second matrix (right operand) of the Kronecker product.
+   Returns: 
+       A Matrix representing the Kronecker product of X and Y.
+   Example: 
+       Compute the Kronecker product of two 2x2 matrices:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+           
+          // create a 2 by 2 matrix
+          Matrix A = new double[,]{{1, 2},{3, 4}};;
+            
+          // create a 2 by 2 matrix
+          Matrix B = new double[,]{{0, 5},{6, 7}};
+      
+          // Compute Kronecker product
+          Matrix result = Kron(A, B);
+      
+          // Display result
+          for (int i = 0; i < result.Rows; i++)
+          {
+              for (int j = 0; j < result.Cols; j++)
+                  Console.Write(result[i, j] + " ");
+              Console.WriteLine();
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          0 5 0 10  
+          6 7 12 14  
+          0 15 0 20  
+          18 21 24 28
+
+
+Rand
+====
+   Description: 
+       Generates a one-dimensional or two-dimensional matrix of random double-precision values between 0.0 (inclusive) and 1.0 (exclusive).
+       This method creates a matrix with M rows and N columns, where each element is independently sampled from a uniform distribution.
+
+       .. code-block:: CSharp 
+
+          double[] Rand(int N)
+          double[,] Rand(int M, int N)
+          double[,] Rand(int[] Size)
+   Parameters: 
+       M: 
+         The number of rows in the output matrix.
+       N: 
+         The number of columns in the output matrix.
+       Size: 
+            A vector of two integer elements.
+   Returns: 
+       An array (vector) of size M or matrix of size M x N populated with random values in the range [0.0, 1.0).
+   Example: 
+       Create a 3x3 matrix of random doubles:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+           
+          double[,] randomMatrix = Rand(3, 3);
+      
+          // Print matrix contents
+          for (int i = 0; i < randomMatrix.Rows; i++)
+          {
+              for (int j = 0; j < randomMatrix.Cols; j++)
+                  Console.Write($"{randomMatrix[i, j]:F2} ");
+              Console.WriteLine();
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          0.42 0.75 0.31  
+          0.89 0.06 0.94  
+          0.12 0.54 0.78
+
+
+Randn
+=====
+   Description: 
+       Generates an array (Vector) or matrix of normally distributed random double values.
+       This method creates a vector of size M or M * N matrix with each element independently sampled from a normal distribution characterized by the specified <c>mean</c> and <c>standard deviation</c>.
+
+       .. code-block:: CSharp 
+
+          double[] Randn(int N, double mean = 0, double std = 1)
+          double[,] Randn(int M, int N, double mean = 0, double standardDeviation = 1)
+          double[,] Randn(int[] Size, double mean = 0, double std = 1) => Randn(Size[0], Size[1], mean, std);
+   Parameters: 
+       M: 
+         The number of rows in the resulting matrix.
+       N: 
+         The number of columns in the resulting matrix.
+       mean: 
+            The mean (μ) of the normal distribution. Default is 0.
+       standardDeviation: 
+                         The standard deviation (σ) of the normal distribution. Default is 1.
+   Returns: 
+       An array (vector) of size M or matrix of dimensions M x N filled with normally distributed random values.
+   Example: 
+       Create a 2x3 matrix sampled from N(5, 2²):
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+            
+          double[,] randval = Randn(2, 3, 5.0, 2.0);
+      
+          // Display result
+          for (int i = 0; i < randval.Rows; i++)
+          {
+              for (int j = 0; j < randval.Cols; j++)
+                  Console.Write($"{randval[i, j]:F2} ");
+              Console.WriteLine();
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          3.02 6.87 4.11  
+          5.73 8.34 1.95
+
+
+Randt
+=====
+   Description: 
+       Generates a matrix of random double values from a triangular distribution.
+       This method creates an M x N matrix where each element is independently sampled from a triangular distribution defined by minimum bound value, mode of distribution likely, and maximum bound value.
+
+       .. code-block:: CSharp 
+
+          double[] Randt(int N, double min = 0.0, double likely = 0.5, double max = 1.0)
+          double[,] Randt(int M, int N, double min = 0.0, double likely = 0.5, double max = 1.0)
+          double[,] Randt(int[] Size, double min = 0.0, double likely = 0.5, double max = 1.0) => RandTri(Size[0], Size[1], min, likely, max)
+   Parameters: 
+       M: 
+         The number of rows in the resulting matrix.
+       N: 
+         The number of columns in the resulting matrix.
+       min: 
+           The minimum value of the triangular distribution (lower bound).
+       likely: 
+              The most likely (mode) value of the triangular distribution.
+       max: 
+           The maximum value of the triangular distribution (upper bound).
+   Returns: 
+       An array (vector) of dimension M or matrix of dimensions M x N populated with random values drawn from the specified triangular distribution.
+   Example: 
+       Create a 2x3 matrix sampled from a triangular distribution between 10 and 20 with a peak at 15:
+
+       .. code-block:: CSharp 
+
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
+          
+          double[,] triMatrix = Randt(2, 3, 10, 15, 20);
+      
+          // Display result
+          for (int i = 0; i < triMatrix.Rows; i++)
+          {
+              for (int j = 0; j < triMatrix.Cols; j++)
+                  Console.Write($"{triMatrix[i, j]:F2} ");
+              Console.WriteLine();
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          13.47 16.89 14.12  
+          11.53 15.00 17.26
+
+
 BesselJ
 =======
    Description: 
