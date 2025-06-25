@@ -3097,11 +3097,16 @@ BesselI
           using static SepalSolver.Math;
           
           // Compute BesselI function
-          ColVec x = Linspace(0, 10);
-          Matrix y = Enumerable.Range(0, 10).Select(i=>BesselI(i, x)).ToList();
-          
+          ColVec x = Linspace(0, 5);
+          Matrix y = Enumerable.Range(0, 4).Select(i => BesselI(i, x)).ToList();
+      
           // Plot result
-          Plot(x, y); Xlabel("x-axis"); Ylabel("y-axis"); Title("Bessel function I");
+          Plot(x, y);
+          Axis([0, 5, 0, 15]);
+          Xlabel("x-axis"); Ylabel("y-axis");
+          Title("Bessel function I");
+          Legend(Enumerable.Range(0, 4).Select(i => "I_"+ i + "(x)"));
+          SaveAs("BesselfunctionPlotI.png");
          
 
       Output: 
