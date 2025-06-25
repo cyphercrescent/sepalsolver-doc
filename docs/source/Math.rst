@@ -2473,6 +2473,246 @@ Acos
           Acos(1) = 0
 
 
+Tan
+===
+   Description: 
+       Calculates the tangent of the specified angle in radians.
+       This method returns the tangent of the input angle, where the angle is measured in radians. The tangent function has vertical asymptotes at odd multiples of π/2.
+
+       .. code-block:: CSharp 
+
+          double Tan(double x)
+          Complex Tan(Complex x)
+          Matrix Tan(Matrix x)
+          ColVec Tan(ColVec x)
+          RowVec Tan(RowVec x)
+          SparseMatrix Tan(SparseMatrix x)
+          SparseColVec Tan(SparseColVec x)
+          SparseRowVec Tan(SparseRowVec x)
+   Parameters: 
+       x: 
+         The angle in radians for which to calculate the tangent.
+   Returns: 
+       The tangent of x. Returns NaN if x is NaN. At odd multiples of π/2, the result approaches positive or negative infinity.
+   Example: 
+       Calculate the tangent of angle pi/3:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Calculate tangent of 0 radians (0 degrees)
+          double angle = pi/3;
+          double result = Tan(angle);
+          
+          // Output the result
+          console.writeline($"Tan(pi/3) = {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Tan(0) = 1.7320508075688772
+
+
+Atan
+====
+   Description: 
+       Computes the arctangent (inverse tangent) of a specified number.
+       This method returns the angle in radians whose tangent is the specified number. The angle is in the range -π/2 to π/2 radians.
+
+       .. code-block:: CSharp 
+
+          double Atan(double x)
+          Complex Atan(Complex x)
+          Matrix Atan(Matrix x)
+          ColVec Atan(ColVec x)
+          RowVec Atan(RowVec x)
+          SparseMatrix Atan(SparseMatrix x)
+          SparseColVec Atan(SparseColVec x)
+          SparseRowVec Atan(SparseRowVec x)
+   Parameters: 
+       x: 
+         A scalar number or one-dimensional or two-dimensional array representing a tangent value for which the arctangent is to be computed.
+   Returns: 
+       A double representing the arctangent of x in radians, in the range -π/2 ≤ atan(x) ≤ π/2.
+   Example: 
+       Calculate the arctangent of 1.0:
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the input value
+          double x = 1.0;
+          
+          // Calculate the arctangent
+          double result = Atan(x);
+      
+          // Output the result
+          Console.WriteLine($"Atan({x}) = {result} radians");
+          Console.WriteLine($"Atan({x}) = {result * 180 / Math.PI} degrees");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Atan(1) = 0.7853981633974483 radians
+          Atan(1) = 45 degrees
+
+
+Sinh
+====
+   Description: 
+       Computes the hyperbolic sine of a specified number.
+       This method returns the hyperbolic sine of x, defined as (e^x - e^(-x))/2. The hyperbolic sine function is an odd function with domain (-∞, +∞) and range (-∞, +∞).
+
+       .. code-block:: CSharp 
+
+          double Sinh(double x)
+          Complex Sinh(Complex x)
+          Matrix Sinh(Matrix x)
+          ColVec Sinh(ColVec x)
+          RowVec Sinh(RowVec x)
+          SparseMatrix Sinh(SparseMatrix x)
+          SparseColVec Sinh(SparseColVec x)
+          SparseRowVec Sinh(SparseRowVec x)
+   Parameters: 
+       x: 
+         A scalar number one-dimensional or two-dimensional array representing the value for which the hyperbolic sine is to be computed.
+   Returns: 
+       A double representing the hyperbolic sine of x.
+       Returns PositiveInfinity if x is PositiveInfinity.
+       Returns NegativeInfinity if x is NegativeInfinity.
+       Returns NaN if x is NaN.
+   Example: 
+       Calculate the hyperbolic sine of a positive value:
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the input value
+          double x = 2.0;
+          
+          // Calculate the hyperbolic sine
+          double result = Sinh(x);
+      
+          // Output the result
+          Console.WriteLine($"Sinh({x}) = {result}");
+          Console.WriteLine($"Verification: (e^{x} - e^(-{x}))/2 = {(Exp(x) - Exp(-x)) / 2}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Sinh(2) = 3.6268604078470186
+          Verification: (e^2 - e^(-2))/2 = 3.6268604078470186
+
+
+Cosh
+====
+   Description: 
+       Computes the hyperbolic cosine of a specified number.
+       This method returns the hyperbolic cosine of x, defined as (e^x + e^(-x))/2. The hyperbolic cosine function is an even function with domain (-∞, +∞) and range [1, +∞).
+
+       .. code-block:: CSharp 
+
+          double Cosh(double x)
+          Complex Cosh(Complex x)
+          Matrix Cosh(Matrix x)
+          ColVec Cosh(ColVec x)
+          RowVec Cosh(RowVec x)
+          SparseMatrix Cosh(SparseMatrix x)
+          SparseColVec Cosh(SparseColVec x)
+          SparseRowVec Cosh(SparseRowVec x)
+   Parameters: 
+       x: 
+         A scalar number or one-dimensional or two-dimensional array representing the value for which the hyperbolic cosine is to be computed.
+   Returns: 
+       A double representing the hyperbolic cosine of x, always greater than or equal to 1.
+       Returns PositiveInfinity if x is PositiveInfinity or NegativeInfinity.
+   Example: 
+       Calculate the hyperbolic cosine of a positive value:
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the input value
+          double x = 1.5;
+          
+          // Calculate the hyperbolic cosine
+          double result = Cosh(x);
+      
+          // Output the result
+          Console.WriteLine($"Cosh({x}) = {result}");
+          Console.WriteLine($"Verification: (e^{x} + e^(-{x}))/2 = {(Math.Exp(x) + Math.Exp(-x)) / 2}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Cosh(1.5) = 2.352409615243247
+          Verification: (e^1.5 + e^(-1.5))/2 = 2.352409615243247
+
+
+Tanh
+====
+   Description: 
+       Computes the hyperbolic tangent of a given value.
+       The hyperbolic tangent is defined as (e^x - e^(-x)) / (e^x + e^(-x)) and maps any real number to the range (-1, 1).
+
+       .. code-block:: CSharp 
+
+          double Tanh(double x)
+          Complex Tanh(Complex x)
+          Matrix Tanh(Matrix x)
+          ColVec Tanh(ColVec x)
+          RowVec Tanh(RowVec x)
+          SparseMatrix Tanh(SparseMatrix x)
+          SparseColVec Tanh(SparseColVec x)
+          SparseRowVec Atanh(SparseRowVec x)   
+   Parameters: 
+       x: 
+         A double-precision floating-point number representing the value for which to calculate the hyperbolic tangent.
+   Returns: 
+       The hyperbolic tangent of a number.
+   Example: 
+       Evaluate hyperbolic tangent of the number, 1
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Compute the hyperbolic tangent of a number
+          double result = Tanh(1.0);
+           
+          // Output the result
+          Console.WriteLine($"Tanh(1.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Tanh(1.0) = 0.7615941559557649
+
+
 BesselJ
 =======
    Description: 
