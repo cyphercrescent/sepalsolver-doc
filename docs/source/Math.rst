@@ -2383,6 +2383,96 @@ Asin
           Asin(-1) = -1.5707963267948966
 
 
+Cos
+===
+   Description: 
+       Calculates the cosine of the specified angle in radians.
+       This method returns the cosine of the input angle, where the angle is measured in radians. The result is between -1 and 1.
+
+       .. code-block:: CSharp 
+
+          double Cos(double x)
+          Complex Cos(Complex x)
+          Matrix Cos(Matrix x)
+          ColVec Cos(ColVec x)
+          RowVec Cos(RowVec x)
+          SparseMatrix Cos(SparseMatrix x)
+          SparseColVec Cos(SparseColVec x)
+          SparseRowVec Cos(SparseRowVec x)
+   Parameters: 
+       x: 
+         The angle in radians for which to calculate the cosine.
+   Returns: 
+       The cosine of x, ranging from -1 to 1. Returns 0 if x is positive or negative infinity.
+   Example: 
+       Calculate the cosine of common angles:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Calculate cosine of 0 radians (0 degrees)
+          double angle = 0;
+          double result = Cos(angle);
+          
+          // Output the result
+          console.writeline($"Cos(0) = {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Cos(0) = 1
+
+
+Acos
+====
+   Description: 
+       Calculates the arccosine (inverse cosine) of the specified value.
+       This method returns the angle in radians whose cosine is the specified value. The input must be between -1 and 1, and the result is between 0 and π.
+
+       .. code-block:: CSharp 
+
+          double Acos(double x)
+          Complex Acos(Complex x)
+          Matrix Acos(Matrix x)
+          ColVec Acos(ColVec x)
+          RowVec Acos(RowVec x)
+          SparseMatrix Acos(SparseMatrix x)
+          SparseColVec Acos(SparseColVec x)
+          SparseRowVec Acos(SparseRowVec x) 
+   Parameters: 
+       x: 
+         A scalar number or one-dimensional or two-dimensional array for which to calculate the arccosine. Must be between -1 and 1 inclusive.
+   Returns: 
+       The angle in radians whose cosine equals x, ranging from 0 to π. Returns NaN if x is outside the range [-1, 1].
+   Example: 
+       Calculate the arccosine of common values:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Calculate arccosine of 1 (which should be 0)
+          double value = 1.0;
+          double result = Acos(value);
+          
+          // Output the result
+          console.writeline($"Acos(1) = {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Acos(1) = 0
+
+
 BesselJ
 =======
    Description: 
