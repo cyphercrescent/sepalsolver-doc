@@ -1322,16 +1322,16 @@ Getcols
           Matrix cols = Getcols([1,3], matrix);
           
           // Output the extracted matrix
-          console.WriteLine(cols)
+          Console.WriteLine(cols);
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          20 40  
-          60 80  
-          100 120
+           20.0000   40.0000
+           60.0000   80.0000
+          100.0000  120.0000
 
 
 Getrows
@@ -1373,7 +1373,7 @@ Getrows
           Matrix rows = Getrows([0, 2], matrix);
       
           // Output the extracted matrix
-          Console.WriteLine($"The extracted matrix is: {rows}")
+          Console.WriteLine(rows);
 
       Output: 
 
