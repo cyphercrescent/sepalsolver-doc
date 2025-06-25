@@ -1285,8 +1285,8 @@ Getrow
           7.0000    8.0000    9.0000
 
 
-=>J.Select(j
-============
+Getcols
+=======
    Description: 
        Extracts specified columns from a two-dimensional array using an indexer.
        This method returns a new Matrix containing only the columns of data specified by the I-indexer.
