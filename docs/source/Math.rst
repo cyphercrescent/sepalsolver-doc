@@ -3236,6 +3236,232 @@ BesselK
 
 
 
+ChebyshevT
+==========
+   Description: 
+       Computes the Chebyshev polynomial of the first kind of degree n evaluated at x.
+       This method returns the value of the nth Chebyshev polynomial T_n(x) at the specified point. Chebyshev polynomials of the first kind are defined by:
+       .math: 'T_n(cos(θ)) = cos(nθ)' and satisfy the recurrence relation: 
+       .math: 'T_0(x) = 1,' 
+       .math: 'T_1(x) = x,'
+       .math: 'T_n(x) = 2xT_{n-1}(x) - T_{n-2}(x)'
+
+       .. code-block:: CSharp 
+
+          double ChebyshevT(int n, double x)
+          Complex ChebyshevT(int n, Complex x)
+          Matrix ChebyshevT(int i, Matrix x)
+          ColVec ChebyshevT(int i, ColVec x)
+          RowVec ChebyshevT(int i, RowVec x)
+          SparseMatrix ChebyshevT(int i, SparseMatrix x)
+          SparseColVec ChebyshevT(int i, SparseColVec x)
+          SparseRowVec ChebyshevT(int i, SparseRowVec x)
+   Param: 
+      | n:  The degree of the Chebyshev polynomial. Must be a non-negative integer.
+      | x:  The single point or points within array or matrix at which to evaluate the Chebyshev polynomial. Typically in the range [-1, 1] for optimal numerical properties.
+   Returns: 
+       A scalar point of point in an array for matrix form representing the value of the nth Chebyshev polynomial of the first kind evaluated at x.
+       Returns NaN if n is negative or if computation fails.
+   Example: 
+       Calculate the first few Chebyshev polynomials at x = 0.5:
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the evaluation point
+          double x = 0.5;
+          
+          // Calculate the first few Chebyshev polynomials
+          double T0 = ChebyshevT(0, x);  // T_0(x) = 1
+          double T1 = ChebyshevT(1, x);  // T_1(x) = x
+          double T2 = ChebyshevT(2, x);  // T_2(x) = 2x² - 1
+          double T3 = ChebyshevT(3, x);  // T_3(x) = 4x³ - 3x
+      
+          // Output the results
+          Console.WriteLine($"Chebyshev polynomials evaluated at x = {x}:");
+          Console.WriteLine($"T_0({x}) = {T0}");
+          Console.WriteLine($"T_1({x}) = {T1}");
+          Console.WriteLine($"T_2({x}) = {T2}");
+          Console.WriteLine($"T_3({x}) = {T3}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Chebyshev polynomials evaluated at x = 0.5:
+          T_0(0.5) = 1
+          T_1(0.5) = 0.5
+          T_2(0.5) = -0.5
+          T_3(0.5) = -1
+
+
+ChebyshevU
+==========
+   Description: 
+       Computes the Chebyshev polynomial of the second kind of degree n evaluated at x.
+       This method returns the value of the nth Chebyshev polynomial U_n(x) at the specified point. 
+       Chebyshev polynomials of the second kind are defined by U_n(cos(θ)) = sin((n+1)θ)/sin(θ) and 
+       satisfy the recurrence relation U_0(x) = 1, U_1(x) = 2x, U_n(x) = 2xU_{n-1}(x) - U_{n-2}(x).
+
+       .. code-block:: CSharp 
+
+          double ChebyshevU(int n, double x)
+          Complex ChebyshevU(int n, Complex x)
+          Matrix ChebyshevU(int i, Matrix x)
+          ColVec ChebyshevU(int i, ColVec x)
+          RowVec ChebyshevU(int i, RowVec x)
+          SparseMatrix ChebyshevU(int i, SparseMatrix x)
+          SparseColVec ChebyshevU(int i, SparseColVec x)
+          SparseRowVec ChebyshevU(int i, SparseRowVec x)
+   Param: 
+      | n:  The degree of the Chebyshev polynomial of the second kind. Must be a non-negative integer.
+      | x:  The point at which to evaluate the Chebyshev polynomial. Typically in the range [-1, 1] for optimal numerical properties.
+   Returns: 
+       A Scaler point or points in an array or matrix form representing the value of the nth Chebyshev polynomial of the second kind evaluated at x.
+       Returns NaN if n is negative or if computation fails.
+   Example: 
+       Calculate the first few Chebyshev polynomials of the second kind at x = 0.5:
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the evaluation point
+          double x = 0.5;
+          
+          // Calculate the first few Chebyshev polynomials of the second kind
+          double U0 = ChebyshevU(0, x);  // U_0(x) = 1
+          double U1 = ChebyshevU(1, x);  // U_1(x) = 2x
+          double U2 = ChebyshevU(2, x);  // U_2(x) = 4x² - 1
+          double U3 = ChebyshevU(3, x);  // U_3(x) = 8x³ - 4x
+      
+          // Output the results
+          Console.WriteLine($"Chebyshev polynomials of the second kind at x = {x}:");
+          Console.WriteLine($"U_0({x}) = {U0}");
+          Console.WriteLine($"U_1({x}) = {U1}");
+          Console.WriteLine($"U_2({x}) = {U2}");
+          Console.WriteLine($"U_3({x}) = {U3}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Chebyshev polynomials of the second kind at x = 0.5:
+          U_0(0.5) = 1
+          U_1(0.5) = 1
+          U_2(0.5) = 0
+          U_3(0.5) = -1
+
+
+LegendreP
+=========
+   Description: 
+       Computes the Legendre polynomial of degree n evaluated at x.
+       This method returns the value of the nth Legendre polynomial P_n(x) at the specified point. Legendre polynomials are orthogonal polynomials on the interval [-1, 1] that satisfy the recurrence relation P_0(x) = 1, P_1(x) = x, and (n+1)P_{n+1}(x) = (2n+1)xP_n(x) - nP_{n-1}(x). They are solutions to Legendre's differential equation.
+
+       .. code-block:: CSharp 
+
+          double LegendreP(int n, double x)
+          Complex LegendreP(int n, Complex x)
+          Matrix LegendreP(int i, Matrix x)
+          ColVec LegendreP(int i, ColVec x)
+          RowVec LegendreP(int i, RowVec x)
+          SparseMatrix LegendreP(int i, SparseMatrix x)
+          SparseColVec LegendreP(int i, SparseColVec x)
+          SparseRowVec LegendreP(int i, SparseRowVec x)
+   Param: 
+      | n:  The degree of the Legendre polynomial. Must be a non-negative integer.
+      | x:  The point at which to evaluate the Legendre polynomial. Can be any real number, but orthogonality properties hold on [-1, 1].
+   Returns: 
+       A scalar point or points in an array or matrix form representing the value of the nth Legendre polynomial evaluated at x.
+       Returns NaN if n is negative or if computation fails.
+   Example: 
+       Calculate the first few Legendre polynomials at x = 0.5:
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the evaluation point
+          double x = 0.5;
+          
+          // Calculate the first few Legendre polynomials
+          double P0 = LegendreP(0, x);  // P_0(x) = 1
+          double P1 = LegendreP(1, x);  // P_1(x) = x
+          double P2 = LegendreP(2, x);  // P_2(x) = (3x² - 1)/2
+          double P3 = LegendreP(3, x);  // P_3(x) = (5x³ - 3x)/2
+          double P4 = LegendreP(4, x);  // P_4(x) = (35x⁴ - 30x² + 3)/8
+      
+          // Output the results
+          Console.WriteLine($"Legendre polynomials evaluated at x = {x}:");
+          Console.WriteLine($"P_0({x}) = {P0}");
+          Console.WriteLine($"P_1({x}) = {P1}");
+          Console.WriteLine($"P_2({x}) = {P2}");
+          Console.WriteLine($"P_3({x}) = {P3}");
+          Console.WriteLine($"P_4({x}) = {P4}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Legendre polynomials evaluated at x = 0.5:
+          P_0(0.5) = 1
+          P_1(0.5) = 0.5
+          P_2(0.5) = -0.125
+          P_3(0.5) = -0.4375
+          P_4(0.5) = -0.2890625
+   Example: 
+       Verify the recurrence relation for Legendre polynomials:
+
+       .. code-block:: CSharp 
+
+          // Import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Test the recurrence relation: (n+1)P_{n+1}(x) = (2n+1)xP_n(x) - nP_{n-1}(x)
+          double x = 0.8;
+          int n = 3;
+          
+          // Calculate polynomials directly
+          double Pn_1 = LegendreP(n - 1, x);  // P_2(x)
+          double Pn = LegendreP(n, x);        // P_3(x)
+          double Pn_plus1 = LegendreP(n + 1, x);  // P_4(x)
+          
+          // Calculate P_{n+1} using recurrence relation
+          double recurrenceResult = ((2 * n + 1) * x * Pn - n * Pn_1) / (n + 1);
+      
+          // Output the results
+          Console.WriteLine($"Recurrence relation verification at x = {x}:");
+          Console.WriteLine($"P_{n-1}({x}) = P_2({x}) = {Pn_1}");
+          Console.WriteLine($"P_{n}({x}) = P_3({x}) = {Pn}");
+          Console.WriteLine($"P_{n+1}({x}) = P_4({x}) = {Pn_plus1}");
+          Console.WriteLine($"Recurrence formula: [{(2*n+1)}x*P_3(x) - {n}*P_2(x)]/{n+1} = {recurrenceResult}");
+          Console.WriteLine($"Recurrence relation satisfied: {Abs(Pn_plus1 - recurrenceResult) < 1e-14}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Recurrence relation verification at x = 0.8:
+          P_2(0.8) = P_2(0.8) = 0.46
+          P_3(0.8) = P_3(0.8) = 0.152
+          P_4(0.8) = P_4(0.8) = -0.1712
+          Recurrence formula: [7x*P_3(x) - 3*P_2(x)]/4 = -0.1712
+          Recurrence relation satisfied: True
+
+
 Gamma
 =====
    Description: 
@@ -3298,13 +3524,13 @@ SolverSet
            Solvers.Set SolverSet(bool? Display = false, double? StepFactor = null, double? RelTol = null, double? AbsTol = null, 
            int? MaxIter = null, int? MaxFunEvals = null, bool? UseParallel = null, Func<ColVec, SparseMatrix> UserDefinedJac = null)
    Param: 
-      | Display:  Optional. If <c>true</c>, enables display of solver progress and results during execution. Defaults to <c>false</c>.
+      | Display:  Optional. If true, enables display of solver progress and results during execution. Defaults to false.
       | StepFactor:  Optional. A scaling factor for the initial step size used in iterative solvers.
       | RelTol:  Optional. Relative tolerance. The solver stops when the relative change in the solution is below this threshold.
       | AbsTol:  Optional. Absolute tolerance. The solver stops when the absolute change in the solution is below this threshold.
       | MaxIter:  Optional. Maximum number of iterations allowed for the solver.
       | MaxFunEvals:  Optional. Maximum number of function evaluations allowed.
-      | UseParallel:  Optional. If <c>true</c>, enables parallel computation for supported solvers.
+      | UseParallel:  Optional. If true, enables parallel computation for supported solvers.
       | UserDefinedJac:  Optional. A user-defined function that returns the Jacobian matrix of the system. This can improve convergence speed and accuracy.
    Returns: 
        Information about the problem solved like, number of iteration, number of function call and other estimated parameters.
@@ -3709,6 +3935,7 @@ Linprog
                 Bounds: & \\
                         & 0 \leq x, y \leq 3 \\   
           \end{array}
+         
 
        .. code-block:: CSharp 
 
@@ -4701,6 +4928,86 @@ Ode45i
 
 |   cref=System.ArgumentNullException is Thrown when the  dydx is null.
 |   cref=System.ArgumentException is Thrown when the  tspan array has less than two elements.
+
+
+Ode45a
+======
+   Description: 
+       Solves a system of differential-algebraic equations (DAE) using a modified Runge-Kutta method.
+       This method integrates the system of equations defined by the residual function and mass matrix function, Mass over a specified time span, T.
+
+       .. code-block:: CSharp 
+
+          (ColVec T, Matrix Y) Ode45a(Func<double, ColVec, ColVec> fun, Func<double, ColVec, Matrix> Mass, double[] initcon, double[] tspan, Ode.Set options = null) 
+          (ColVec T, Matrix Y) Ode45a(Func<double, double[], double[]> fun, Func<double, double[], double[,]> Mass, double[] initcon, double[] tspan, Ode.Set options = null)
+   Param: 
+      | fun:  A function defining the system's residuals, typically of the form f(t, y).
+      | Mass:  A function defining the mass matrix, typically of the form M(t, y), used to construct the DAE system <c>M*y' = f</c>.
+      | initcon:  An array specifying the initial conditions at t = tspan[0].
+      | tspan:  An array specifying the integration time domain. Must contain at least two values (start and end time).
+      | options:  Parameters setting for the ODE solver, such as absolute/relative tolerance, maximum step size and event detection.
+   Returns: 
+       A tuple containing two elements:
+       
+       Array T: A column vector of time points at which the solution was evaluated.
+       Matrix Y: A Matrix whose rows correspond to the solution at each time.
+   Example: 
+       Solve the DAE system:
+
+       .. math::
+          \begin{array}{rl}
+                &x' = -y + sin(t)  (differential) \\
+                &0 = x + y - cos(t) (algebraic) \\  
+          \end{array}
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+          
+          //Create the residual function
+          Func<double, ColVec, ColVec> fun = (t, y) => new ColVec(new double[] {
+              -y[1] + Sin(t),   // x'
+              y[0] + y[1] - Cos(t)
+          });
+      
+          // Create the mass matrix M(t, y) function
+          Func<double, ColVec, Matrix> mass = (t, y) => new Matrix(new double[,] {
+              { 1, 0 },  // x' coefficient (ODE)
+              { 0, 0 }   
+          });
+          
+          // Initial conditions satisfying x + y = cos(0) = 1
+          double[] y0 = new double[] { Math.Cos(0), -Math.Sin(0) }; // Must satisfy constraint
+          double[] tspan = new double[] { 0, 10 };
+          
+          // Solve the DAE problem
+          var opts = Odeset(Stats: true);
+          var (T, Y) = Ode45a(fun, mass, y0, tspan, opts);
+           
+          // Display solution
+          for (int i = 0; i < T.Rows; i++)
+              Console.WriteLine($"{T[i]:F2} : {Y[i,0]:F3}, {Y[i,1]:F3}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Summary of statistics by Ode45a
+          30 successful steps
+          0 failed attempts
+          771 function evaluations
+          120 partial derivatives
+          120 LU decompositions
+          406 solutions of linear systems
+          
+          0.00 : 0.500, 0.500
+          0.10 : 0.453, 0.542
+          0.25 : 0.395, 0.574
+          ...    ....    ....
+          10.00 : 11008.635, -11009.474
 
 
 Polyfit
