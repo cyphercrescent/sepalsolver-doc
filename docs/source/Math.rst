@@ -11,16 +11,18 @@ Hist
        .. code-block:: CSharp 
 
           (List<int> Counts, List<double> Positions, double BinSize, double Vmin, double Vmax) Hist(ColVec V, int bin)
-   Param: 
-      | V:  A column vector (ColVec) containing the numerical data to be analyzed.
-      | bin:  The number of bins to divide the data range into. More bins provide finer granularity.
+   Parameters: 
+       V: 
+         A column vector (ColVec) containing the numerical data to be analyzed.
+       bin: 
+           The number of bins to divide the data range into. More bins provide finer granularity.
    Returns: 
-       A tuple containing:
-       - Counts: Number of elements in each bin
-       - Positions: Center positions of each bin
-       - BinSize: Width of each bin
-       - Vmin: Minimum value in the dataset
-       - Vmax: Maximum value in the dataset
+       A tuple (Counts, Positions, BinSize, Vmin, Vmax):
+           * Counts: Number of elements in each bin
+           * Positions: Center positions of each bin
+           * BinSize: Width of each bin
+           * Vmin: Minimum value in the dataset
+           * Vmax: Maximum value in the dataset
    Example: 
        Create a histogram of 1,000 samples drawn from a normal distribution.
 
@@ -56,13 +58,15 @@ Meshgrid
 
           (Matrix X, Matrix Y) Meshgrid(ColVec x, ColVec y)
           (Matrix X, Matrix Y) Meshgrid(ColVec x)
-   Param: 
-      | x:  The vector representing X-axis values.
-      | y:  The vector representing Y-axis values.
+   Parameters: 
+       x: 
+         The vector representing X-axis values.
+       y: 
+         The vector representing Y-axis values.
    Returns: 
-       A tuple of two 2D arrays:
-       - The first array contains copies of the x vector arranged in rows.
-       - The second array contains copies of the y vector arranged in columns.
+       A tuple (X, Y):
+           * X: first 2D array contains copies of the x vector arranged in rows.
+           * Y: second 2D array contains copies of the y vector arranged in columns.
    Example: 
        Generate a 2D grid from x = [1, 2, 3] and y = [10, 20]
 
@@ -106,8 +110,9 @@ ReadMatrix
        .. code-block:: CSharp 
 
           Matrix ReadMatrix(string filename)
-   Param: 
-      | filename:  The path to the input file containing the matrix data.
+   Parameters: 
+       filename: 
+                The path to the input file containing the matrix data.
    Returns: 
        A two-dimensional integer array containing the values read from the file.
    Example: 
@@ -151,8 +156,9 @@ ReadRowVec
        .. code-block:: CSharp 
 
           RowVec ReadRowVec(string filename)
-   Param: 
-      | filename:  The path to the input file containing the row vector data.
+   Parameters: 
+       filename: 
+                The path to the input file containing the row vector data.
    Returns: 
        A one-dimensional matrix representing the row vector read from the file.
    Example: 
@@ -190,8 +196,9 @@ ReadColVec
        .. code-block:: CSharp 
 
           ColVec ReadColVec(string filename)
-   Param: 
-      | filename:  The path to the input file containing the column vector data.
+   Parameters: 
+       filename: 
+                The path to the input file containing the column vector data.
    Returns: 
        A one-dimensional matrix representing the column vector read from the file.
    Example: 
@@ -232,9 +239,11 @@ WriteMatrix
        .. code-block:: CSharp 
 
           void WriteMatrix(Matrix A, string filename)
-   Param: 
-      | A:  The matrix object to be written to the file.
-      | filename:  The path to the output file where the matrix will be saved.
+   Parameters: 
+       A: 
+         The matrix object to be written to the file.
+       filename: 
+                The path to the output file where the matrix will be saved.
    Returns: 
        This method does not return a value (being a void method)
    Example: 
@@ -259,9 +268,9 @@ WriteMatrix
 
        .. code-block:: Terminal 
 
-       (Contents of "matrixA.txt")
-          12 18 3  
-          15 25 30
+          (Contents of "matrixA.txt")
+              12 18 3  
+              15 25 30
 
 
 All
@@ -274,8 +283,9 @@ All
 
           bool All(bool[] A)
           bool All(bool[,] A)
-   Param: 
-      | A:  The array of Boolean values to evaluate.
+   Parameters: 
+       A: 
+         The array of Boolean values to evaluate.
    Returns: 
        True, if all elements in the array are true; otherwise, false.
    Example: 
@@ -312,8 +322,9 @@ Any
 
           bool Any(bool[] A)
           bool Any(bool[,] A)
-   Param: 
-      | A:  The array of Boolean values to evaluate.
+   Parameters: 
+       A: 
+         The array of Boolean values to evaluate.
    Returns: 
        True, if at least one element in the array is true; otherwise, false.
    Example: 
@@ -350,9 +361,11 @@ Find
 
           Indexer Find(bool[] A, int k = int.MaxValue)
           Indexer Find(bool[,] A, int k = int.MaxValue)
-   Param: 
-      | A:  The Boolean array to search for matching true entries.
-      | k:  The maximum number of matching indices to return. Defaults to int.MaxValue if not specified.
+   Parameters: 
+       A: 
+         The Boolean array to search for matching true entries.
+       k: 
+         The maximum number of matching indices to return. Defaults to int.MaxValue if not specified.
    Returns: 
        An Indexer object representing the index where the array values are true, up to a maximum of k entries.
    Example: 
@@ -390,9 +403,11 @@ DivRem
        .. code-block:: CSharp 
 
           (int, int) DivRem(int a, int b)
-   Param: 
-      | a:  The dividend—value to be divided.
-      | b:  The divisor—value by which to divide.
+   Parameters: 
+       a: 
+         The dividend—value to be divided.
+       b: 
+         The divisor—value by which to divide.
    Returns: 
        A tuple containing the integer quotient and remainder:(quotient, remainder).
    Example: 
@@ -428,8 +443,9 @@ Num2Str
           string Num2Str(double num)
           string Num2Str(int num)
           string Num2Str(Complex num)
-   Param: 
-      | num:  The <c>double</c> value to be converted.
+   Parameters: 
+       num: 
+           The <c>double</c> value to be converted.
    Returns: 
        A <c>string</c> that represents the given double-precision number.
    Example: 
@@ -468,10 +484,13 @@ Arrayfun
           RowVec Arrayfun(Func<double, double, double> fun, RowVec X, RowVec Y)
           Matrix Arrayfun(Func<double, double> fun, Matrix X)
           Matrix Arrayfun(Func<double, double, double> fun, Matrix X, Matrix Y)
-   Param: 
-      | fun:  A unary function that defines how each element should be transformed.
-      | X:  The input column vector or row vector or matrix whose elements will be transformed.
-      | Y:  The second column vector or row vector or matrix of input values.
+   Parameters: 
+       fun: 
+           A unary function that defines how each element should be transformed.
+       X: 
+         The input column vector or row vector or matrix whose elements will be transformed.
+       Y: 
+         The second column vector or row vector or matrix of input values.
    Returns: 
        A new array or matrix with each element equal to function of inputed values where variable x is the corresponding element in variable X.
    Example: 
@@ -515,9 +534,11 @@ Reshape
           Matrix Reshape(double[] data, int[] Size)
           Matrix Reshape(List<double> data, int[] Size)
           Matrix Reshape(Matrix data, int[] Size)
-   Param: 
-      | data:  The one-dimensional or multi-dimensional array to be reshaped.
-      | Size:  An array containing the dimensions [rows, columns] for the new matrix.
+   Parameters: 
+       data: 
+            The one-dimensional or multi-dimensional array to be reshaped.
+       Size: 
+            An array containing the dimensions [rows, columns] for the new matrix.
    Returns: 
        A output with the specified dimensions.
    Example: 
@@ -572,9 +593,11 @@ Hypot
           Matrix Hypot(Matrix x, RowVec y)
           Matrix Hypot(Matrix x, ColVec y)
           Matrix Hypot(ColVec x, Matrix y)
-   Param: 
-      | x:  The length of one side of the triangle.
-      | y:  The length of the other side of the triangle.
+   Parameters: 
+       x: 
+         The length of one side of the triangle.
+       y: 
+         The length of the other side of the triangle.
    Returns: 
        The length of the hypotenuse.
    Example: 
@@ -639,8 +662,9 @@ Abs
           SparseColVec Abs(SparseColVec x)
           SparseRowVec Abs(SparseRowVec x)
           SparseMatrix Abs(SparseMatrix x)
-   Param: 
-      | x:  The input value for which the absolute value is to be calculated.
+   Parameters: 
+       x: 
+         The input value for which the absolute value is to be calculated.
    Returns: 
        The absolute value of the input.
    Example: 
@@ -676,10 +700,13 @@ Zeros
           double[] Zeros(int N)
           double[,] Zeros(int M, int N)
           double[,] Zeros(int[] S)
-   Param: 
-      | M:  The number of rows in the resulting matrix.
-      | N:  The number of columns in the resulting matrix.
-      | S:  The number of equal columns and rows in the resulting matrix.
+   Parameters: 
+       M: 
+         The number of rows in the resulting matrix.
+       N: 
+         The number of columns in the resulting matrix.
+       S: 
+         The number of equal columns and rows in the resulting matrix.
    Returns: 
        An array of vector of size M or matrix of size M by N filled with zeros.
    Example: 
@@ -692,24 +719,20 @@ Zeros
           using static SepalSolver.Math;
           
           // Generate 4 by 3 matrix 
-          double[,] zeros = Zeros(3, 4);
+          Matrix zeros = Zeros(3, 4);
       
           // Display matrix
-          for (int i = 0; i < zeros.Rows; i++)
-          {
-              for (int j = 0; j < zeros.Cols; j++)
-                  Console.Write(zeros[i, j] + " ");
-              Console.WriteLine();
-          }
+          Console.WriteLine(zeros);
+          
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          0 0 0 0  
-          0 0 0 0  
-          0 0 0 0
+           0.0000    0.0000    0.0000    0.0000
+           0.0000    0.0000    0.0000    0.0000
+           0.0000    0.0000    0.0000    0.0000
 
 
 Ones
@@ -723,10 +746,13 @@ Ones
           double[] Ones(int M)
           double[,] Ones(int M, int N)
           double[,] Ones(int[] S) 
-   Param: 
-      | M:  The number of rows in the resulting matrix.
-      | N:  The number of columns in the resulting matrix.
-      | S:  Array of integer rows and columns in the resulting matrix.
+   Parameters: 
+       M: 
+         The number of rows in the resulting matrix.
+       N: 
+         The number of columns in the resulting matrix.
+       S: 
+         Array of integer rows and columns in the resulting matrix.
    Returns: 
        An array of vector of size M or matrix of size M by N filled with ones.
    Example: 
@@ -739,23 +765,19 @@ Ones
           using static SepalSolver.Math;
             
           //Generate Matrix 2 by 3 with all the element has 1.0
-          double[,] ones = Ones(2, 3);
+          Matrix ones = Ones(2, 3);
       
           // Display matrix
-          for (int i = 0; i < ones.Rows; i++)
-          {
-              for (int j = 0; j < ones.Cols; j++)
-                  Console.Write(ones[i, j] + " ");
-              Console.WriteLine();
-          }
+          Console.WriteLine(ones);
+          
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          1 1 1  
-          1 1 1
+          1.0000    1.0000    1.0000
+          1.0000    1.0000    1.0000
 
 
 Repmat
@@ -771,11 +793,15 @@ Repmat
           double[,] Repmat(double A, int[] S)
           Matrix Repmat(Matrix A, int M, int N)
           Matrix Repmat(Matrix A, int[] S)
-   Param: 
-      | A:  The scalar value or matrix to replicate.
-      | M:  The number of rows in the resulting matrix.
-      | N:  The number of columns in the resulting matrix.
-      | S:  Array of integer rows and columns in the resulting matrix.
+   Parameters: 
+       A: 
+         The scalar value or matrix to replicate.
+       M: 
+         The number of rows in the resulting matrix.
+       N: 
+         The number of columns in the resulting matrix.
+       S: 
+         Array of integer rows and columns in the resulting matrix.
    Returns: 
        A matrix of dimensions M x N where all values are equal to A.
    Example: 
@@ -788,23 +814,19 @@ Repmat
           using static SepalSolver.Math;
           
           // Replicate all elements of a matrix same.
-          double[,] replicated = Repmat(3.14, 2, 4);
+          Matrix replicated = Repmat(pi, 2, 4);
       
           // Display matrix
-          for (int i = 0; i < replicated.Rows; i++)
-          {
-              for (int j = 0; j < replicated.Cols; j++)
-                  Console.Write(replicated[i, j] + " ");
-              Console.WriteLine();
-          }
+          Console.WriteLine(replicated);
+          
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          3.14 3.14 3.14 3.14  
-          3.14 3.14 3.14 3.14
+          3.1416    3.1416    3.1416    3.1416
+          3.1416    3.1416    3.1416    3.1416
 
 
 Repelem
@@ -816,10 +838,13 @@ Repelem
        .. code-block:: CSharp 
 
           Matrix Repelem(Matrix A, int M, int N)
-   Param: 
-      | A:  The input matrix whose elements will be replicated.
-      | M:  The number of times to repeat each element along the row (vertical) direction.
-      | N:  The number of times to repeat each element along the column (horizontal) direction.
+   Parameters: 
+       A: 
+         The input matrix whose elements will be replicated.
+       M: 
+         The number of times to repeat each element along the row (vertical) direction.
+       N: 
+         The number of times to repeat each element along the column (horizontal) direction.
    Returns: 
        A new Matrix instance containing the expanded result with replicated elements.
    Example: 
@@ -832,28 +857,23 @@ Repelem
           using static SepalSolver.Math;
           
           // Create a 2 by 2 matrix
-          Matrix A  = new double[,]{{1, 2},{3,4}}
+          Matrix A  = new double[,]{{1, 2},{3,4}};
       
           // Apply element-wise replication
           Matrix expanded = Repelem(A, 2, 3);
       
           // Display result
-          for (int i = 0; i < expanded.Rows; i++)
-          {
-              for (int j = 0; j < expanded.Cols; j++)
-                  Console.Write(expanded[i, j] + " ");
-              Console.WriteLine();
-          }
+          Console.WriteLine(expanded);
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          1 1 1 2 2 2  
-          1 1 1 2 2 2  
-          3 3 3 4 4 4  
-          3 3 3 4 4 4
+          1.0000    1.0000    1.0000    2.0000    2.0000    2.0000
+          1.0000    1.0000    1.0000    2.0000    2.0000    2.0000
+          3.0000    3.0000    3.0000    4.0000    4.0000    4.0000
+          3.0000    3.0000    3.0000    4.0000    4.0000    4.0000
 
 
 Kron
@@ -865,9 +885,11 @@ Kron
        .. code-block:: CSharp 
 
           Matrix Kron(Matrix X, Matrix Y)
-   Param: 
-      | X:  The first matrix (left operand) of the Kronecker product.
-      | Y:  The second matrix (right operand) of the Kronecker product.
+   Parameters: 
+       X: 
+         The first matrix (left operand) of the Kronecker product.
+       Y: 
+         The second matrix (right operand) of the Kronecker product.
    Returns: 
        A Matrix representing the Kronecker product of X and Y.
    Example: 
@@ -889,22 +911,17 @@ Kron
           Matrix result = Kron(A, B);
       
           // Display result
-          for (int i = 0; i < result.Rows; i++)
-          {
-              for (int j = 0; j < result.Cols; j++)
-                  Console.Write(result[i, j] + " ");
-              Console.WriteLine();
-          }
+          Console.WriteLine(result);
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          0 5 0 10  
-          6 7 12 14  
-          0 15 0 20  
-          18 21 24 28
+           0.0000    5.0000    0.0000   10.0000
+           6.0000    7.0000   12.0000   14.0000
+           0.0000   15.0000    0.0000   20.0000
+          18.0000   21.0000   24.0000   28.0000
 
 
 Rand
@@ -918,10 +935,13 @@ Rand
           double[] Rand(int N)
           double[,] Rand(int M, int N)
           double[,] Rand(int[] Size)
-   Param: 
-      | M:  The number of rows in the output matrix.
-      | N:  The number of columns in the output matrix.
-      | Size:  A vector of two integer elements.
+   Parameters: 
+       M: 
+         The number of rows in the output matrix.
+       N: 
+         The number of columns in the output matrix.
+       Size: 
+            A vector of two integer elements.
    Returns: 
        An array (vector) of size M or matrix of size M x N populated with random values in the range [0.0, 1.0).
    Example: 
@@ -933,24 +953,19 @@ Rand
           using System;
           using static SepalSolver.Math;
            
-          double[,] randomMatrix = Rand(3, 3);
+          Matrix randomMatrix = Rand(3, 3);
       
           // Print matrix contents
-          for (int i = 0; i < randomMatrix.Rows; i++)
-          {
-              for (int j = 0; j < randomMatrix.Cols; j++)
-                  Console.Write($"{randomMatrix[i, j]:F2} ");
-              Console.WriteLine();
-          }
+          Console.WriteLine(randomMatrix);
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          0.42 0.75 0.31  
-          0.89 0.06 0.94  
-          0.12 0.54 0.78
+          0.7258    0.2380    0.9046
+          0.4605    0.5800    0.3383
+          0.5736    0.5158    0.6105
 
 
 Randn
@@ -964,11 +979,15 @@ Randn
           double[] Randn(int N, double mean = 0, double std = 1)
           double[,] Randn(int M, int N, double mean = 0, double standardDeviation = 1)
           double[,] Randn(int[] Size, double mean = 0, double std = 1) => Randn(Size[0], Size[1], mean, std);
-   Param: 
-      | M:  The number of rows in the resulting matrix.
-      | N:  The number of columns in the resulting matrix.
-      | mean:  The mean (μ) of the normal distribution. Default is 0.
-      | standardDeviation:  The standard deviation (σ) of the normal distribution. Default is 1.
+   Parameters: 
+       M: 
+         The number of rows in the resulting matrix.
+       N: 
+         The number of columns in the resulting matrix.
+       mean: 
+            The mean (μ) of the normal distribution. Default is 0.
+       standardDeviation: 
+                         The standard deviation (σ) of the normal distribution. Default is 1.
    Returns: 
        An array (vector) of size M or matrix of dimensions M x N filled with normally distributed random values.
    Example: 
@@ -980,42 +999,43 @@ Randn
           using System;
           using static SepalSolver.Math;
             
-          double[,] randval = Randn(2, 3, 5.0, 2.0);
+          Matrix randval = Randn(2, 3, 5.0, 2.0);
       
           // Display result
-          for (int i = 0; i < randval.Rows; i++)
-          {
-              for (int j = 0; j < randval.Cols; j++)
-                  Console.Write($"{randval[i, j]:F2} ");
-              Console.WriteLine();
-          }
+          Console.WriteLine(randval)
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          3.02 6.87 4.11  
-          5.73 8.34 1.95
+          7.0471    4.1810    1.8153
+          3.1696    3.8715    4.8268
+          7.8102    3.7101    6.7009
 
 
-RandTri
-=======
+Randt
+=====
    Description: 
        Generates a matrix of random double values from a triangular distribution.
        This method creates an M x N matrix where each element is independently sampled from a triangular distribution defined by minimum bound value, mode of distribution likely, and maximum bound value.
 
        .. code-block:: CSharp 
 
-          double[] RandTri(int N, double min = 0.0, double likely = 0.5, double max = 1.0)
-          double[,] RandTri(int M, int N, double min = 0.0, double likely = 0.5, double max = 1.0)
-          double[,] RandTri(int[] Size, double min = 0.0, double likely = 0.5, double max = 1.0) => RandTri(Size[0], Size[1], min, likely, max)
-   Param: 
-      | M:  The number of rows in the resulting matrix.
-      | N:  The number of columns in the resulting matrix.
-      | min:  The minimum value of the triangular distribution (lower bound).
-      | likely:  The most likely (mode) value of the triangular distribution.
-      | max:  The maximum value of the triangular distribution (upper bound).
+          double[] Randt(int N, double min = 0.0, double likely = 0.5, double max = 1.0)
+          double[,] Randt(int M, int N, double min = 0.0, double likely = 0.5, double max = 1.0)
+          double[,] Randt(int[] Size, double min = 0.0, double likely = 0.5, double max = 1.0) => RandTri(Size[0], Size[1], min, likely, max)
+   Parameters: 
+       M: 
+         The number of rows in the resulting matrix.
+       N: 
+         The number of columns in the resulting matrix.
+       min: 
+           The minimum value of the triangular distribution (lower bound).
+       likely: 
+              The most likely (mode) value of the triangular distribution.
+       max: 
+           The maximum value of the triangular distribution (upper bound).
    Returns: 
        An array (vector) of dimension M or matrix of dimensions M x N populated with random values drawn from the specified triangular distribution.
    Example: 
@@ -1027,23 +1047,18 @@ RandTri
           using System;
           using static SepalSolver.Math;
           
-          double[,] triMatrix = RandTri(2, 3, 10, 15, 20);
+          Matrix triMatrix = Randt(2, 3, 10, 15, 20);
       
-          // Display result
-          for (int i = 0; i < triMatrix.Rows; i++)
-          {
-              for (int j = 0; j < triMatrix.Cols; j++)
-                  Console.Write($"{triMatrix[i, j]:F2} ");
-              Console.WriteLine();
-          }
+          // Display result// Display result
+          Console.WriteLine(triMatrix);
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          13.47 16.89 14.12  
-          11.53 15.00 17.26
+          13.2676   15.2280   17.8264
+          13.2270   11.4989   17.5193
 
 
 Linspace
@@ -1055,10 +1070,13 @@ Linspace
        .. code-block:: CSharp 
 
           double[] Linspace(double a, double b, int N = 100)
-   Param: 
-      | a:  The starting value of the range.
-      | b:  The ending value of the range.
-      | N:  The number of evenly spaced points to generate. Default is 100.
+   Parameters: 
+       a: 
+         The starting value of the range.
+       b: 
+         The ending value of the range.
+       N: 
+         The number of evenly spaced points to generate. Default is 100.
    Returns: 
        An array containing N linearly spaced values between a and b.
    Example: 
@@ -1071,18 +1089,17 @@ Linspace
           using static SepalSolver.Math;
           
           //Generate point from -1 to 1
-          double[] line = Linspace(-1.0, 1.0, 10);
+          RowVec line = Linspace(-1.0, 1.0, 10);
       
           // Display result
-          foreach (double x in line)
-              Console.Write($"{x:F2} ");
+          Console.WriteLine(line);
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          -1.00 -0.78 -0.56 -0.33 -0.11 0.11 0.33 0.56 0.78 1.00
+           -1.0000   -0.7778   -0.5556   -0.3333   -0.1111    0.1111    0.3333    0.5556    0.7778    1.0000
 
 
 Logspace
@@ -1094,10 +1111,13 @@ Logspace
        .. code-block:: CSharp 
 
           double[] Logspace(double a, double b, int N = 100)
-   Param: 
-      | a:  The base-10 exponent of the starting value (10^a).
-      | b:  The base-10 exponent of the ending value (10^b).
-      | N:  The number of points to generate. Default is 100.
+   Parameters: 
+       a: 
+         The base-10 exponent of the starting value (10^a).
+       b: 
+         The base-10 exponent of the ending value (10^b).
+       N: 
+         The number of points to generate. Default is 100.
    Returns: 
        An array of N values logarithmically spaced between 10^a and 10^b.
    Example: 
@@ -1110,18 +1130,17 @@ Logspace
           using static SepalSolver.Math;
           
           // Generate logarithmically space between 1 and 100 inclusive
-          double[] freqs = Logspace(0, 2, 5);
+          RowVec freqs = Logspace(0, 2, 5);
       
-          // Display result, formated to 2 decimal places
-          foreach (double x in freqs)
-              Console.Write($"{x:F2} ");
+          // Display result,
+          Console.WriteLine(freqs);
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          1.00 3.16 10.00 31.62 100.00
+          1.0000    3.1623   10.0000   31.6228  100.0000
 
 
 Interp1
@@ -1133,10 +1152,19 @@ Interp1
        .. code-block:: CSharp 
 
           double Interp1(ColVec X, ColVec Y, double x)
-   Param: 
-      | X:  A column vector containing the known x-coordinates, which must be sorted in ascending order.
-      | Y:  A column vector containing the corresponding y-values.
-      | x:  The x-value at which to evaluate the interpolated result.
+          ColVec Interp1(ColVec X, ColVec Y, ColVec x)
+          double Interp1(RowVec X, RowVec Y, double x)
+          RowVec Interp1(RowVec X, RowVec Y, RowVec x)
+          RowVec Interp1(ColVec X, Matrix Y, double x)
+          ColVec Interp1(RowVec X, Matrix Y, double x)
+          double Interp2(ColVec X, RowVec Y, Matrix Z, double x, double y)
+   Parameters: 
+       X: 
+         A column vector containing the known x-coordinates, which must be sorted in ascending order.
+       Y: 
+         A column vector containing the corresponding y-values.
+       x: 
+         The x-value at which to evaluate the interpolated result.
    Returns: 
        A scalar value representing the linearly interpolated value at the given point x.
    Example: 
@@ -1179,9 +1207,11 @@ Getcol
        .. code-block:: CSharp 
 
           double[] Getcol(int j, double[,] data)
-   Param: 
-      | j:  The zero-based index of the column to extract.
-      | data:  The two-dimensional array from which the column will be retrieved.
+   Parameters: 
+       j: 
+         The zero-based index of the column to extract.
+       data: 
+            The two-dimensional array from which the column will be retrieved.
    Returns: 
        An array representing the j_th column of the matrix data.
    Example: 
@@ -1198,17 +1228,19 @@ Getcol
           double[,] matrix = new double[,] {{ 1.0, 2.0, 3.0 },{ 4.0, 5.0, 6.0 }, { 7.0, 8.0, 9.0 }};
       
           // Get column 0 (first column)
-          double[] col = Getcol(0, matrix);
+          ColVec col = Getcol(0, matrix);
       
-          foreach (double val in col)
-              Console.Write(val + " ");
+          // Display
+          Console.WriteLine(col);
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          1 4 7
+             1.0000
+             4.0000
+             7.0000
 
 
 Getrow
@@ -1220,9 +1252,11 @@ Getrow
        .. code-block:: CSharp 
 
           double[] Getrow(int i, double[,] data)
-   Param: 
-      | i:  The index of the row to extract.
-      | data:  The two-dimensional array from which the row will be retrieved.
+   Parameters: 
+       i: 
+         The index of the row to extract.
+       data: 
+            The two-dimensional array from which the row will be retrieved.
    Returns: 
        An array representing the i-th row of matrix data element.
    Example: 
@@ -1238,22 +1272,21 @@ Getrow
           double[,] matrix = {{ 1.0, 2.0, 3.0 },{ 4.0, 5.0, 6.0 },{ 7.0, 8.0, 9.0 },{ 10.0, 11.0, 12.0 }};
       
           // Get row 2 (third row)
-          double[] row = Getrow(2, matrix);
+          RowVec row = Getrow(2, matrix);
           
           // Output the matrix
-          foreach (double val in row)
-              Console.Write(val + " ");
+          Console.WriteLine(row);
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          7 8 9
+          7.0000    8.0000    9.0000
 
 
-=>J.Select(j
-============
+Getcols
+=======
    Description: 
        Extracts specified columns from a two-dimensional array using an indexer.
        This method returns a new Matrix containing only the columns of data specified by the I-indexer.
@@ -1261,9 +1294,11 @@ Getrow
        .. code-block:: CSharp 
 
           Matrix Getcols(indexer I, double[,] data)
-   Param: 
-      | I:  An indexer object specifying the zero-based column indices to select.
-      | data:  The two-dimensional array from which columns are extracted.
+   Parameters: 
+       I: 
+         An indexer object specifying the zero-based column indices to select.
+       data: 
+            The two-dimensional array from which columns are extracted.
    Returns: 
        A Matrix composed of the selected columns from the input matrix data, in the order defined by I-indexer.
    Example: 
@@ -1276,29 +1311,27 @@ Getrow
           using static SepalSolver.Math;
           
           // Create a 3 by 4 matrix
-          Matrix matrix = new double[,]{
-              { 10, 20, 30, 40 },
-              { 50, 60, 70, 80 },
+          double[,] matrix = new double[,]
+          {
+              { 10, 20,  30,  40  },
+              { 50, 60,  70,  80  },
               { 90, 100, 110, 120 }
           };
           
-          // Set the matrix index to be extracted
-          indexer I = new indexer(new int[] { 1, 3 }); // select 2nd and 4th columns
-          
-          // Extract the matrix
-          Matrix cols = Getcols(I, matrix);
+          // Extract the 2nd and 4th columns
+          Matrix cols = Getcols([1,3], matrix);
           
           // Output the extracted matrix
-          console.writeline($"The extracted matrix is: {cols}")
+          Console.WriteLine(cols);
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          20 40  
-          60 80  
-          100 120
+           20.0000   40.0000
+           60.0000   80.0000
+          100.0000  120.0000
 
 
 Getrows
@@ -1310,9 +1343,11 @@ Getrows
        .. code-block:: CSharp 
 
           Matrix Getrows(indexer I, double[,] data)
-   Param: 
-      | I:  An indexer object that specifies the zero-based indices of the rows to extract.
-      | data:  The two-dimensional array from which rows will be selected.
+   Parameters: 
+       I: 
+         An indexer object that specifies the zero-based indices of the rows to extract.
+       data: 
+            The two-dimensional array from which rows will be selected.
    Returns: 
        A Matrix containing the rows of data specified by I-indexer, in the same order.
    Example: 
@@ -1325,28 +1360,26 @@ Getrows
           using static SepalSolver.Math;
             
           // Create a 4 by 3 matrix
-          Matrix matrix = new double[,] {
-              { 10, 20, 30 },
-              { 40, 50, 60 },
-              { 70, 80, 90 },
-              { 100, 110, 120 }
+          double[,] matrix = new double[,]
+          {
+              { 10, 20,  30,  40  },
+              { 50, 60,  70,  80  },
+              { 90, 100, 110, 120 }
           };
-          // Set the matrix index to be extracted
-          indexer I = new indexer(new int[] { 0, 2 }); // first and third rows
           
-          // Extract the matrix
-          Matrix rows = Getrows(I, matrix);
+          // Extract the first and third rows
+          Matrix rows = Getrows([0, 2], matrix);
       
           // Output the extracted matrix
-          console.writeline($"The extracted matrix is: {rows}")
+          Console.WriteLine(rows);
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          10 20 30  
-          70 80 90
+          10.0000   20.0000   30.0000   40.0000
+          90.0000  100.0000  110.0000  120.0000
 
 
 Hcart
@@ -1363,9 +1396,11 @@ Hcart
           RowVec Hcart(RowVec A, params RowVec[] RowVecs)
           Matrix Hcart(Matrix A, Matrix B)
           Matrix Hcart(Matrix A, params Matrix[] Matrices)
-   Param: 
-      | a, b:  The scalar value to prepend.
-      | A, B:  The input array (row or column vector) or matrix to which a will be prepended.
+   Parameters: 
+       a, b: 
+            The scalar value to prepend.
+       A, B: 
+            The input array (row or column vector) or matrix to which a will be prepended.
    Returns: 
        A vector or matrix consisting of concatenated values.
    Example: 
@@ -1441,9 +1476,11 @@ Vcart
           ColVec Vcart(ColVec A, params ColVec[] ColVecs)
           Matrix Vcart(Matrix A, Matrix B)
           Matrix Vcart(Matrix A, params Matrix[] Matrices)
-   Param: 
-      | a, b:  The scalar value to be placed at the top or below of the resulting vector.
-      | A, B:  The input column vector or matrix whose elements will appear before or after a.
+   Parameters: 
+       a, b: 
+            The scalar value to be placed at the top or below of the resulting vector.
+       A, B: 
+            The input column vector or matrix whose elements will appear before or after a.
    Returns: 
        A vector or matrix consisting of a followed by the entries of B.
    Example: 
@@ -1518,15 +1555,15 @@ Pow
 
        .. code-block:: CSharp 
 
-          double Pow(double x, double n)
+          Pow(double x, double n)
           Pow(Complex x, double n)
-          Pow(Complex x, double n)
-          SparseMatrix PowTW(SparseMatrix x, double n)
-          SparseColVec PowTW(SparseColVec x, double n)
-          SparseRowVec PowTW(SparseRowVec x, double n)
-   Param: 
-      | x:  The base value.
-      | n:  The exponent value (can be negative, fractional, or zero).
+          Pow(double x, Complex n)
+          Pow(Complex x, Complex n)
+   Parameters: 
+       x: 
+         The base value.
+       n: 
+         The exponent value (can be negative, fractional, or zero).
    Returns: 
        A value(s) representing x raised to the power n.
    Example: 
@@ -1563,8 +1600,9 @@ Diff
           RowVec Diff(RowVec X) 
           double[,] Diff(double[,] X, int dim = 0)
           Matrix Diff(Matrix X, int dim = 0)
-   Param: 
-      | X:  A one-dimensional or two-dimensional array of double values. Must contain at least two elements.
+   Parameters: 
+       X: 
+         A one-dimensional or two-dimensional array of double values. Must contain at least two elements.
    Returns: 
        A new array of size less than 1 , where each element is the difference X[i+1] - X[i].
    Example: 
@@ -1593,279 +1631,6 @@ Diff
           3 5 7
 
 
-MultTW
-======
-   Description: 
-       Performs element-wise (Hadamard) multiplication of two column vectors or multiplication of two matrices. Vector and Matrix A and B must have the same size.
-       This method multiplies corresponding elements of A and B, producing a new vector or matrix of the same length.
-
-       .. code-block:: CSharp 
-
-          ColVec MultTW(ColVec A, ColVec B)
-          RowVec MultTW(RowVec A, RowVec B)
-          Matrix MultTW(Matrix A, Matrix B)
-          Matrix MultTW(ColVec A, RowVec B)
-          Matrix MultTW(RowVec A, ColVec B)
-          Matrix MultTW(Matrix A, ColVec B)
-          Matrix MultTW(ColVec B, Matrix A)
-          Matrix MultTW(Matrix A, RowVec B)
-          Matrix MultTW(RowVec B, Matrix A)
-   Param: 
-      | A:  The first input column vector or matrix.
-      | B:  The second input column vector or matrix, of the same size as A.
-   Returns: 
-       A vector containing the element-wise products A[i] * B[i] or matrix containing the element-wise products A[i,j] * B[i,j]], for all valid indices.
-   Example: 
-       Multiply two 3-element vectors element-wise:
-       .. Math::
-          \begin{array}{rl}
-                &A = [1.0,   2.0,   3.0] \\
-                &B = [4.0,  5.0,  6.0] \\   
-          \end{array}
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using static SepalSolver.Math;
-           
-          // Create two column vector A and B
-          ColVec A = new double[] { 1.0, 2.0, 3.0 };
-          ColVec B = new double[] { 4.0, 5.0, 6.0 };
-      
-          // Calculation of element-wise multiplication
-          ColVec result = MultTW(A, B);
-      
-          // Output the result
-          console.writeline($"Multiplication of two column-wise vector: {result}")
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          Multiplication of two column-wise vector:
-          4  
-          10  
-          18
-   Example: 
-       Multiply two 2x2 matrices element-wise:
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using static SepalSolver.Math;
-            
-          // Create Matrix A and Matrix B
-          Matrix A = new double[,] {
-              { 1, 2 },
-              { 3, 4 }
-          };
-      
-          Matrix B = new double[,] {
-              { 5, 6 },
-              { 7, 8 }
-          };
-      
-          // Calculation of element-wise multiplication
-          Matrix result = MultTW(A, B);
-      
-          // Output the result
-          console.writeline($"Multiplication of two Matrix-wise: {result}")
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          Multiplication of two Matrix-wise:
-          5 12  
-          21 32
-
-
-DivTW
-=====
-   Description: 
-       Performs element-wise division of two column vectors or matrices.No element in the divisor vector or matrix should be zero.
-       This method divides each element of column vector or matrix A by the corresponding element in column vector or matrix B, returning a new vector or matrix of the same size.
-
-       .. code-block:: CSharp 
-
-          ColVec DivTW(ColVec A, ColVec B)
-          RowVec DivTW(RowVec A, RowVec B)
-          Matrix DivTW(Matrix A, Matrix B)
-          ColVec DivTW(double a, ColVec B)
-          RowVec DivTW(double a, RowVec B)
-          Matrix DivTW(double a, Matrix B)
-          Matrix DivTW(ColVec A, RowVec B)
-          Matrix DivTW(RowVec A, ColVec B)
-          Matrix DivTW(Matrix A, ColVec B)
-          Matrix DivTW(ColVec B, Matrix A)
-          Matrix DivTW(Matrix A, RowVec B)
-          Matrix DivTW(RowVec B, Matrix A)
-   Param: 
-      | A:  The numerator vector.
-      | B:  The denominator vector. Must be the same size as A. No element of vector or matric B should be zero.
-   Returns: 
-       A vector or matrix containing the element-wise quotients A[i] / B[i] or A[i,j]/B[i,j].
-   Example: 
-       Divide two column vectors element-wise:
-       .. Math::
-          \begin{array}{rl}
-                &A = [10.0,   20.0,   30.0] \\
-                &B = [2.0,  4.0,  5.0] \\   
-          \end{array}
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using static SepalSolver.Math;
-          
-          // Create column vector A and vector B
-          ColVec A = new double[] { 10.0, 20.0, 30.0 };
-          ColVec B = new double[] { 2.0, 4.0, 5.0 };
-           
-          // Calculation of element-wise division
-          ColVec result = DivTW(A, B);
-      
-          // Output the result
-          console.writeline($"Division of two column-wise: {result}")
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          5  
-          5  
-          6
-   Example: 
-       Divide two 2x2 matrices element-wise:
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using static SepalSolver.Math;
-          
-          //Create matrix A and matrix B
-          Matrix A = new double[,] {
-              { 10, 20 },
-              { 30, 40 }
-          };
-      
-          Matrix B = new double[,] {
-              { 2, 4 },
-              { 5, 10 }
-          };
-          
-          // Calculation of element-wise division
-          Matrix result = DivTW(A, B);
-      
-          // Output the result
-          console.writeline($"Division of two matrix-wise: {result}")
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          5 5  
-          6 4
-
-
-PowTW
-=====
-   Description: 
-       Performs element-wise exponentiation of two column vectors or matrices.
-       This method raises each element of vector or matrix A to the corresponding power in vector or matrix B, producing a new vector or matrix. The size of vector or matrix A and B must be the same.
-
-       .. code-block:: CSharp 
-
-          ColVec PowTW(ColVec A, ColVec B)
-          RowVec PowTW(RowVec A, RowVec B)
-          Matrix PowTW(Matrix A, Matrix B)
-          ColVec PowTW(double x, ColVec N)
-          RowVec PowTW(double x, RowVec N)
-          Matrix PowTW(double x, Matrix N)
-          ColVec PowTW(ColVec x, double n)
-          RowVec PowTW(RowVec x, double n)
-          Matrix PowTW(Matrix x, double n)
-          Matrix PowTW(ColVec A, RowVec B)
-          Matrix PowTW(RowVec A, ColVec B)
-          Matrix PowTW(Matrix A, ColVec B)
-          Matrix PowTW(ColVec B, Matrix A)
-          Matrix PowTW(Matrix A, RowVec B)
-          Matrix PowTW(RowVec B, Matrix A)
-   Param: 
-      | A:  The base vector or matrix.
-      | B:  The exponent vector or matrix. Must have the same length as A.
-   Returns: 
-       A vector or matrix containing the element-wise exponentiation
-   Example: 
-       Raise elements of one vector to the powers in another:
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using static SepalSolver.Math;
-          
-          // Create vector A and vector B
-          ColVec A = new double[] { 2.0, 3.0, 4.0 };
-          ColVec B = new double[] { 3.0, 2.0, 0.5 };
-          
-          // Calculation of element-wise exponent
-          ColVec result = PowTW(A, B);
-      
-          // Output the result
-          console.writeline($"Exponent of two column-wise: {result}")
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          8  
-          9  
-          2
-   Example: 
-       Raise each element of one 2x2 matrix to the powers in another:
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using static SepalSolver.Math;
-      
-          // Create matrix A and B
-          Matrix A = new double[,] {
-              { 2.0, 3.0 },
-              { 4.0, 36.0 }
-          };
-      
-          Matrix B = new double[,] {
-              { 3.0, 2.0 },
-              { 1.0, 0.5 }
-          };
-          
-          // Calculation of element-wise exponent
-          Matrix result = PowTW(A, B);
-      
-          // Output the result
-          console.writeline($"Exponent of two matrix-wise: {result}")
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          8 9  
-          4 6
-
-
 Round
 =====
    Description: 
@@ -1882,9 +1647,11 @@ Round
           SparseMatrix Round(SparseMatrix x, int decP = 0)
           SparseColVec Round(SparseColVec x, int decP = 0)
           SparseRowVec Round(SparseRowVec x, int decP = 0)
-   Param: 
-      | x:  The double-precision floating-point number or complex number or each element in a vector or matrix to be rounded.
-      | decP:  The number of decimal places to round to. Default is 0 (rounds to nearest integer). Must be between 0 and 15.
+   Parameters: 
+       x: 
+         The double-precision floating-point number or complex number or each element in a vector or matrix to be rounded.
+       decP: 
+            The number of decimal places to round to. Default is 0 (rounds to nearest integer). Must be between 0 and 15.
    Returns: 
        A double value rounded to the specified number of decimal places.
    Example: 
@@ -1929,8 +1696,9 @@ Sqrt
           SparseMatrix Sqrt(SparseMatrix x)
           SparseColVec Sqrt(SparseColVec x)
           SparseRowVec Sqrt(SparseRowVec x)
-   Param: 
-      | x:  The number whose square root is to be calculated. Must be non-negative for real results.
+   Parameters: 
+       x: 
+         The number whose square root is to be calculated. Must be non-negative for real results.
    Returns: 
        The positive square root of x. Returns NaN if x is negative, and positive infinity if x is positive infinity.
    Example: 
@@ -1975,8 +1743,9 @@ Sqr
           SparseMatrix Sqr(SparseMatrix x)
           SparseColVec Sqr(SparseColVec x)
           SparseRowVec Sqr(SparseRowVec x)
-   Param: 
-      | x:  The number to be squared.
+   Parameters: 
+       x: 
+         The number to be squared.
    Returns: 
        The square of x (x * x). Returns positive infinity if the result overflows.
    Example: 
@@ -2014,8 +1783,9 @@ Floor
        .. code-block:: CSharp 
 
           double Floor(double x)
-   Param: 
-      | x:  The double-precision floating-point number to floor.
+   Parameters: 
+       x: 
+         The double-precision floating-point number to floor.
    Returns: 
        The largest integer less than or equal to x. If x is already an integer, returns x unchanged.
    Example: 
@@ -2053,8 +1823,9 @@ Ceil
        .. code-block:: CSharp 
 
           double Ceil(double x)
-   Param: 
-      | x:  The double-precision floating-point number to ceiling.
+   Parameters: 
+       x: 
+         The double-precision floating-point number to ceiling.
    Returns: 
        The smallest integer greater than or equal to x. If x is already an integer, returns x unchanged.
    Example: 
@@ -2095,9 +1866,11 @@ Max
           Max(double A, double B)
           Complex Max(Complex A, Complex B)
           Complex Max(Complex A, Complex B)
-   Param: 
-      | A:  The first scalar, array or matrix to compare.
-      | B:  The second scaler, array or matrix to compare.
+   Parameters: 
+       A: 
+         The first scalar, array or matrix to compare.
+       B: 
+         The second scaler, array or matrix to compare.
    Returns: 
        The maximum number from two or more given vectors or matrices. If A and B are equal, returns either value.
    Example: 
@@ -2181,9 +1954,11 @@ Min
           RowVec Min(RowVec A, RowVec B)
           RowVec Min(RowVec A, double b)
           RowVec Min(double b, RowVec A)
-   Param: 
-      | A:  The first integer to compare.
-      | B:  The second integer to compare.
+   Parameters: 
+       A: 
+         The first integer to compare.
+       B: 
+         The second integer to compare.
    Returns: 
        The smaller of the two input values. If A and B are equal, returns either value.
    Example: 
@@ -2229,8 +2004,9 @@ Sin
           SparseMatrix Sin(SparseMatrix x)
           SparseColVec Sin(SparseColVec x)
           SparseRowVec Sin(SparseRowVec x)
-   Param: 
-      | x:  The angle in radians for which to calculate the sine.
+   Parameters: 
+       x: 
+         The angle in radians for which to calculate the sine.
    Returns: 
        The sine of x, ranging from -1 to 1. Returns  0 if x is positive or negative infinity.
    Example: 
@@ -2273,8 +2049,9 @@ Asin
           SparseMatrix Asin(SparseMatrix x)
           SparseColVec Asin(SparseColVec x)
           SparseRowVec Asin(SparseRowVec x)
-   Param: 
-      | x:  The sine value for which to calculate the arcsine. Must be between -1 and 1 inclusive.
+   Parameters: 
+       x: 
+         The sine value for which to calculate the arcsine. Must be between -1 and 1 inclusive.
    Returns: 
        The angle in radians whose sine equals x, ranging from -π/2 to π/2. Returns NaN if x is outside the range [-1, 1].
    Example: 
@@ -2341,8 +2118,9 @@ Cos
           SparseMatrix Cos(SparseMatrix x)
           SparseColVec Cos(SparseColVec x)
           SparseRowVec Cos(SparseRowVec x)
-   Param: 
-      | x:  The angle in radians for which to calculate the cosine.
+   Parameters: 
+       x: 
+         The angle in radians for which to calculate the cosine.
    Returns: 
        The cosine of x, ranging from -1 to 1. Returns 0 if x is positive or negative infinity.
    Example: 
@@ -2385,8 +2163,9 @@ Acos
           SparseMatrix Acos(SparseMatrix x)
           SparseColVec Acos(SparseColVec x)
           SparseRowVec Acos(SparseRowVec x) 
-   Param: 
-      | x:  A scalar number or one-dimensional or two-dimensional array for which to calculate the arccosine. Must be between -1 and 1 inclusive.
+   Parameters: 
+       x: 
+         A scalar number or one-dimensional or two-dimensional array for which to calculate the arccosine. Must be between -1 and 1 inclusive.
    Returns: 
        The angle in radians whose cosine equals x, ranging from 0 to π. Returns NaN if x is outside the range [-1, 1].
    Example: 
@@ -2429,8 +2208,9 @@ Tan
           SparseMatrix Tan(SparseMatrix x)
           SparseColVec Tan(SparseColVec x)
           SparseRowVec Tan(SparseRowVec x)
-   Param: 
-      | x:  The angle in radians for which to calculate the tangent.
+   Parameters: 
+       x: 
+         The angle in radians for which to calculate the tangent.
    Returns: 
        The tangent of x. Returns NaN if x is NaN. At odd multiples of π/2, the result approaches positive or negative infinity.
    Example: 
@@ -2473,8 +2253,9 @@ Atan
           SparseMatrix Atan(SparseMatrix x)
           SparseColVec Atan(SparseColVec x)
           SparseRowVec Atan(SparseRowVec x)
-   Param: 
-      | x:  A scalar number or one-dimensional or two-dimensional array representing a tangent value for which the arctangent is to be computed.
+   Parameters: 
+       x: 
+         A scalar number or one-dimensional or two-dimensional array representing a tangent value for which the arctangent is to be computed.
    Returns: 
        A double representing the arctangent of x in radians, in the range -π/2 ≤ atan(x) ≤ π/2.
    Example: 
@@ -2521,8 +2302,9 @@ Sinh
           SparseMatrix Sinh(SparseMatrix x)
           SparseColVec Sinh(SparseColVec x)
           SparseRowVec Sinh(SparseRowVec x)
-   Param: 
-      | x:  A scalar number one-dimensional or two-dimensional array representing the value for which the hyperbolic sine is to be computed.
+   Parameters: 
+       x: 
+         A scalar number one-dimensional or two-dimensional array representing the value for which the hyperbolic sine is to be computed.
    Returns: 
        A double representing the hyperbolic sine of x.
        Returns PositiveInfinity if x is PositiveInfinity.
@@ -2545,7 +2327,7 @@ Sinh
       
           // Output the result
           Console.WriteLine($"Sinh({x}) = {result}");
-          Console.WriteLine($"Verification: (e^{x} - e^(-{x}))/2 = {(Math.Exp(x) - Math.Exp(-x)) / 2}");
+          Console.WriteLine($"Verification: (e^{x} - e^(-{x}))/2 = {(Exp(x) - Exp(-x)) / 2}");
 
       Output: 
 
@@ -2572,8 +2354,9 @@ Cosh
           SparseMatrix Cosh(SparseMatrix x)
           SparseColVec Cosh(SparseColVec x)
           SparseRowVec Cosh(SparseRowVec x)
-   Param: 
-      | x:  A scalar number or one-dimensional or two-dimensional array representing the value for which the hyperbolic cosine is to be computed.
+   Parameters: 
+       x: 
+         A scalar number or one-dimensional or two-dimensional array representing the value for which the hyperbolic cosine is to be computed.
    Returns: 
        A double representing the hyperbolic cosine of x, always greater than or equal to 1.
        Returns PositiveInfinity if x is PositiveInfinity or NegativeInfinity.
@@ -2621,8 +2404,9 @@ Tanh
           SparseMatrix Tanh(SparseMatrix x)
           SparseColVec Tanh(SparseColVec x)
           SparseRowVec Atanh(SparseRowVec x)   
-   Param: 
-      | x:  A double-precision floating-point number representing the value for which to calculate the hyperbolic tangent.
+   Parameters: 
+       x: 
+         A double-precision floating-point number representing the value for which to calculate the hyperbolic tangent.
    Returns: 
        The hyperbolic tangent of a number.
    Example: 
@@ -2665,8 +2449,9 @@ Atanh
           SparseMatrix Atanh(SparseMatrix x)
           SparseColVec Atanh(SparseColVec x)
           SparseRowVec Atanh(SparseRowVec x)
-   Param: 
-      | x:  A one-dimensional or two-dimensional array or double-precision floating-point number in the range (-1, 1), representing the value for which to compute the inverse hyperbolic tangent.
+   Parameters: 
+       x: 
+         A one-dimensional or two-dimensional array or double-precision floating-point number in the range (-1, 1), representing the value for which to compute the inverse hyperbolic tangent.
    Returns: 
        The inverse hyperbolic tangent of the number, x.
    Example: 
@@ -2708,8 +2493,9 @@ Exp
           SparseMatrix Exp(SparseMatrix x)
           SparseColVec Exp(SparseColVec x)
           SparseRowVec Exp(SparseRowVec x)
-   Param: 
-      | x:  A one-dimensional or two-dimensional array or double-precision floating-point number representing the power to raise Euler's number (e) to.
+   Parameters: 
+       x: 
+         A one-dimensional or two-dimensional array or double-precision floating-point number representing the power to raise Euler's number (e) to.
    Returns: 
        The exponential of a number, i.e., e raised to the power x.
    Example: 
@@ -2751,8 +2537,9 @@ Log
           SparseMatrix Log(SparseMatrix x)
           SparseColVec Log(SparseColVec x)
           SparseRowVec Log(SparseRowVec x)
-   Param: 
-      | x:  A one-dimensional or two-dimensional array or double-precision floating-point number greater than zero, representing the value whose logarithm is to be calculated.
+   Parameters: 
+       x: 
+         A one-dimensional or two-dimensional array or double-precision floating-point number greater than zero, representing the value whose logarithm is to be calculated.
    Returns: 
        The natural logarithm (ln) of a number.
    Example: 
@@ -2794,8 +2581,9 @@ Log2
           SparseMatrix Log2(SparseMatrix x)
           SparseColVec Log2(SparseColVec x)
           SparseRowVec Log2(SparseRowVec x)
-   Param: 
-      | x:  A one-dimensional or two-dimensional array or double-precision floating-point number greater than zero, representing the value whose base-2 logarithm is to be calculated.
+   Parameters: 
+       x: 
+         A one-dimensional or two-dimensional array or double-precision floating-point number greater than zero, representing the value whose base-2 logarithm is to be calculated.
    Returns: 
        The base-2 logarithm of the number, x.
    Example: 
@@ -2837,8 +2625,9 @@ Log10
           SparseMatrix Log10(SparseMatrix x)
           SparseColVec Log10(SparseColVec x)
           SparseRowVec Log10(SparseRowVec x)
-   Param: 
-      | x:  A one-dimensional or two-dimensional array or double-precision floating-point number greater than zero, representing the value whose base-10 logarithm is to be calculated.
+   Parameters: 
+       x: 
+         A one-dimensional or two-dimensional array or double-precision floating-point number greater than zero, representing the value whose base-10 logarithm is to be calculated.
    Returns: 
        The base-10 logarithm (common logarithm) of the number, x.
    Example: 
@@ -2872,20 +2661,11 @@ BesselJ
 
        .. math::
           J_i(x)
-
-       .. code-block:: CSharp 
-
-          double BesselJ(int i, double x)
-          Complex BesselJ(int i, Complex x)
-          Matrix BesselJ(int i, Matrix x)
-          ColVec BesselJ(int i, ColVec x)
-          RowVec BesselJ(int i, RowVec x)
-          SparseMatrix BesselJ(int i, SparseMatrix x)
-          SparseColVec BesselJ(int i, SparseColVec x)
-          SparseRowVec BesselJ(int i, SparseRowVec x)
-   Param: 
-      | i:  The order of the Bessel function.
-      | x:  The value at which to evaluate the Bessel function.
+   Parameters: 
+       i: 
+         The order of the Bessel function.
+       x: 
+         The value at which to evaluate the Bessel function.
    Returns: 
        The value of the Bessel function of the first kind at the given order and value.
    Example: 
@@ -2939,8 +2719,10 @@ BesselJ
           using System;
           using SepalSolver;
           using static SepalSolver.Math;
+          using static SepalSolver.PlotLib.Chart;
+          using static SepalSolver.PlotLib.Chart.Location;
           
-          // Compute Besselj function
+          // Compute besselj function
           ColVec x = Linspace(0, 10);
           Matrix y = Enumerable.Range(0, 10).Select(i=>BesselJ(i, x)).ToList();
           
@@ -2964,7 +2746,7 @@ BesselI
        This method evaluates the exponentially scaled modified Bessel function of the first kind for a given order and value.
 
        .. math::
-          J_i(x)
+          I_i(x)
 
        .. code-block:: CSharp 
 
@@ -2976,9 +2758,11 @@ BesselI
           SparseMatrix BesselI(int i, SparseMatrix x)
           SparseColVec BesselI(int i, SparseColVec x)
           SparseRowVec BesselI(int i, SparseRowVec x)
-   Param: 
-      | i:  The order of the Bessel function.
-      | x:  The value at which to evaluate the Bessel function.
+   Parameters: 
+       i: 
+         The order of the Bessel function.
+       x: 
+         The value at which to evaluate the Bessel function.
    Returns: 
        The value of the Bessel function of the first kind at the given order and value.
    Example: 
@@ -3004,7 +2788,7 @@ BesselI
 
           3.28983914405
    Example: 
-       Compute the Bessel function of the first kind for order 1 and value 2.0
+       Compute the Modified Bessel function of the first kind for order 1 and value 2.0
 
        .. code-block:: CSharp 
 
@@ -3024,7 +2808,7 @@ BesselI
 
           1.590637
    Example: 
-       Compute the Bessel function of the first kind for order 1 and value 3.0
+       Compute the Modified Bessel function of the first kind for order 1 and value 3.0
 
        .. code-block:: CSharp 
 
@@ -3032,13 +2816,20 @@ BesselI
           using System;
           using SepalSolver;
           using static SepalSolver.Math;
+          using static SepalSolver.PlotLib.Chart;
+          using static SepalSolver.PlotLib.Chart.Location;
           
           // Compute BesselI function
-          ColVec x = Linspace(0, 10);
-          Matrix y = Enumerable.Range(0, 10).Select(i=>BesselI(i, x)).ToList();
-          
+          ColVec x = Linspace(0, 5);
+          Matrix y = Enumerable.Range(0, 4).Select(i => BesselI(i, x)).ToList();
+      
           // Plot result
-          Plot(x, y); Xlabel("x-axis"); Ylabel("y-axis"); Title("Bessel function I");
+          Plot(x, y);
+          Axis([0, 5, 0, 15]);
+          Xlabel("x-axis"); Ylabel("y-axis");
+          Title("Bessel function I");
+          Legend(Enumerable.Range(0, 4).Select(i => "I_"+ i + "(x)"));
+          SaveAs("BesselfunctionPlotI.png");
          
 
       Output: 
@@ -3069,13 +2860,15 @@ BesselY
           SparseMatrix BesselY(int i, SparseMatrix x)
           SparseColVec BesselY(int i, SparseColVec x)
           SparseRowVec BesselY(int i, SparseRowVec x)
-   Param: 
-      | i:  The order of the Bessel function.
-      | x:  The value at which to evaluate the Bessel function.
+   Parameters: 
+       i: 
+         The order of the Bessel function.
+       x: 
+         The value at which to evaluate the Bessel function.
    Returns: 
        The value of the Bessel function of the second kind at the given order and value (must be positive).
    Example: 
-       Compute the Bessel function of the first kind for order 0 and value 2.5
+       Compute the Bessel function of the second kind for order 0 and value 2.5
 
        .. code-block:: CSharp 
 
@@ -3125,14 +2918,20 @@ BesselY
           using System;
           using SepalSolver;
           using static SepalSolver.Math;
+          using static SepalSolver.PlotLib.Chart;
+          using static SepalSolver.PlotLib.Chart.Location;
           
-          // Compute bessely function
-          ColVec x = Linspace(0, 10);
-          Matrix y = Enumerable.Range(0, 10).Select(i=>BesselY(i, x)).ToList();
+          // Compute BesselY function
+          ColVec x = Linspace(0.01, 10, 500);
+          Matrix y = Enumerable.Range(0, 5).Select(i => BesselY(i, x)).ToList();
           
-         // Plot result
-         Plot(x, y); Xlabel("x-axis"); Ylabel("y-axis"); Title("Bessel function I");
-         
+          // Plot result
+          Plot(x, y);
+          Axis([0, 10, -2, 1]);
+          Xlabel("x-axis"); Ylabel("y-axis");
+          Title("Bessel function Y");
+          Legend(Enumerable.Range(0, 5).Select(i => "Y_"+ i + "(x)"), LowerRight);
+          SaveAs(imagepath + "BesselfunctionPlotY.png");
 
       Output: 
 
@@ -3146,7 +2945,7 @@ BesselY
 BesselK
 =======
    Description: 
-       Computes the Bessel function of the second kind Kₙ(x).
+       Computes the Modified Bessel function of the second kind Kₙ(x).
        This method evaluates the exponentially scaled modified Bessel function for a given order and value.
 
        .. math::
@@ -3162,13 +2961,15 @@ BesselK
           SparseMatrix BesselK(int i, SparseMatrix x)
           SparseColVec BesselK(int i, SparseColVec x)
           SparseRowVec BesselK(int i, SparseRowVec x)
-   Param: 
-      | i:  The order of the Bessel function.
-      | x:  The value at which to evaluate the Bessel function.
+   Parameters: 
+       i: 
+         The order of the Bessel function.
+       x: 
+         The value at which to evaluate the Bessel function.
    Returns: 
-       The value of the Bessel function of the second kind at the given order and value (must be positive).
+       The value of the Modified Bessel function of the second kind at the given order and value (must be positive).
    Example: 
-       Compute the Bessel function of the first kind for order 0 and value 2.5
+       Compute the Modified Bessel function of the first kind for order 0 and value 2.5
 
        .. code-block:: CSharp 
 
@@ -3220,18 +3021,23 @@ BesselK
           using static SepalSolver.Math;
           
           // Compute BesselK function
-          ColVec x = Linspace(0, 10);
-          Matrix y = Enumerable.Range(0, 10).Select(i=>BesselK(i, x)).ToList();
+          ColVec x = Linspace(0.01, 5, 500);
+          Matrix y = Enumerable.Range(0, 5).Select(i => BesselK(i, x)).ToList();
           
-         // Plot result
-         Plot(x, y); Xlabel("x-axis"); Ylabel("y-axis"); Title("Bessel function K");
+          // Plot result
+          Plot(x, y);
+          Axis([0, 5, 0, 5]);
+          Xlabel("x-axis"); Ylabel("y-axis");
+          Title("Bessel function K");
+          Legend(Enumerable.Range(0, 5).Select(i => "K_"+ i + "(x)"));
+          SaveAs(imagepath + "BesselfunctionPlotK.png");
          
 
       Output: 
 
-       .. figure:: images/BesselfunctionPlotKwww.png
+       .. figure:: images/BesselfunctionPlotK.png
           :align: center
-          :alt: BesselfunctionPlotKwww.png
+          :alt: BesselfunctionPlotK.png
 
 
 
@@ -3256,9 +3062,11 @@ ChebyshevT
           SparseMatrix ChebyshevT(int i, SparseMatrix x)
           SparseColVec ChebyshevT(int i, SparseColVec x)
           SparseRowVec ChebyshevT(int i, SparseRowVec x)
-   Param: 
-      | n:  The degree of the Chebyshev polynomial. Must be a non-negative integer.
-      | x:  The single point or points within array or matrix at which to evaluate the Chebyshev polynomial. Typically in the range [-1, 1] for optimal numerical properties.
+   Parameters: 
+       n: 
+         The degree of the Chebyshev polynomial. Must be a non-negative integer.
+       x: 
+         The single point or points within array or matrix at which to evaluate the Chebyshev polynomial. Typically in the range [-1, 1] for optimal numerical properties.
    Returns: 
        A scalar point of point in an array for matrix form representing the value of the nth Chebyshev polynomial of the first kind evaluated at x.
        Returns NaN if n is negative or if computation fails.
@@ -3317,9 +3125,11 @@ ChebyshevU
           SparseMatrix ChebyshevU(int i, SparseMatrix x)
           SparseColVec ChebyshevU(int i, SparseColVec x)
           SparseRowVec ChebyshevU(int i, SparseRowVec x)
-   Param: 
-      | n:  The degree of the Chebyshev polynomial of the second kind. Must be a non-negative integer.
-      | x:  The point at which to evaluate the Chebyshev polynomial. Typically in the range [-1, 1] for optimal numerical properties.
+   Parameters: 
+       n: 
+         The degree of the Chebyshev polynomial of the second kind. Must be a non-negative integer.
+       x: 
+         The point at which to evaluate the Chebyshev polynomial. Typically in the range [-1, 1] for optimal numerical properties.
    Returns: 
        A Scaler point or points in an array or matrix form representing the value of the nth Chebyshev polynomial of the second kind evaluated at x.
        Returns NaN if n is negative or if computation fails.
@@ -3376,9 +3186,11 @@ LegendreP
           SparseMatrix LegendreP(int i, SparseMatrix x)
           SparseColVec LegendreP(int i, SparseColVec x)
           SparseRowVec LegendreP(int i, SparseRowVec x)
-   Param: 
-      | n:  The degree of the Legendre polynomial. Must be a non-negative integer.
-      | x:  The point at which to evaluate the Legendre polynomial. Can be any real number, but orthogonality properties hold on [-1, 1].
+   Parameters: 
+       n: 
+         The degree of the Legendre polynomial. Must be a non-negative integer.
+       x: 
+         The point at which to evaluate the Legendre polynomial. Can be any real number, but orthogonality properties hold on [-1, 1].
    Returns: 
        A scalar point or points in an array or matrix form representing the value of the nth Legendre polynomial evaluated at x.
        Returns NaN if n is negative or if computation fails.
@@ -3479,8 +3291,9 @@ Gamma
           SparseColVec Gamma(SparseColVec x)
           SparseRowVec Gamma(SparseRowVec x)
           double Gamma(double z, double tolerance = 1e-10)
-   Param: 
-      | z:  The input value (real or complex). For positive integers, Γ(n) = (n-1)!.
+   Parameters: 
+       z: 
+         The input value (real or complex). For positive integers, Γ(n) = (n-1)!.
    Returns: 
        The value of the Gamma function at z.
    Example: 
@@ -3523,15 +3336,23 @@ SolverSet
 
            Solvers.Set SolverSet(bool? Display = false, double? StepFactor = null, double? RelTol = null, double? AbsTol = null, 
            int? MaxIter = null, int? MaxFunEvals = null, bool? UseParallel = null, Func<ColVec, SparseMatrix> UserDefinedJac = null)
-   Param: 
-      | Display:  Optional. If true, enables display of solver progress and results during execution. Defaults to false.
-      | StepFactor:  Optional. A scaling factor for the initial step size used in iterative solvers.
-      | RelTol:  Optional. Relative tolerance. The solver stops when the relative change in the solution is below this threshold.
-      | AbsTol:  Optional. Absolute tolerance. The solver stops when the absolute change in the solution is below this threshold.
-      | MaxIter:  Optional. Maximum number of iterations allowed for the solver.
-      | MaxFunEvals:  Optional. Maximum number of function evaluations allowed.
-      | UseParallel:  Optional. If true, enables parallel computation for supported solvers.
-      | UserDefinedJac:  Optional. A user-defined function that returns the Jacobian matrix of the system. This can improve convergence speed and accuracy.
+   Parameters: 
+       Display: 
+               Optional. If <c>true</c>, enables display of solver progress and results during execution. Defaults to <c>false</c>.
+       StepFactor: 
+                  Optional. A scaling factor for the initial step size used in iterative solvers.
+       RelTol: 
+              Optional. Relative tolerance. The solver stops when the relative change in the solution is below this threshold.
+       AbsTol: 
+              Optional. Absolute tolerance. The solver stops when the absolute change in the solution is below this threshold.
+       MaxIter: 
+               Optional. Maximum number of iterations allowed for the solver.
+       MaxFunEvals: 
+                   Optional. Maximum number of function evaluations allowed.
+       UseParallel: 
+                   Optional. If <c>true</c>, enables parallel computation for supported solvers.
+       UserDefinedJac: 
+                      Optional. A user-defined function that returns the Jacobian matrix of the system. This can improve convergence speed and accuracy.
    Returns: 
        Information about the problem solved like, number of iteration, number of function call and other estimated parameters.
    Example: 
@@ -3573,11 +3394,11 @@ SolverSet
              5      1.44e+0    -7.014e+0      1.56e+0   -6.2036e+0   search
              7    1.4151e+0    -7.166e+0    1.5849e+0   -6.0192e+0   search
              9      1.38e+0   -7.3719e+0      1.62e+0   -5.7485e+0   search
-             11    1.3303e+0   -7.6458e+0    1.6697e+0    -5.345e+0   search
-             13      1.26e+0   -7.9996e+0      1.74e+0    -4.732e+0   search
-             15    1.1606e+0   -8.4367e+0    1.8394e+0   -3.7765e+0   search
-             17      1.02e+0   -8.9388e+0      1.98e+0   -2.2376e+0   search
-             19    8.2118e-1   -9.4463e+0    2.1788e+0    3.4345e-1   search
+             11   1.3303e+0   -7.6458e+0    1.6697e+0    -5.345e+0   search
+             13     1.26e+0   -7.9996e+0      1.74e+0    -4.732e+0   search
+             15   1.1606e+0   -8.4367e+0    1.8394e+0   -3.7765e+0   search
+             17     1.02e+0   -8.9388e+0      1.98e+0   -2.2376e+0   search
+             19   8.2118e-1   -9.4463e+0    2.1788e+0    3.4345e-1   search
       
           Solving for solution between 0.821177 and 2.178823
            
@@ -3603,19 +3424,31 @@ OptimSet
            Optimizers.Set OptimSet(bool? Display = false, double? FuncTol = null, double? OptimalityTol = null, double? StepTol = null, double? ConstraintTol = null,
            ColVec Weight = null, int? MaxIter = null, int? MaxFunEvals = null, bool? UseParallel = null, dynamic Pltfun = null, int? PopulationSize = null,
            LevenbergeMaquardt_UpdateType? LMUpdate = null)
-   Param: 
-      | Display:  Optional. If set to <c>true</c>, displays solver progress and results during and after execution. Defaults to <c>false</c>.
-      | FuncTol:  Optional. Function tolerance. The solver stops when the change in the objective function value is less than this threshold.
-      | OptimalityTol:  Optional. Optimality tolerance. Determines the acceptable level of optimality for the solution.
-      | StepTol:  Optional. Step tolerance. The solver stops if the step size becomes smaller than this value.
-      | ConstraintTol:  Optional. Constraint tolerance. Specifies the acceptable violation level for constraints.
-      | Weight:  Optional. A vector of weights used in weighted optimization problems.
-      | MaxIter:  Optional. Maximum number of iterations allowed for the solver.
-      | MaxFunEvals:  Optional. Maximum number of function evaluations allowed.
-      | UseParallel:  Optional. If set to <c>true</c>, enables parallel computation for supported solvers.
-      | Pltfun:  Optional. A plotting function or delegate that visualizes the optimization process.
-      | PopulationSize:  Optional. Specifies the population size for population-based algorithms (e.g., genetic algorithms).
-      | LMUpdate:  Optional. Specifies the update strategy for the Levenberg-Marquardt algorithm.
+   Parameters: 
+       Display: 
+               Optional. If set to <c>true</c>, displays solver progress and results during and after execution. Defaults to <c>false</c>.
+       FuncTol: 
+               Optional. Function tolerance. The solver stops when the change in the objective function value is less than this threshold.
+       OptimalityTol: 
+                     Optional. Optimality tolerance. Determines the acceptable level of optimality for the solution.
+       StepTol: 
+               Optional. Step tolerance. The solver stops if the step size becomes smaller than this value.
+       ConstraintTol: 
+                     Optional. Constraint tolerance. Specifies the acceptable violation level for constraints.
+       Weight: 
+              Optional. A vector of weights used in weighted optimization problems.
+       MaxIter: 
+               Optional. Maximum number of iterations allowed for the solver.
+       MaxFunEvals: 
+                   Optional. Maximum number of function evaluations allowed.
+       UseParallel: 
+                   Optional. If set to <c>true</c>, enables parallel computation for supported solvers.
+       Pltfun: 
+              Optional. A plotting function or delegate that visualizes the optimization process.
+       PopulationSize: 
+                      Optional. Specifies the population size for population-based algorithms (e.g., genetic algorithms).
+       LMUpdate: 
+                Optional. Specifies the update strategy for the Levenberg-Marquardt algorithm.
    Returns: 
           Information about the problem solved like, number of iteration, number of function call and other estimated parameters.
    Example: 
@@ -3785,10 +3618,13 @@ Fzero
           double Fzero(Func<double, double> fun, double x0)
           double Fzero(Func<double, double> fun, double[] x0)
           double Fzero(Func<double, double> fun, double x0, Solvers.Set options)
-   Param: 
-      | fun:  The nonlinear function whose root is to be computed. The function must take a double and return a double.
-      | x0:  The initial guess for the root or the interval bounding the root.
-      | options:  Optional. Solver settings that specify parameters like tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
+   Parameters: 
+       fun: 
+           The nonlinear function whose root is to be computed. The function must take a double and return a double.
+       x0: 
+          The initial guess for the root or the interval bounding the root.
+       options: 
+               Optional. Solver settings that specify parameters like tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
    Returns: 
        The computed root of the nonlinear equation.
    Example: 
@@ -3828,10 +3664,13 @@ Fsolve
           Complex Fsolve(Func<Complex, Complex> fun, Complex x0, Solvers.Set options = null)
           ColVec Fsolve(Func<ColVec, ColVec> fun, ColVec x0, Solvers.Set options = null)
           ColVec Fsolve(Func<double[], double[]> fun, ColVec x0, Solvers.Set options = null)
-   Param: 
-      | fun:  The nonlinear function whose root is to be computed. The function can take a double or complex scalar or array values as input and return a scaler or complex or array values.
-      | x0:  The initial guess for the root of the function.
-      | options:  Optional. Solver settings that specify parameters such as tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
+   Parameters: 
+       fun: 
+           The nonlinear function whose root is to be computed. The function can take a double or complex scalar or array values as input and return a scaler or complex or array values.
+       x0: 
+          The initial guess for the root of the function.
+       options: 
+               Optional. Solver settings that specify parameters such as tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
    Returns: 
        The computed root or root(s) of the nonlinear equations.
    Example: 
@@ -3904,22 +3743,30 @@ Linprog
 
           ColVec Linprog(RowVec c, Matrix AInEq = null, ColVec bInEq = null, Matrix AEq = null, ColVec bEq = null, 
           ColVec Lb = null, ColVec Ub = null, Optimizers.Set options = null)
-   Param: 
-      | c:  The row vector representing the coefficients of the linear objective function to be minimized.
-      | AInEq:  Optional. The matrix representing inequality constraint coefficients.
-              If null, no inequality constraints are applied.
-      | bInEq:  Optional. The column vector representing the right-hand side values of the inequality constraints.
-              If null, no inequality constraints are applied.
-      | AEq:  Optional. The matrix representing equality constraint coefficients.
-            If null, no equality constraints are applied.
-      | bEq:  Optional. The column vector representing the right-hand side values of the equality constraints.
-            If null, no equality constraints are applied.
-      | Lb:  Optional. The column vector representing the lower bounds for the variables.
-           If null, the variables are unbounded below.
-      | Ub:  Optional. The column vector representing the upper bounds for the variables.
-           If null, the variables are unbounded above.
-      | options:  Optional. Solver settings that allow customization of parameters such as 
-                tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
+   Parameters: 
+       c: 
+         The row vector representing the coefficients of the linear objective function to be minimized.
+       AInEq: 
+             Optional. The matrix representing inequality constraint coefficients.
+             If null, no inequality constraints are applied.
+       bInEq: 
+             Optional. The column vector representing the right-hand side values of the inequality constraints.
+             If null, no inequality constraints are applied.
+       AEq: 
+           Optional. The matrix representing equality constraint coefficients.
+           If null, no equality constraints are applied.
+       bEq: 
+           Optional. The column vector representing the right-hand side values of the equality constraints.
+           If null, no equality constraints are applied.
+       Lb: 
+          Optional. The column vector representing the lower bounds for the variables.
+          If null, the variables are unbounded below.
+       Ub: 
+          Optional. The column vector representing the upper bounds for the variables.
+          If null, the variables are unbounded above.
+       options: 
+               Optional. Solver settings that allow customization of parameters such as 
+               tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
    Returns: 
        A column vector representing the optimized solution to the linear programming problem.
    Example: 
@@ -3935,7 +3782,6 @@ Linprog
                 Bounds: & \\
                         & 0 \leq x, y \leq 3 \\   
           \end{array}
-         
 
        .. code-block:: CSharp 
 
@@ -3976,23 +3822,32 @@ Intlinprog
           ColVec Intlinprog(RowVec c, int[] IntVar, Matrix AInEq = null, ColVec bInEq = null, 
           Matrix AEq = null, ColVec bEq = null, ColVec Lb = null, ColVec Ub = null, 
           Optimizers.Set options = null)
-   Param: 
-      | c:  The row vector representing the coefficients of the linear objective function to be minimized.
-      | IntVar:  The array of indices specifying which variables must be integers.
-      | AInEq:  Optional. The matrix representing inequality constraint coefficients.
-              If null, no inequality constraints are applied.
-      | bInEq:  Optional. The column vector representing the right-hand side values of the inequality constraints.
-              If null, no inequality constraints are applied.
-      | AEq:  Optional. The matrix representing equality constraint coefficients.
-            If null, no equality constraints are applied.
-      | bEq:  Optional. The column vector representing the right-hand side values of the equality constraints.
-            If null, no equality constraints are applied.
-      | Lb:  Optional. The column vector representing the lower bounds for the variables.
-           If null, the variables are unbounded below.
-      | Ub:  Optional. The column vector representing the upper bounds for the variables.
-           If null, the variables are unbounded above.
-      | options:  Optional. Solver settings that allow customization of parameters such as 
-                tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
+   Parameters: 
+       c: 
+         The row vector representing the coefficients of the linear objective function to be minimized.
+       IntVar: 
+              The array of indices specifying which variables must be integers.
+       AInEq: 
+             Optional. The matrix representing inequality constraint coefficients.
+             If null, no inequality constraints are applied.
+       bInEq: 
+             Optional. The column vector representing the right-hand side values of the inequality constraints.
+             If null, no inequality constraints are applied.
+       AEq: 
+           Optional. The matrix representing equality constraint coefficients.
+           If null, no equality constraints are applied.
+       bEq: 
+           Optional. The column vector representing the right-hand side values of the equality constraints.
+           If null, no equality constraints are applied.
+       Lb: 
+          Optional. The column vector representing the lower bounds for the variables.
+          If null, the variables are unbounded below.
+       Ub: 
+          Optional. The column vector representing the upper bounds for the variables.
+          If null, the variables are unbounded above.
+       options: 
+               Optional. Solver settings that allow customization of parameters such as 
+               tolerance, maximum iterations, or other configurations. Defaults to null if not provided.
    Returns: 
        A column vector representing the optimized integer solution to the Integer Linear Programming problem.
    Example: 
@@ -4002,12 +3857,12 @@ Intlinprog
        
           \begin{array}{rl}
                 Maximize:& \\
-                         & c = 60x_1 + 40x_2 + 70x_3\\
+                         & c = 60x_1 + 40x_2 + 70x_3 \\
                 Subject~to:& \\
                            & 4x_1 + 2x_2 + 3x_2 \leq 60 \\
                            & 3x_1 + 2x_2 + 2x_3 \leq 40 \\
                            & 2x_1 + x_2 + 4x_3 \leq 36 \\ 
-                           & x_1, x_2, x_3 \geq 0 ~\text{and are integers} \\
+                           & x_1, x_2, x_3 >= 0 ~\text{and are integers} \\
           \end{array}
 
        .. code-block:: CSharp 
@@ -4018,14 +3873,14 @@ Intlinprog
           using static SepalSolver.Math;
           
           // Define the coefficients
-          RowVec c = new double[] { -60, -40, -70 };
+          RowVec c = new double[] { 60, 40, 70 };
           Matrix AInEq = new double [,] { { 4, 2, 3 }, { 3, 2, 2 }, { 2, 1, 4 } };
           ColVec bInEq = new double [] { 60, 40, 36 };
           
           int[] IntVar = [0, 1, 2]; // x1, x2, x3 are an integers
           
           // Solve the problem
-          ColVec solution = Intlinprog(c, IntVar, AInEq, bInEq, null, null, Zeros(3));
+          ColVec solution = Intlinprog(c, IntVar, AInEq, bInEq, null, null, null, null);
           Console.WriteLine($"Integer Solution: {solution}");
 
       Output: 
@@ -4047,24 +3902,32 @@ Fminsearch
           (ColVec x, double fval, int exitflag, ColVec fineq, ColVec feq, List<IterationState> history) 
           Fminsearch(Func<ColVec, double> fun, ColVec x0, Func<ColVec, ColVec> funInEq = null, 
                             Func<ColVec, ColVec> funEq = null, ColVec lb = null, ColVec ub = null, Optimizers.Set options = null)
-   Param: 
-      | fun:  The nonlinear scalar objective function to be minimized. Must take a column vector of decision variables and return a double.
-      | x0:  The initial guess for the decision variables.
-      | funInEq:  Optional. A function defining nonlinear inequality constraints.
-                Takes a column vector and returns a column vector of constraint values.
-      | funEq:  Optional. A function defining nonlinear equality constraints.
-              Takes a column vector and returns a column vector of constraint values.
-      | lb:  Optional. The column vector representing the lower bounds for decision variables.
-      | ub:  Optional. The column vector representing the upper bounds for decision variables.
-      | options:  Optional. Solver settings such as tolerance and maximum iterations.
-                Defaults to null if not provided.
+   Parameters: 
+       fun: 
+           The nonlinear scalar objective function to be minimized. Must take a column vector of decision variables and return a double.
+       x0: 
+          The initial guess for the decision variables.
+       funInEq: 
+               Optional. A function defining nonlinear inequality constraints.
+               Takes a column vector and returns a column vector of constraint values.
+       funEq: 
+             Optional. A function defining nonlinear equality constraints.
+             Takes a column vector and returns a column vector of constraint values.
+       lb: 
+          Optional. The column vector representing the lower bounds for decision variables.
+       ub: 
+          Optional. The column vector representing the upper bounds for decision variables.
+       options: 
+               Optional. Solver settings such as tolerance and maximum iterations.
+               Defaults to null if not provided.
    Returns: 
        A column vector representing the decision variables that minimize the objective function.
    Example: 
        Solve the Rosenbrock function optimization problem:
 
        .. math::
-          Minimize: f(x, y) = (1 - x)^2 + 100 (y - x^2)^2
+          Minimize: f(x, y) = (1 - x)^2 + 100(y - x^2)^2
+          
 
        .. code-block:: CSharp 
 
@@ -4104,17 +3967,24 @@ Fmincon
                          Func<ColVec, ColVec> funEq = null, 
                          ColVec lb = null, ColVec ub = null, 
                          Optimizers.Set options = null)
-   Param: 
-      | fun:  The scalar objective function to be minimized. It must take a column vector of decision variables and return a double.
-      | x0:  The initial guess for the decision variables.
-      | funInEq:  Optional. A function that defines nonlinear inequality constraints.
-                Takes a column vector and returns a column vector of constraint values.
-      | funEq:  Optional. A function that defines nonlinear equality constraints.
-              Takes a column vector and returns a column vector of constraint values.
-      | lb:  Optional. The column vector representing the lower bounds for decision variables.
-      | ub:  Optional. The column vector representing the upper bounds for decision variables.
-      | options:  Optional. Solver settings such as tolerance and maximum iterations.
-                Defaults to null if not provided.
+   Parameters: 
+       fun: 
+           The scalar objective function to be minimized. It must take a column vector of decision variables and return a double.
+       x0: 
+          The initial guess for the decision variables.
+       funInEq: 
+               Optional. A function that defines nonlinear inequality constraints.
+               Takes a column vector and returns a column vector of constraint values.
+       funEq: 
+             Optional. A function that defines nonlinear equality constraints.
+             Takes a column vector and returns a column vector of constraint values.
+       lb: 
+          Optional. The column vector representing the lower bounds for decision variables.
+       ub: 
+          Optional. The column vector representing the upper bounds for decision variables.
+       options: 
+               Optional. Solver settings such as tolerance and maximum iterations.
+               Defaults to null if not provided.
    Returns: 
        The optimized decision variables that minimize the objective function within the specified constraints.
    Example: 
@@ -4181,17 +4051,24 @@ Bfgs
                       Func<ColVec, ColVec> funEq = null, 
                       ColVec lb = null, ColVec ub = null, 
                       Optimizers.Set options = null)
-   Param: 
-      | fun:  The nonlinear scalar objective function to be minimized. Must take a column vector of decision variables and return a scalar point value.
-      | x0:  The initial guess for the decision variables.
-      | funInEq:  Optional. A function defining nonlinear inequality constraints.
-                Takes a column vector and returns a column vector of constraint values.
-      | funEq:  Optional. A function defining nonlinear equality constraints.
-              Takes a column vector and returns a column vector of constraint values.
-      | lb:  Optional. The column vector representing the lower bounds for decision variables.
-      | ub:  Optional. The column vector representing the upper bounds for decision variables.
-      | options:  Optional. Solver settings such as tolerance and maximum iterations.
-                Defaults to null if not provided.
+   Parameters: 
+       fun: 
+           The nonlinear scalar objective function to be minimized. Must take a column vector of decision variables and return a scalar point value.
+       x0: 
+          The initial guess for the decision variables.
+       funInEq: 
+               Optional. A function defining nonlinear inequality constraints.
+               Takes a column vector and returns a column vector of constraint values.
+       funEq: 
+             Optional. A function defining nonlinear equality constraints.
+             Takes a column vector and returns a column vector of constraint values.
+       lb: 
+          Optional. The column vector representing the lower bounds for decision variables.
+       ub: 
+          Optional. The column vector representing the upper bounds for decision variables.
+       options: 
+               Optional. Solver settings such as tolerance and maximum iterations.
+               Defaults to null if not provided.
    Returns: 
        A column vector representing the decision variables that minimize the objective function.
    Example: 
@@ -4279,17 +4156,26 @@ Lsqcurvefit
 
           (ColVec x, int exitflag, double resnorm, ColVec sigma_x, ColVec y_hat, ColVec sigma_y, List<IterationState> history) Lsqcurvefit(Func<ColVec, ColVec, ColVec> Model, ColVec x0, ColVec IndVar, ColVec Measured, Func<ColVec, ColVec> funInEq = null, Func<ColVec, ColVec> funEq = null,  ColVec lb = null, ColVec ub = null, Optimizers.Set options = null);
           (ColVec  Lsqnonlin(Func<ColVec, ColVec> Model, ColVec x0, Func<ColVec, ColVec> funInEq = null, Func<ColVec, ColVec> funEq = null, ColVec lb = null, ColVec ub = null, Optimizers.Set options = null)
-   Param: 
-      | Model:  The nonlinear model function to be fitted. Takes an independent variable and parameter vector
-              as inputs and returns computed values.
-      | x0:  Initial guess for model parameters.
-      | IndVar:  The independent variable values.
-      | Measured:  The observed dependent variable values.
-      | funInEq:  Optional. Function defining inequality constraints on parameters.
-      | funEq:  Optional. Function defining equality constraints on parameters.
-      | lb:  Optional. Lower bound constraints for parameters.
-      | ub:  Optional. Upper bound constraints for parameters.
-      | options:  Optional solver settings such as tolerance and maximum iterations.
+   Parameters: 
+       Model: 
+             The nonlinear model function to be fitted. Takes an independent variable and parameter vector
+             as inputs and returns computed values.
+       x0: 
+          Initial guess for model parameters.
+       IndVar: 
+              The independent variable values.
+       Measured: 
+                The observed dependent variable values.
+       funInEq: 
+               Optional. Function defining inequality constraints on parameters.
+       funEq: 
+             Optional. Function defining equality constraints on parameters.
+       lb: 
+          Optional. Lower bound constraints for parameters.
+       ub: 
+          Optional. Upper bound constraints for parameters.
+       options: 
+               Optional solver settings such as tolerance and maximum iterations.
    Returns: 
        Returns a tuple containing the optimized parameter values, exit flag, residual norm, parameter uncertainties,
        estimated model output, output uncertainties, and iteration history.
@@ -4299,7 +4185,7 @@ Lsqcurvefit
 
        .. math::
       
-          y(x, t) = x_3\exp(x_1t) + x_4\exp(-x_2t) 
+          y(x, t) = x_3 * \exp(x_1t) + x_4 *\exp(-x_2t) 
        
 
        .. code-block:: CSharp 
@@ -4346,15 +4232,23 @@ Ga
                     Optimizers.Set options = null);
           ColVec Ga(Func<ColVec, ColVec> fun, ColVec Measured, ColVec lb, ColVec ub, Func<ColVec,
                     ColVec> funInEq = null, Func<ColVec, ColVec> funEq = null, Optimizers.Set options = null)
-   Param: 
-      | fun:  The objective function to optimize. Takes a ColVec parameter and returns a double representing its fitness value.
-      | lb:  Lower bound constraints for the optimization parameters.
-      | ub:  Upper bound constraints for the optimization parameters.
-      | IntVar:  Optional. Specifies indices of variables that should be treated as integers.
-      | Measured:  The observed dependent variable values.
-      | funInEq:  Optional. Function defining inequality constraints on parameters.
-      | funEq:  Optional. Function defining equality constraints on parameters.
-      | options:  Optional settings such as mutation rate, population size, and maximum iterations.
+   Parameters: 
+       fun: 
+           The objective function to optimize. Takes a ColVec parameter and returns a double representing its fitness value.
+       lb: 
+          Lower bound constraints for the optimization parameters.
+       ub: 
+          Upper bound constraints for the optimization parameters.
+       IntVar: 
+              Optional. Specifies indices of variables that should be treated as integers.
+       Measured: 
+                The observed dependent variable values.
+       funInEq: 
+               Optional. Function defining inequality constraints on parameters.
+       funEq: 
+             Optional. Function defining equality constraints on parameters.
+       options: 
+               Optional settings such as mutation rate, population size, and maximum iterations.
    Returns: 
        Returns a scalar value or an array containing the optimized parameter values.
    Example: 
@@ -4449,14 +4343,21 @@ decic
 =====
    Description: 
        Compute consistent initial conditions for ODE45I.
-   Param: 
-      | fun:  The function that represents the implicit ODE. The function should accept three doubles (time, state, and its derivative) and return a double representing the derivative of the state.
-      | t0:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
-      | y0:  The initial value of the dependent variable (state).
-      | ytruth:  An array of intergers indicating which component of y0 is fixed and which is not.
-      | yp0:  The initial time derivative of the dependent variable (state).
-      | yptruth:  An array of intergers indicating which component yp0 is fixed and which is not.
-      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+   Parameters: 
+       fun: 
+           The function that represents the implicit ODE. The function should accept three doubles (time, state, and its derivative) and return a double representing the derivative of the state.
+       t0: 
+          An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
+       y0: 
+          The initial value of the dependent variable (state).
+       ytruth: 
+              An array of intergers indicating which component of y0 is fixed and which is not.
+       yp0: 
+           The initial time derivative of the dependent variable (state).
+       yptruth: 
+               An array of intergers indicating which component yp0 is fixed and which is not.
+       options: 
+               Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
    Returns: 
        A tuple containing two elements:
           * double y0: modified initial state.
@@ -4502,15 +4403,30 @@ Ode23
 =====
    Description: 
        Solves non stiff ordinary differential equations (ODE) using the Bogacki-Shampine method (Ode23).
-   Param: 
-      | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
-      | initcon:  The initial value of the dependent variable (state).
-      | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
-      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+   Parameters: 
+       dydx: 
+            A function that represents the ODE. 
+                    | double dydx(double t, double y);
+                    | ColVec dydx(double t, ColVec y);
+               * t: time.
+               * y: state.
+               * Returns: evaluation of the ODE.
+       initcon: 
+               An array of doubles representing the initial conditions for the state vector y.
+               The length must match the dimension of the system.
+       tspan: 
+             A two-element array specifying the time interval for integration: [t0, tf].
+       options: 
+               Optional parameters for the ODE solver, such as:
+                   * RelTol: relative tolerance, 
+                   * AbsTol: absolute tolerance, 
+                   * MaxStep: maximum step size, 
+                   * Stats: Statistics toggle.
+                   Use Odeset(...) to configure
    Returns: 
-       A tuple containing two elements:
-          * ColVec T: A column vector of time points at which the solution was computed.
-          * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
+       A tuple (T, Y) where:
+          * T: Column vector of time points at which the solution was computed.
+          * Y: Matrix of solution values; each row corresponds to the state at the respective time in T.
    Remark: 
       |  This method uses the Bogacki-Shampine method (Ode23) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
@@ -4560,15 +4476,30 @@ Ode45
 =====
    Description: 
        Solves non stiff ordinary differential equations (ODE) using the Dormand-Prince method (Ode45).
-   Param: 
-      | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
-      | initcon:  The initial value of the dependent variable (state).
-      | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
-      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+   Parameters: 
+       dydx: 
+            A function that represents the ODE. 
+                    | double dydx(double t, double y);
+                    | ColVec dydx(double t, ColVec y);
+               * t: time.
+               * y: state.
+               * Returns: evaluation of the ODE.
+       initcon: 
+               An array of doubles representing the initial conditions for the state vector y.
+               The length must match the dimension of the system.
+       tspan: 
+             A two-element array specifying the time interval for integration: [t0, tf].
+       options: 
+               Optional parameters for the ODE solver, such as:
+                   * RelTol: relative tolerance, 
+                   * AbsTol: absolute tolerance, 
+                   * MaxStep: maximum step size, 
+                   * Stats: Statistics toggle.
+                   Use Odeset(...) to configure
    Returns: 
-       A tuple containing two elements:
-          * ColVec T: A column vector of time points at which the solution was computed.
-          * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
+       A tuple (T, Y) where:
+          * T: Column vector of time points at which the solution was computed.
+          * Y: Matrix of solution values; each row corresponds to the state at the respective time in T.
    Remark: 
       |  This method uses the Dormand-Prince method (Ode45) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
@@ -4618,15 +4549,30 @@ Ode56
 =====
    Description: 
        Solves non stiff ordinary differential equations (ODE) using the Jim Verner 5th and 6th order pair method (Ode56).
-   Param: 
-      | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
-      | initcon:  The initial value of the dependent variable (state).
-      | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
-      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+   Parameters: 
+       dydx: 
+            A function that represents the ODE. 
+                    | double dydx(double t, double y);
+                    | ColVec dydx(double t, ColVec y);
+               * t: time.
+               * y: state.
+               * Returns: evaluation of the ODE.
+       initcon: 
+               An array of doubles representing the initial conditions for the state vector y.
+               The length must match the dimension of the system.
+       tspan: 
+             A two-element array specifying the time interval for integration: [t0, tf].
+       options: 
+               Optional parameters for the ODE solver, such as:
+                   * RelTol: relative tolerance, 
+                   * AbsTol: absolute tolerance, 
+                   * MaxStep: maximum step size, 
+                   * Stats: Statistics toggle.
+                   Use Odeset(...) to configure
    Returns: 
-       A tuple containing two elements:
-          * ColVec T: A column vector of time points at which the solution was computed.
-          * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
+       A tuple (T, Y) where:
+          * T: Column vector of time points at which the solution was computed.
+          * Y: Matrix of solution values; each row corresponds to the state at the respective time in T.
    Remark: 
       |  This method uses the Jim Verner 5th and 6th order pair method (Ode56) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
@@ -4676,15 +4622,30 @@ Ode78
 =====
    Description: 
        Solves non stiff ordinary differential equations (ODE) using the Jim Verner 7th and 8th order pair method (Ode78).
-   Param: 
-      | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
-      | initcon:  The initial value of the dependent variable (state).
-      | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
-      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+   Parameters: 
+       dydx: 
+            A function that represents the ODE. 
+                    | double dydx(double t, double y);
+                    | ColVec dydx(double t, ColVec y);
+               * t: time.
+               * y: state.
+               * Returns: evaluation of the ODE.
+       initcon: 
+               An array of doubles representing the initial conditions for the state vector y.
+               The length must match the dimension of the system.
+       tspan: 
+             A two-element array specifying the time interval for integration: [t0, tf].
+       options: 
+               Optional parameters for the ODE solver, such as:
+                   * RelTol: relative tolerance, 
+                   * AbsTol: absolute tolerance, 
+                   * MaxStep: maximum step size, 
+                   * Stats: Statistics toggle.
+                   Use Odeset(...) to configure
    Returns: 
-       A tuple containing two elements:
-          * ColVec T: A column vector of time points at which the solution was computed.
-          * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
+       A tuple (T, Y) where:
+          * T: Column vector of time points at which the solution was computed.
+          * Y: Matrix of solution values; each row corresponds to the state at the respective time in T.
    Remark: 
       |  This method uses the Jim Verner 7th and 8th order pair method (Ode78) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
@@ -4734,15 +4695,30 @@ Ode89
 =====
    Description: 
        Solves non stiff ordinary differential equations (ODE) using the Jim Verner 8th and 9th order pair method (Ode89).
-   Param: 
-      | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
-      | initcon:  The initial value of the dependent variable (state).
-      | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
-      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+   Parameters: 
+       dydx: 
+            A function that represents the ODE. 
+                    | double dydx(double t, double y);
+                    | ColVec dydx(double t, ColVec y);
+               * t: time.
+               * y: state.
+               * Returns: evaluation of the ODE.
+       initcon: 
+               An array of doubles representing the initial conditions for the state vector y.
+               The length must match the dimension of the system.
+       tspan: 
+             A two-element array specifying the time interval for integration: [t0, tf].
+       options: 
+               Optional parameters for the ODE solver, such as:
+                   * RelTol: relative tolerance, 
+                   * AbsTol: absolute tolerance, 
+                   * MaxStep: maximum step size, 
+                   * Stats: Statistics toggle.
+                   Use Odeset(...) to configure
    Returns: 
-       A tuple containing two elements:
-          * ColVec T: A column vector of time points at which the solution was computed.
-          * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
+       A tuple (T, Y) where:
+          * T: Column vector of time points at which the solution was computed.
+          * Y: Matrix of solution values; each row corresponds to the state at the respective time in T.
    Remark: 
       |  This method uses the Jim Verner 8th and 9th order pair method (Ode89) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
@@ -4792,15 +4768,30 @@ Ode45s
 ======
    Description: 
        Solves stiff ordinary differential equations (ODE) using Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45s).
-   Param: 
-      | dydx:  The function that represents the ODE. The function should accept two doubles (time and state) and return a double representing the derivative of the state.
-      | initcon:  The initial value of the dependent variable (state).
-      | tspan:  An array of time points at which the solution is desired. The first element is the initial time, and the last element is the final time.
-      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+   Parameters: 
+       dydx: 
+            A function that represents the ODE. 
+                    | double dydx(double t, double y);
+                    | ColVec dydx(double t, ColVec y);
+               * t: time.
+               * y: state.
+               * Returns: evaluation of the ODE.
+       initcon: 
+               An array of doubles representing the initial conditions for the state vector y.
+               The length must match the dimension of the system.
+       tspan: 
+             A two-element array specifying the time interval for integration: [t0, tf].
+       options: 
+               Optional parameters for the ODE solver, such as:
+                   * RelTol: relative tolerance, 
+                   * AbsTol: absolute tolerance, 
+                   * MaxStep: maximum step size, 
+                   * Stats: Statistics toggle.
+                   Use Odeset(...) to configure
    Returns: 
-       A tuple containing two elements:
-          * ColVec T: A column vector of time points at which the solution was computed.
-          * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
+       A tuple (T, Y) where:
+          * T: Column vector of time points at which the solution was computed.
+          * Y: Matrix of solution values; each row corresponds to the state at the respective time in T.
    Remark: 
       |  This method uses Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45s) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
@@ -4850,22 +4841,37 @@ Ode45i
 ======
    Description: 
        Solves inmplicit ordinary differential equations (ODE) using Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45i).
-   Param: 
-      | fun:  The function that represents the implicit ODE. The function should accept three doubles (time, state, and its derivative) and return a double representing the derivative of the state.
-      | initcon:  A tuple containing two elements:
-                   * double y0:  initial state.
-                   * double yp0: initial rate of change.
-      | tspan:  The initial value of the dependent variable (state).
-      | options:  Optional parameters for the ODE solver, such as relative tolerance, absolute tolerance, and maximum step size. If not provided, default options will be used.
+   Parameters: 
+       fun: 
+           A function that represents the implicit ODE. 
+                   | double fun(double t, double y, double yp);
+                   | ColVec fun(double t, ColVec y, ColVec yp);
+              * t: time.
+              * y: state.
+              * yp: derivative of the state.
+              * Returns: the residual of the implicit ODE.
+       initcon: 
+               A tuple containing two elements:
+                  * y0:  initial state.
+                  * yp0: initial rate of change.
+       tspan: 
+             A two-element array [t0, tf] specifying the time interval for integration.
+       options: 
+               Optional parameters for the ODE solver, such as:
+                   * RelTol: relative tolerance, 
+                   * AbsTol: absolute tolerance, 
+                   * MaxStep: maximum step size,
+                   * Stats: Statistics toggle. 
+                   Use Odeset(...) to configure
    Returns: 
-       A tuple containing two elements:
-          * ColVec T: A column vector of time points at which the solution was computed.
-          * Matrix Y: A matrix where each row corresponds to the state of the system at the corresponding time point in T.
+       A tuple (T, Y) where:
+          * T: Column vector of time points at which the solution was computed.
+          * Y: Matrix of solution values; each row corresponds to the state at the respective time in T.
    Remark: 
       |  This method uses Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45i) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
       |  For best results, the function should be smooth within the integration interval.
    Example: 
-        Solve the ODE :math:`~ty^2y'^3 - y^3y'^2 + t(t^2 + 1)y' - t^2y = 0~` with initial condition :math:`~y(0) = \sqrt{1.5}~`.
+        Solve the ODE :math:`~ty^2y'^3 - y^3y'^2 + t(t^2 + 1)y' - t^2y = 0~` with initial condition :math:`~y(1) = \sqrt{1.5}~`.
           
 
        .. code-block:: CSharp 
@@ -4876,14 +4882,18 @@ Ode45i
       
           //define ODE
           static double fun(double t, double y, double yp) =>
-             t* y * y* yp * yp* yp - y* y * y* yp * yp + t* (t* t + 1) * yp - t* t * y;
+             t* y * y* yp * yp* yp - y* y * y* yp * yp + t* (t * t + 1) * yp - t* t * y;
              
           var opts = Odeset(Stats: true);
-          double t0 = 1, y0 = Sqrt(t0 * t0 + 1 / 2.0), yp0 = 0;
+          double t0 = 1, y0 = Sqrt(t0 * t0 + 0.5), yp0 = 0;
           (y0, yp0) = decic(fun, t0, y0, 1, yp0, 0);
           (ColVec T, Matrix Y) = Ode45i(fun, (y0, yp0), [t0, 10], opts);
+          
+          // Compare with exact solution
           ColVec Y_exact = T.Select(t => Sqrt(t * t + 0.5)).ToList();
           Console.WriteLine(Hcart(Y, Y_exact));
+          
+          //Plotting
           Plot(T, Y, "*"); hold = true;
           Plot(T, Y_exact, "-o"); hold = false;
           Title("Implicit differential (weissinger) equation with ODE45i");
@@ -4896,28 +4906,28 @@ Ode45i
 
        .. code-block:: Terminal 
 
-       Summary of statistics by Ode45i
-               13 successful steps
-               0 failed attempts
-               335 function evaluations
-               52 partial derivatives
-               52 LU decompositions
-               174 solutions of linear systems
+           Summary of statistics by Ode45i
+                   13 successful steps
+                   0 failed attempts
+                   335 function evaluations
+                   52 partial derivatives
+                   52 LU decompositions
+                   174 solutions of linear systems
       
-          1.2247    1.2247
-          1.2993    1.2993
-          1.4536    1.4536
-          1.7767    1.7768
-          2.3227    2.3229
-          3.1865    3.1869
-          4.0689    4.0694
-          4.9575    4.9582
-          5.8496    5.8504
-          6.7437    6.7447
-          7.6392    7.6403
-          8.5357    8.5368
-          9.4327    9.4340
-         10.0236   10.0250
+           1.2247    1.2247
+           1.2993    1.2993
+           1.4536    1.4536
+           1.7767    1.7768
+           2.3227    2.3229
+           3.1865    3.1869
+           4.0689    4.0694
+           4.9575    4.9582
+           5.8496    5.8504
+           6.7437    6.7447
+           7.6392    7.6403
+           8.5357    8.5368
+           9.4327    9.4340
+          10.0236   10.0250
 
       Output: 
 
@@ -4930,6 +4940,96 @@ Ode45i
 |   cref=System.ArgumentException is Thrown when the  tspan array has less than two elements.
 
 
+Ode45a
+======
+   Description: 
+       Solves semi-explicit differential-algebraic equations (DAEs) of the form M(t, y) * y' = f(t, y)
+       using an adaptive explicit Runge-Kutta method of 4th and 5th order (Ode45a).
+   Parameters: 
+       fun: 
+           A function representing the right-hand side of the DAE. 
+                   | ColVec fun(double t, ColVec y);
+              * t: time.
+              * y: state.
+              * Returns: right-hand side of the DAE.
+       Mass: 
+            A function defining the mass matrix M(t, y). This matrix may be time- and state-dependent.
+                    | Matrix Mass(double t, ColVec y);
+               * t: time.
+               * y: state.
+               * Returns: the mass of the DAE.
+       initcon: 
+               An array of doubles representing the initial conditions for the state vector y.
+               The length must match the dimension of the system.
+       tspan: 
+             A two-element array specifying the time interval for integration: [t0, tf].
+       options: 
+               Optional parameters for the ODE solver, such as:
+                   * RelTol: relative tolerance, 
+                   * AbsTol: absolute tolerance, 
+                   * MaxStep: maximum step size, 
+                   * Stats: Statistics toggle.
+                   Use Odeset(...) to configure
+   Returns: 
+       A tuple (T, Y) where:
+          * T: Column vector of time points at which the solution was computed.
+          * Y: Matrix of solution values; each row corresponds to the state at the respective time in T.
+   Remark: 
+      |  This method uses Adaptive Diagonally Implicit RungeKutta of 4th and 5th Order Method (Ode45a) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
+      |  For best results, the function should be smooth within the integration interval.
+   Example: 
+       Solve the Ascher Linear DAE:
+
+       .. math::
+       
+          \begin{bmatrix} 
+               1 & -t \\  0 & 0            
+          \end{bmatrix} 
+          \begin{bmatrix}
+              y'(t)\\ z'(t)             
+          \end{bmatrix} 
+              =
+          \begin{bmatrix}
+              -1 & 1 + t \\
+              \beta & -1-\beta t              
+          \end{bmatrix}
+          \begin{bmatrix}
+              y(t) \\
+              z(t)
+          \end{bmatrix}
+          +
+          \begin{bmatrix}
+              0\\
+              \sin(t)
+          \end{bmatrix}
+      
+       With initial condition :math:`y(0) = 1, z(0) = \beta`.
+
+       .. code-block:: CSharp 
+
+           using SepalSolver.Math;
+      
+           double beta = 50;
+           ColVec AscherLinear(double t, ColVec y) => new double[]
+           {
+               -y[0] + (1 + t)*y[1],
+               beta*y[0] - (1 + beta*t)*y[1] + Sin(t)
+           };
+      
+           Matrix Mass(double t, ColVec y) => new double[,]{{1, -t}, {0, 0} };
+      
+           double[] y0 = [1, beta], tspan = [0, 2];
+           var opts = Odeset(Stats: true, RelTol: 1e-5);
+           (ColVec T, Matrix Y) = Ode45a(AscherLinear, Mass, y0, tspan, opts);
+           Plot(T, Y);
+           Title("AscherLinearDAE Ode45a");
+           Xlabel("Time t");
+           Ylabel("Solution y");
+           SaveAs(Path + "AscherLinearDAE.png");
+|   cref=System.ArgumentNullException is 
+|   cref=System.ArgumentException is 
+
+
 Polyfit
 =======
    Description: 
@@ -4939,10 +5039,13 @@ Polyfit
        .. math::
           P(x) = a_0 + a_1 x + a_2 x^2 + ... + a_N x^N
        that best fits the given data points (X, Y).
-   Param: 
-      | X:  The x-coordinates of the data points.
-      | Y:  The y-coordinates of the data points.
-      | N:  The degree of the polynomial to fit.
+   Parameters: 
+       X: 
+         The x-coordinates of the data points.
+       Y: 
+         The y-coordinates of the data points.
+       N: 
+         The degree of the polynomial to fit.
    Returns: 
        An array containing the coefficients of the fitted polynomial, starting with the coefficient of the highest degree term.
    Example: 
@@ -4988,8 +5091,9 @@ Roots
 
           Complex[] Roots(double[] Coeffs)
           Complex[] Roots(Complex[] Coeffs)
-   Param: 
-      | Coeffs:  The coefficients of the polynomial, ordered from the highest degree to the constant term.
+   Parameters: 
+       Coeffs: 
+              The coefficients of the polynomial, ordered from the highest degree to the constant term.
    Returns: 
        An array of Complex numbers representing the roots of the polynomial.
    Example: 
@@ -5078,9 +5182,11 @@ Deconv
 
           (double[] Quotient, double[] Remainder) Deconv(double[] Polynomial, double[] Divisor)
           (Complex[] Quotient, Complex[] Remainder) Deconv(Complex[] Polynomial, Complex[] Divisor)
-   Param: 
-      | Polynomial:  The coefficients of the dividend polynomial (numerator).
-      | Divisor:  The coefficients of the divisor polynomial (denominator).
+   Parameters: 
+       Polynomial: 
+                  The coefficients of the dividend polynomial (numerator).
+       Divisor: 
+               The coefficients of the divisor polynomial (denominator).
    Returns: 
        A tuple containing two arrays:
           - Quotient: The coefficients of the quotient polynomial.
@@ -5170,9 +5276,11 @@ Conv
 
           double[] Conv(double[] Polynomial, double[] Multiplier)
           Complex[] Conv(Complex[] Polynomial, Complex[] Multiplier)
-   Param: 
-      | Polynomial:  The coefficients of the first polynomial.
-      | Multiplier:  The coefficients of the second polynomial.
+   Parameters: 
+       Polynomial: 
+                  The coefficients of the first polynomial.
+       Multiplier: 
+                  The coefficients of the second polynomial.
    Returns: 
        An array containing the coefficients of the resulting polynomial.
    Example: 
@@ -5233,11 +5341,15 @@ Integral
 ========
    Description: 
        Computes the definite integral of a function using adaptive Gauss-LegendreP quadrature.
-   Param: 
-      | fun:  The function to integrate. The function should accept a double and return a double.
-      | x_1:  The lower bound of the integration interval.
-      | x_2:  The upper bound of the integration interval.
-      | eps:  The desired relative accuracy. The default value is 1e-6.
+   Parameters: 
+       fun: 
+           The function to integrate. The function should accept a double and return a double.
+       x_1: 
+           The lower bound of the integration interval.
+       x_2: 
+           The upper bound of the integration interval.
+       eps: 
+           The desired relative accuracy. The default value is 1e-6.
    Returns: 
        The approximate value of the definite integral.
    Remark: 
@@ -5282,11 +5394,15 @@ Integral
 ========
    Description: 
        Computes the definite integral of a function using adaptive Gauss-LegendreP quadrature.
-   Param: 
-      | fun:  The function to integrate. The function should accept a double and return a double.
-      | x_1:  The lower bound of the integration interval.
-      | x_2:  The upper bound of the integration interval.
-      | eps:  The desired relative accuracy. The default value is 1e-6.
+   Parameters: 
+       fun: 
+           The function to integrate. The function should accept a double and return a double.
+       x_1: 
+           The lower bound of the integration interval.
+       x_2: 
+           The upper bound of the integration interval.
+       eps: 
+           The desired relative accuracy. The default value is 1e-6.
    Returns: 
        The approximate value of the definite integral.
    Remark: 
@@ -5342,13 +5458,19 @@ Integral2
           double Integral2( Func<double, double, double> fun, double x_1, double x_2, double y_1, Func<double, double> y_2)
           double Integral2( Func<double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, double y_2)
           double Integral2( Func<double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, Func<double, double> y_2)
-   Param: 
-      | fun:  The function to integrate. The function should accept two doubles (x, y) and return a double.
-      | x_1:  The lower bound of the x integration.
-      | x_2:  The upper bound of the x integration.
-      | y_1:  A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-      | y_2:  A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-      | eps:  The desired relative accuracy. The default value is 1e-6.
+   Parameters: 
+       fun: 
+           The function to integrate. The function should accept two doubles (x, y) and return a double.
+       x_1: 
+           The lower bound of the x integration.
+       x_2: 
+           The upper bound of the x integration.
+       y_1: 
+           A function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+       y_2: 
+           A function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+       eps: 
+           The desired relative accuracy. The default value is 1e-6.
    Returns: 
        The approximate value of the definite double integral.
    Remark: 
@@ -5563,15 +5685,23 @@ Integral3
           double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, double y_1, Func<double, double> y_2, Func<double, double, double> z_1, Func<double, double, double> z_2)
           double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, double y_2, Func<double, double, double> z_1, Func<double, double, double> z_2)
           double Integral3( Func<double, double, double, double> fun, double x_1, double x_2, Func<double, double> y_1, Func<double, double> y_2, Func<double, double, double> z_1, Func<double, double, double> z_2)
-   Param: 
-      | fun:  The function to integrate. The function should accept three doubles (x, y, z) and return a double.
-      | x_1:  The lower bound of the x integration.
-      | x_2:  The upper bound of the x integration.
-      | y_1:  A double or function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-      | y_2:  A double or  function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
-      | z_1:  A double or  function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
-      | z_2:  A double or function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
-      | eps:  The desired relative accuracy. The default value is 1e-6.
+   Parameters: 
+       fun: 
+           The function to integrate. The function should accept three doubles (x, y, z) and return a double.
+       x_1: 
+           The lower bound of the x integration.
+       x_2: 
+           The upper bound of the x integration.
+       y_1: 
+           A double or function that defines the lower bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+       y_2: 
+           A double or  function that defines the upper bound of the y integration as a function of x. It should accept a double (x) and return a double (y).
+       z_1: 
+           A double or  function that defines the lower bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
+       z_2: 
+           A double or function that defines the upper bound of the z integration as a function of x and y. It should accept two doubles (x, y) and return a double (z).
+       eps: 
+           The desired relative accuracy. The default value is 1e-6.
    Returns: 
        The approximate value of the definite triple integral.
    Remark: 
@@ -6271,17 +6401,27 @@ Integral4
 =========
    Description: 
        Computes the definite quadruple integral of a function over a region where the y-bounds are defined by functions of x, and the z-bounds are defined by functions of x and y, using adaptive Gauss-LegendreP quadrature.
-   Param: 
-      | fun:  The function to integrate. The function should accept four doubles (w, x, y, z) and return a double.
-      | w_1:  The lower bound of the w integration.
-      | w_2:  The upper bound of the w integration.
-      | x_1:  A function that defines the lower bound of the x integration as a function of w. It should accept a double (w) and return a double (x).
-      | x_2:  A function that defines the upper bound of the x integration as a function of w. It should accept a double (w) and return a double (x).
-      | y_1:  A function that defines the lower bound of the y integration as a function of w and x. It should accept two doubles (w, x) and return a double (y).
-      | y_2:  A function that defines the upper bound of the y integration as a function of w and x. It should accept two doubles (w, x) and return a double (y).
-      | z_1:  A function that defines the lower bound of the z integration as a function of w, x and y. It should accept three doubles (w, x, y) and return a double (z).
-      | z_2:  A function that defines the upper bound of the z integration as a function of w, x and y. It should accept three doubles (w, x, y) and return a double (z).
-      | eps:  The desired relative accuracy. The default value is 1e-6.
+   Parameters: 
+       fun: 
+           The function to integrate. The function should accept four doubles (w, x, y, z) and return a double.
+       w_1: 
+           The lower bound of the w integration.
+       w_2: 
+           The upper bound of the w integration.
+       x_1: 
+           A function that defines the lower bound of the x integration as a function of w. It should accept a double (w) and return a double (x).
+       x_2: 
+           A function that defines the upper bound of the x integration as a function of w. It should accept a double (w) and return a double (x).
+       y_1: 
+           A function that defines the lower bound of the y integration as a function of w and x. It should accept two doubles (w, x) and return a double (y).
+       y_2: 
+           A function that defines the upper bound of the y integration as a function of w and x. It should accept two doubles (w, x) and return a double (y).
+       z_1: 
+           A function that defines the lower bound of the z integration as a function of w, x and y. It should accept three doubles (w, x, y) and return a double (z).
+       z_2: 
+           A function that defines the upper bound of the z integration as a function of w, x and y. It should accept three doubles (w, x, y) and return a double (z).
+       eps: 
+           The desired relative accuracy. The default value is 1e-6.
    Returns: 
        The approximate value of the definite triple integral.
    Remark: 
