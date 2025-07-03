@@ -3278,18 +3278,25 @@ LegendreQ
 =========
    Description: 
        Computes the Legendre function of the second kind (also known as Legendre Q function) of degree n at point x.
-       The Legendre Q function is the second linearly independent solution to Legendre's differential equation and is used in physics and engineering applications involving spherical coordinates and potential theory.
+       The Legendre Q function is the second linearly independent solution to Legendre's differential equation and is used in engineering applications involving spherical coordinates and potential theory.
 
        .. code-block:: CSharp 
 
           double LegendreQ(int n, double x)
+          Complex LegendreQ(int n, Complex x)
+          Matrix LegendreQ(int i, Matrix x)
+          ColVec LegendreQ(int i, ColVec x)
+          RowVec LegendreQ(int i, RowVec x)
+          SparseMatrix LegendreQ(int i, SparseMatrix x)
+          SparseColVec LegendreQ(int i, SparseColVec x)
+          SparseRowVec LegendreQ(int i, SparseRowVec x)
    Parameters: 
        n: 
          The degree (order) of the Legendre Q function. Must be a non-negative integer (n >= 0).
        x: 
          The argument at which to evaluate the Legendre Q function. Must satisfy |x| > 1 for real-valued results, as the function has singularities at x = ±1.
    Returns: 
-       The value of the Legendre Q function of degree n evaluated at x. Returns a double-precision floating-point number.
+       The value of the Legendre Q function of degree n evaluated at x. Returns a double-precision floating-point number or one-dimensional or two-dimensional array.
    Example: 
        Compute the Legendre Q function of degree 0 at x = 2.0:
 
@@ -3307,7 +3314,7 @@ LegendreQ
           double result = LegendreQ(n, x);
       
           // Output the result
-          Console.WriteLine($"Q_0(2.0) = {result:F6}");
+          Console.WriteLine($"Q_0(2.0) = {result});
 
       Output: 
 
@@ -3332,7 +3339,7 @@ LegendreQ
           double result = LegendreQ(n, x);
       
           // Output the result
-          Console.WriteLine($"Q_2(1.5) = {result:F6}");
+          Console.WriteLine($"Q_2(1.5) = {result});
 
       Output: 
 
@@ -3358,9 +3365,9 @@ LegendreQ
           double q2 = LegendreQ(2, x);
       
           // Output the results
-          Console.WriteLine($"Q_0(3.0) = {q0:F6}");
-          Console.WriteLine($"Q_1(3.0) = {q1:F6}");
-          Console.WriteLine($"Q_2(3.0) = {q2:F6}");
+          Console.WriteLine($"Q_0(3.0) = {q0}");
+          Console.WriteLine($"Q_1(3.0) = {q1}");
+          Console.WriteLine($"Q_2(3.0) = {q2}");
 
       Output: 
 
@@ -3370,6 +3377,156 @@ LegendreQ
           Q_0(3.0) = 0.366204
           Q_1(3.0) = 0.098459
           Q_2(3.0) = -0.254648
+
+
+HermiteH
+========
+   Description: 
+       Computes the Hermite polynomial H_n(x) of degree n at point x using the physicists' convention.
+       The Hermite polynomials are orthogonal polynomials that arise in quantum mechanics (harmonic oscillator wavefunctions), probability theory (Gaussian integrals), and numerical analysis. They satisfy the recurrence relation H_{n+1}(x) = 2xH_n(x) - 2nH_{n-1}(x).
+
+       .. code-block:: CSharp 
+
+          double HermiteH(int n, double x)
+          Complex HermiteH(int n, Complex x)
+          Matrix HermiteH(int i, Matrix x)
+          ColVec HermiteH(int i, ColVec x)
+          RowVec HermiteH(int i, RowVec x)
+          SparseMatrix HermiteH(int i, SparseMatrix x)
+          SparseColVec HermiteH(int i, SparseColVec x)
+          SparseRowVec HermiteH(int i, SparseRowVec x)
+   Parameters: 
+       n: 
+         The degree (order) of the Hermite polynomial. Must be a non-negative integer (n >= 0).
+       x: 
+         The argument at which to evaluate the Hermite polynomial. Can be any real scalar number or numbers in array or matrix form.
+   Returns: 
+       The value of the Hermite polynomial H_n(x) evaluated at x. Returns a double-precision floating-point number or one dimensional or two dimensional array.
+   Example: 
+       Compute the Hermite polynomial of degree 0 at x = 1.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the degree and argument
+          int n = 0;
+          double x = 1.0;
+          
+          // Calculate the Hermite polynomial
+          double result = HermiteH(n, x);
+      
+          // Output the result
+          Console.WriteLine($"H_0(1.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          H_0(1.0) = 1.000000
+   Example: 
+       Compute the Hermite polynomial of degree 3 at x = 2.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the degree and argument
+          int n = 3;
+          double x = 2.0;
+      
+          // Calculate the Hermite polynomial
+          double result = HermiteH(n, x);
+      
+          // Output the result
+          Console.WriteLine($"H_3(2.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          H_3(2.0) = 40.000000
+
+
+Laguerre
+========
+   Description: 
+       Computes the Laguerre polynomial L_n(x) of degree n at point x.
+       The Laguerre polynomials are orthogonal polynomials that arise in quantum mechanics (hydrogen atom wavefunctions), mathematical physics, and numerical analysis. They satisfy the recurrence relation L_{n+1}(x) = ((2n+1-x)L_n(x) - nL_{n-1}(x))/(n+1) and are solutions to Laguerre's differential equation.
+
+       .. code-block:: CSharp 
+
+          double Laguerre(int n, double x)
+          Complex Laguerre(int n, Complex x)
+          Matrix Laguerre(int i, Matrix x)
+          ColVec Laguerre(int i, ColVec x)
+          RowVec Laguerre(int i, RowVec x)
+          SparseMatrix Laguerre(int i, SparseMatrix x)
+          SparseColVec Laguerre(int i, SparseColVec x)
+          SparseRowVec Laguerre(int i, SparseRowVec x)
+   Parameters: 
+       n: 
+         The degree (order) of the Laguerre polynomial. Must be a non-negative integer (n >= 0).
+       x: 
+         The argument at which to evaluate the Laguerre polynomial. Can be any real number, though typically used for x >= 0 in physical applications.
+   Returns: 
+       The value of the Laguerre polynomial L_n(x) evaluated at x. Returns a double-precision floating-point number.
+   Example: 
+       Compute the Laguerre polynomial of degree 0 at x = 1.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the degree and argument
+          int n = 0;
+          double x = 1.0;
+          
+          // Calculate the Laguerre polynomial
+          double result = Laguerre(n, x);
+      
+          // Output the result
+          Console.WriteLine($"L_0(1.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          L_0(1.0) = 1.000000
+   Example: 
+       Compute the Laguerre polynomial of degree 3 at x = 2.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the degree and argument
+          int n = 3;
+          double x = 2.0;
+      
+          // Calculate the Laguerre polynomial
+          double result = Laguerre(n, x);
+      
+          // Output the result
+          Console.WriteLine($"L_3(2.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          L_3(2.0) = -0.333333
 
 
 Gamma
@@ -3422,6 +3579,428 @@ Gamma
 
           
           6.0000
+
+
+LambertW
+========
+   Description: 
+       Computes the Lambert W function (also known as the product logarithm) W_n(x), which is the inverse function of f(w) = w * e^w.
+       The Lambert W function has multiple branches, where n specifies the branch number. The principal branch (n=0) is defined for x >= -1/e, and the -1 branch (n=-1) is defined for -1/e <= x < 0. This function appears in various mathematical contexts including delay differential equations, quantum field theory, and combinatorics.
+
+       .. code-block:: CSharp 
+
+          double LambertW(double n, double x)
+          Complex LambertW(double n, Complex x)
+   Parameters: 
+       n: 
+         The branch number of the Lambert W function. Typically 0 (principal branch) or -1 (secondary branch for negative arguments).
+       x: 
+         The argument at which to evaluate the Lambert W function. For branch 0: x >= -1/e ≈ -0.368. For branch -1: -1/e <= x < 0.
+   Returns: 
+       The value of the Lambert W function W_n(x) evaluated at x for the specified branch n. Returns a double-precision floating-point number.
+   Example: 
+       Compute the Lambert W function principal branch at x = 1.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the branch and argument
+          double n = 0;
+          double x = 1.0;
+          
+          // Calculate the Lambert W function
+          double result = LambertW(n, x);
+      
+          // Output the result
+          Console.WriteLine($"W_0(1.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          W_0(1.0) = 0.567143
+   Example: 
+       Compute the Lambert W function -1 branch at x = -0.2:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the branch and argument
+          double n = -1;
+          double x = -0.2;
+      
+          // Calculate the Lambert W function
+          double result = LambertW(n, x);
+      
+          // Output the result
+          Console.WriteLine($"W_{{-1}}(-0.2) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          W_{-1}(-0.2) = -2.542641
+
+
+LnGamma
+=======
+   Description: 
+       Computes the natural logarithm of the gamma function, ln(Γ(x)), for positive real arguments.
+       The log-gamma function is numerically stable alternative to computing Γ(x) directly, especially for large values of x where Γ(x) would overflow. This function is widely used in statistics, probability theory, and numerical analysis.
+       It satisfies the functional equation ln(Γ(x+1)) = ln(Γ(x)) + ln(x) and is related to Stirling's approximation for large x.
+
+       .. code-block:: CSharp 
+
+          double LnGamma(double x)
+          Complex LnGamma(Complex x)
+          Matrix LnGamma(Matrix x)
+          ColVec LnGamma(ColVec x)
+          RowVec LnGamma(RowVec x)
+          SparseMatrix LnGamma(SparseMatrix x)
+          SparseColVec LnGamma(SparseColVec x)
+          SparseRowVec LnGamma(SparseRowVec x)
+   Parameters: 
+       x: 
+         The argument at which to evaluate the log-gamma function. Must be a positive real number (x > 0) or one-dimensional or two-dimensional array.
+   Returns: 
+       The value of the natural logarithm of the gamma function ln(Γ(x)) evaluated at x. Returns a double-precision floating-point number or one-dimensional or two-dimensional array of numbers.
+   Example: 
+       Compute the log-gamma function at x = 1.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the argument
+          double x = 1.0;
+          
+          // Calculate the log-gamma function
+          double result = LnGamma(x);
+      
+          // Output the result
+          Console.WriteLine($"ln(Γ(1.0)) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          ln(Γ(1.0)) = 0.000000
+   Example: 
+       Compute the log-gamma function at x = 5.5:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the argument
+          double x = 5.5;
+      
+          // Calculate the log-gamma function
+          double result = LnGamma(x);
+      
+          // Output the result
+          Console.WriteLine($"ln(Γ(5.5)) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          ln(Γ(5.5)) = 3.957813
+
+
+Erf
+===
+   Description: 
+       Computes the error function erf(x), which is defined as the integral (2/√π) ∫₀ˣ e^(-t²) dt.
+       The error function is fundamental in probability theory, statistics, and physics. It is closely related to the cumulative distribution function of the normal distribution and appears in solutions to the heat equation and diffusion processes. The function is odd (erf(-x) = -erf(x)) and approaches ±1 as x approaches ±∞.
+
+       .. code-block:: CSharp 
+
+          double Erf(double x)
+          Complex Erf(Complex x)
+          Matrix Erf(Matrix x)
+          ColVec Erf(ColVec x)
+          RowVec Erf(RowVec x)
+          SparseMatrix Erf(SparseMatrix x)
+          SparseColVec Erf(SparseColVec x)
+          SparseRowVec Erf(SparseRowVec x)
+   Parameters: 
+       x: 
+         The argument at which to evaluate the error function. Can be any real number.
+   Returns: 
+       The value of the error function erf(x) evaluated at x. Returns a double-precision floating-point number in the range (-1, 1) or one-dimensional or two dimensional array.
+   Example: 
+       Compute the error function at x = 0.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the argument
+          double x = 0.0;
+          
+          // Calculate the error function
+          double result = Erf(x);
+      
+          // Output the result
+          Console.WriteLine($"erf(0.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          erf(0.0) = 0.000000
+   Example: 
+       Compute the error function at x = 1.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the argument
+          double x = 1.0;
+      
+          // Calculate the error function
+          double result = Erf(x);
+      
+          // Output the result
+          Console.WriteLine($"erf(1.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          erf(1.0) = 0.842701
+
+
+Erfc
+====
+   Description: 
+       Computes the complementary error function erfc(x), which is defined as erfc(x) = 1 - erf(x) = (2/√π) ∫ₓ^∞ e^(-t²) dt.
+       The complementary error function is widely used in probability theory, statistics, and physics for computing tail probabilities of the normal distribution. It provides better numerical accuracy than computing 1 - erf(x) directly, especially for large positive values of x where erf(x) approaches 1. The function satisfies erfc(0) = 1, erfc(∞) = 0, and erfc(-x) = 2 - erfc(x).
+
+       .. code-block:: CSharp 
+
+          double Erfc(double x)
+          Complex Erfc(Complex x)
+          Matrix Erfc(Matrix x)
+          ColVec Erfc(ColVec x)
+          RowVec Erfc(RowVec x)
+          SparseMatrix Erfc(SparseMatrix x)
+          SparseColVec Erfc(SparseColVec x)
+          SparseRowVec Erfc(SparseRowVec x)
+   Parameters: 
+       x: 
+         The argument at which to evaluate the complementary error function. Can be any real number.
+   Returns: 
+       The value of the complementary error function erfc(x) evaluated at x. Returns a double-precision floating-point number in the range (0, 2). It can also return one-dimensional or two-dimensional array of numbers
+   Example: 
+       Compute the complementary error function at x = 0.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the argument
+          double x = 0.0;
+          
+          // Calculate the complementary error function
+          double result = Erfc(x);
+      
+          // Output the result
+          Console.WriteLine($"erfc(0.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          erfc(0.0) = 1.000000
+   Example: 
+       Compute the complementary error function at x = 1.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the argument
+          double x = 1.0;
+      
+          // Calculate the complementary error function
+          double result = Erfc(x);
+      
+          // Output the result
+          Console.WriteLine($"erfc(1.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          erfc(1.0) = 0.157299
+
+
+Zeta
+====
+   Description: 
+       Computes the Riemann zeta function ζ(x), which is defined as the infinite series ζ(x) = Σ(n=1 to ∞) 1/n^x for x > 1.
+       The Riemann zeta function is one of the most important functions in number theory and mathematical analysis. It has deep connections to prime numbers through Euler's product formula and is central to the famous Riemann Hypothesis. The function can be analytically continued to the entire complex plane except for a simple pole at x = 1, where ζ(1) diverges to infinity.
+
+       .. code-block:: CSharp 
+
+          double Zeta(double x)
+          Complex Zeta(Complex x)
+          Matrix Zeta(Matrix x)
+          ColVec Zeta(ColVec x)
+          RowVec Zeta(RowVec x)
+          SparseMatrix Zeta(SparseMatrix x)
+          SparseColVec Zeta(SparseColVec x)
+          SparseRowVec Zeta(SparseRowVec x)
+   Parameters: 
+       x: 
+         The argument at which to evaluate the Riemann zeta function. Must be a real number with x ≠ 1 (the function has a pole at x = 1).
+   Returns: 
+       The value of the Riemann zeta function ζ(x) evaluated at x. Returns a double-precision floating-point number.
+   Example: 
+       Compute the Riemann zeta function at x = 2.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the argument
+          double x = 2.0;
+          
+          // Calculate the Riemann zeta function
+          double result = Zeta(x);
+      
+          // Output the result
+          Console.WriteLine($"ζ(2.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          ζ(2.0) = 1.644934
+   Example: 
+       Compute the Riemann zeta function at x = 3.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the argument
+          double x = 3.0;
+      
+          // Calculate the Riemann zeta function
+          double result = Zeta(x);
+      
+          // Output the result
+          Console.WriteLine($"ζ(3.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          ζ(3.0) = 1.202057
+
+
+Psi
+===
+   Description: 
+       Computes the polygamma function ψ^(m)(x), which is the m-th derivative of the digamma function ψ(x) = d/dx[ln(Γ(x))].
+       The polygamma function is defined as ψ^(m)(x) = d^(m+1)/dx^(m+1)[ln(Γ(x))] for m ≥ 0. When m = 0, it returns the digamma function ψ(x). The polygamma functions appear in various areas of mathematics including number theory, probability theory, and mathematical physics. They satisfy the recurrence relation ψ^(m)(x+1) = ψ^(m)(x) + (-1)^m * m! / x^(m+1).
+
+       .. code-block:: CSharp 
+
+          double Psi(int m, double x)
+   Parameters: 
+       m: 
+         The order of the polygamma function. Must be a non-negative integer (m ≥ 0). When m = 0, computes the digamma function ψ(x).
+       x: 
+         The argument at which to evaluate the polygamma function. Must be a positive real number (x > 0).
+   Returns: 
+       The value of the polygamma function ψ^(m)(x) evaluated at x. Returns a double-precision floating-point number.
+   Example: 
+       Compute the digamma function (m = 0) at x = 1.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the order and argument
+          int m = 0;
+          double x = 1.0;
+          
+          // Calculate the polygamma function
+          double result = Psi(m, x);
+      
+          // Output the result
+          Console.WriteLine($"ψ(1.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          ψ(1.0) = -0.577216
+   Example: 
+       Compute the trigamma function (m = 1) at x = 2.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the order and argument
+          int m = 1;
+          double x = 2.0;
+      
+          // Calculate the polygamma function
+          double result = Psi(m, x);
+      
+          // Output the result
+          Console.WriteLine($"ψ^(1)(2.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          ψ^(1)(2.0) = 0.644934
 
 
 SolverSet
