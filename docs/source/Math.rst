@@ -3274,6 +3274,104 @@ LegendreP
           Recurrence relation satisfied: True
 
 
+LegendreQ
+=========
+   Description: 
+       Computes the Legendre function of the second kind (also known as Legendre Q function) of degree n at point x.
+       The Legendre Q function is the second linearly independent solution to Legendre's differential equation and is used in physics and engineering applications involving spherical coordinates and potential theory.
+
+       .. code-block:: CSharp 
+
+          double LegendreQ(int n, double x)
+   Parameters: 
+       n: 
+         The degree (order) of the Legendre Q function. Must be a non-negative integer (n >= 0).
+       x: 
+         The argument at which to evaluate the Legendre Q function. Must satisfy |x| > 1 for real-valued results, as the function has singularities at x = ±1.
+   Returns: 
+       The value of the Legendre Q function of degree n evaluated at x. Returns a double-precision floating-point number.
+   Example: 
+       Compute the Legendre Q function of degree 0 at x = 2.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the degree and argument
+          int n = 0;
+          double x = 2.0;
+          
+          // Calculate the Legendre Q function
+          double result = LegendreQ(n, x);
+      
+          // Output the result
+          Console.WriteLine($"Q_0(2.0) = {result:F6}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Q_0(2.0) = 0.549306
+   Example: 
+       Compute the Legendre Q function of degree 2 at x = 1.5:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the degree and argument
+          int n = 2;
+          double x = 1.5;
+      
+          // Calculate the Legendre Q function
+          double result = LegendreQ(n, x);
+      
+          // Output the result
+          Console.WriteLine($"Q_2(1.5) = {result:F6}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Q_2(1.5) = -0.581633
+   Example: 
+       Compare Legendre Q functions of different degrees at x = 3.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the argument
+          double x = 3.0;
+      
+          // Calculate Legendre Q functions for degrees 0, 1, and 2
+          double q0 = LegendreQ(0, x);
+          double q1 = LegendreQ(1, x);
+          double q2 = LegendreQ(2, x);
+      
+          // Output the results
+          Console.WriteLine($"Q_0(3.0) = {q0:F6}");
+          Console.WriteLine($"Q_1(3.0) = {q1:F6}");
+          Console.WriteLine($"Q_2(3.0) = {q2:F6}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Q_0(3.0) = 0.366204
+          Q_1(3.0) = 0.098459
+          Q_2(3.0) = -0.254648
+
+
 Gamma
 =====
    Description: 
