@@ -4003,6 +4003,92 @@ Psi
           ψ^(1)(2.0) = 0.644934
 
 
+HyperGeom
+=========
+   Description: 
+       Computes the confluent hypergeometric function of the first kind, also known as Kummer's function M(a,b,x) or ₁F₁(a;b;x).
+       This function is defined by the infinite series M(a,b,x) = Σ(n=0 to ∞) [(a)ₙ xⁿ] / [(b)ₙ n!] where (a)ₙ is the Pochhammer symbol.
+
+       .. code-block:: CSharp 
+
+          double HyperGeom(double a, double b, double x)
+          Matrix HyperGeom(double a, double b, Matrix x)
+          ColVec HyperGeom(double a, double b, ColVec x)
+          RowVec HyperGeom(double a, double b, RowVec x)
+          SparseMatrix HyperGeom(double a, double b, SparseMatrix x)
+          SparseColVec HyperGeom(double a, double b, SparseColVec x)
+          SparseRowVec HyperGeom(double a, double b, SparseRowVec x)
+          double HyperGeom(double[] N, double[] D, double x)
+          Matrix HyperGeom(double[] N, double[] D, Matrix x)
+          ColVec HyperGeom(double[] N, double[] D, ColVec x)
+          RowVec HyperGeom(double[] N, double[] D, RowVec x)
+          SparseMatrix HyperGeom(double[] N, double[] D, SparseMatrix x)
+          SparseColVec HyperGeom(double[] N, double[] D, SparseColVec x)
+          SparseRowVec HyperGeom(double[] N, double[] D, SparseRowVec x)
+          Complex HyperGeom(double a, double b, Complex x)
+   Parameters: 
+       a: 
+         The first parameter of the hypergeometric function. It can be any real number.
+       b: 
+         The second parameter of the hypergeometric function. it must be a positive real number and cannot be zero or a negative integer.
+       x: 
+         The argument of the hypergeometric function. It can be any real number.
+   Returns: 
+       The value of the confluent hypergeometric function M(a,b,x) as a double.
+   Example: 
+       Compute the hypergeometric function M(1,1,x) which equals e^x:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Set parameters
+          double a = 1.0;
+          double b = 1.0;
+          double x = 2.0;
+          
+          // Compute the hypergeometric function
+          double result = HyperGeom(a, b, x);
+      
+          // Output the result
+          console.writeline($"M({a},{b},{x}) = {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          M(1,1,2) = 7.389056
+   Example: 
+       Compute the hypergeometric function with fractional parameters:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Set parameters for M(0.5, 1.5, 1.0)
+          double a = 0.5;
+          double b = 1.5;
+          double x = 1.0;
+      
+          // Compute the hypergeometric function
+          double result = HyperGeom(a, b, x);
+      
+          // Output the result
+          console.writeline($"M({a},{b},{x}) = {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          M(0.5,1.5,1) = 1.175201
+
+
 SolverSet
 =========
    Description: 
