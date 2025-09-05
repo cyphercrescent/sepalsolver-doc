@@ -3274,6 +3274,261 @@ LegendreP
           Recurrence relation satisfied: True
 
 
+LegendreQ
+=========
+   Description: 
+       Computes the Legendre function of the second kind (also known as Legendre Q function) of degree n at point x.
+       The Legendre Q function is the second linearly independent solution to Legendre's differential equation and is used in engineering applications involving spherical coordinates and potential theory.
+
+       .. code-block:: CSharp 
+
+          double LegendreQ(int n, double x)
+          Complex LegendreQ(int n, Complex x)
+          Matrix LegendreQ(int i, Matrix x)
+          ColVec LegendreQ(int i, ColVec x)
+          RowVec LegendreQ(int i, RowVec x)
+          SparseMatrix LegendreQ(int i, SparseMatrix x)
+          SparseColVec LegendreQ(int i, SparseColVec x)
+          SparseRowVec LegendreQ(int i, SparseRowVec x)
+   Parameters: 
+       n: 
+         The degree (order) of the Legendre Q function. Must be a non-negative integer (n >= 0).
+       x: 
+         The argument at which to evaluate the Legendre Q function. Must satisfy |x| > 1 for real-valued results, as the function has singularities at x = ±1.
+   Returns: 
+       The value of the Legendre Q function of degree n evaluated at x. Returns a double-precision floating-point number or one-dimensional or two-dimensional array.
+   Example: 
+       Compute the Legendre Q function of degree 0 at x = 2.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the degree and argument
+          int n = 0;
+          double x = 2.0;
+          
+          // Calculate the Legendre Q function
+          double result = LegendreQ(n, x);
+      
+          // Output the result
+          Console.WriteLine($"Q_0(2.0) = {result});
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Q_0(2.0) = 0.549306
+   Example: 
+       Compute the Legendre Q function of degree 2 at x = 1.5:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the degree and argument
+          int n = 2;
+          double x = 1.5;
+      
+          // Calculate the Legendre Q function
+          double result = LegendreQ(n, x);
+      
+          // Output the result
+          Console.WriteLine($"Q_2(1.5) = {result});
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Q_2(1.5) = -0.581633
+   Example: 
+       Compare Legendre Q functions of different degrees at x = 3.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the argument
+          double x = 3.0;
+      
+          // Calculate Legendre Q functions for degrees 0, 1, and 2
+          double q0 = LegendreQ(0, x);
+          double q1 = LegendreQ(1, x);
+          double q2 = LegendreQ(2, x);
+      
+          // Output the results
+          Console.WriteLine($"Q_0(3.0) = {q0}");
+          Console.WriteLine($"Q_1(3.0) = {q1}");
+          Console.WriteLine($"Q_2(3.0) = {q2}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Q_0(3.0) = 0.366204
+          Q_1(3.0) = 0.098459
+          Q_2(3.0) = -0.254648
+
+
+HermiteH
+========
+   Description: 
+       Computes the Hermite polynomial H_n(x) of degree n at point x using the physicists' convention.
+       The Hermite polynomials are orthogonal polynomials that arise in quantum mechanics (harmonic oscillator wavefunctions), probability theory (Gaussian integrals), and numerical analysis. They satisfy the recurrence relation H_{n+1}(x) = 2xH_n(x) - 2nH_{n-1}(x).
+
+       .. code-block:: CSharp 
+
+          double HermiteH(int n, double x)
+          Complex HermiteH(int n, Complex x)
+          Matrix HermiteH(int i, Matrix x)
+          ColVec HermiteH(int i, ColVec x)
+          RowVec HermiteH(int i, RowVec x)
+          SparseMatrix HermiteH(int i, SparseMatrix x)
+          SparseColVec HermiteH(int i, SparseColVec x)
+          SparseRowVec HermiteH(int i, SparseRowVec x)
+   Parameters: 
+       n: 
+         The degree (order) of the Hermite polynomial. Must be a non-negative integer (n >= 0).
+       x: 
+         The argument at which to evaluate the Hermite polynomial. Can be any real scalar number or numbers in array or matrix form.
+   Returns: 
+       The value of the Hermite polynomial H_n(x) evaluated at x. Returns a double-precision floating-point number or one dimensional or two dimensional array.
+   Example: 
+       Compute the Hermite polynomial of degree 0 at x = 1.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the degree and argument
+          int n = 0;
+          double x = 1.0;
+          
+          // Calculate the Hermite polynomial
+          double result = HermiteH(n, x);
+      
+          // Output the result
+          Console.WriteLine($"H_0(1.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          H_0(1.0) = 1.000000
+   Example: 
+       Compute the Hermite polynomial of degree 3 at x = 2.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the degree and argument
+          int n = 3;
+          double x = 2.0;
+      
+          // Calculate the Hermite polynomial
+          double result = HermiteH(n, x);
+      
+          // Output the result
+          Console.WriteLine($"H_3(2.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          H_3(2.0) = 40.000000
+
+
+Laguerre
+========
+   Description: 
+       Computes the Laguerre polynomial L_n(x) of degree n at point x.
+       The Laguerre polynomials are orthogonal polynomials that arise in quantum mechanics (hydrogen atom wavefunctions), mathematical physics, and numerical analysis. They satisfy the recurrence relation L_{n+1}(x) = ((2n+1-x)L_n(x) - nL_{n-1}(x))/(n+1) and are solutions to Laguerre's differential equation.
+
+       .. code-block:: CSharp 
+
+          double Laguerre(int n, double x)
+          Complex Laguerre(int n, Complex x)
+          Matrix Laguerre(int i, Matrix x)
+          ColVec Laguerre(int i, ColVec x)
+          RowVec Laguerre(int i, RowVec x)
+          SparseMatrix Laguerre(int i, SparseMatrix x)
+          SparseColVec Laguerre(int i, SparseColVec x)
+          SparseRowVec Laguerre(int i, SparseRowVec x)
+   Parameters: 
+       n: 
+         The degree (order) of the Laguerre polynomial. Must be a non-negative integer (n >= 0).
+       x: 
+         The argument at which to evaluate the Laguerre polynomial. Can be any real number, though typically used for x >= 0 in physical applications.
+   Returns: 
+       The value of the Laguerre polynomial L_n(x) evaluated at x. Returns a double-precision floating-point number.
+   Example: 
+       Compute the Laguerre polynomial of degree 0 at x = 1.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the degree and argument
+          int n = 0;
+          double x = 1.0;
+          
+          // Calculate the Laguerre polynomial
+          double result = Laguerre(n, x);
+      
+          // Output the result
+          Console.WriteLine($"L_0(1.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          L_0(1.0) = 1.000000
+   Example: 
+       Compute the Laguerre polynomial of degree 3 at x = 2.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the degree and argument
+          int n = 3;
+          double x = 2.0;
+      
+          // Calculate the Laguerre polynomial
+          double result = Laguerre(n, x);
+      
+          // Output the result
+          Console.WriteLine($"L_3(2.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          L_3(2.0) = -0.333333
+
+
 Gamma
 =====
    Description: 
@@ -3324,6 +3579,662 @@ Gamma
 
           
           6.0000
+
+
+LambertW
+========
+   Description: 
+       Computes the Lambert W function (also known as the product logarithm) W_n(x), which is the inverse function of f(w) = w * e^w.
+       The Lambert W function has multiple branches, where n specifies the branch number. The principal branch (n=0) is defined for x >= -1/e, and the -1 branch (n=-1) is defined for -1/e <= x < 0. This function appears in various mathematical contexts including delay differential equations, quantum field theory, and combinatorics.
+
+       .. code-block:: CSharp 
+
+          double LambertW(double n, double x)
+          Complex LambertW(double n, Complex x)
+   Parameters: 
+       n: 
+         The branch number of the Lambert W function. Typically 0 (principal branch) or -1 (secondary branch for negative arguments).
+       x: 
+         The argument at which to evaluate the Lambert W function. For branch 0: x >= -1/e ≈ -0.368. For branch -1: -1/e <= x < 0.
+   Returns: 
+       The value of the Lambert W function W_n(x) evaluated at x for the specified branch n. Returns a double-precision floating-point number.
+   Example: 
+       Compute the Lambert W function principal branch at x = 1.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the branch and argument
+          double n = 0;
+          double x = 1.0;
+          
+          // Calculate the Lambert W function
+          double result = LambertW(n, x);
+      
+          // Output the result
+          Console.WriteLine($"W_0(1.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          W_0(1.0) = 0.567143
+   Example: 
+       Compute the Lambert W function -1 branch at x = -0.2:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the branch and argument
+          double n = -1;
+          double x = -0.2;
+      
+          // Calculate the Lambert W function
+          double result = LambertW(n, x);
+      
+          // Output the result
+          Console.WriteLine($"W_{{-1}}(-0.2) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          W_{-1}(-0.2) = -2.542641
+
+
+LnGamma
+=======
+   Description: 
+       Computes the natural logarithm of the gamma function, ln(Γ(x)), for positive real arguments.
+       The log-gamma function is numerically stable alternative to computing Γ(x) directly, especially for large values of x where Γ(x) would overflow. This function is widely used in statistics, probability theory, and numerical analysis.
+       It satisfies the functional equation ln(Γ(x+1)) = ln(Γ(x)) + ln(x) and is related to Stirling's approximation for large x.
+
+       .. code-block:: CSharp 
+
+          double LnGamma(double x)
+          Complex LnGamma(Complex x)
+          Matrix LnGamma(Matrix x)
+          ColVec LnGamma(ColVec x)
+          RowVec LnGamma(RowVec x)
+          SparseMatrix LnGamma(SparseMatrix x)
+          SparseColVec LnGamma(SparseColVec x)
+          SparseRowVec LnGamma(SparseRowVec x)
+   Parameters: 
+       x: 
+         The argument at which to evaluate the log-gamma function. Must be a positive real number (x > 0) or one-dimensional or two-dimensional array.
+   Returns: 
+       The value of the natural logarithm of the gamma function ln(Γ(x)) evaluated at x. Returns a double-precision floating-point number or one-dimensional or two-dimensional array of numbers.
+   Example: 
+       Compute the log-gamma function at x = 1.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the argument
+          double x = 1.0;
+          
+          // Calculate the log-gamma function
+          double result = LnGamma(x);
+      
+          // Output the result
+          Console.WriteLine($"ln(Γ(1.0)) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          ln(Γ(1.0)) = 0.000000
+   Example: 
+       Compute the log-gamma function at x = 5.5:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the argument
+          double x = 5.5;
+      
+          // Calculate the log-gamma function
+          double result = LnGamma(x);
+      
+          // Output the result
+          Console.WriteLine($"ln(Γ(5.5)) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          ln(Γ(5.5)) = 3.957813
+
+
+Erf
+===
+   Description: 
+       Computes the error function erf(x), which is defined as the integral (2/√π) ∫₀ˣ e^(-t²) dt.
+       The error function is fundamental in probability theory, statistics, and physics. It is closely related to the cumulative distribution function of the normal distribution and appears in solutions to the heat equation and diffusion processes. The function is odd (erf(-x) = -erf(x)) and approaches ±1 as x approaches ±∞.
+
+       .. code-block:: CSharp 
+
+          double Erf(double x)
+          Complex Erf(Complex x)
+          Matrix Erf(Matrix x)
+          ColVec Erf(ColVec x)
+          RowVec Erf(RowVec x)
+          SparseMatrix Erf(SparseMatrix x)
+          SparseColVec Erf(SparseColVec x)
+          SparseRowVec Erf(SparseRowVec x)
+   Parameters: 
+       x: 
+         The argument at which to evaluate the error function. Can be any real number.
+   Returns: 
+       The value of the error function erf(x) evaluated at x. Returns a double-precision floating-point number in the range (-1, 1) or one-dimensional or two dimensional array.
+   Example: 
+       Compute the error function at x = 0.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the argument
+          double x = 0.0;
+          
+          // Calculate the error function
+          double result = Erf(x);
+      
+          // Output the result
+          Console.WriteLine($"erf(0.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          erf(0.0) = 0.000000
+   Example: 
+       Compute the error function at x = 1.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the argument
+          double x = 1.0;
+      
+          // Calculate the error function
+          double result = Erf(x);
+      
+          // Output the result
+          Console.WriteLine($"erf(1.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          erf(1.0) = 0.842701
+
+
+Erfc
+====
+   Description: 
+       Computes the complementary error function erfc(x), which is defined as erfc(x) = 1 - erf(x) = (2/√π) ∫ₓ^∞ e^(-t²) dt.
+       The complementary error function is widely used in probability theory, statistics, and physics for computing tail probabilities of the normal distribution. It provides better numerical accuracy than computing 1 - erf(x) directly, especially for large positive values of x where erf(x) approaches 1. The function satisfies erfc(0) = 1, erfc(∞) = 0, and erfc(-x) = 2 - erfc(x).
+
+       .. code-block:: CSharp 
+
+          double Erfc(double x)
+          Complex Erfc(Complex x)
+          Matrix Erfc(Matrix x)
+          ColVec Erfc(ColVec x)
+          RowVec Erfc(RowVec x)
+          SparseMatrix Erfc(SparseMatrix x)
+          SparseColVec Erfc(SparseColVec x)
+          SparseRowVec Erfc(SparseRowVec x)
+   Parameters: 
+       x: 
+         The argument at which to evaluate the complementary error function. Can be any real number.
+   Returns: 
+       The value of the complementary error function erfc(x) evaluated at x. Returns a double-precision floating-point number in the range (0, 2). It can also return one-dimensional or two-dimensional array of numbers
+   Example: 
+       Compute the complementary error function at x = 0.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the argument
+          double x = 0.0;
+          
+          // Calculate the complementary error function
+          double result = Erfc(x);
+      
+          // Output the result
+          Console.WriteLine($"erfc(0.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          erfc(0.0) = 1.000000
+   Example: 
+       Compute the complementary error function at x = 1.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the argument
+          double x = 1.0;
+      
+          // Calculate the complementary error function
+          double result = Erfc(x);
+      
+          // Output the result
+          Console.WriteLine($"erfc(1.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          erfc(1.0) = 0.157299
+
+
+Zeta
+====
+   Description: 
+       Computes the Riemann zeta function ζ(x), which is defined as the infinite series ζ(x) = Σ(n=1 to ∞) 1/n^x for x > 1.
+       The Riemann zeta function is one of the most important functions in number theory and mathematical analysis. It has deep connections to prime numbers through Euler's product formula and is central to the famous Riemann Hypothesis. The function can be analytically continued to the entire complex plane except for a simple pole at x = 1, where ζ(1) diverges to infinity.
+
+       .. code-block:: CSharp 
+
+          double Zeta(double x)
+          Complex Zeta(Complex x)
+          Matrix Zeta(Matrix x)
+          ColVec Zeta(ColVec x)
+          RowVec Zeta(RowVec x)
+          SparseMatrix Zeta(SparseMatrix x)
+          SparseColVec Zeta(SparseColVec x)
+          SparseRowVec Zeta(SparseRowVec x)
+   Parameters: 
+       x: 
+         The argument at which to evaluate the Riemann zeta function. Must be a real number with x ≠ 1 (the function has a pole at x = 1).
+   Returns: 
+       The value of the Riemann zeta function ζ(x) evaluated at x. Returns a double-precision floating-point number.
+   Example: 
+       Compute the Riemann zeta function at x = 2.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the argument
+          double x = 2.0;
+          
+          // Calculate the Riemann zeta function
+          double result = Zeta(x);
+      
+          // Output the result
+          Console.WriteLine($"ζ(2.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          ζ(2.0) = 1.644934
+   Example: 
+       Compute the Riemann zeta function at x = 3.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the argument
+          double x = 3.0;
+      
+          // Calculate the Riemann zeta function
+          double result = Zeta(x);
+      
+          // Output the result
+          Console.WriteLine($"ζ(3.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          ζ(3.0) = 1.202057
+
+
+Psi
+===
+   Description: 
+       Computes the polygamma function ψ^(m)(x), which is the m-th derivative of the digamma function ψ(x) = d/dx[ln(Γ(x))].
+       The polygamma function is defined as ψ^(m)(x) = d^(m+1)/dx^(m+1)[ln(Γ(x))] for m ≥ 0. When m = 0, it returns the digamma function ψ(x). The polygamma functions appear in various areas of mathematics including number theory, probability theory, and mathematical physics. They satisfy the recurrence relation ψ^(m)(x+1) = ψ^(m)(x) + (-1)^m * m! / x^(m+1).
+
+       .. code-block:: CSharp 
+
+          double Psi(int m, double x)
+   Parameters: 
+       m: 
+         The order of the polygamma function. Must be a non-negative integer (m ≥ 0). When m = 0, computes the digamma function ψ(x).
+       x: 
+         The argument at which to evaluate the polygamma function. Must be a positive real number (x > 0).
+   Returns: 
+       The value of the polygamma function ψ^(m)(x) evaluated at x. Returns a double-precision floating-point number.
+   Example: 
+       Compute the digamma function (m = 0) at x = 1.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the order and argument
+          int m = 0;
+          double x = 1.0;
+          
+          // Calculate the polygamma function
+          double result = Psi(m, x);
+      
+          // Output the result
+          Console.WriteLine($"ψ(1.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          ψ(1.0) = -0.577216
+   Example: 
+       Compute the trigamma function (m = 1) at x = 2.0:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the order and argument
+          int m = 1;
+          double x = 2.0;
+      
+          // Calculate the polygamma function
+          double result = Psi(m, x);
+      
+          // Output the result
+          Console.WriteLine($"ψ^(1)(2.0) = {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          ψ^(1)(2.0) = 0.644934
+
+
+HyperGeom
+=========
+   Description: 
+       Computes the confluent hypergeometric function of the first kind, also known as Kummer's function M(a,b,x) or ₁F₁(a;b;x).
+       This function is defined by the infinite series M(a,b,x) = Σ(n=0 to ∞) [(a)ₙ xⁿ] / [(b)ₙ n!] where (a)ₙ is the Pochhammer symbol.
+
+       .. code-block:: CSharp 
+
+          double HyperGeom(double a, double b, double x)
+          Matrix HyperGeom(double a, double b, Matrix x)
+          ColVec HyperGeom(double a, double b, ColVec x)
+          RowVec HyperGeom(double a, double b, RowVec x)
+          SparseMatrix HyperGeom(double a, double b, SparseMatrix x)
+          SparseColVec HyperGeom(double a, double b, SparseColVec x)
+          SparseRowVec HyperGeom(double a, double b, SparseRowVec x)
+          double HyperGeom(double[] N, double[] D, double x)
+          Matrix HyperGeom(double[] N, double[] D, Matrix x)
+          ColVec HyperGeom(double[] N, double[] D, ColVec x)
+          RowVec HyperGeom(double[] N, double[] D, RowVec x)
+          SparseMatrix HyperGeom(double[] N, double[] D, SparseMatrix x)
+          SparseColVec HyperGeom(double[] N, double[] D, SparseColVec x)
+          SparseRowVec HyperGeom(double[] N, double[] D, SparseRowVec x)
+          Complex HyperGeom(double a, double b, Complex x)
+   Parameters: 
+       a: 
+         The first parameter of the hypergeometric function. It can be any real number.
+       b: 
+         The second parameter of the hypergeometric function. it must be a positive real number and cannot be zero or a negative integer.
+       x: 
+         The argument of the hypergeometric function. It can be any real number.
+   Returns: 
+       The value of the confluent hypergeometric function M(a,b,x) as a double.
+   Example: 
+       Compute the hypergeometric function M(1,1,x) which equals e^x:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Set parameters
+          double a = 1.0;
+          double b = 1.0;
+          double x = 2.0;
+          
+          // Compute the hypergeometric function
+          double result = HyperGeom(a, b, x);
+      
+          // Output the result
+          Console.WriteLine($"M({a},{b},{x}) = {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          M(1,1,2) = 7.389056
+   Example: 
+       Compute the hypergeometric function with fractional parameters:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Set parameters for M(0.5, 1.5, 1.0)
+          double a = 0.5;
+          double b = 1.5;
+          double x = 1.0;
+      
+          // Compute the hypergeometric function
+          double result = HyperGeom(a, b, x);
+      
+          // Output the result
+          Console.WriteLine($"M({a},{b},{x}) = {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          M(0.5,1.5,1) = 1.175201
+
+
+GammaP
+======
+   Description: 
+       Computes the regularized lower incomplete gamma function P(a,x), also known as the lower gamma function ratio.
+       This function is defined as P(a,x) = γ(a,x) / Γ(a) where γ(a,x) is the lower incomplete gamma function and Γ(a) is the gamma function.
+
+       .. code-block:: CSharp 
+
+          double GammaP(double a, double x)
+          Matrix GammaP(double a, Matrix x)
+          ColVec GammaP(double a, ColVec x)
+          RowVec GammaP(double a, RowVec x)
+          SparseMatrix GammaP(double a, SparseMatrix x)
+          SparseColVec GammaP(double a, SparseColVec x)
+          SparseRowVec GammaP(double a, SparseRowVec x) 
+   Parameters: 
+       a: 
+         The shape parameter of the gamma function. Must be a positive real number greater than zero.
+       x: 
+         The upper limit of integration. Must be a non-negative real number (x ≥ 0).
+   Returns: 
+       The value of the regularized lower incomplete gamma function P(a,x) as a double, ranging from 0 to 1.
+   Example: 
+       Compute the regularized lower incomplete gamma function P(2,1):
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Set parameters
+          double a = 2.0;
+          double x = 1.0;
+          
+          // Compute the regularized lower incomplete gamma function
+          double result = GammaP(a, x);
+      
+          // Output the result
+          Console.WriteLine($"P({a},{x}) = {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          P(2,1) = 0.264241
+   Example: 
+       Compute the regularized lower incomplete gamma function with fractional parameters:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Set parameters for P(0.5, 0.25)
+          double a = 0.5;
+          double x = 0.25;
+      
+          // Compute the regularized lower incomplete gamma function
+          double result = GammaP(a, x);
+      
+          // Output the result
+          Console.WriteLine($"P({a},{x}) = {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          P(0.5,0.25) = 0.520500
+
+
+GammaQ
+======
+   Description: 
+       Computes the regularized upper incomplete gamma function Q(a,x), also known as the upper gamma function ratio.
+       GammaQ function is a compliment of GammaP fun defined as Q(a,x) = Γ(a,x) / Γ(a) where Γ(a,x) is the upper incomplete gamma function and Γ(a) is the gamma function.
+
+       .. code-block:: CSharp 
+
+          double GammaQ(double a, double x)
+          Matrix GammaQ(double a, Matrix x)
+          ColVec GammaQ(double a, ColVec x)
+          RowVec GammaQ(double a, RowVec x)
+          SparseMatrix GammaQ(double a, SparseMatrix x)
+          SparseColVec GammaQ(double a, SparseColVec x)
+          SparseRowVec GammaQ(double a, SparseRowVec x) 
+   Parameters: 
+       a: 
+         The shape parameter of the gamma function. Must be a positive real number greater than zero.
+       x: 
+         The lower limit of integration. Must be a non-negative real number (x ≥ 0).
+   Returns: 
+       The value of the regularized upper incomplete gamma function Q(a,x) as a double, ranging from 0 to 1.
+   Example: 
+       Compute the regularized upper incomplete gamma function Q(2,1):
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Set parameters
+          double a = 2.0;
+          double x = 1.0;
+          
+          // Compute the regularized upper incomplete gamma function
+          double result = GammaQ(a, x);
+      
+          // Output the result
+          Console.WriteLine($"Q({a},{x}) = {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Q(2,1) = 0.735759
+   Example: 
+       Compute the regularized upper incomplete gamma function with fractional parameters:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Set parameters for Q(0.5, 0.25)
+          double a = 0.5;
+          double x = 0.25;
+      
+          // Compute the regularized upper incomplete gamma function
+          double result = GammaQ(a, x);
+      
+          // Output the result
+          Console.WriteLine($"Q({a},{x}) = {result}")
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Q(0.5,0.25) = 0.479500
 
 
 Full
@@ -4206,6 +5117,373 @@ Bireduce
           7.000  8.000  4.000
 
 
+Diag
+====
+   Description: 
+       Extracts the k-th diagonal from a matrix and returns it as a column vector.
+       This function extracts diagonal elements from dense matrices, where k=0 represents the main diagonal,
+       k>0 represents superdiagonals (above main diagonal), and k<0 represents subdiagonals (below main diagonal).
+       All elements of the diagonal are returned, including zeros, making it suitable for dense matrix operations.
+
+       .. code-block:: CSharp 
+
+          ColVec Diag(Matrix A, int k = 0)
+          Matrix Diag(ColVec A, int k = 0)
+          Matrix Diag(double[] A, int k = 0)
+          Matrix Diag(List<ColVec> Alist, List<int> klist)
+   Parameters: 
+       A: 
+         The input matrix from which to extract the diagonal. Can be any m×n matrix.
+       k: 
+         The diagonal offset. Default value is 0 (main diagonal). Positive values extract superdiagonals, negative values extract subdiagonals.
+         For an m×n matrix, valid range is -(m-1) ≤ k ≤ (n-1).
+   Returns: 
+       A column vector containing the elements of the k-th diagonal. The length of the vector is min(m, n-k) for k≥0 or min(m+k, n) for k<0.
+       All elements are returned, including zeros.
+   Example: 
+       Extract the main diagonal from a 4×4 matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a 4×4 matrix
+          Matrix A = new double[,] {
+              {1, 2, 3, 4},
+              {5, 6, 7, 8},
+              {9, 10, 11, 12},
+              {13, 14, 15, 16}
+          };
+          
+          // Extract main diagonal (k=0)
+          ColVec mainDiag = Diag(A, 0);
+      
+          // Output the results
+          Console.WriteLine("Matrix A:");
+          Console.WriteLine(A);
+          Console.WriteLine("Main diagonal (k=0):");
+          Console.WriteLine(mainDiag);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Matrix A:
+          1   2   3   4
+          5   6   7   8
+          9   10  11  12
+          13  14  15  16
+          
+          Main diagonal (k=0):
+          1
+          6
+          11
+          16
+   Example: 
+       Extract different diagonals from a rectangular matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Create a 4×5 rectangular matrix
+          Matrix A = new double[,] {
+              {1, 2, 3, 4, 5},
+              {6, 7, 8, 9, 10},
+              {11, 12, 13, 14, 15},
+              {16, 17, 18, 19, 20}
+          };
+      
+          // Extract different diagonals
+          ColVec superDiag1 = Diag(A, 1);   // First superdiagonal
+          ColVec superDiag2 = Diag(A, 2);   // Second superdiagonal
+          ColVec mainDiag = Diag(A, 0);     // Main diagonal
+          ColVec subDiag1 = Diag(A, -1);    // First subdiagonal
+          ColVec subDiag2 = Diag(A, -2);    // Second subdiagonal
+      
+          // Output the results
+          Console.WriteLine("Matrix A:");
+          Console.WriteLine(A);
+          Console.WriteLine("Superdiagonal k=1:");
+          Console.WriteLine(superDiag1);
+          Console.WriteLine("Superdiagonal k=2:");
+          Console.WriteLine(superDiag2);
+          Console.WriteLine("Main diagonal k=0:");
+          Console.WriteLine(mainDiag);
+          Console.WriteLine("Subdiagonal k=-1:");
+          Console.WriteLine(subDiag1);
+          Console.WriteLine("Subdiagonal k=-2:");
+          Console.WriteLine(subDiag2);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Matrix A:
+          1   2   3   4   5
+          6   7   8   9   10
+          11  12  13  14  15
+          16  17  18  19  20
+          
+          Superdiagonal k=1:
+          2
+          8
+          14
+          20
+          
+          Superdiagonal k=2:
+          3
+          9
+          15
+          
+          Main diagonal k=0:
+          1
+          7
+          13
+          19
+          
+          Subdiagonal k=-1:
+          6
+          12
+          18
+          
+          Subdiagonal k=-2:
+          11
+          17
+
+
+Spdiag
+======
+   Description: 
+       Extracts the k-th diagonal from a sparse matrix and returns it as a sparse column vector.
+       This function efficiently extracts diagonal elements from sparse matrices, where k=0 represents the main diagonal,
+       k>0 represents superdiagonals (above main diagonal), and k<0 represents subdiagonals (below main diagonal).
+       Only non-zero elements are stored in the resulting sparse column vector, making it memory-efficient for large sparse matrices.
+
+       .. code-block:: CSharp 
+
+          SparseColVec Spdiag(SparseMatrix A, int k = 0)
+          SparseMatrix Spdiag(ColVec A, int k = 0)
+   Parameters: 
+       A: 
+         The input sparse matrix from which to extract the diagonal. Can be any m×n sparse matrix.
+       k: 
+         The diagonal offset. Default value is 0 (main diagonal). Positive values extract superdiagonals, negative values extract subdiagonals.
+         For an m×n matrix, valid range is -(m-1) ≤ k ≤ (n-1).
+   Returns: 
+       A sparse column vector containing the elements of the k-th diagonal. The length of the vector is min(m, n-k) for k≥0 or min(m+k, n) for k<0.
+       Only non-zero elements are stored in the sparse representation.
+   Example: 
+       Extract the main diagonal from a 4×4 sparse matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a 4×4 sparse matrix
+          SparseMatrix A = new SparseMatrix(4, 4);
+          A[0, 0] = 1.0;
+          A[1, 1] = 2.0;
+          A[2, 2] = 3.0;
+          A[3, 3] = 4.0;
+          A[0, 2] = 5.0;
+          A[1, 3] = 6.0;
+          
+          // Extract main diagonal (k=0)
+          SparseColVec mainDiag = Spdiag(A, 0);
+      
+          // Output the results
+          Console.WriteLine("Sparse matrix A:");
+          Console.WriteLine(A);
+          Console.WriteLine("Main diagonal (k=0):");
+          Console.WriteLine(mainDiag);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Sparse matrix A:
+          1  0  5  0
+          0  2  0  6
+          0  0  3  0
+          0  0  0  4
+          
+          Main diagonal (k=0):
+          1
+          2
+          3
+          4
+   Example: 
+       Extract different diagonals from a sparse matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Create a 5×5 sparse matrix with various non-zero elements
+          SparseMatrix A = new SparseMatrix(5, 5);
+          A[0, 0] = 1.0; A[0, 1] = 2.0; A[0, 2] = 3.0;
+          A[1, 1] = 4.0; A[1, 2] = 5.0; A[1, 3] = 6.0;
+          A[2, 0] = 7.0; A[2, 2] = 8.0; A[2, 3] = 9.0;
+          A[3, 1] = 10.0; A[3, 3] = 11.0; A[3, 4] = 12.0;
+          A[4, 2] = 13.0; A[4, 4] = 14.0;
+      
+          // Extract different diagonals
+          SparseColVec superDiag = Spdiag(A, 1);  // First superdiagonal
+          SparseColVec mainDiag = Spdiag(A, 0);   // Main diagonal
+          SparseColVec subDiag = Spdiag(A, -1);   // First subdiagonal
+      
+          // Output the results
+          Console.WriteLine("Sparse matrix A:");
+          Console.WriteLine(A);
+          Console.WriteLine("Superdiagonal (k=1):");
+          Console.WriteLine(superDiag);
+          Console.WriteLine("Main diagonal (k=0):");
+          Console.WriteLine(mainDiag);
+          Console.WriteLine("Subdiagonal (k=-1):");
+          Console.WriteLine(subDiag);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Sparse matrix A:
+          1  2  3  0  0
+          0  4  5  6  0
+          7  0  8  9  0
+          0  10 0  11 12
+          0  0  13 0  14
+          
+          Superdiagonal (k=1):
+          2
+          5
+          9
+          12
+          
+          Main diagonal (k=0):
+          1
+          4
+          8
+          11
+          14
+          
+          Subdiagonal (k=-1):
+          0
+          7
+          0
+          13
+
+
+Spdiags
+=======
+   Description: 
+       Creates a sparse matrix from diagonal vectors and diagonal positions. This function extracts or creates sparse matrices 
+       with specified diagonals from a list of sparse column vectors and their corresponding diagonal positions.
+       The function places the vectors in Alist along the diagonals specified by klist to form a sparse matrix.
+
+       .. code-block:: CSharp 
+
+          SparseMatrix Spdiags(List<SparseColVec> Alist, List<int> klist)
+          Spdiags(List<ColVec> Alist, List<int> klist) 
+   Parameters: 
+       Alist: 
+             A list of sparse column vectors containing the diagonal elements. Each vector represents the elements 
+             to be placed along the corresponding diagonal specified in klist. The vectors must have compatible 
+             dimensions with the resulting matrix size.
+       klist: 
+             A list of integers specifying the diagonal positions where the vectors from Alist will be placed. 
+             Positive values represent super-diagonals (above main diagonal), zero represents the main diagonal, 
+             and negative values represent sub-diagonals (below main diagonal).
+   Returns: 
+       A sparse matrix with the specified diagonals populated from the input vectors. The matrix dimensions 
+       are determined by the maximum diagonal position and vector lengths.
+   Example: 
+       Create a tridiagonal sparse matrix with main diagonal and adjacent diagonals:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using System.Collections.Generic;
+          using static SepalSolver.Math;
+            
+          // Create diagonal vectors
+          var mainDiag = new SparseColVec(new double[] { 2, 2, 2, 2 });
+          var upperDiag = new SparseColVec(new double[] { -1, -1, -1 });
+          var lowerDiag = new SparseColVec(new double[] { -1, -1, -1 });
+          
+          // Specify diagonal positions
+          var diagonals = new List<SparseColVec> { lowerDiag, mainDiag, upperDiag };
+          var positions = new List<int> { -1, 0, 1 };
+          
+          // Create the sparse matrix
+          SparseMatrix result = Spdiags(diagonals, positions);
+      
+          // Output the result
+          Console.WriteLine("Tridiagonal matrix:");
+          Console.WriteLine(result.ToString());
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Tridiagonal matrix:
+          [ 2  -1   0   0 ]
+          [-1   2  -1   0 ]
+          [ 0  -1   2  -1 ]
+          [ 0   0  -1   2 ]
+   Example: 
+       Create a sparse matrix with multiple super-diagonals:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using System.Collections.Generic;
+          using static SepalSolver.Math;
+           
+          // Create diagonal vectors
+          var mainDiag = new SparseColVec(new double[] { 1, 1, 1, 1, 1 });
+          var diag1 = new SparseColVec(new double[] { 2, 2, 2, 2 });
+          var diag2 = new SparseColVec(new double[] { 3, 3, 3 });
+      
+          // Specify diagonal positions (main, first super, second super)
+          var diagonals = new List<SparseColVec> { mainDiag, diag1, diag2 };
+          var positions = new List<int> { 0, 1, 2 };
+      
+          // Create the sparse matrix
+          SparseMatrix result = Spdiags(diagonals, positions);
+      
+          // Output the result
+          Console.WriteLine("Matrix with super-diagonals:");
+          Console.WriteLine(result.ToString());
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Matrix with super-diagonals:
+          [ 1   2   3   0   0 ]
+          [ 0   1   2   3   0 ]
+          [ 0   0   1   2   3 ]
+          [ 0   0   0   1   2 ]
+          [ 0   0   0   0   1 ]
+
+
 Lu
 ==
    Description: 
@@ -4332,6 +5610,675 @@ Lu
           5.000   6.000   7.000   8.000
           9.000   10.000  11.000  12.000
           1.000   2.000   3.000   4.000
+
+
+Chol
+====
+   Description: 
+       Computes the Cholesky decomposition of a positive definite matrix. The Cholesky decomposition factors a 
+       symmetric positive definite matrix A into the product A = L * L^T, where L is a lower triangular matrix 
+       with positive diagonal elements. This decomposition is unique and numerically stable for solving linear systems.
+
+       .. code-block:: CSharp 
+
+          Matrix Chol(Matrix A)
+          SparseMatrix Chol(SparseMatrix A)
+   Parameters: 
+       A: 
+         A symmetric positive definite matrix to be decomposed. The matrix must be square, symmetric, and have all 
+         positive eigenvalues. If the matrix is not positive definite, the function may throw an exception or return 
+         an error depending on the overload used.
+   Returns: 
+       The lower triangular Cholesky factor L such that A = L * L^T. The returned matrix has the same dimensions 
+       as the input matrix A, with zeros in the upper triangular part.
+   Example: 
+       Compute the Cholesky decomposition of a 3x3 positive definite matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a positive definite matrix
+          Matrix A = new double[,] {
+              { 4,  2,  1 },
+              { 2,  3,  0.5 },
+              { 1,  0.5, 2 }
+          };
+          
+          // Compute the Cholesky decomposition
+          Matrix L = Chol(A);
+      
+          // Output the result
+          Console.WriteLine("Original matrix A:");
+          Console.WriteLine(A.ToString());
+          Console.WriteLine("Cholesky factor L:");
+          Console.WriteLine(L.ToString());
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Original matrix A:
+          [  4.000   2.000   1.000 ]
+          [  2.000   3.000   0.500 ]
+          [  1.000   0.500   2.000 ]
+          Cholesky factor L:
+          [  2.000   0.000   0.000 ]
+          [  1.000   1.414   0.000 ]
+          [  0.500  -0.354   1.336 ]
+   Example: 
+       Verify the Cholesky decomposition by reconstructing the original matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Create a positive definite matrix
+          Matrix A = new double[,] {
+              { 9,  3,  1 },
+              { 3,  5,  1 },
+              { 1,  1,  2 }
+          };
+      
+          // Compute the Cholesky decomposition
+          Matrix L = Chol(A);
+          
+          // Verify: A should equal L * L^T
+          Matrix reconstructed = L * L.Transpose();
+      
+          // Output the results
+          Console.WriteLine("Cholesky factor L:");
+          Console.WriteLine(L.ToString());
+          Console.WriteLine("Reconstructed A = L * L^T:");
+          Console.WriteLine(reconstructed.ToString());
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Cholesky factor L:
+          [  3.000   0.000   0.000 ]
+          [  1.000   2.000   0.000 ]
+          [  0.333   0.333   1.247 ]
+          Reconstructed A = L * L^T:
+          [  9.000   3.000   1.000 ]
+          [  3.000   5.000   1.000 ]
+          [  1.000   1.000   2.000 ]
+
+
+Qr
+==
+   Description: 
+       Computes the QR decomposition of a matrix. The QR decomposition factors a matrix A into the product A = Q * R, 
+       where Q is an orthogonal matrix (Q^T * Q = I) and R is an upper triangular matrix. This decomposition is 
+       fundamental in numerical linear algebra and is used for solving linear least squares problems and eigenvalue computations.
+
+       .. code-block:: CSharp 
+
+          (Matrix Q, Matrix R) Qr(Matrix A)
+          (SparseMatrix Q, SparseMatrix R) Qr(SparseMatrix A)
+   Parameters: 
+       A: 
+         The input matrix to be decomposed. The matrix can be rectangular (m×n) and does not need to be square. 
+         For the decomposition to be meaningful, the matrix should have linearly independent columns, though 
+         the algorithm can handle rank-deficient matrices.
+   Returns: 
+       A tuple containing two matrices: Q (orthogonal matrix) and R (upper triangular matrix) such that A = Q * R. 
+       Q has dimensions m×m for full QR or m×n for economy QR, and R has dimensions m×n or n×n respectively.
+   Example: 
+       Compute the QR decomposition of a 3x3 matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a matrix
+          Matrix A = new double[,] {
+              { 1,  2,  3 },
+              { 4,  5,  6 },
+              { 7,  8,  9 }
+          };
+          
+          // Compute the QR decomposition
+          (Matrix Q, Matrix R) = Qr(A);
+      
+          // Output the results
+          Console.WriteLine("Original matrix A:");
+          Console.WriteLine(A.ToString());
+          Console.WriteLine("Orthogonal matrix Q:");
+          Console.WriteLine(Q.ToString());
+          Console.WriteLine("Upper triangular matrix R:");
+          Console.WriteLine(R.ToString());
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Original matrix A:
+          [  1.000   2.000   3.000 ]
+          [  4.000   5.000   6.000 ]
+          [  7.000   8.000   9.000 ]
+          Orthogonal matrix Q:
+          [ -0.123  -0.904   0.408 ]
+          [ -0.492  -0.301  -0.816 ]
+          [ -0.862   0.301   0.408 ]
+          Upper triangular matrix R:
+          [ -8.124  -9.601 -11.079 ]
+          [  0.000   0.904   1.809 ]
+          [  0.000   0.000   0.000 ]
+   Example: 
+       Verify the QR decomposition by reconstructing the original matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Create a rectangular matrix
+          Matrix A = new double[,] {
+              { 2,  1 },
+              { 1,  3 },
+              { 0,  1 }
+          };
+      
+          // Compute the QR decomposition
+          (Matrix Q, Matrix R) = Qr(A);
+          
+          // Verify: A should equal Q * R
+          Matrix reconstructed = Q * R;
+      
+          // Output the results
+          Console.WriteLine("Orthogonal matrix Q:");
+          Console.WriteLine(Q.ToString());
+          Console.WriteLine("Upper triangular matrix R:");
+          Console.WriteLine(R.ToString());
+          Console.WriteLine("Reconstructed A = Q * R:");
+          Console.WriteLine(reconstructed.ToString());
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Orthogonal matrix Q:
+          [ -0.894  -0.447 ]
+          [ -0.447   0.894 ]
+          [  0.000   0.000 ]
+          Upper triangular matrix R:
+          [ -2.236  -2.236 ]
+          [  0.000   2.683 ]
+          Reconstructed A = Q * R:
+          [  2.000   1.000 ]
+          [  1.000   3.000 ]
+          [  0.000   1.000 ]
+
+
+Ldl
+===
+   Description: 
+       Computes the LDL decomposition of a symmetric matrix A, where A = L * D * L^T.
+       This decomposition factorizes a symmetric matrix into the product of a unit lower triangular matrix L,
+       a diagonal matrix D, and the transpose of L. The LDL decomposition is particularly useful for solving
+       linear systems and computing determinants of symmetric matrices without requiring square roots.
+
+       .. code-block:: CSharp 
+
+          (Matrix L, Matrix D) Ldl(Matrix A)
+          (SparseMatrix L, SparseMatrix D) Ldl(SparseMatrix A)
+   Parameters: 
+       A: 
+         The input symmetric matrix to be decomposed. Must be a square matrix where A[i,j] = A[j,i].
+         The matrix should be positive definite or positive semidefinite for numerical stability.
+   Returns: 
+       A tuple containing:
+       - L: A unit lower triangular matrix (diagonal elements are 1) of the same size as A
+       - D: A diagonal matrix of the same size as A containing the pivot elements
+       Such that A = L * D * L^T
+   Example: 
+       Decompose a simple 3x3 symmetric matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a symmetric matrix
+          Matrix A = new Matrix(new double[,] {
+              {4, 2, 1},
+              {2, 3, 0.5},
+              {1, 0.5, 2}
+          });
+          
+          // Compute the LDL decomposition
+          var (L, D) = Ldl(A);
+      
+          // Output the results
+          Console.WriteLine("Original matrix A:");
+          Console.WriteLine(A);
+          Console.WriteLine("\nLower triangular matrix L:");
+          Console.WriteLine(L);
+          Console.WriteLine("\nDiagonal matrix D:");
+          Console.WriteLine(D);
+          
+          // Verify the decomposition
+          Matrix reconstructed = L * D * L.Transpose();
+          Console.WriteLine("\nReconstructed A = L * D * L^T:");
+          Console.WriteLine(reconstructed);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Original matrix A:
+          [4, 2, 1]
+          [2, 3, 0.5]
+          [1, 0.5, 2]
+          
+          Lower triangular matrix L:
+          [1, 0, 0]
+          [0.5, 1, 0]
+          [0.25, 0.125, 1]
+          
+          Diagonal matrix D:
+          [4, 0, 0]
+          [0, 2, 0]
+          [0, 0, 1.75]
+          
+          Reconstructed A = L * D * L^T:
+          [4, 2, 1]
+          [2, 3, 0.5]
+          [1, 0.5, 2]
+   Example: 
+       Use LDL decomposition to solve a linear system Ax = b:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the system matrix and right-hand side
+          Matrix A = new Matrix(new double[,] {
+              {9, 3, 1},
+              {3, 5, 2},
+              {1, 2, 4}
+          });
+          
+          ColVec b = new ColVec(new double[] {13, 10, 7});
+      
+          // Compute the LDL decomposition
+          var (L, D) = Ldl(A);
+          
+          // Solve the system using forward and back substitution
+          // First solve L * y = b
+          ColVec y = ForwardSubstitution(L, b);
+          
+          // Then solve D * z = y
+          ColVec z = DiagonalSolve(D, y);
+          
+          // Finally solve L^T * x = z
+          ColVec x = BackSubstitution(L.Transpose(), z);
+      
+          // Output the solution
+          Console.WriteLine($"Solution x = {x}");
+          Console.WriteLine($"Verification Ax = {A * x}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Solution x = [1, 1, 1]
+          Verification Ax = [13, 10, 7]
+
+
+Mldivide
+========
+   Description: 
+       Solves the linear system Ax = b using matrix left division (backslash operator). This function automatically
+       selects the most appropriate algorithm based on the properties of matrix A, including LU decomposition for
+       general matrices, Cholesky decomposition for symmetric positive definite matrices, and QR decomposition
+       for overdetermined systems. The function is equivalent to MATLAB's backslash operator A\b.
+
+       .. code-block:: CSharp 
+
+          ColVec Mldivide(Matrix A, ColVec b)
+          Matrix Mldivide(Matrix A, Matrix B)
+   Parameters: 
+       A: 
+         The coefficient matrix of the linear system. Can be square (n×n) for exact solutions or rectangular (m×n where m>n)
+         for least-squares solutions. For square systems, A should be non-singular. For overdetermined systems, A should
+         have full column rank for a unique least-squares solution.
+       b: 
+         The right-hand side vector of the linear system. Must have the same number of rows as matrix A.
+   Returns: 
+       The solution vector x such that Ax = b (for square systems) or the least-squares solution that minimizes ||Ax - b||₂
+       (for overdetermined systems). Returns a ColVec of the same length as the number of columns in A.
+   Example: 
+       Solve a square linear system Ax = b:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the coefficient matrix
+          Matrix A = new double[,] {
+              {2, 1, 0},
+              {1, 3, 1},
+              {0, 1, 2}
+          };
+          
+          // Define the right-hand side vector
+          ColVec b = new ColVec(new double[] {1, 2, 3});
+          
+          // Solve the linear system
+          ColVec x = Mldivide(A, b);
+      
+          // Output the solution
+          Console.WriteLine($"Solution x = {x}");
+          
+          // Verify the solution
+          ColVec verification = A * x;
+          Console.WriteLine($"Verification Ax = {verification}");
+          Console.WriteLine($"Original b = {b}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Solution x = [-0.2, 0.6, 1.2]
+          Verification Ax = [1, 2, 3]
+          Original b = [1, 2, 3]
+   Example: 
+       Solve an overdetermined system using least-squares:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define an overdetermined system (4 equations, 3 unknowns)
+          Matrix A = new double[,] {
+              {1, 2, 1},
+              {2, 1, 3},
+              {1, 1, 2},
+              {3, 2, 1}
+          };
+          
+          ColVec b = new double[] {6, 8, 5, 7};
+      
+          // Solve using least-squares
+          ColVec x = Mldivide(A, b);
+          
+          // Compute residual
+          ColVec residual = A * x - b;
+          double residualNorm = residual.Norm();
+      
+          // Output the results
+          Console.WriteLine($"Least-squares solution x = {x}");
+          Console.WriteLine($"Residual ||Ax - b|| = {residualNorm:F6}");
+          Console.WriteLine($"Ax = {A * x}");
+          Console.WriteLine($"b = {b}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Least-squares solution x = [0.857143, 1.428571, 1.142857]
+          Residual ||Ax - b|| = 0.816497
+          Ax = [5.428571, 8.571429, 5.428571, 7.142857]
+          b = [6, 8, 5, 7]
+
+
+Mrdivide
+========
+   Description: 
+       Solves the linear system xA = b using matrix right division (forward slash operator). This function computes
+       the solution to the system where x is multiplied on the left by matrix A to produce b. It automatically
+       selects the most appropriate algorithm based on the properties of matrix A, equivalent to solving A^T * x^T = b^T
+       and then transposing the result. The function is equivalent to MATLAB's forward slash operator b/A.
+
+       .. code-block:: CSharp 
+
+          RowVec Mrdivide(RowVec b, Matrix A)
+          Matrix Mrdivide(Matrix B, Matrix A)
+   Parameters: 
+       b: 
+         The right-hand side row vector of the linear system. Must have the same number of columns as matrix A has rows.
+         This represents the known values in the equation xA = b.
+       A: 
+         The coefficient matrix of the linear system. Can be square (n×n) for exact solutions or rectangular (n×m where n>m)
+         for least-squares solutions. For square systems, A should be non-singular. For underdetermined systems, A should
+         have full row rank for a unique minimum-norm solution.
+   Returns: 
+       The solution row vector x such that xA = b (for square systems) or the least-squares/minimum-norm solution
+       (for rectangular systems). Returns a RowVec with the same number of columns as A has columns.
+   Example: 
+       Solve a square linear system xA = b:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the coefficient matrix
+          Matrix A = new double[,] {
+              {3, 1, 2},
+              {1, 4, 1},
+              {2, 1, 3}
+          };
+          
+          // Define the right-hand side row vector
+          RowVec b = new double[] {14, 12, 16};
+          
+          // Solve the linear system xA = b
+          RowVec x = Mrdivide(b, A);
+      
+          // Output the solution
+          Console.WriteLine($"Solution x = {x}");
+          
+          // Verify the solution
+          RowVec verification = x * A;
+          Console.WriteLine($"Verification xA = {verification}");
+          Console.WriteLine($"Original b = {b}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Solution x = [2, 3, 1]
+          Verification xA = [14, 12, 16]
+          Original b = [14, 12, 16]
+   Example: 
+       Solve an underdetermined system using minimum-norm solution:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define an underdetermined system (2 equations, 3 unknowns)
+          Matrix A = new double[,] {
+              {1, 2, 1},
+              {2, 1, 3}
+          };
+          
+          RowVec b = new double[] {5, 7};
+      
+          // Solve using minimum-norm solution
+          RowVec x = Mrdivide(b, A);
+          
+          // Compute the norm of the solution
+          double solutionNorm = x.Norm();
+          
+          // Verify the solution
+          RowVec verification = x * A;
+      
+          // Output the results
+          Console.WriteLine($"Minimum-norm solution x = {x}");
+          Console.WriteLine($"Solution norm ||x|| = {solutionNorm:F6}");
+          Console.WriteLine($"Verification xA = {verification}");
+          Console.WriteLine($"Original b = {b}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Minimum-norm solution x = [1.4, 1.2, 1.0]
+          Solution norm ||x|| = 2.140093
+          Verification xA = [5, 7]
+          Original b = [5, 7]
+
+
+
+
+   Description: 
+       Solves the linear system Ax = b using the Conjugate Gradient method. This iterative method is specifically
+       designed for solving systems with symmetric positive definite matrices. The algorithm minimizes the quadratic
+       function f(x) = (1/2)x^T*A*x - b^T*x by generating a sequence of conjugate directions and is guaranteed to
+       converge to the exact solution within n iterations for an n×n matrix, though practical convergence often
+       occurs much faster depending on the condition number of A.
+
+       .. code-block:: CSharp 
+
+          (ColVec x, int flag, double relres, int iter, ColVec resvec) ConjGrad(Matrix A, ColVec b, double tol = 1e-6, int maxiter = 100)
+          (ColVec x, int flag, double relres, int iter, ColVec resvec) ConjGrad(SparseMatrix A, ColVec b, double tol = 1e-6, int maxiter = 100)
+          (ColVec x, int flag, double relres, int iter, ColVec resvec) GenMinRes(Matrix A, ColVec b, int restart = 20, double tol = 1e-6, int maxiter = 100)
+          (ColVec x, int flag, double relres, int iter, ColVec resvec) GenMinRes(SparseMatrix A, ColVec b, int restart = 20, double tol = 1e-6, int maxiter = 100)
+          (ColVec x, int flag, double relres, int iter, ColVec resvec) GenMinRes(SparseMatrix A, ColVec b, double tol = 1e-6, int maxiter = 100, SparseMatrix M1 = null, SparseMatrix M2 = null, int? rstart = null, ColVec x0 = null)
+   Parameters: 
+       A: 
+         The coefficient matrix of the linear system. Must be symmetric and positive definite for guaranteed convergence.
+         The matrix should be well-conditioned for optimal performance, as the convergence rate depends on the condition number.
+       b: 
+         The right-hand side vector of the linear system. Must have the same number of rows as matrix A.
+       tol: 
+           The relative tolerance for convergence. The algorithm stops when the relative residual ||r_k||/||b|| ≤ tol,
+           where r_k = b - Ax_k is the residual at iteration k. Default value is 1e-6.
+       maxiter: 
+               The maximum number of iterations allowed. If convergence is not achieved within this limit, the algorithm
+               returns the best approximation found. Default value is 100.
+   Returns: 
+       A tuple containing:
+       - x: The approximate solution vector to the linear system Ax = b
+       - flag: Convergence flag (0 = converged, 1 = maximum iterations reached, 2 = breakdown occurred)
+       - relres: The relative residual ||r||/||b|| at termination
+       - iter: The actual number of iterations performed
+       - resvec: A vector containing the relative residual at each iteration for convergence analysis
+   Example: 
+       Solve a symmetric positive definite system using Conjugate Gradient:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a symmetric positive definite matrix
+          Matrix A = new double[,] {
+              {4, 1, 0},
+              {1, 3, 1},
+              {0, 1, 2}
+          };
+          
+          // Define the right-hand side vector
+          ColVec b = new double[] {1, 2, 3};
+          
+          // Solve using Conjugate Gradient with default parameters
+          var (x, flag, relres, iter, resvec) = ConjGrad(A, b);
+      
+          // Output the results
+          Console.WriteLine($"Solution x = {x}");
+          Console.WriteLine($"Convergence flag = {flag}");
+          Console.WriteLine($"Relative residual = {relres:E6}");
+          Console.WriteLine($"Iterations = {iter}");
+          
+          // Verify the solution
+          ColVec verification = A * x;
+          Console.WriteLine($"Verification Ax = {verification}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Solution x = [-0.090909, 0.454545, 1.272727]
+          Convergence flag = 0
+          Relative residual = 8.123456E-07
+          Iterations = 3
+          Verification Ax = [1, 2, 3]
+   Example: 
+       Solve a large sparse system with custom tolerance and analyze convergence:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Create a larger symmetric positive definite matrix (tridiagonal)
+          Matrix A = new double[,](5, 5);
+          for (int i = 0; i < 5; i++)
+          {
+              A[i, i] = 4.0;
+              if (i > 0) A[i, i-1] = -1.0;
+              if (i < 4) A[i, i+1] = -1.0;
+          }
+          
+          ColVec b = new double[] {3, 2, 2, 2, 1};
+      
+          // Solve with stricter tolerance and more iterations
+          var (x, flag, relres, iter, resvec) = ConjGrad(A, b, tol: 1e-10, maxiter: 50);
+          
+          // Output convergence information
+          Console.WriteLine($"Solution x = {x}");
+          Console.WriteLine($"Convergence flag = {flag}");
+          Console.WriteLine($"Final relative residual = {relres:E10}");
+          Console.WriteLine($"Iterations performed = {iter}");
+          
+          // Show convergence history
+          Console.WriteLine("Convergence history:");
+          for (int i = 0; i < Min(iter, 5); i++)
+          {
+              Console.WriteLine($"Iteration {i+1}: relres = {resvec[i]:E6}");
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Solution x = [1, 1, 1, 1, 1]
+          Convergence flag = 0
+          Final relative residual = 2.3456789123E-11
+          Iterations performed = 5
+          Convergence history:
+          Iteration 1: relres = 8.944272E-01
+          Iteration 2: relres = 4.472136E-01
+          Iteration 3: relres = 1.788854E-01
+          Iteration 4: relres = 5.963847E-02
+          Iteration 5: relres = 2.345679E-11
 
 
 SolverSet
