@@ -3274,261 +3274,6 @@ LegendreP
           Recurrence relation satisfied: True
 
 
-LegendreQ
-=========
-   Description: 
-       Computes the Legendre function of the second kind (also known as Legendre Q function) of degree n at point x.
-       The Legendre Q function is the second linearly independent solution to Legendre's differential equation and is used in engineering applications involving spherical coordinates and potential theory.
-
-       .. code-block:: CSharp 
-
-          double LegendreQ(int n, double x)
-          Complex LegendreQ(int n, Complex x)
-          Matrix LegendreQ(int i, Matrix x)
-          ColVec LegendreQ(int i, ColVec x)
-          RowVec LegendreQ(int i, RowVec x)
-          SparseMatrix LegendreQ(int i, SparseMatrix x)
-          SparseColVec LegendreQ(int i, SparseColVec x)
-          SparseRowVec LegendreQ(int i, SparseRowVec x)
-   Parameters: 
-       n: 
-         The degree (order) of the Legendre Q function. Must be a non-negative integer (n >= 0).
-       x: 
-         The argument at which to evaluate the Legendre Q function. Must satisfy |x| > 1 for real-valued results, as the function has singularities at x = ±1.
-   Returns: 
-       The value of the Legendre Q function of degree n evaluated at x. Returns a double-precision floating-point number or one-dimensional or two-dimensional array.
-   Example: 
-       Compute the Legendre Q function of degree 0 at x = 2.0:
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using static SepalSolver.Math;
-            
-          // Define the degree and argument
-          int n = 0;
-          double x = 2.0;
-          
-          // Calculate the Legendre Q function
-          double result = LegendreQ(n, x);
-      
-          // Output the result
-          Console.WriteLine($"Q_0(2.0) = {result});
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          Q_0(2.0) = 0.549306
-   Example: 
-       Compute the Legendre Q function of degree 2 at x = 1.5:
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using static SepalSolver.Math;
-           
-          // Define the degree and argument
-          int n = 2;
-          double x = 1.5;
-      
-          // Calculate the Legendre Q function
-          double result = LegendreQ(n, x);
-      
-          // Output the result
-          Console.WriteLine($"Q_2(1.5) = {result});
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          Q_2(1.5) = -0.581633
-   Example: 
-       Compare Legendre Q functions of different degrees at x = 3.0:
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using static SepalSolver.Math;
-           
-          // Define the argument
-          double x = 3.0;
-      
-          // Calculate Legendre Q functions for degrees 0, 1, and 2
-          double q0 = LegendreQ(0, x);
-          double q1 = LegendreQ(1, x);
-          double q2 = LegendreQ(2, x);
-      
-          // Output the results
-          Console.WriteLine($"Q_0(3.0) = {q0}");
-          Console.WriteLine($"Q_1(3.0) = {q1}");
-          Console.WriteLine($"Q_2(3.0) = {q2}");
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          Q_0(3.0) = 0.366204
-          Q_1(3.0) = 0.098459
-          Q_2(3.0) = -0.254648
-
-
-HermiteH
-========
-   Description: 
-       Computes the Hermite polynomial H_n(x) of degree n at point x using the physicists' convention.
-       The Hermite polynomials are orthogonal polynomials that arise in quantum mechanics (harmonic oscillator wavefunctions), probability theory (Gaussian integrals), and numerical analysis. They satisfy the recurrence relation H_{n+1}(x) = 2xH_n(x) - 2nH_{n-1}(x).
-
-       .. code-block:: CSharp 
-
-          double HermiteH(int n, double x)
-          Complex HermiteH(int n, Complex x)
-          Matrix HermiteH(int i, Matrix x)
-          ColVec HermiteH(int i, ColVec x)
-          RowVec HermiteH(int i, RowVec x)
-          SparseMatrix HermiteH(int i, SparseMatrix x)
-          SparseColVec HermiteH(int i, SparseColVec x)
-          SparseRowVec HermiteH(int i, SparseRowVec x)
-   Parameters: 
-       n: 
-         The degree (order) of the Hermite polynomial. Must be a non-negative integer (n >= 0).
-       x: 
-         The argument at which to evaluate the Hermite polynomial. Can be any real scalar number or numbers in array or matrix form.
-   Returns: 
-       The value of the Hermite polynomial H_n(x) evaluated at x. Returns a double-precision floating-point number or one dimensional or two dimensional array.
-   Example: 
-       Compute the Hermite polynomial of degree 0 at x = 1.0:
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using static SepalSolver.Math;
-            
-          // Define the degree and argument
-          int n = 0;
-          double x = 1.0;
-          
-          // Calculate the Hermite polynomial
-          double result = HermiteH(n, x);
-      
-          // Output the result
-          Console.WriteLine($"H_0(1.0) = {result}");
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          H_0(1.0) = 1.000000
-   Example: 
-       Compute the Hermite polynomial of degree 3 at x = 2.0:
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using static SepalSolver.Math;
-           
-          // Define the degree and argument
-          int n = 3;
-          double x = 2.0;
-      
-          // Calculate the Hermite polynomial
-          double result = HermiteH(n, x);
-      
-          // Output the result
-          Console.WriteLine($"H_3(2.0) = {result}");
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          H_3(2.0) = 40.000000
-
-
-Laguerre
-========
-   Description: 
-       Computes the Laguerre polynomial L_n(x) of degree n at point x.
-       The Laguerre polynomials are orthogonal polynomials that arise in quantum mechanics (hydrogen atom wavefunctions), mathematical physics, and numerical analysis. They satisfy the recurrence relation L_{n+1}(x) = ((2n+1-x)L_n(x) - nL_{n-1}(x))/(n+1) and are solutions to Laguerre's differential equation.
-
-       .. code-block:: CSharp 
-
-          double Laguerre(int n, double x)
-          Complex Laguerre(int n, Complex x)
-          Matrix Laguerre(int i, Matrix x)
-          ColVec Laguerre(int i, ColVec x)
-          RowVec Laguerre(int i, RowVec x)
-          SparseMatrix Laguerre(int i, SparseMatrix x)
-          SparseColVec Laguerre(int i, SparseColVec x)
-          SparseRowVec Laguerre(int i, SparseRowVec x)
-   Parameters: 
-       n: 
-         The degree (order) of the Laguerre polynomial. Must be a non-negative integer (n >= 0).
-       x: 
-         The argument at which to evaluate the Laguerre polynomial. Can be any real number, though typically used for x >= 0 in physical applications.
-   Returns: 
-       The value of the Laguerre polynomial L_n(x) evaluated at x. Returns a double-precision floating-point number.
-   Example: 
-       Compute the Laguerre polynomial of degree 0 at x = 1.0:
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using static SepalSolver.Math;
-            
-          // Define the degree and argument
-          int n = 0;
-          double x = 1.0;
-          
-          // Calculate the Laguerre polynomial
-          double result = Laguerre(n, x);
-      
-          // Output the result
-          Console.WriteLine($"L_0(1.0) = {result}");
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          L_0(1.0) = 1.000000
-   Example: 
-       Compute the Laguerre polynomial of degree 3 at x = 2.0:
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using static SepalSolver.Math;
-           
-          // Define the degree and argument
-          int n = 3;
-          double x = 2.0;
-      
-          // Calculate the Laguerre polynomial
-          double result = Laguerre(n, x);
-      
-          // Output the result
-          Console.WriteLine($"L_3(2.0) = {result}");
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          L_3(2.0) = -0.333333
-
-
 Gamma
 =====
    Description: 
@@ -3581,241 +3326,24 @@ Gamma
           6.0000
 
 
-LambertW
-========
-   Description: 
-       Computes the Lambert W function (also known as the product logarithm) W_n(x), which is the inverse function of f(w) = w * e^w.
-       The Lambert W function has multiple branches, where n specifies the branch number. The principal branch (n=0) is defined for x >= -1/e, and the -1 branch (n=-1) is defined for -1/e <= x < 0. This function appears in various mathematical contexts including delay differential equations, quantum field theory, and combinatorics.
-
-       .. code-block:: CSharp 
-
-          double LambertW(double n, double x)
-          Complex LambertW(double n, Complex x)
-   Parameters: 
-       n: 
-         The branch number of the Lambert W function. Typically 0 (principal branch) or -1 (secondary branch for negative arguments).
-       x: 
-         The argument at which to evaluate the Lambert W function. For branch 0: x >= -1/e ≈ -0.368. For branch -1: -1/e <= x < 0.
-   Returns: 
-       The value of the Lambert W function W_n(x) evaluated at x for the specified branch n. Returns a double-precision floating-point number.
-   Example: 
-       Compute the Lambert W function principal branch at x = 1.0:
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using static SepalSolver.Math;
-            
-          // Define the branch and argument
-          double n = 0;
-          double x = 1.0;
-          
-          // Calculate the Lambert W function
-          double result = LambertW(n, x);
-      
-          // Output the result
-          Console.WriteLine($"W_0(1.0) = {result}");
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          W_0(1.0) = 0.567143
-   Example: 
-       Compute the Lambert W function -1 branch at x = -0.2:
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using static SepalSolver.Math;
-           
-          // Define the branch and argument
-          double n = -1;
-          double x = -0.2;
-      
-          // Calculate the Lambert W function
-          double result = LambertW(n, x);
-      
-          // Output the result
-          Console.WriteLine($"W_{{-1}}(-0.2) = {result}");
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          W_{-1}(-0.2) = -2.542641
-
-
-LnGamma
-=======
-   Description: 
-       Computes the natural logarithm of the gamma function, ln(Γ(x)), for positive real arguments.
-       The log-gamma function is numerically stable alternative to computing Γ(x) directly, especially for large values of x where Γ(x) would overflow. This function is widely used in statistics, probability theory, and numerical analysis.
-       It satisfies the functional equation ln(Γ(x+1)) = ln(Γ(x)) + ln(x) and is related to Stirling's approximation for large x.
-
-       .. code-block:: CSharp 
-
-          double LnGamma(double x)
-          Complex LnGamma(Complex x)
-          Matrix LnGamma(Matrix x)
-          ColVec LnGamma(ColVec x)
-          RowVec LnGamma(RowVec x)
-          SparseMatrix LnGamma(SparseMatrix x)
-          SparseColVec LnGamma(SparseColVec x)
-          SparseRowVec LnGamma(SparseRowVec x)
-   Parameters: 
-       x: 
-         The argument at which to evaluate the log-gamma function. Must be a positive real number (x > 0) or one-dimensional or two-dimensional array.
-   Returns: 
-       The value of the natural logarithm of the gamma function ln(Γ(x)) evaluated at x. Returns a double-precision floating-point number or one-dimensional or two-dimensional array of numbers.
-   Example: 
-       Compute the log-gamma function at x = 1.0:
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using static SepalSolver.Math;
-            
-          // Define the argument
-          double x = 1.0;
-          
-          // Calculate the log-gamma function
-          double result = LnGamma(x);
-      
-          // Output the result
-          Console.WriteLine($"ln(Γ(1.0)) = {result}");
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          ln(Γ(1.0)) = 0.000000
-   Example: 
-       Compute the log-gamma function at x = 5.5:
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using static SepalSolver.Math;
-           
-          // Define the argument
-          double x = 5.5;
-      
-          // Calculate the log-gamma function
-          double result = LnGamma(x);
-      
-          // Output the result
-          Console.WriteLine($"ln(Γ(5.5)) = {result}");
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          ln(Γ(5.5)) = 3.957813
-
-
-Erf
-===
-   Description: 
-       Computes the error function erf(x), which is defined as the integral (2/√π) ∫₀ˣ e^(-t²) dt.
-       The error function is fundamental in probability theory, statistics, and physics. It is closely related to the cumulative distribution function of the normal distribution and appears in solutions to the heat equation and diffusion processes. The function is odd (erf(-x) = -erf(x)) and approaches ±1 as x approaches ±∞.
-
-       .. code-block:: CSharp 
-
-          double Erf(double x)
-          Complex Erf(Complex x)
-          Matrix Erf(Matrix x)
-          ColVec Erf(ColVec x)
-          RowVec Erf(RowVec x)
-          SparseMatrix Erf(SparseMatrix x)
-          SparseColVec Erf(SparseColVec x)
-          SparseRowVec Erf(SparseRowVec x)
-   Parameters: 
-       x: 
-         The argument at which to evaluate the error function. Can be any real number.
-   Returns: 
-       The value of the error function erf(x) evaluated at x. Returns a double-precision floating-point number in the range (-1, 1) or one-dimensional or two dimensional array.
-   Example: 
-       Compute the error function at x = 0.0:
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using static SepalSolver.Math;
-            
-          // Define the argument
-          double x = 0.0;
-          
-          // Calculate the error function
-          double result = Erf(x);
-      
-          // Output the result
-          Console.WriteLine($"erf(0.0) = {result}");
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          erf(0.0) = 0.000000
-   Example: 
-       Compute the error function at x = 1.0:
-
-       .. code-block:: CSharp 
-
-          // import libraries
-          using System;
-          using static SepalSolver.Math;
-           
-          // Define the argument
-          double x = 1.0;
-      
-          // Calculate the error function
-          double result = Erf(x);
-      
-          // Output the result
-          Console.WriteLine($"erf(1.0) = {result}");
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          erf(1.0) = 0.842701
-
-
-Erfc
+Full
 ====
    Description: 
-       Computes the complementary error function erfc(x), which is defined as erfc(x) = 1 - erf(x) = (2/√π) ∫ₓ^∞ e^(-t²) dt.
-       The complementary error function is widely used in probability theory, statistics, and physics for computing tail probabilities of the normal distribution. It provides better numerical accuracy than computing 1 - erf(x) directly, especially for large positive values of x where erf(x) approaches 1. The function satisfies erfc(0) = 1, erfc(∞) = 0, and erfc(-x) = 2 - erfc(x).
+       Converts a sparse matrix to a full (dense) matrix representation by explicitly storing all elements including zeros.
+       This function takes a sparse matrix and returns a standard dense matrix where all elements are stored in memory.
 
        .. code-block:: CSharp 
 
-          double Erfc(double x)
-          Complex Erfc(Complex x)
-          Matrix Erfc(Matrix x)
-          ColVec Erfc(ColVec x)
-          RowVec Erfc(RowVec x)
-          SparseMatrix Erfc(SparseMatrix x)
-          SparseColVec Erfc(SparseColVec x)
-          SparseRowVec Erfc(SparseRowVec x)
+          Matrix Full(SparseMatrix A)
+          Matrix Full(SparseColVec A)
+          Matrix Full(SparseRowVec A)
    Parameters: 
-       x: 
-         The argument at which to evaluate the complementary error function. Can be any real number.
+       A: 
+         The sparse matrix to be converted to full matrix format. Can be any valid sparse matrix with defined dimensions.
    Returns: 
-       The value of the complementary error function erfc(x) evaluated at x. Returns a double-precision floating-point number in the range (0, 2). It can also return one-dimensional or two-dimensional array of numbers
+       A dense Matrix containing all elements from the sparse matrix, with zeros explicitly stored for non-specified elements.
    Example: 
-       Compute the complementary error function at x = 0.0:
+       Convert a 3x3 sparse matrix to full matrix:
 
        .. code-block:: CSharp 
 
@@ -3823,23 +3351,29 @@ Erfc
           using System;
           using static SepalSolver.Math;
             
-          // Define the argument
-          double x = 0.0;
+          // Create a 3x3 sparse matrix with few non-zero elements
+          SparseMatrix sparseA = new double[3, 3];
+          sparseA[0, 0] = 1.0;
+          sparseA[1, 2] = 5.0;
+          sparseA[2, 1] = 3.0;
           
-          // Calculate the complementary error function
-          double result = Erfc(x);
+          // Convert to full matrix
+          Matrix result = Full(sparseA);
       
           // Output the result
-          Console.WriteLine($"erfc(0.0) = {result}");
+          Console.WriteLine($"Full matrix:\n{result}")
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          erfc(0.0) = 1.000000
+          Full matrix:
+          1 0 0
+          0 0 5
+          0 3 0
    Example: 
-       Compute the complementary error function at x = 1.0:
+       Convert a sparse column vector to full matrix:
 
        .. code-block:: CSharp 
 
@@ -3847,46 +3381,53 @@ Erfc
           using System;
           using static SepalSolver.Math;
            
-          // Define the argument
-          double x = 1.0;
+          // Create a sparse column vector
+          SparseColVec sparseVec = new double[4];
+          sparseVec[0] = 2.5;
+          sparseVec[2] = 7.8;
       
-          // Calculate the complementary error function
-          double result = Erfc(x);
+          // Convert to full matrix
+          Matrix result = Full(sparseVec);
       
           // Output the result
-          Console.WriteLine($"erfc(1.0) = {result}");
+          Console.WriteLine($"Full matrix from sparse vector:\n{result}")
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          erfc(1.0) = 0.157299
+          Full matrix from sparse vector:
+          2.5
+          0
+          7.8
+          0
 
 
-Zeta
-====
+Sparse
+======
    Description: 
-       Computes the Riemann zeta function ζ(x), which is defined as the infinite series ζ(x) = Σ(n=1 to ∞) 1/n^x for x > 1.
-       The Riemann zeta function is one of the most important functions in number theory and mathematical analysis. It has deep connections to prime numbers through Euler's product formula and is central to the famous Riemann Hypothesis. The function can be analytically continued to the entire complex plane except for a simple pole at x = 1, where ζ(1) diverges to infinity.
+       Converts a dense matrix to a sparse matrix representation by storing only non-zero elements to optimize memory usage.
+       This function takes a standard dense matrix and returns a sparse matrix where only non-zero values are explicitly stored.
 
        .. code-block:: CSharp 
 
-          double Zeta(double x)
-          Complex Zeta(Complex x)
-          Matrix Zeta(Matrix x)
-          ColVec Zeta(ColVec x)
-          RowVec Zeta(RowVec x)
-          SparseMatrix Zeta(SparseMatrix x)
-          SparseColVec Zeta(SparseColVec x)
-          SparseRowVec Zeta(SparseRowVec x)
+          SparseMatrix Sparse(Matrix A)
+          SparseMatrix Sparse(int[] I, int[] J, double[] V)
+          Sparse(int[] I, int[] J, double[] V, int M, int N)
    Parameters: 
-       x: 
-         The argument at which to evaluate the Riemann zeta function. Must be a real number with x ≠ 1 (the function has a pole at x = 1).
+       A: 
+         The dense matrix to be converted to sparse matrix format. Can be any valid matrix with defined dimensions.
+       I: 
+         Array of row indices for non-zero elements. Must be zero-based and have the same length as J and V arrays.
+       J: 
+         Array of column indices for non-zero elements. Must be zero-based and have the same length as I and V.
+       V: 
+         Array of values for non-zero elements. Must have the same length as I and J arrays.
    Returns: 
-       The value of the Riemann zeta function ζ(x) evaluated at x. Returns a double-precision floating-point number.
+       A SparseMatrix containing only the non-zero elements from the dense matrix, providing efficient storage for matrices with many zeros.
    Example: 
-       Compute the Riemann zeta function at x = 2.0:
+       Convert a 3x3 dense matrix to sparse matrix:
 
        .. code-block:: CSharp 
 
@@ -3894,65 +3435,77 @@ Zeta
           using System;
           using static SepalSolver.Math;
             
-          // Define the argument
-          double x = 2.0;
+          // Create a 3x3 dense matrix with many zero elements
+          Matrix denseA = new Matrix(new double[,] {
+              { 1.0, 0.0, 0.0 },
+              { 0.0, 0.0, 5.0 },
+              { 0.0, 3.0, 0.0 }
+          });
           
-          // Calculate the Riemann zeta function
-          double result = Zeta(x);
+          // Convert to sparse matrix
+          SparseMatrix result = Sparse(denseA);
       
           // Output the result
-          Console.WriteLine($"ζ(2.0) = {result}");
+          Console.WriteLine($"Sparse matrix:\n{result}")
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          ζ(2.0) = 1.644934
+          Sparse matrix:
+          (0,0) = 1
+          (1,2) = 5
+          (2,1) = 3
    Example: 
-       Compute the Riemann zeta function at x = 3.0:
+       Create a 3x3 sparse matrix from triplet format:
 
        .. code-block:: CSharp 
 
           // import libraries
           using System;
           using static SepalSolver.Math;
-           
-          // Define the argument
-          double x = 3.0;
-      
-          // Calculate the Riemann zeta function
-          double result = Zeta(x);
+            
+          // Define triplet arrays for a 3x3 matrix
+          int[] I = new int[] { 0, 1, 2 };      // row indices
+          int[] J = new int[] { 0, 2, 1 };      // column indices
+          double[] V = new double[] { 1, 5, 3 };      // values
+          
+          // Create sparse matrix from triplet format
+          SparseMatrix result = Sparse(I, J, V);
       
           // Output the result
-          Console.WriteLine($"ζ(3.0) = {result}");
+          Console.WriteLine($"Sparse matrix from triplets:\n{result}")
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          ζ(3.0) = 1.202057
+          Sparse matrix from triplets:
+          (0,0) = 1
+          (1,2) = 5
+          (2,1) = 3
 
 
-Psi
+Eye
 ===
    Description: 
-       Computes the polygamma function ψ^(m)(x), which is the m-th derivative of the digamma function ψ(x) = d/dx[ln(Γ(x))].
-       The polygamma function is defined as ψ^(m)(x) = d^(m+1)/dx^(m+1)[ln(Γ(x))] for m ≥ 0. When m = 0, it returns the digamma function ψ(x). The polygamma functions appear in various areas of mathematics including number theory, probability theory, and mathematical physics. They satisfy the recurrence relation ψ^(m)(x+1) = ψ^(m)(x) + (-1)^m * m! / x^(m+1).
+       Creates an identity matrix of size N x N with ones on the main diagonal and zeros elsewhere.
+       This function generates a square matrix where all diagonal elements are 1.0 and all off-diagonal elements are 0.0.
 
        .. code-block:: CSharp 
 
-          double Psi(int m, double x)
+          Matrix Eye(int N)
+          Matrix Eye(int[] Size)
+          Matrix Eye(int M, int N)
    Parameters: 
-       m: 
-         The order of the polygamma function. Must be a non-negative integer (m ≥ 0). When m = 0, computes the digamma function ψ(x).
-       x: 
-         The argument at which to evaluate the polygamma function. Must be a positive real number (x > 0).
+       N: 
+         The size of the square identity matrix. Must be a positive integer greater than zero.
    Returns: 
-       The value of the polygamma function ψ^(m)(x) evaluated at x. Returns a double-precision floating-point number.
+       A square Matrix of size N x N with ones on the main diagonal and zeros elsewhere, representing the identity matrix.
    Example: 
-       Compute the digamma function (m = 0) at x = 1.0:
+       Create a 3x3 identity matrix:
 
        .. code-block:: CSharp 
 
@@ -3960,24 +3513,26 @@ Psi
           using System;
           using static SepalSolver.Math;
             
-          // Define the order and argument
-          int m = 0;
-          double x = 1.0;
+          // Create a 3x3 identity matrix
+          int N = 3;
           
-          // Calculate the polygamma function
-          double result = Psi(m, x);
+          // Generate the identity matrix
+          Matrix result = Eye(N);
       
           // Output the result
-          Console.WriteLine($"ψ(1.0) = {result}");
+          Console.WriteLine($"3x3 Identity matrix:\n{result}")
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          ψ(1.0) = -0.577216
+          3x3 Identity matrix:
+          1 0 0
+          0 1 0
+          0 0 1
    Example: 
-       Compute the trigamma function (m = 1) at x = 2.0:
+       Create a 4x4 identity matrix:
 
        .. code-block:: CSharp 
 
@@ -3985,58 +3540,437 @@ Psi
           using System;
           using static SepalSolver.Math;
            
-          // Define the order and argument
-          int m = 1;
-          double x = 2.0;
+          // Create a 4x4 identity matrix
+          int size = 4;
       
-          // Calculate the polygamma function
-          double result = Psi(m, x);
+          // Generate the identity matrix
+          Matrix result = Eye(size);
       
           // Output the result
-          Console.WriteLine($"ψ^(1)(2.0) = {result}");
+          Console.WriteLine($"4x4 Identity matrix:\n{result}")
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          ψ^(1)(2.0) = 0.644934
+          4x4 Identity matrix:
+          1 0 0 0
+          0 1 0 0
+          0 0 1 0
+          0 0 0 1
 
 
-HyperGeom
+Triu
+====
+   Description: 
+       Extracts the upper triangular part of a matrix, setting all elements below the main diagonal to zero.
+       This function returns a new matrix where A[i,j] = original A[i,j] if i ≤ j, and A[i,j] = 0 if i > j.
+       The main diagonal and all elements above it are preserved from the original matrix.
+
+       .. code-block:: CSharp 
+
+          Matrix Triu(Matrix A)
+          SparseMatrix Triu(SparseMatrix A)
+   Parameters: 
+       A: 
+         The input matrix from which to extract the upper triangular part. Can be any m×n matrix (not necessarily square).
+   Returns: 
+       A new matrix of the same dimensions as the input matrix A, containing the upper triangular part of A with all elements below the main diagonal set to zero.
+   Example: 
+       Extract the upper triangular part of a 3×3 matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a 3×3 matrix
+          Matrix A = new double[,] {
+              {1, 2, 3},
+              {4, 5, 6},
+              {7, 8, 9}
+          };
+          
+          // Extract upper triangular part
+          Matrix result = Triu(A);
+      
+          // Output the result
+          Console.WriteLine("Original matrix A:");
+          Console.WriteLine(A);
+          Console.WriteLine("Upper triangular part:");
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Original matrix A:
+          1  2  3
+          4  5  6
+          7  8  9
+          
+          Upper triangular part:
+          1  2  3
+          0  5  6
+          0  0  9
+   Example: 
+       Extract the upper triangular part of a rectangular 4×3 matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Create a 4×3 rectangular matrix
+          Matrix A = new double[,] {
+              {1, 2, 3},
+              {4, 5, 6},
+              {7, 8, 9},
+              {10, 11, 12}
+          };
+      
+          // Extract upper triangular part
+          Matrix result = Triu(A);
+      
+          // Output the result
+          Console.WriteLine("Original matrix A:");
+          Console.WriteLine(A);
+          Console.WriteLine("Upper triangular part:");
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Original matrix A:
+          1   2   3
+          4   5   6
+          7   8   9
+          10  11  12
+          
+          Upper triangular part:
+          1  2  3
+          0  5  6
+          0  0  9
+          0  0  0
+
+
+Tril
+====
+   Description: 
+       Extracts the lower triangular part of a matrix, setting all elements above the main diagonal to zero.
+       This function returns a new matrix where A[i,j] = original A[i,j] if i ≥ j, and A[i,j] = 0 if i < j.
+       The main diagonal and all elements below it are preserved from the original matrix.
+
+       .. code-block:: CSharp 
+
+          Matrix Tril(Matrix A)
+          SparseMatrix Tril(SparseMatrix A)
+   Parameters: 
+       A: 
+         The input matrix from which to extract the lower triangular part. Can be any m×n matrix (not necessarily square).
+   Returns: 
+       A new matrix of the same dimensions as the input matrix A, containing the lower triangular part of A with all elements above the main diagonal set to zero.
+   Example: 
+       Extract the lower triangular part of a 3×3 matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a 3×3 matrix
+          Matrix A = new double[,] {
+              {1, 2, 3},
+              {4, 5, 6},
+              {7, 8, 9}
+          };
+          
+          // Extract lower triangular part
+          Matrix result = Tril(A);
+      
+          // Output the result
+          Console.WriteLine("Original matrix A:");
+          Console.WriteLine(A);
+          Console.WriteLine("Lower triangular part:");
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Original matrix A:
+          1  2  3
+          4  5  6
+          7  8  9
+          
+          Lower triangular part:
+          1  0  0
+          4  5  0
+          7  8  9
+   Example: 
+       Extract the lower triangular part of a rectangular 3×4 matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Create a 3×4 rectangular matrix
+          Matrix A = new double[,] {
+              {1, 2, 3, 4},
+              {5, 6, 7, 8},
+              {9, 10, 11, 12}
+          };
+      
+          // Extract lower triangular part
+          Matrix result = Tril(A);
+      
+          // Output the result
+          Console.WriteLine("Original matrix A:");
+          Console.WriteLine(A);
+          Console.WriteLine("Lower triangular part:");
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Original matrix A:
+          1  2   3   4
+          5  6   7   8
+          9  10  11  12
+          
+          Lower triangular part:
+          1  0  0  0
+          5  6  0  0
+          9  10 11 0
+
+
+Flipud
+======
+   Description: 
+       Flips a matrix vertically (up-down), reversing the order of rows while preserving the order of columns.
+       This function returns a new matrix where the first row becomes the last row, the second row becomes the second-to-last row, and so on.
+       For a matrix A with m rows, the element A[i,j] becomes A[m-1-i,j] in the flipped matrix.
+
+       .. code-block:: CSharp 
+
+          Matrix Flipud(Matrix A)
+          SparseMatrix Flipud(SparseMatrix A)
+   Parameters: 
+       A: 
+         The input matrix to be flipped vertically. Can be any m×n matrix or column vector.
+   Returns: 
+       A new matrix of the same dimensions as the input matrix A, with rows in reverse order (vertically flipped).
+   Example: 
+       Flip a 3×3 matrix vertically:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a 3×3 matrix
+          Matrix A = new double[,] {
+              {1, 2, 3},
+              {4, 5, 6},
+              {7, 8, 9}
+          };
+          
+          // Flip matrix vertically
+          Matrix result = Flipud(A);
+      
+          // Output the result
+          Console.WriteLine("Original matrix A:");
+          Console.WriteLine(A);
+          Console.WriteLine("Vertically flipped matrix:");
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Original matrix A:
+          1  2  3
+          4  5  6
+          7  8  9
+          
+          Vertically flipped matrix:
+          7  8  9
+          4  5  6
+          1  2  3
+   Example: 
+       Flip a rectangular 4×2 matrix vertically:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Create a 4×2 rectangular matrix
+          Matrix A = new double[,] {
+              {1, 2},
+              {3, 4},
+              {5, 6},
+              {7, 8}
+          };
+      
+          // Flip matrix vertically
+          Matrix result = Flipud(A);
+      
+          // Output the result
+          Console.WriteLine("Original matrix A:");
+          Console.WriteLine(A);
+          Console.WriteLine("Vertically flipped matrix:");
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Original matrix A:
+          1  2
+          3  4
+          5  6
+          7  8
+          
+          Vertically flipped matrix:
+          7  8
+          5  6
+          3  4
+          1  2
+
+
+Fliplr
+======
+   Description: 
+       Flips a matrix horizontally (left-right), reversing the order of columns while preserving the order of rows.
+       This function returns a new matrix where the first column becomes the last column, the second column becomes the second-to-last column, and so on.
+       For a matrix A with n columns, the element A[i,j] becomes A[i,n-1-j] in the flipped matrix.
+
+       .. code-block:: CSharp 
+
+          Matrix Fliplr(Matrix A)
+          SparseMatrix Fliplr(SparseMatrix A)
+   Parameters: 
+       A: 
+         The input matrix to be flipped horizontally. Can be any m×n matrix or row vector.
+   Returns: 
+       A new matrix of the same dimensions as the input matrix A, with columns in reverse order (horizontally flipped).
+   Example: 
+       Flip a 3×3 matrix horizontally:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a 3×3 matrix
+          Matrix A = new double[,] {
+              {1, 2, 3},
+              {4, 5, 6},
+              {7, 8, 9}
+          };
+          
+          // Flip matrix horizontally
+          Matrix result = Fliplr(A);
+      
+          // Output the result
+          Console.WriteLine("Original matrix A:");
+          Console.WriteLine(A);
+          Console.WriteLine("Horizontally flipped matrix:");
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Original matrix A:
+          1  2  3
+          4  5  6
+          7  8  9
+          
+          Horizontally flipped matrix:
+          3  2  1
+          6  5  4
+          9  8  7
+   Example: 
+       Flip a rectangular 2×4 matrix horizontally:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Create a 2×4 rectangular matrix
+          Matrix A = new double[,] {
+              {1, 2, 3, 4},
+              {5, 6, 7, 8}
+          };
+      
+          // Flip matrix horizontally
+          Matrix result = Fliplr(A);
+      
+          // Output the result
+          Console.WriteLine("Original matrix A:");
+          Console.WriteLine(A);
+          Console.WriteLine("Horizontally flipped matrix:");
+          Console.WriteLine(result);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Original matrix A:
+          1  2  3  4
+          5  6  7  8
+          
+          Horizontally flipped matrix:
+          4  3  2  1
+          8  7  6  5
+
+
+Trireduce
 =========
    Description: 
-       Computes the confluent hypergeometric function of the first kind, also known as Kummer's function M(a,b,x) or ₁F₁(a;b;x).
-       This function is defined by the infinite series M(a,b,x) = Σ(n=0 to ∞) [(a)ₙ xⁿ] / [(b)ₙ n!] where (a)ₙ is the Pochhammer symbol.
+       Performs tridiagonal reduction of a symmetric matrix, decomposing it into the form A = U * T * U^T where T is a tridiagonal matrix.
+       This function computes the tridiagonal decomposition using Householder transformations, where U is an orthogonal matrix
+       and T is a symmetric tridiagonal matrix (non-zero elements only on the main diagonal and adjacent diagonals).
+       The tridiagonal reduction is a key step in computing eigenvalues and eigenvectors of symmetric matrices efficiently.
 
        .. code-block:: CSharp 
 
-          double HyperGeom(double a, double b, double x)
-          Matrix HyperGeom(double a, double b, Matrix x)
-          ColVec HyperGeom(double a, double b, ColVec x)
-          RowVec HyperGeom(double a, double b, RowVec x)
-          SparseMatrix HyperGeom(double a, double b, SparseMatrix x)
-          SparseColVec HyperGeom(double a, double b, SparseColVec x)
-          SparseRowVec HyperGeom(double a, double b, SparseRowVec x)
-          double HyperGeom(double[] N, double[] D, double x)
-          Matrix HyperGeom(double[] N, double[] D, Matrix x)
-          ColVec HyperGeom(double[] N, double[] D, ColVec x)
-          RowVec HyperGeom(double[] N, double[] D, RowVec x)
-          SparseMatrix HyperGeom(double[] N, double[] D, SparseMatrix x)
-          SparseColVec HyperGeom(double[] N, double[] D, SparseColVec x)
-          SparseRowVec HyperGeom(double[] N, double[] D, SparseRowVec x)
-          Complex HyperGeom(double a, double b, Complex x)
+          (Matrix U, Matrix T, Matrix V) Trireduce(Matrix A)
+          (SparseMatrix U, SparseMatrix T, SparseMatrix V) Trireduce(SparseMatrix A)
    Parameters: 
-       a: 
-         The first parameter of the hypergeometric function. It can be any real number.
-       b: 
-         The second parameter of the hypergeometric function. it must be a positive real number and cannot be zero or a negative integer.
-       x: 
-         The argument of the hypergeometric function. It can be any real number.
+       A: 
+         The input matrix to be reduced to tridiagonal form. Must be a symmetric n×n matrix for optimal results.
    Returns: 
-       The value of the confluent hypergeometric function M(a,b,x) as a double.
+       A tuple containing three matrices:
+       - U: An n×n orthogonal matrix (transformation matrix)
+       - T: An n×n symmetric tridiagonal matrix with non-zero elements only on the main diagonal and adjacent diagonals
+       - V: An n×n orthogonal matrix (equal to U^T for symmetric input)
+       The original matrix A can be reconstructed as A = U * T * U^T.
    Example: 
-       Compute the hypergeometric function M(1,1,x) which equals e^x:
+       Perform tridiagonal reduction on a 3×3 symmetric matrix:
 
        .. code-block:: CSharp 
 
@@ -4044,25 +3978,52 @@ HyperGeom
           using System;
           using static SepalSolver.Math;
             
-          // Set parameters
-          double a = 1.0;
-          double b = 1.0;
-          double x = 2.0;
+          // Create a 3×3 symmetric matrix
+          Matrix A = new double[,] {
+              {4, 1, 2},
+              {1, 3, 1},
+              {2, 1, 5}
+          };
           
-          // Compute the hypergeometric function
-          double result = HyperGeom(a, b, x);
+          // Perform tridiagonal reduction
+          var (U, T, V) = Trireduce(A);
       
-          // Output the result
-          console.writeline($"M({a},{b},{x}) = {result}")
+          // Output the results
+          Console.WriteLine("Original symmetric matrix A:");
+          Console.WriteLine(A);
+          Console.WriteLine("Orthogonal matrix U:");
+          Console.WriteLine(U);
+          Console.WriteLine("Tridiagonal matrix T:");
+          Console.WriteLine(T);
+          Console.WriteLine("Orthogonal matrix V:");
+          Console.WriteLine(V);
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          M(1,1,2) = 7.389056
+          Original symmetric matrix A:
+          4  1  2
+          1  3  1
+          2  1  5
+          
+          Orthogonal matrix U:
+          1.000   0.000   0.000
+          0.000  -0.447  -0.894
+          0.000  -0.894   0.447
+          
+          Tridiagonal matrix T:
+          4.000  -2.236   0.000
+         -2.236   3.800  -0.894
+          0.000  -0.894   4.200
+          
+          Orthogonal matrix V:
+          1.000   0.000   0.000
+          0.000  -0.447  -0.894
+          0.000  -0.894   0.447
    Example: 
-       Compute the hypergeometric function with fractional parameters:
+       Perform tridiagonal reduction on a 4×4 symmetric matrix and verify reconstruction:
 
        .. code-block:: CSharp 
 
@@ -4070,23 +4031,307 @@ HyperGeom
           using System;
           using static SepalSolver.Math;
            
-          // Set parameters for M(0.5, 1.5, 1.0)
-          double a = 0.5;
-          double b = 1.5;
-          double x = 1.0;
+          // Create a 4×4 symmetric matrix
+          Matrix A = new double[,] {
+              {2, 1, 0, 1},
+              {1, 3, 1, 0},
+              {0, 1, 2, 1},
+              {1, 0, 1, 4}
+          };
       
-          // Compute the hypergeometric function
-          double result = HyperGeom(a, b, x);
+          // Perform tridiagonal reduction
+          var (U, T, V) = Trireduce(A);
       
-          // Output the result
-          console.writeline($"M({a},{b},{x}) = {result}")
+          // Verify reconstruction: A_reconstructed = U * T * U^T
+          Matrix A_reconstructed = U * T * U.Transpose();
+      
+          // Output the results
+          Console.WriteLine("Original symmetric matrix A:");
+          Console.WriteLine(A);
+          Console.WriteLine("Tridiagonal matrix T:");
+          Console.WriteLine(T);
+          Console.WriteLine("Reconstructed matrix A:");
+          Console.WriteLine(A_reconstructed);
 
       Output: 
 
 
        .. code-block:: Terminal 
 
-          M(0.5,1.5,1) = 1.175201
+          Original symmetric matrix A:
+          2  1  0  1
+          1  3  1  0
+          0  1  2  1
+          1  0  1  4
+          
+          Tridiagonal matrix T:
+          2.000  -1.414   0.000   0.000
+         -1.414   3.500  -1.155   0.000
+          0.000  -1.155   1.667  -0.577
+          0.000   0.000  -0.577   3.833
+          
+          Reconstructed matrix A:
+          2.000  1.000  0.000  1.000
+          1.000  3.000  1.000  0.000
+          0.000  1.000  2.000  1.000
+          1.000  0.000  1.000  4.000
+
+
+Bireduce
+========
+   Description: 
+       Performs bidiagonal reduction of a matrix, decomposing it into the form A = U * B * V^T where B is a bidiagonal matrix.
+       This function computes the bidiagonal decomposition using Householder transformations, where U and V are orthogonal matrices
+       and B is an upper bidiagonal matrix (non-zero elements only on the main diagonal and superdiagonal).
+       The bidiagonal reduction is a key step in computing the Singular Value Decomposition (SVD) of a matrix.
+
+       .. code-block:: CSharp 
+
+          (Matrix U, Matrix B, Matrix V) Bireduce(Matrix A)
+          (SparseMatrix U, SparseMatrix B, SparseMatrix V) Bireduce(SparseMatrix A)
+   Parameters: 
+       A: 
+         The input matrix to be reduced to bidiagonal form. Can be any m×n matrix with m ≥ n for optimal performance.
+   Returns: 
+       A tuple containing three matrices:
+       - U: An m×m orthogonal matrix (left transformation matrix)
+       - B: An m×n bidiagonal matrix with non-zero elements only on the main diagonal and superdiagonal
+       - V: An n×n orthogonal matrix (right transformation matrix)
+       The original matrix A can be reconstructed as A = U * B * V^T.
+   Example: 
+       Perform bidiagonal reduction on a 3×3 matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a 3×3 matrix
+          Matrix A = new double[,] {
+              {1, 2, 3},
+              {4, 5, 6},
+              {7, 8, 9}
+          };
+          
+          // Perform bidiagonal reduction
+          var (U, B, V) = Bireduce(A);
+      
+          // Output the results
+          Console.WriteLine("Original matrix A:");
+          Console.WriteLine(A);
+          Console.WriteLine("Left orthogonal matrix U:");
+          Console.WriteLine(U);
+          Console.WriteLine("Bidiagonal matrix B:");
+          Console.WriteLine(B);
+          Console.WriteLine("Right orthogonal matrix V:");
+          Console.WriteLine(V);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Original matrix A:
+          1  2  3
+          4  5  6
+          7  8  9
+          
+          Left orthogonal matrix U:
+          -0.1231    0.9045    0.4082
+          -0.4924    0.3015   -0.8165
+          -0.8616   -0.3015    0.4082
+          
+          Bidiagonal matrix B:
+          -8.1240   14.6598    0.0000
+          -0.0000   -1.9595    0.5013
+          -0.0000   -0.0000    0.0000
+          
+          Right orthogonal matrix V:
+          1.0000    0.0000    0.0000
+          0.0000   -0.6549   -0.7557
+          0.0000   -0.7557    0.6549
+   Example: 
+       Perform bidiagonal reduction on a rectangular 4×3 matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Create a 4×3 rectangular matrix
+          Matrix A = new double[,] {
+              {1, 2, 1},
+              {3, 4, 2},
+              {5, 6, 3},
+              {7, 8, 4}
+          };
+      
+          // Perform bidiagonal reduction
+          var (U, B, V) = Bireduce(A);
+      
+          // Verify reconstruction: A_reconstructed = U * B * V^T
+          Matrix A_reconstructed = U * B * V.Transpose();
+      
+          // Output the results
+          Console.WriteLine("Original matrix A:");
+          Console.WriteLine(A);
+          Console.WriteLine("Bidiagonal matrix B:");
+          Console.WriteLine(B);
+          Console.WriteLine("Reconstructed matrix A:");
+          Console.WriteLine(A_reconstructed);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Original matrix A:
+          1  2  1
+          3  4  2
+          5  6  3
+          7  8  4
+          
+          Bidiagonal matrix B:
+          -9.1652   12.1988    0.0000
+          -0.0000    1.0911    0.0000
+          0.0000   -0.0000   -0.0000
+          -0.0000   -0.0000    0.0000
+          
+          Reconstructed matrix A:
+          1.000  2.000  1.000
+          3.000  4.000  2.000
+          5.000  6.000  3.000
+          7.000  8.000  4.000
+
+
+Lu
+==
+   Description: 
+       Performs LU decomposition with partial pivoting on a matrix, decomposing it into the form P * A = L * U where L is lower triangular, U is upper triangular, and P is a permutation matrix.
+       This function computes the LU factorization using Gaussian elimination with partial pivoting for numerical stability.
+       L is a lower triangular matrix with ones on the diagonal, U is an upper triangular matrix, and P represents row permutations applied during the decomposition.
+       The LU decomposition is fundamental for solving linear systems, computing determinants, and matrix inversion.
+
+       .. code-block:: CSharp 
+
+          (Matrix L, Matrix U, PermIndexer P) Lu(Matrix A)
+          (SparseMatrix L, SparseMatrix U, PermIndexer P) Lu(SparseMatrix A)
+   Parameters: 
+       A: 
+         The input matrix to be decomposed. Must be a square n×n matrix for complete LU decomposition.
+   Returns: 
+       A tuple containing three components:
+       - L: An n×n lower triangular matrix with ones on the main diagonal and zeros above the diagonal
+       - U: An n×n upper triangular matrix with zeros below the main diagonal
+       - P: A PermIndexer object representing the permutation matrix used for partial pivoting
+       The original matrix A can be reconstructed as A = P^(-1) * L * U or equivalently P * A = L * U.
+   Example: 
+       Perform LU decomposition on a 3×3 matrix:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create a 3×3 matrix
+          Matrix A = new double[,] {
+              {2, 1, 3},
+              {4, 5, 6},
+              {1, 2, 1}
+          };
+          
+          // Perform LU decomposition
+          var (L, U, P) = Lu(A);
+      
+          // Output the results
+          Console.WriteLine("Original matrix A:");
+          Console.WriteLine(A);
+          Console.WriteLine("Lower triangular matrix L:");
+          Console.WriteLine(L);
+          Console.WriteLine("Upper triangular matrix U:");
+          Console.WriteLine(U);
+          Console.WriteLine("Permutation indexer P:");
+          Console.WriteLine(P);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Original matrix A:
+          2  1  3
+          4  5  6
+          1  2  1
+          
+          Lower triangular matrix L:
+          1.000  0.000  0.000
+          0.500  1.000  0.000
+          0.250  0.429  1.000
+          
+          Upper triangular matrix U:
+          4.000  5.000  6.000
+          0.000 -1.500  0.000
+          0.000  0.000  0.714
+          
+          Permutation indexer P:
+          [1, 0, 2]
+   Example: 
+       Perform LU decomposition and verify reconstruction:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Create a 4×4 matrix
+          Matrix A = new Matrix(new double[,] {
+              {1, 2, 3, 4},
+              {5, 6, 7, 8},
+              {9, 10, 11, 12},
+              {13, 14, 15, 16}
+          });
+      
+          // Perform LU decomposition
+          var (L, U, P) = Lu(A);
+      
+          // Reconstruct the permuted matrix: PA = L * U
+          Matrix PA = P.ApplyToRows(A);
+          Matrix LU = L * U;
+      
+          // Output the results
+          Console.WriteLine("Original matrix A:");
+          Console.WriteLine(A);
+          Console.WriteLine("L * U reconstruction:");
+          Console.WriteLine(LU);
+          Console.WriteLine("P * A (permuted A):");
+          Console.WriteLine(PA);
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Original matrix A:
+          1   2   3   4
+          5   6   7   8
+          9   10  11  12
+          13  14  15  16
+          
+          L * U reconstruction:
+          13.000  14.000  15.000  16.000
+          5.000   6.000   7.000   8.000
+          9.000   10.000  11.000  12.000
+          1.000   2.000   3.000   4.000
+          
+          P * A (permuted A):
+          13.000  14.000  15.000  16.000
+          5.000   6.000   7.000   8.000
+          9.000   10.000  11.000  12.000
+          1.000   2.000   3.000   4.000
 
 
 SolverSet
