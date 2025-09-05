@@ -9919,7 +9919,7 @@ Laplace
 =======
    Description: 
        Computes the Laplace transform of a given function f(t) at a specified complex frequency parameter s.
-       The Laplace transform is defined as :math:`L{f(t)}(s) = \int_0^infty f(t)e^(-st) dt`, which converts a time-domain function into the s-domain.
+       The Laplace transform is defined as :math:`\mathcal{L}{f(t)}(s) = \int_0^{infty} f(t)e^{-st} dt`, which converts a time-domain function into the s-domain.
        This implementation uses numerical integration techniques with adaptive error control to approximate the improper integral.
        The transform is particularly useful for solving differential equations, analyzing linear time-invariant systems, and signal processing applications.
 
@@ -9944,10 +9944,10 @@ Laplace
            Smaller values provide higher accuracy but require more computational time. Must be a positive real number.
            The algorithm will continue refining the approximation until the estimated error falls below this threshold.
    Returns: 
-       The value of the Laplace transform L{f(t)}(s) as a double precision floating-point number.
-       Returns the numerical approximation of the integral ∫₀^∞ f(t)e^(-st) dt evaluated at the specified s parameter.
+       The value of the Laplace transform :math:`\mathcal{L}{f(t)}(s)` as a double precision floating-point number.
+       Returns the numerical approximation of the integral :math:`\int_0^{infty} f(t)e^{-st} dt` evaluated at the specified s parameter.
    Example: 
-       Compute the Laplace transform of f(t) = e^(-2t), which should equal 1/(s+2):
+       Compute the Laplace transform of :math:`f(t) = e^{-2t}`, which should equal :math:`1/(s+2)`:
 
        .. code-block:: CSharp 
 
