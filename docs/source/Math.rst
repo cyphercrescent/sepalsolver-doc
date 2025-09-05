@@ -7294,6 +7294,182 @@ Ga
                 -1.7982    3.000    -0.0289    2.6850
 
 
+Fft
+===
+   Description: 
+       Computes the Fast Fourier Transform (FFT) of a real-valued signal using the Cooley-Tukey algorithm.
+       The FFT transforms a signal from the time domain to the frequency domain, converting N real samples 
+       into N/2+1 complex frequency components. The algorithm has O(N log N) computational complexity.
+
+       .. code-block:: CSharp 
+
+          Complex[] Fft(double[] X, int n = 1)
+   Parameters: 
+       X: 
+         The input real-valued signal array in the time domain. The array length should preferably be a power of 2 
+         for optimal performance, though the algorithm can handle arbitrary lengths through zero-padding.
+       n: 
+         The normalization factor for the transform. Default value is 1. When n = 1, no normalization is applied.
+         For other values, the result is divided by n^(length of transform).
+   Returns: 
+       An array of Complex numbers representing the frequency domain coefficients. The length of the output
+       is N/2+1 where N is the length of the input array, containing frequencies from 0 Hz to the Nyquist frequency.
+   Example: 
+       Compute the FFT of a simple sine wave signal:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using System.Numerics;
+          using static SepalSolver.Math;
+            
+          // Create a sine wave signal
+          double[] signal = new double[8];
+          for (int i = 0; i < signal.Length; i++)
+          {
+              signal[i] = Sin(2 * pi * i / 8);
+          }
+          
+          // Compute the FFT
+          Complex[] result = Fft(signal);
+      
+          // Output the results
+          for (int i = 0; i < result.Length; i++)
+          {
+              Console.WriteLine($"Bin {i}: {result[i].Real:F6} + {result[i].Imaginary:F6}i");
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Bin 0: 0.000000 + 0.000000i
+          Bin 1: 0.000000 + -4.000000i
+          Bin 2: 0.000000 + 0.000000i
+          Bin 3: 0.000000 + 0.000000i
+          Bin 4: 0.000000 + 0.000000i
+   Example: 
+       Compute the FFT of a DC signal with custom normalization:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using System.Numerics;
+          using static SepalSolver.Math;
+           
+          // Create a constant DC signal
+          double[] dcSignal = { 1.0, 1.0, 1.0, 1.0 };
+      
+          // Compute the FFT with normalization factor of 2
+          Complex[] result = Fft(dcSignal, 2);
+      
+          // Output the results
+          for (int i = 0; i < result.Length; i++)
+          {
+              Console.WriteLine($"Frequency bin {i}: {result[i].Real:F6} + {result[i].Imaginary:F6}i");
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Frequency bin 0: 0.250000 + 0.000000i
+          Frequency bin 1: 0.000000 + 0.000000i
+          Frequency bin 2: 0.000000 + 0.000000i
+
+
+Ifft
+====
+   Description: 
+       Computes the Inverse Fast Fourier Transform (IFFT) of a frequency domain signal, converting it back to the time domain.
+       The IFFT transforms N frequency domain coefficients into N time domain samples using the inverse Cooley-Tukey algorithm.
+       This operation is the inverse of the FFT and reconstructs the original signal from its frequency representation.
+
+       .. code-block:: CSharp 
+
+          Complex[] Ifft(double[] X, int n = 1)
+   Parameters: 
+       X: 
+         The input frequency domain coefficients as a real-valued array. Typically represents the magnitude spectrum
+         or real parts of frequency components. The array length should preferably be a power of 2 for optimal performance.
+       n: 
+         The normalization factor for the inverse transform. Default value is 1. When n = 1, standard normalization is applied.
+         The result is scaled by 1/(n * N) where N is the length of the input array.
+   Returns: 
+       An array of Complex numbers representing the reconstructed time domain signal. The length of the output
+       matches the input length, containing the time-domain samples as complex values.
+   Example: 
+       Compute the IFFT to reconstruct a time domain signal from frequency coefficients:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using System.Numerics;
+          using static SepalSolver.Math;
+            
+          // Create frequency domain coefficients (representing a DC component)
+          double[] freqCoeffs = { 4.0, 0.0, 0.0, 0.0 };
+          
+          // Compute the IFFT
+          Complex[] result = Ifft(freqCoeffs);
+      
+          // Output the reconstructed time domain signal
+          for (int i = 0; i < result.Length; i++)
+          {
+              Console.WriteLine($"Sample {i}: {result[i].Real:F6} + {result[i].Imaginary:F6}i");
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Sample 0: 1.000000 + 0.000000i
+          Sample 1: 1.000000 + 0.000000i
+          Sample 2: 1.000000 + 0.000000i
+          Sample 3: 1.000000 + 0.000000i
+   Example: 
+       Compute the IFFT with custom normalization to reconstruct a scaled signal:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using System.Numerics;
+          using static SepalSolver.Math;
+           
+          // Create frequency domain representation of a simple pattern
+          double[] freqData = { 8.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0, 0.0 };
+      
+          // Compute the IFFT with normalization factor of 2
+          Complex[] result = Ifft(freqData, 2);
+      
+          // Output the reconstructed signal
+          for (int i = 0; i < result.Length; i++)
+          {
+              Console.WriteLine($"Time sample {i}: {result[i].Real:F6} + {result[i].Imaginary:F6}i");
+          }
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Time sample 0: 0.500000 + 0.000000i
+          Time sample 1: 0.500000 + 0.000000i
+          Time sample 2: 0.500000 + 0.000000i
+          Time sample 3: 0.500000 + 0.000000i
+          Time sample 4: 0.500000 + 0.000000i
+          Time sample 5: 0.500000 + 0.000000i
+          Time sample 6: 0.500000 + 0.000000i
+          Time sample 7: 0.500000 + 0.000000i
+
+
 decic
 =====
    Description: 
@@ -8290,6 +8466,96 @@ Conv
        .. code-block:: Terminal 
 
           Product: -12 - 5i ,  -6 + 17i, -14 - 22i,  13 + 11i
+
+
+Trapz
+=====
+   Description: 
+       Computes the definite integral of a function using the adaptive trapezoidal rule with automatic error control.
+       The algorithm recursively subdivides the integration interval until the desired accuracy is achieved,
+       approximating the integral ∫[x₁,x₂] f(x) dx using trapezoids of varying widths for optimal precision.
+
+       .. code-block:: CSharp 
+
+          double Trapz(Func<double, double> fun, double x_1, double x_2, double eps = 1e-6)
+          double Trapz(ColVec X, ColVec Y)
+   Parameters: 
+       fun: 
+           The function to integrate, provided as a Func<double, double> delegate. The function must be continuous
+           and well-defined over the integration interval [x_1, x_2].
+       x_1: 
+           The lower limit of integration. Can be any finite real number, and may be greater than x_2 for
+           integration in the reverse direction.
+       x_2: 
+           The upper limit of integration. Can be any finite real number. If x_2 < x_1, the integral
+           is computed with a negative sign according to the fundamental theorem of calculus.
+       eps: 
+           The desired absolute error tolerance for the integration. Default value is 1e-6. Must be a positive
+           number. Smaller values result in higher accuracy but increased computation time.
+       X: 
+         A column vector containing the x-coordinates (independent variable values) of the data points.
+         The values should be in ascending order for proper integration. Must have the same length as Y.
+       Y: 
+         A column vector containing the y-coordinates (function values) corresponding to each x-coordinate.
+         Represents the discrete samples of the function to be integrated. Must have the same length as X.
+   Returns: 
+       The approximate value of the definite integral as a point value or an array of number. The result has an estimated error
+       less than or equal to the specified tolerance eps.
+   Example: 
+       Integrate a simple polynomial function x² from 0 to 2:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the function to integrate
+          Func<double, double> polynomial = x => x * x;
+          
+          // Set integration limits
+          double lowerLimit = 0.0;
+          double upperLimit = 2.0;
+          
+          // Compute the integral
+          double result = Trapz(polynomial, lowerLimit, upperLimit);
+      
+          // Output the result (analytical result is 8/3 ≈ 2.666667)
+          Console.WriteLine($"∫₀² x² dx = {result:F6}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          ∫₀² x² dx = 2.666667
+   Example: 
+       Integrate discrete samples of a quadratic function:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create x-coordinates for the interval [0, 2]
+          ColVec xValues = new double[] { 0.0, 0.5, 1.0, 1.5, 2.0 };
+          
+          // Create y-coordinates for f(x) = x²
+          ColVec yValues = new double[] { 0.0, 0.25, 1.0, 2.25, 4.0 };
+          
+          // Compute the integral using trapezoidal rule
+          double result = Trapz(xValues, yValues);
+      
+          // Output the result (exact integral of x² from 0 to 2 is 8/3 ≈ 2.667)
+          Console.WriteLine($"∫₀² x² dx ≈ {result:F6}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          ∫₀² x² dx ≈ 2.666667
 
 
 Integral
@@ -9437,3 +9703,375 @@ Integral4
 |   cref=System.ArgumentNullException is Thrown when the  z_1 is null.
 |   cref=System.ArgumentNullException is Thrown when the  z_2 is null.
 |   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+
+
+nchoosek
+========
+   Description: 
+       Computes all possible combinations of n elements from a given list of items, also known as "n choose k" or C(k,n).
+       This function generates all possible subsets of size n from the input list, where order does not matter.
+       The total number of combinations returned is given by the binomial coefficient C(k,n) = k! / (n! × (k-n)!) where k is the length of the input list.
+
+       .. code-block:: CSharp 
+
+          List<List<int>> nchoosek(List<int> items, int n)
+          Matrix nchoosek(RowVec items, int n)
+   Parameters: 
+       items: 
+             The list of integers or input of row vector from which to select combinations. The list can contain any integers and duplicate values are treated as distinct elements.
+             The list must not be null and should contain at least n elements for meaningful results.
+       n: 
+         The number of elements to select in each combination. Must be a non-negative integer and should not exceed the length of the items list.
+         If n equals 0, returns a list containing one empty list. If n exceeds the items length, returns an empty list.
+   Returns: 
+       A list of lists where each inner list contains exactly n integers representing one combination from the input items.
+       The combinations are returned in lexicographic order based on the indices of the original list. It also return two-dimensional array if the input is a row vector.
+   Example: 
+       Generate all combinations of 2 elements from a list of 4 numbers:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using System.Collections.Generic;
+          using static SepalSolver.Math;
+            
+          // Create input list
+          List<int> items = new List<int> { 1, 2, 3, 4 };
+          int n = 2;
+      
+          // Compute all combinations
+          List<List<int>> combinations = nchoosek(items, n);
+      
+          // Output the results
+      
+          // Output the results
+          Console.WriteLine($"All combinations of {n} from {string.Join(",", items)}:");
+          foreach (var combo in combinations)
+          {
+              Console.WriteLine($"[{string.Join(", ", combo)}]");
+          }
+          Console.WriteLine($"Total combinations: {combinations.Count}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          All combinations of 2 from 1,2,3,4:
+          [1, 2]
+          [1, 3]
+          [1, 4]
+          [2, 3]
+          [2, 4]
+          [3, 4]
+          Total combinations: 6
+   Example: 
+       Generate all combinations of 3 elements from a row vector with integer values:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Create input row vector with 5 elements
+          RowVec items = new double[] {10, 20, 30, 40, 50};
+          int n = 3;
+      
+          // Compute all combinations
+          Matrix combinations = nchoosek(items, n);
+      
+          // Output the results
+          Console.WriteLine($"All combinations of {n} from [{string.Join(", ", items.ToArray())}]:");
+          Console.WriteLine("Result Matrix:");
+          Console.WriteLine(combinations.ToString());
+          Console.WriteLine($"Matrix dimensions: {combinations.Rows} × {combinations.Cols}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          All combinations of 3 from [10, 20, 30, 40, 50]:
+          Result Matrix:
+          10  20  30
+          10  20  40
+          10  20  50
+          10  30  40
+          10  30  50
+          10  40  50
+          20  30  40
+          20  30  50
+          20  40  50
+          30  40  50
+          Matrix dimensions: 10 × 3
+
+
+permute
+=======
+   Description: 
+       Generates all possible permutations of elements within a specified range of an integer array or input of row vector using recursive backtracking.
+       This function computes all distinct arrangements of elements from index l to index r (inclusive) in the input array.
+       The total number of permutations generated is (r-l+1)! where the factorial accounts for all possible arrangements of the elements in the specified range.
+       Elements outside the range [l,r] remain fixed in their original positions across all permutations.
+
+       .. code-block:: CSharp 
+
+          List<int[]> permute(int[] str, int l, int r)
+          Matrix permute(RowVec str, int l, int r)
+   Parameters: 
+       str: 
+           The input integer array or row vector containing the elements to be permuted. The array must not be null and should contain at least one element.
+           Duplicate values in the array are treated as distinct elements and will generate separate permutations.
+       l: 
+         The left boundary index (inclusive) specifying the start of the range to permute. Must be a non-negative integer and should be less than or equal to r.
+         If l equals r, only one permutation (the original array) is returned. Must be within the bounds of the input array.
+       r: 
+         The right boundary index (inclusive) specifying the end of the range to permute. Must be a non-negative integer and should be greater than or equal to l.
+         Must be within the bounds of the input array (r < str.Length). Elements at positions greater than r remain unchanged.
+   Returns: 
+       A list of integer arrays where each array represents one unique permutation of elements within the specified range [l,r].
+       Each returned array has the same length as the input array, with elements outside [l,r] remaining in their original positions.
+       The total number of permutations returned is (r-l+1)!.
+   Example: 
+       Generate all permutations of elements in positions 1 to 3 of a 5-element array:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create input array
+          int[] str = new int[] {1, 2, 3, 4, 5};
+          int l = 1;  // start permuting from index 1
+          int r = 3;  // end permuting at index 3
+          
+          // Generate all permutations
+          List<int[]> permutations = permute(str, l, r);
+      
+          // Output the results
+          Console.WriteLine($"Original array: [{string.Join(", ", str)}]");
+          Console.WriteLine($"Permuting indices {l} to {r}:");
+          for (int i = 0; i &lt; permutations.Count; i++)
+          {
+              Console.WriteLine($"  [{string.Join(", ", permutations[i])}]");
+          }
+          Console.WriteLine($"Total permutations: {permutations.Count}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Original array: [1, 2, 3, 4, 5]
+          Permuting indices 1 to 3:
+            [1, 2, 3, 4, 5]
+            [1, 2, 4, 3, 5]
+            [1, 3, 2, 4, 5]
+            [1, 3, 4, 2, 5]
+            [1, 4, 2, 3, 5]
+            [1, 4, 3, 2, 5]
+          Total permutations: 6
+   Example: 
+       Generate all permutations of elements in positions 1 to 3 of a 5-element row vector:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Create input row vector
+          RowVec items = new double[] {1.0, 2.0, 3.0, 4.0, 5.0};
+          int l = 1;  // start permuting from index 1
+          int r = 3;  // end permuting at index 3
+          
+          // Generate all permutations
+          Matrix permutations = permute(items, l, r);
+      
+          // Output the results
+          Console.WriteLine($"Original vector: [{string.Join(", ", items.ToArray())}]");
+          Console.WriteLine($"Permuting indices {l} to {r}:");
+          Console.WriteLine("Result Matrix:");
+          Console.WriteLine(permutations.ToString());
+          Console.WriteLine($"Matrix dimensions: {permutations.Rows} × {permutations.Cols}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          Original vector: [1, 2, 3, 4, 5]
+          Permuting indices 1 to 3:
+          Result Matrix:
+          1  2  3  4  5
+          1  2  4  3  5
+          1  3  2  4  5
+          1  3  4  2  5
+          1  4  2  3  5
+          1  4  3  2  5
+          Matrix dimensions: 6 × 5
+
+
+Laplace
+=======
+   Description: 
+       Computes the Laplace transform of a given function f(t) at a specified complex frequency parameter s.
+       The Laplace transform is defined as L{f(t)}(s) = ∫₀^∞ f(t)e^(-st) dt, which converts a time-domain function into the s-domain.
+       This implementation uses numerical integration techniques with adaptive error control to approximate the improper integral.
+       The transform is particularly useful for solving differential equations, analyzing linear time-invariant systems, and signal processing applications.
+
+       .. code-block:: CSharp 
+
+          double Laplace(Func&lt;double, double&gt; f, double s, double eps = 1e-6)
+          Complex Laplace(Func&lt;double, Complex&gt; f, Complex s, double eps = 1e-6)
+          Matrix Laplace(Func&lt;double, Matrix&gt; f, double s, double eps = 1e-6)
+          ColVec Laplace(Func&lt;double, ColVec&gt; f, double s, double eps = 1e-6)
+          RowVec Laplace(Func&lt;double, RowVec&gt; f, double s, double eps = 1e-6)
+   Parameters: 
+       f: 
+         The input function f(t) to be transformed, defined as a delegate that takes a double parameter (time t) and returns a double value.
+         The function should be defined for t ≥ 0 and must have exponential order for the transform to converge.
+         Functions with polynomial growth or exponential decay are typically suitable for Laplace transformation.
+       s: 
+         The complex frequency parameter at which to evaluate the Laplace transform. Must be a real number with Re(s) sufficiently large for convergence.
+         For most functions, s should be positive and greater than the abscissa of convergence to ensure the integral converges.
+         Larger values of s generally improve numerical stability but may reduce accuracy for rapidly oscillating functions.
+       eps: 
+           The numerical tolerance for the integration algorithm, controlling the accuracy of the approximation. Default value is 1e-6.
+           Smaller values provide higher accuracy but require more computational time. Must be a positive real number.
+           The algorithm will continue refining the approximation until the estimated error falls below this threshold.
+   Returns: 
+       The value of the Laplace transform L{f(t)}(s) as a double precision floating-point number.
+       Returns the numerical approximation of the integral ∫₀^∞ f(t)e^(-st) dt evaluated at the specified s parameter.
+   Example: 
+       Compute the Laplace transform of f(t) = e^(-2t), which should equal 1/(s+2):
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+            
+          // Define the function f(t) = e^(-2t)
+          Func&lt;double, double&gt; f = t =&gt; Math.Exp(-2.0 * t);
+          double s = 3.0;
+          double eps = 1e-8;
+          
+          // Compute the Laplace transform
+          double result = Laplace(f, s, eps);
+          
+          // Compare with analytical result
+          double analytical = 1.0 / (s + 2.0);
+      
+          // Output the results
+          Console.WriteLine($"f(t) = e^(-2t)");
+          Console.WriteLine($"L{{f(t)}}({s}) = {result:F8}");
+          Console.WriteLine($"Analytical: 1/({s}+2) = {analytical:F8}");
+          Console.WriteLine($"Error: {Math.Abs(result - analytical):E2}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          f(t) = e^(-2t)
+          L{f(t)}(3) = 0.20000000
+          Analytical: 1/(3+2) = 0.20000000
+          Error: 1.23E-09
+   Example: 
+       Compute the Laplace transform of f(t) = t²e^(-t), which should equal 2/(s+1)³:
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using static SepalSolver.Math;
+           
+          // Define the function f(t) = t²e^(-t)
+          Func&lt;double, double&gt; f = t =&gt; t * t * Math.Exp(-t);
+          double s = 2.0;
+          double eps = 1e-6;
+      
+          // Compute the Laplace transform
+          double result = Laplace(f, s, eps);
+          
+          // Compare with analytical result
+          double analytical = 2.0 / Math.Pow(s + 1.0, 3);
+      
+          // Output the results
+          Console.WriteLine($"f(t) = t²e^(-t)");
+          Console.WriteLine($"L{{f(t)}}({s}) = {result:F6}");
+          Console.WriteLine($"Analytical: 2/({s}+1)³ = {analytical:F6}");
+          Console.WriteLine($"Error: {Math.Abs(result - analytical):E2}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          f(t) = t²e^(-t)
+          L{f(t)}(2) = 0.074074
+          Analytical: 2/(2+1)³ = 0.074074
+          Error: 3.45E-07
+
+
+NiLaplace
+=========
+   Description: 
+       Numerically inverts a Laplace-transformed function using the Gaver-Stehfest algorithm.
+       This method approximates the original time-domain function from its Laplace-domain representation.
+       Mathematically, this can be expressed as:
+
+       .. math::
+          f(t) = \mathcal{L}^{-1}\{F(s)\}(t)
+       where :math:`F(s)` is the Laplace transform of :math:`f(t)`.
+
+       .. code-block:: CSharp 
+
+          double NiLaplace(Func<double, double> Lapfun, double t)
+   Parameters: 
+       Lapfun: 
+              A delegate representing the Laplace-transformed function :math:`F(s)`.
+              It should accept a double precision value :math:`s` and return :math:`F(s)`.
+       t: 
+         The time point :math:`t` at which to evaluate the inverse Laplace transform.
+   Returns: 
+       A double precision value representing the numerical approximation of :math:`f(t)`.
+   Example: 
+
+       .. math::
+          F(s) = \frac{1}{s + 2},~ f(t) = e^{-2t}
+       In this example, we invert the Laplace transform of :math:`F(s) = 1 / (s + 2)`
+       which corresponds to the time-domain function :math:`f(t) = e^{-2t}`.
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using SepalSolver.Math;
+      
+          // Define Laplace-domain function
+          Func<double, double> F = s => 1.0 / (s + 2);
+      
+          // Evaluate inverse at t = 1.0
+          double t = 1.0;
+          double result = NiLaplace(F, t);
+          Console.WriteLine($"f({t}) ≈ {result}");
+
+      Output: 
+
+
+       .. code-block:: Terminal 
+
+          f(1.0) ≈ 0.1353
+
+   ..note::
+
+       The Gaver-Stehfest algorithm is sensitive to numerical instability.
+       For best results, ensure that the Laplace function is analytic and well-behaved.
+
+
+
