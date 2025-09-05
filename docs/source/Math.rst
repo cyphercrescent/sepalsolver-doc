@@ -9919,17 +9919,17 @@ Laplace
 =======
    Description: 
        Computes the Laplace transform of a given function f(t) at a specified complex frequency parameter s.
-       The Laplace transform is defined as L{f(t)}(s) = ∫₀^∞ f(t)e^(-st) dt, which converts a time-domain function into the s-domain.
+       The Laplace transform is defined as :math:`L{f(t)}(s) = \int_0^infty f(t)e^(-st) dt`, which converts a time-domain function into the s-domain.
        This implementation uses numerical integration techniques with adaptive error control to approximate the improper integral.
        The transform is particularly useful for solving differential equations, analyzing linear time-invariant systems, and signal processing applications.
 
        .. code-block:: CSharp 
 
-          double Laplace(Func&lt;double, double&gt; f, double s, double eps = 1e-6)
-          Complex Laplace(Func&lt;double, Complex&gt; f, Complex s, double eps = 1e-6)
-          Matrix Laplace(Func&lt;double, Matrix&gt; f, double s, double eps = 1e-6)
-          ColVec Laplace(Func&lt;double, ColVec&gt; f, double s, double eps = 1e-6)
-          RowVec Laplace(Func&lt;double, RowVec&gt; f, double s, double eps = 1e-6)
+          double Laplace(Func< double, double > f, double s, double eps = 1e-6)
+          Complex Laplace(Func< double, Complex > f, Complex s, double eps = 1e-6)
+          Matrix Laplace(Func< double, Matrix > f, double s, double eps = 1e-6)
+          ColVec Laplace(Func< double, ColVec > f, double s, double eps = 1e-6)
+          RowVec Laplace(Func< double, RowVec > f, double s, double eps = 1e-6)
    Parameters: 
        f: 
          The input function f(t) to be transformed, defined as a delegate that takes a double parameter (time t) and returns a double value.
