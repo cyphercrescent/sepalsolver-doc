@@ -9982,7 +9982,7 @@ Laplace
           Analytical: 1/(3+2) = 0.20000000
           Error: 1.23E-09
    Example: 
-       Compute the Laplace transform of f(t) = t²e^(-t), which should equal 2/(s+1)³:
+       Compute the Laplace transform of :math:`f(t) = t^2e^{-t}`, which should equal :math:`2/(s+1)^3`:
 
        .. code-block:: CSharp 
 
@@ -9991,7 +9991,7 @@ Laplace
           using static SepalSolver.Math;
            
           // Define the function f(t) = t²e^(-t)
-          Func&lt;double, double&gt; f = t =&gt; t * t * Math.Exp(-t);
+          Func<double, double> f = t => t * t * Math.Exp(-t);
           double s = 2.0;
           double eps = 1e-6;
       
@@ -10004,7 +10004,7 @@ Laplace
           // Output the results
           Console.WriteLine($"f(t) = t²e^(-t)");
           Console.WriteLine($"L{{f(t)}}({s}) = {result:F6}");
-          Console.WriteLine($"Analytical: 2/({s}+1)³ = {analytical:F6}");
+          Console.WriteLine($"Analytical: 2/(s+1)³ = {analytical:F6}");
           Console.WriteLine($"Error: {Math.Abs(result - analytical):E2}");
 
       Output: 
