@@ -210,8 +210,7 @@ ReadColVec
           ColVec colVec = ReadColVec(path);
       
           // Output result
-          for (int i = 0; i < colVec.Rows; i++)
-              Console.WriteLine(colVec[i, 0]);
+          Console.WriteLine(colVec);
 
       Output: 
 
