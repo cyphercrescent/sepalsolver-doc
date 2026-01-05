@@ -161,17 +161,17 @@ ReadRowVec
 
        .. code-block:: CSharp 
 
-      .  // import libraries 
-         using System;
-         using static SepalSolver.Math;
+          // import libraries 
+          using System;
+          using static SepalSolver.Math;
             
-         string path = "vector.txt";
-      
-         // Load row vector
-         RowVec rowVec = ReadRowVec(path);
-      
-         // Display contents
-         Console.WriteLine(rowVec);
+          string path = "vector.txt";
+       
+          // Load row vector
+          RowVec rowVec = ReadRowVec(path);
+       
+          // Display contents
+          Console.WriteLine(rowVec);
 
       Output: 
 
