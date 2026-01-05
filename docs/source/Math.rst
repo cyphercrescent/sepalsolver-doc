@@ -7603,6 +7603,79 @@ Ode23
 |   cref=System.ArgumentException is Thrown when the  tspan array has less than two elements.
 
 
+Ode34
+=====
+   Description: 
+       Solves non stiff ordinary differential equations (ODE) using the Dormand-Prince method (Ode45).
+   Parameters: 
+       dydx: 
+            A function that represents the ODE. 
+                    | double dydx(double t, double y);
+                    | ColVec dydx(double t, ColVec y);
+               * t: time.
+               * y: state.
+               * Returns: evaluation of the ODE.
+       initcon: 
+               An array of doubles representing the initial conditions for the state vector y.
+               The length must match the dimension of the system.
+       tspan: 
+             A two-element array specifying the time interval for integration: [t0, tf].
+       options: 
+               Optional parameters for the ODE solver, such as:
+                   * RelTol: relative tolerance, 
+                   * AbsTol: absolute tolerance, 
+                   * MaxStep: maximum step size, 
+                   * Stats: Statistics toggle.
+                   Use Odeset(...) to configure
+   Returns: 
+       A tuple (T, Y) where:
+          * T: Column vector of time points at which the solution was computed.
+          * Y: Matrix of solution values; each row corresponds to the state at the respective time in T.
+   Remark: 
+      |  This method uses the Dormand-Prince method (Ode45) to solve the ODE. It is an adaptive step size method that adjusts the step size to achieve the desired accuracy.
+      |  For best results, the function should be smooth within the integration interval.
+   Example: 
+        Solve the ODE :math:`~d^2y/dt^2 = (1 - y^2)y' - y~` with initial condition :math:`~y(0) = [2, 0]~` over the interval :math:`[0, 2]`.
+        First we have to convert this to a system of first order differential equations, 
+
+        .. math::
+           \begin{array}{rcl}
+                 y' &=& v \\
+                 v' &=& (1 - y^2)v - y
+            \end{array}
+
+       .. code-block:: CSharp 
+
+          // import libraries
+          using System;
+          using SepalSolver.Math;
+      
+          //define ODE
+          static ColVec vdp1(double t, ColVec y)
+          {
+               double[] dy;
+               return dy = [y[1], (1 - y[0] * y[0]) * y[1] - y[0]];
+          }
+          //Solve ODE
+          (ColVec T, Matrix Y) = Ode45(vdp1, [2, 0], [0, 20]);
+          // Plot the result
+          Plot(T, Y, "-o");
+          Xlabel("Time t"); Ylabel("Soluton y");
+          Legend(["y_1", "y_2"], Alignment.UpperLeft);
+          Title("Solution of van der Pol Equation (μ = 1) with ODE45");
+          SaveAs("Van-der-Pol-(μ=1)-Ode45.png");
+
+      Output: 
+
+    .. figure:: images/Van-der-Pol-(μ=1)-Ode45.png
+       :align: center
+       :alt: Van der Pol-(μ = 1)-Ode45.png
+
+
+|   cref=System.ArgumentNullException is Thrown when the  dydx is null.
+|   cref=System.ArgumentException is Thrown when the  tspan array has less than two elements.
+
+
 Ode45
 =====
    Description: 
