@@ -130,12 +130,7 @@ ReadMatrix
           Matrix matrix = ReadMatrix(path);
       
           // Display contents
-          for (int i = 0; i < matrix.Rows; i++)
-          {
-              for (int j = 0; j < matrix.Cols; j++)
-                  Console.Write(matrix[i, j] + " ");
-              Console.WriteLine();
-          }
+          Console.WriteLine(matrix)
 
       Output: 
 
@@ -166,18 +161,17 @@ ReadRowVec
 
        .. code-block:: CSharp 
 
-      .   // import libraries 
-          using System;
-          using static SepalSolver.Math;
+      .  // import libraries 
+         using System;
+         using static SepalSolver.Math;
             
-          string path = "vector.txt";
+         string path = "vector.txt";
       
-          // Load row vector
-          RowVec rowVec = ReadRowVec(path);
+         // Load row vector
+         RowVec rowVec = ReadRowVec(path);
       
-          // Display contents
-          for (int i = 0; i < rowVec.Cols; i++)
-              Console.Write(rowVec[0, i] + " ");
+         // Display contents
+         Console.WriteLine(rowVec);
 
       Output: 
 
@@ -8687,7 +8681,8 @@ Integral
 Integral
 ========
    Description: 
-       Computes the definite integral of a function using adaptive Gauss-LegendreP quadrature.
+       Computes the definite integral of a function using adaptive Gauss-Legendre quadrature,
+       with support for handling singularities inside the integration interval.
    Parameters: 
        fun: 
            The function to integrate. The function should accept a double and return a double.
@@ -8697,18 +8692,20 @@ Integral
            The upper bound of the integration interval.
        eps: 
            The desired relative accuracy. The default value is 1e-6.
+       singularities: 
+                     A variable-length list of points inside the interval (between <paramref name="x_1"/> and <paramref name="x_2"/>)
+                     where the function has singularities or discontinuities. The integration interval will be split at these points,
+                     and each subinterval will be integrated separately to improve accuracy.
    Returns: 
-       The approximate value of the definite integral.
+       The approximate value of the definite integral, accounting for singularities.
    Remark: 
-      |  This method uses adaptive Gauss-LegendreP quadrature to approximate the definite integral.
-      |  The number of quadrature points is increased until the desired relative accuracy is achieved or a maximum number of iterations is reached.
-      |  For best results, the function should be smooth within the integration interval.
-      |  If x_1 equals x_2 then the method will return 0.
+      |  This method uses adaptive Gauss-Legendre quadrature to approximate the definite integral.
+      |  The interval is partitioned at the specified singularities, and each subinterval is integrated independently.
+      |  The results are summed to produce the final integral value.
+      |  For best results, the function should be smooth within each subinterval.
+      |  If <paramref name="x_1"/> equals <paramref name="x_2"/> then the method will return 0.
    Example: 
-        Integrate the function f(x) = x^2, which can be expressed as:
-
-       .. math::
-          \int_{x_1}^{x_2} x^2 \, dx
+       Integrate the function f(x) = 1/(x - 0.5) over [0.1, 1], with a singularity at x = 0.5:
 
        .. code-block:: CSharp 
 
@@ -8717,24 +8714,19 @@ Integral
           using SepalSolver.Math;
       
           // Define the function to integrate
-          Func<double, double> f = (x) => x * x;
+          Func<double, double> f = (x) => 1.0 / x;
           // Set the lower bound of x
-          double x_1 = 0;
+          double x_1 = 0.1;
           // Set the upper bound of x
-          double x_2 = 1;
+          double x_2 = 1.0;
+          // Specify singularity inside the interval
+          double[] singularities = { 0.5 };
           // Calculate the integral
-          double integral = Integral(f, x_1, x_2);
+          double integral = Integral(f, x_1, x_2, 1e-6, singularities);
           // Print the result
-          Console.WriteLine($"The integral of x^2 is approximately: {integral}");
-
-      Output: 
-
-
-       .. code-block:: Terminal 
-
-          The integral of x^2 is approximately: 0.333333333321056
-|   cref=System.ArgumentNullException is Thrown when the  fun is null.
-|   cref=System.Exception is Thrown when the maximum number of iterations is reached without achieving the desired accuracy.
+          Console.WriteLine($"The integral of 1/x is approximately: {integral}");
+|   cref=System.ArgumentNullException is 
+|   cref=System.Exception is 
 
 
 Integral2
