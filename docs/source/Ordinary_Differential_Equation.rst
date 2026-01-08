@@ -209,6 +209,35 @@ Now we have 2 equations
 
       .. code-block:: python
 
+         # define the ODE system
+         def dzdt(t, z):
+            return [z[1], -4*z[0]]
+
+         # initial condition
+         z0 = [0, 5]
+
+         # time span
+         t_span = (0, 10)
+
+         # solve ODE using ode45 equivalent (RK45)
+         sol = solve_ivp(dzdt, t_span, z0, method='RK45', dense_output=True)
+
+         # extract solution at evenly spaced points
+         T = np.linspace(t_span[0], t_span[1], 200)
+         Z = sol.sol(T).T   # shape (200, 2)
+
+         # plot the result
+         plt.plot(T, Z[:,0], '-o', label='y1(t)', markersize=3)
+         plt.plot(T, Z[:,1], '-o', label='y2(t)', markersize=3)
+         plt.xlabel('t'); plt.ylabel('y')
+         plt.title('Solving-SHO-with-Python-SciPy-RK45')
+         plt.legend(loc='lower right')
+         plt.savefig('Solving-SHO-with-Python-SciPy-RK45.png', dpi=150)
+         plt.show()
+
+      .. figure:: images/Solving-SHO-with-Python-SciPy-RK45.png
+         :align: center
+         :alt: Solving-SHO-with-Python-SciPy-RK45.png
          
 
       
