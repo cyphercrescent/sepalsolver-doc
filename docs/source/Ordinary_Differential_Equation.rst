@@ -196,7 +196,7 @@ Now we have 2 equations
          Xlabel("t"); Ylabel("y");
          Title("Solving-SHO-with-SepalSolver-Ode45");
          Legend(["y_1", "y_2"], LowerRight);
-         SaveAs(imagefolder + "Solving-SHO-with-SepalSolver-Ode45.png");
+         SaveAs("Solving-SHO-with-SepalSolver-Ode45.png");
          
       .. figure:: images/Solving-SHO-with-SepalSolver-Ode45.png
          :align: center
@@ -232,9 +232,9 @@ Now we have 2 equations
          
          % display the result
          plot(T, Z, '-o');
-         xlabel('t')
-         ylabel('y')
+         xlabel('t'); ylabel('y')
          title('Solving-SHO-with-Matlab-Ode45')
+         legend('y_1', 'y_2', 'Location', 'southeast')
          saveas(gcf, 'Solving-SHO-with-Matlab-Ode45', 'png')
 
       .. figure:: images/Solving-SHO-with-Matlab-Ode45.png
