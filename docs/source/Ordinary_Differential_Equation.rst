@@ -52,14 +52,10 @@ Consider: :math:`y' = 2(a - t)y^2`
 
 .. tabs::
 
-   .. tab:: CCL-Math
-      CCL-Math Implementation
+   .. tab:: SepalSolver
+      SepalSolver Implementation
 
       .. code-block:: C#
-         
-         // import libraries
-         using SepalSolver;
-         using static SepalSolver.Math;
 
          // define the ODE
          double a = 0.25;
@@ -77,8 +73,8 @@ Consider: :math:`y' = 2(a - t)y^2`
          // plot the result
          Plot(T, Y, "-o");
          Xlabel("t"); Ylabel("y");
-         Title("Solving-with-CCLMath-Ode23");
-         SaveAs("Solving-with-CCLMath-Ode23.png");
+         Title("Solving-with-SepalSolver-Ode23");
+         SaveAs("Solving-with-SepalSolver-Ode23.png");
 
       .. figure:: images/Solving-with-CCLMath-Ode23.png
          :align: center
@@ -178,14 +174,10 @@ Now we have 2 equations
 
 .. tabs::
 
-   .. tab:: CCL-Math
-      CCL-Math Implementation
+   .. tab:: SepalSolver
+      SepalSolver Implementation
 
       .. code-block:: C#
-         
-         // import libraries
-         using SepalSolver;
-         using static SepalSolver.Math;
 
          // define the ODE
          ColVec dzdt(double t, ColVec z) 
@@ -207,15 +199,15 @@ Now we have 2 equations
          // plot the result
          Plot(T, Y, "-o");
          Xlabel("t"); Ylabel("y");
-         Title("Solving-SHO-with-CCLMath-Ode45");
-         Legend = (["y_1", "y_2"], Alignment.LowerRight");
-         SaveFig("Solving-SHO-with-CCLMath-Ode45.png");
+         Title("Solving-SHO-with-SepalSolver-Ode45");
+         Legend = (["y_1", "y_2"], LowerRight");
+         SaveFig("Solving-SHO-with-SepalSolver-Ode45.png");
          
 
-      .. figure:: images/Solving-SHO-with-CCLMath-Ode45.png
+      .. figure:: images/Solving-SHO-with-SepalSolver-Ode45.png
          :align: center
-         :alt: Solving-SHO-with-CCLMath-Ode45.png
-     
+         :alt: Solving-SHO-with-SepalSolver-Ode45.png
+
 
    .. tab:: Python
 
