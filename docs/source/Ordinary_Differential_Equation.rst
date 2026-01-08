@@ -76,9 +76,9 @@ Consider: :math:`y' = 2(a - t)y^2`
          Title("Solving-with-SepalSolver-Ode23");
          SaveAs("Solving-with-SepalSolver-Ode23.png");
 
-      .. figure:: images/Solving-with-CCLMath-Ode23.png
+      .. figure:: images/Solving-with-SepalSolver-Ode23.png
          :align: center
-         :alt: Solving-with-CCLMath-Ode23.png
+         :alt: Solving-with-SepalSolver-Ode23.png
      
 
    .. tab:: Python
@@ -180,12 +180,7 @@ Now we have 2 equations
       .. code-block:: C#
 
          // define the ODE
-         ColVec dzdt(double t, ColVec z) 
-         {
-            double y = z[0], v = z[1];
-            double[] dz = [v, -4*y];
-            return dz;
-         }
+         double[] dzdt(double t, double[] z) => [z[1], -4*z[0]];
 
          // set initial condition
          double[] z0 = [0, 5];
@@ -193,17 +188,16 @@ Now we have 2 equations
          // set time span
          double[] t_span = [0, 10];
 
-         // solve ODE 
+         // solve ODE
          (ColVec T, Matrix Y) = Ode45(dzdt, z0, t_span);
 
          // plot the result
          Plot(T, Y, "-o");
          Xlabel("t"); Ylabel("y");
          Title("Solving-SHO-with-SepalSolver-Ode45");
-         Legend = (["y_1", "y_2"], LowerRight");
-         SaveFig("Solving-SHO-with-SepalSolver-Ode45.png");
+         Legend(["y_1", "y_2"], LowerRight);
+         SaveAs(imagefolder + "Solving-SHO-with-SepalSolver-Ode45.png");
          
-
       .. figure:: images/Solving-SHO-with-SepalSolver-Ode45.png
          :align: center
          :alt: Solving-SHO-with-SepalSolver-Ode45.png
